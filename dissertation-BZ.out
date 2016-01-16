@@ -1,0 +1,27 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Domain knowledge guided strategy for developing computational approaches for biomedical applications}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Retrieving medically-relevant web images}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Detecting novel genetic basis for human diseases}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Predicting novel drug treatments based on disease genetics}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{Contribution and organization of the dissertation}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{Analyzing cross-species genetic networks to predict disease-associated genes: application on Plasmodium falciparum malaria}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Motivating Example}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{BACKGROUND}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.1}{Causal Inference Methodology}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.2}{Ordinary Propensity Scores}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.3}{Generalized Propensity Score \(GPS\)}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.4}{Covariate Balancing Propensity Score \(CBPS\)}{section.2.2}% 13
+\BOOKMARK [1][-]{section.2.3}{TWO VERSIONS OF NUMFL}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.3.1}{NUMFL-GPS}{section.2.3}% 15
+\BOOKMARK [2][-]{subsection.2.3.2}{NUMFL-CBPS}{section.2.3}% 16
+\BOOKMARK [1][-]{section.2.4}{EMPIRICAL EVALUATION}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.4.1}{Experimental Platform and Data Collection}{section.2.4}% 18
+\BOOKMARK [2][-]{subsection.2.4.2}{Subject Programs, Faults, and Tests}{section.2.4}% 19
+\BOOKMARK [2][-]{subsection.2.4.3}{Baseline SFL Metrics and Cost Measure}{section.2.4}% 20
+\BOOKMARK [2][-]{subsection.2.4.4}{Comparative Performance of NUMFL vs. Baselines}{section.2.4}% 21
+\BOOKMARK [2][-]{subsection.2.4.5}{NUMFL-GPS Applied only to Failing Runs}{section.2.4}% 22
+\BOOKMARK [2][-]{subsection.2.4.6}{Application of NUMFL-GPS to Programs with Multiple Faults}{section.2.4}% 23
+\BOOKMARK [2][-]{subsection.2.4.7}{Comparison of NUMFL-GPS and NUMFL-CBPS}{section.2.4}% 24
+\BOOKMARK [2][-]{subsection.2.4.8}{Limitations}{section.2.4}% 25
+\BOOKMARK [1][-]{section.2.5}{RELATED WORK}{chapter.2}% 26
+\BOOKMARK [1][-]{section.2.6}{CONCLUSION}{chapter.2}% 27

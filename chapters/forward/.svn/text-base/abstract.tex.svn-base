@@ -1,0 +1,37 @@
+\newpage
+\begin{centering}
+  Ontology-Driven Data Integration\\For Clinical Sleep Research\\
+  \vspace{1cm}
+  Abstract\\
+  by\\
+  \vspace{1cm}
+  REMO SEBASTIAN MUELLER\\
+  \vspace{1cm}
+\end{centering}
+
+Comparative effectiveness, clinical translational research, and 
+personalized \\medicine depend on the accessibility of data and information.
+This dissertation introduces an ontology-driven architecture for data federation.
+Ontological systems such as SNOMED CT have been traditionally used
+for data exchange, to preserve meaning for data elements across systems.
+We present a novel method of using ontologies to (1) enable
+data integration from distributed sources (2) facilitate a federated query interface. The
+contributions of this dissertation are trifold. 
+
+First, we developed a unified model consisting of a sleep domain ontology
+and a units ontology into which data sources can be mapped using
+an intuitive Data Source to Ontology Mapper (DSOM). The DSOM
+allows for terminology standardization while accommodating 
+local nomenclature. The domain ontology enriches the expressiveness of complex queries sent across data sources, based on graph-traversal and ontological equivalence relationships.  We provide further extensions to the ontology framework using formulae, for the purpose of inferring, discovering, and validating data across disparate sources.
+
+Second, we developed a powerful query interface called the VISual Aggregator and Explorer (VISAGE) 
+for building and executing federated queries across mapped data sources.  The interface streamlines
+the process of identifying case-control patient populations for study design
+through the use of embedded statistical tools. A framework is provided for the
+researcher to choose matching criteria and allows the researcher to create control
+sets based on frequency matching.
+
+Third, we implemented a fully operational and user-friendly system based on the 
+ontology-driven architecture, as part of Physio-MIMI, an NCRR-funded multi-CTSA-site project.
+Using the Agile methodology to facilitate multi-site collaboration, our implementation leverages
+a suite of latest software development technologies: Ruby On Rails,  Prototype JavaScript, AJAX, and Highcharts for a dynamic Web 2.0 interface, Mutual SSL for security and privacy, semantic web ontologies using OWL, and ontology development environments such as Prot\'{e}g\'{e}. Preliminary comparative analyses and user evaluations of aspects of the system are provided, demonstrating superior results in several usability categories.

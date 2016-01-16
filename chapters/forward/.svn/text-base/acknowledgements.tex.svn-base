@@ -1,0 +1,33 @@
+% Acknowledgements (optional)
+
+\newpage
+\section*{Acknowledgements}
+
+First, I would like to sincerely thank my advisor, Dr. GQ Zhang, for the dedication, insight, and guidance during my graduate studies at Case Western Reserve University.  Dr. Zhang has created a research environment that inspires creativity and productivity in the field of clinical informatics, and also cultivates leadership and responsibility.  I would not be where I am now without his mentorship.
+
+I would like to thank my committee members, Dr. Ken Loparo, Dr. Jing Li, Dr. Andy Podgurski, and Dr. Satya Sahoo for their valuable feedback and thought provoking questions that have helped shape my research.  Dr. Sahoo especially showed insights in the steps approaching my dissertation defense. I would also like to sincerely thank Dr. Susan Redline, without whose vast knowledge in clinical sleep research, and without her support of integrated informatics in this domain, my dissertation would not have existed.
+
+Throughout my graduate years at Case Western Reserve University, I have had the great fortune to meet many students who taught me skills and gave me different perspectives when looking at problems.  I would first like to thank Dr. Adam Troy, a post-doctorate student at Case during my first years as a graduate student.  Adam dedicated much of his time to teach me the art of web programming and agile development.  His mentorship gave me a great appreciation for mentoring younger students.  During the last years of my dissertation, Nathan Johnson provided many hours of feedback and guidance on the creation of Physio-MIMI.  Nathan has an impressive knowledge of the data integration issues involved in gathering and analyzing clinical and research sleep databases.  I would like to thank Nathan for always pointing me in the right direction so that I was working on issues of direct clinical significance. I would also like to thank Neil Sandberg, an MS student who helped with the development of Physio-MIMI.  Neil had an intuitive grasp of the Physio-MIMI architecture and was a valuable asset in the creation of the underlying system.  Physio-MIMI would not have come as far along as it did without his extensive help and knowledge.
+
+I would like to thank everyone involved on the Physio-MIMI project: Dr. Siva Arabandi, the Case project manager and lead ontologist, whose industry experience in agile software development and management kept the project focused and on time, the Michigan team who developed the Honest Broker Adapter, with whom I had lively weekly calls on the integration of VISAGE and the adapter: Dale Hunscher, Emma Hung, Paul Saxman, Peter Boisvert, and Pam Hayes. I would also like to thank Trish Siegler and Luke Rasmussen from the Marshfield Clinic who provided valuable testing on the usability of Physio-MIMI.
+
+I would like to thank the support of Dr. Zhang's research group at Case Western Reserve University:  Sridevi Cherukuri, the project manager who made sure I was never overburdened with too many meetings; Licong Cui whose great programming skills and quick learning helped me focus on Physio-MIMI while she took up the reigns on the Ca-MIMI project; Bill Jacobberger for providing in-depth and timely feedback on usability; Dr. Jacek Szymanski for sharing the experiences for implementing mass-file transfers and storage; Fangping Huang for his discovery of inconsistencies while documenting Physio-MIMI; Zendrix Ng for help better understanding the EDF polysomnogram files; Van Anh Tran for the different approaches on Ruby on Rails programming; and Catherine Jayapandian for the documentation and management of the wiki website for Physio-MIMI.
+
+I would also like to thank my loving family, my mom, my dad, and my sister, for their unconditional support and enthusiasm during my education.  My family kept me motivated over the years, pushed me to exceed expectations and limits, and to show pride in my work.  Thank you.
+
+This dissertation not only reflects my work, but also the creative energy, endless motivation, and positive mindsets of those around me.  Thank you all!
+
+\vfill\newpage
+
+My academic research at Case Western Reserve University was funded through grants from the CTSC (NIH UL1-RR024989), the NCRR (NCRR-94681DBS78), the Case Comprehensive Cancer Center (5P30 CA043703-16), and the Choose Ohio First Scholarship Program (UT15439).
+
+% GQ Zhang, Susan Redline, Ken Loparo, Jing Li, Andy Podgurski, Satya Sahoo
+% Acknowledge committee members
+% Nathan Johnson, Siva Arabandi, Neil Sandberg
+% Adam Troy
+% Bill Jacobberger
+% Dale, Emma, Paul, Peter, and Pam
+% Trish, Luke
+% Sridevi Cherukuri, Licong Cui
+% Fangping Huang, Zendrix Ng, Van Anh Tran, Catherine Jayapandian
+% Mom, Dad, Irina

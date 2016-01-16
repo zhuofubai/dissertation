@@ -1,0 +1,293 @@
+\chapter{Ruby on Rails Code}
+
+\section{Sample User Controller}
+\singlespacing
+\begin{lstlisting}[language=ruby]
+class UsersController < ApplicationController
+  before_filter :authenticate_user!,
+                :except => [:new, :create]
+
+  # GET /users
+  # GET /users.xml
+  def index
+    @users = User.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @users }
+    end
+  end
+
+  # GET /users/1
+  # GET /users/1.xml
+  def show
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @user }
+    end
+  end
+
+  # GET /users/new
+  # GET /users/new.xml
+  def new
+    @user = User.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @user }
+    end
+  end
+
+  # GET /users/1/edit
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  # POST /users
+  # POST /users.xml
+  def create
+    @user = User.new(params[:user])
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to(@user,
+          :notice => 'User was successfully created.') }
+        format.xml  { render :xml => @user,
+          :status => :created, :location => @user }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @user.errors,
+          :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /users/1
+  # PUT /users/1.xml
+  def update
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to(@user,
+          :notice => 'User was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @user.errors,
+          :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /users/1
+  # DELETE /users/1.xml
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(users_url) }
+      format.xml  { head :ok }
+    end
+  end
+end
+\end{lstlisting}
+\doublespacing
+
+\section{Sample User Model}
+\singlespacing
+\begin{lstlisting}[language=ruby]
+class User < ActiveRecord::Base
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable,
+         :validatable, :timeoutable
+  
+  include AuditWrapper
+  after_create AuditHolder.new
+  before_update AuditHolder.new
+  after_destroy AuditHolder.new
+  
+  # Named Scopes
+  scope :current, :conditions => { :deleted => false }
+  scope :status, lambda { |*args|  {
+    :conditions => ["users.status IN (?)", args.first] } }
+  scope :with_institution, lambda { |*args| {
+    :conditions => ["users.institution_id = ?", args.first] } }
+
+  # Model Validation
+  validates_presence_of     :first_name
+  validates_presence_of     :last_name
+  
+  validates_presence_of :phone, :addr1, :city, :state, :zip
+
+  validates_format_of :phone,
+    :with => /^[0-9]{3}+-+[0-9]{3}+-+[0-9]{4}$/,
+    :message => "must be in the format xxx-xxx-xxxx"
+
+  validates_format_of :zip,
+    :with => /^\d{5}([\-]\d{4})?$/,
+    :message => "code must be a 5 digit zip code, or a 9
+      digit zip code in the following format XXXXX-XXXX"
+  
+  # Model Relationships
+
+  has_many :databases,
+    :conditions => ['deleted = ?', false]
+    
+  has_many :query_users, :dependent => :destroy
+  has_many :shared_queries, :through => :query_users,
+           :source => :query, :order => 'name',
+           :conditions => ['queries.deleted = ?', false]  
+  
+  belongs_to :institution
+
+  has_many :queries, :dependent => :destroy,
+           :order => 'updated_at DESC',
+           :conditions => ['deleted = ?', false]
+
+  has_many :user_roles
+  has_many :roles, :through => :user_roles,
+           :conditions => ['status = ?', true]
+  
+  has_many :explorations,
+           :conditions => {:deleted => false}
+
+  # User Methods
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def rev_name
+    "#{last_name}, #{first_name}"
+  end
+      
+  def destroy
+    update_attribute :deleted, true
+    update_attribute :status, 'inactive'
+  end
+
+  def reactivate
+    update_attribute :deleted, false
+    update_attribute :status, 'active'
+  end      
+end
+\end{lstlisting}
+\doublespacing
+
+\section{Sample User View}
+\singlespacing
+\begin{lstlisting}[language=HTML]
+  <%# The User Index %>
+  <h1>Listing users</h1>
+
+  <table>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Phone</th>
+      <th>Street address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip code</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.password %></td>
+      <td><%= user.phone %></td>
+      <td><%= user.street_address %></td>
+      <td><%= user.city %></td>
+      <td><%= user.state %></td>
+      <td><%= user.zip_code %></td>
+      <td><%= link_to 'Show', user %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Destroy', user,
+   :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  <%= link_to 'New User', new_user_path %>
+\end{lstlisting}
+\doublespacing
+
+\section{Data Source Access Control Code}\label{app:data_source_access}
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=ruby]
+  user_has_action?(<data-source>, <user>, <action>)
+  {
+    result = false;
+    blocked = false;
+    primary_informatician?(<user>, <data-source>) ? return true;
+    for <rule> in rules(<data-source>){
+      if(user_rule_exists?(<rule>, <user>, <action>)){
+        block?(<rule>) ? blocked = true : result = true;
+      }
+    }
+    (blocked == true) ? result = false;
+    return result;
+  }
+  
+  user_rule_exists?(<rule>, <user>, <action>){
+    return (  has_institution?(<rule>, institution(<user>))
+           && has_role?(<rule>, <user>)
+           && has_user?(<rule>, <user>)
+           && has_action?(<rule>, <action>));
+  }
+  
+  has_role?(<rule>, <user>)
+  {
+    result = false;
+    if(there exists "all" in roles(<user>)){
+      result = true;
+    }else{
+      for each <role> in roles(<user>){
+        (there exists <role> in roles(<rule>)) ? result = true;
+      }
+    }
+    return result;
+  }
+
+  has_user?(<rule>, <user>){
+    return (  there exists <user> in users(<rule>)
+           || there exists "all" in users(<rule>));
+  }
+
+  has_action?(<rule>, <action>){
+    return (  there exists <action> in actions(<rule>) 
+           || there exists "all" in actions(<rule>));
+  }
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+
+The algorithm can also be rewritten to check that the user has an action contained in the action group.  The algorithm makes use of the 
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=ruby]
+  user_has_action_group?(<data-source>, <user>, <action_group>){
+    for <action> in actions(<action_group>){
+      if (user_has_action?(<data-source>, <user>, <action>)){
+        return true;
+      } 
+    }
+    return false;
+  }
+\end{lstlisting}}\normalsize 
+\doublespacing

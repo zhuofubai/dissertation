@@ -1,0 +1,118 @@
+% This chapter will discuss Scalability Considerations and the development of Physio-MIMI from the beginning.
+% Recommend discussing the initial design of Physio-MIMI.
+
+% This may overlap with
+
+% Functionality Resides
+%   Decision Where Ontology Resides
+%   Functionality Upstream vs Downstream
+% Bottleneck Identification
+
+
+
+% Scalability (HBC => No HBC)
+
+\chapter{Scalability of Distributed Systems}\label{chp:scalability_and_functionality}
+
+Creating distributed data integration systems that scale in a clinical environment faces many challenges including the maintenance and mapping of data \cite{bent2009, rosenthal2001}.  Rosenthal et al. \cite{rosenthal2001} shows the challenges in maintaining mapping and meta data as the availability and the scope of the data resources change. Scalability is difficult to measure since many measurements utilize subjective terms, Luke \cite{242438}, however architecture changes can be made to systems and algorithms in order to increase scalability through load testing \cite{365568}, parallelization of processes, and the reduction of bottlenecks.  Through the use of agile software development, the Physio-MIMI project was able to catch and address scalability issues early in the development cycle.  This chapter outlines the scalability issues and resolutions faced by the Physio-MIMI project.
+
+\section{Original Physio-MIMI Architecture}
+
+The Physio-MIMI architecture has evolved greatly since its inception.  This chapter discusses some of the major architecture design changes that were put into place to increase the scalability and functionality of the distributed system. The original concept for Physio-MIMI is shown in Figure \ref{fig:original_architecture}.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/physio-mimi_original_design.png}
+  \end{center}
+  \caption{Original Physio-MIMI Architecture.}\label{fig:original_architecture}
+\end{figure}
+
+The figure has the following components:
+
+\begin{enumerate}
+  \item The client's web browser.
+  \item VISAGE, the front-end web server.
+  \item The Honest Broker Core.
+  \item The Honest Broker Adapter.
+  \item The Clinical Research Data Source.
+\end{enumerate}
+
+VISAGE, the VISual AGgregator and Explorer, provides the client access to the underlying data using a graphical web interface.  VISAGE, which is further described in Chapter \ref{chp:visage_and_honest_broker_adapter}, has a single mutual SSL connection with the Honest Broker Core.  The Honest Broker Core in turn provides mutual SSL connections \cite{rescorla2001} with each of the Honest Broker Adapters. Lastly, the Honest Broker Adapter creates a wrapper for the clinical research data source that makes the data source available through web services.  The underlying clinical research data source provides readonly access to the Honest Broker Adapter.  In this initial concept, the Honest Broker Core has various roles in the system.
+
+First, the Honest Broker Core is responsible for security.  The HBC creates a single entry point that allows VISAGE to gain access to the Honest Broker Adapters.  The HBC registers each adapter individually, allowing institutions to create a firewall exception for the HBC IP address.  During the registration process, the public keys are shared in order to create a connection based on mutual SSL.  All requests are routed directly through the HBC, and no information travels outside of a SSL encrypted pathway.
+
+Second, the Honest Broker Core is responsible for aggregating results.  VISAGE sends an abstract query to the HBC which then federates this query to the appropriate underlying Honest Broker Adapters.  The HBC then in turn provides the aggregate results back to VISAGE.  This process can be seen in Figure \ref{fig:original_architecture}.
+
+Finally, the Honest Broker Core is responsible for a master patient index.  The master patient index is generated to allow the aggregation of patient information that may be spread across multiple data sources \cite{honestbroker2005, honestbroker2007}.
+
+\section{Redesigning the Physio-MIMI Architecture}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/use_case_1_architecture.png}
+  \end{center}
+  \caption{Redesigned Physio-MIMI Architecture.}\label{fig:redesigned_architecture}
+\end{figure}
+
+The original concept, while providing security that is easily understood and easily implemented, created two major problems for the advancements in the system.  First, the architecture was not scalable to a larger number of Honest Broker Adapters connected to a single instance of the Honest Broker Core.  The Honest Broker Adapters must all be registered individually with the Honest Broker Core.  Additionally, queries must then be federated across an ever increasing number of Honest Broker Adapters and the HBC must wait for all the responses before providing an aggregated result back to VISAGE.  Second, the Honest Broker Core created an institutional dependency on one institution that limited the robustness of the system.  The Honest Broker Core is tasked with ensuring the security of large amounts of data flow between the Honest Broker Adapters and VISAGE.  If the Honest Broker Core goes offline then the system would not function until the Honest Broker Core is restarted, and since the HBC is not necessarily hosted at the same institution as VISAGE or the Honest Broker Adapters, this downtime could be significantly increased.  Finally the architecture would greatly increase the difficulty of creating a more scalable architecture with numerous instances of VISAGE that worked together or independently to access the Honest Broker Adapters as seen in Figure \ref{fig:multi_hba_visage}.  The purpose of having multiple instances of VISAGE are described in Section \ref{sec:distributed_visage}.
+
+Figure \ref{fig:redesigned_architecture} shows the redesigned concept of the Physio-MIMI architecture that provides a more scalable solution.
+This redesign however has the following impacts: First, all the functionality originally provided by the Honest Broker Core must now be propagated to either VISAGE or the Honest Broker Adapter.  Section \ref{sec:functionality_residence}, discusses design considerations in moving functionality upstream or downstream within the Physio-MIMI architecture and the impacts these design choices create.  Additionally, the security of the system becomes more complex since there no longer exists a single entry point.
+
+% Where the ontology resides, whether HBA handles queries, who handles file transfers, who's allowed to access them.
+\section{Functionality Residence}\label{sec:functionality_residence}
+
+Functionality requirements for Physio-MIMI have been guided by the use cases presented for the project.  As Physio-MIMI has several key components, VISAGE, the ontology and the underlying Honest Broker Adapters, the role of each of these components has changed throughout the lifetime of Physio-MIMI.  This chapter describes the design considerations that went into place in order to provide a solution that supported the use cases required by the Physio-MIMI project, to guide security and appropriate access controls, and to create a highly scalable system.
+
+The original system architecture for Physio-MIMI included the Honest Broker Core.  The responsibility of the HBC was to provide a common entry point for the adapters, to provide security, to maintain and propagate versions of the ontology, and to create and maintain the master patient index for cross data source result sets.
+
+\subsection{Ontology Functionality Requirements}
+
+The ontology is a crucial component in query generation, query translation and result set normalization.  VISAGE handles the query generation, along with the query expansion which both require heavy use of the ontology.  VISAGE also stores the definitive version of the ontology which can be directly edited and modified by a domain expert.  VISAGE becomes responsible for assuring that the underlying Honest Broker Adapters have a copy of the current ontology and units ontology.  The Honest Broker Adapters make use of a limited version of the ontology which lists all of the terms within the ontology, the type of data that is associated with each term, and any conversion formula that may be associated with a term.  In addition, the Honest Broker Adapters receive the units ontology in the form of a conversion table generated by VISAGE.  The Honest Broker Adapters have the responsibility of converting the abstract query into a concrete query using the data source abstraction layer described in Chapter \ref{chp:data_source_abstraction_layer}.  The Honest Broker Adapter additionally provides a normalized set of data back to VISAGE.  The purpose of separating the ontology functionality requirements in this manner are twofold. First, VISAGE does not require knowledge of the underlying data source and instead allows the Honest Broker Adapter handle these differences through the data source abstraction layer.  Second, this creates standard messages to and from any instance of VISAGE to the underlying Honest Broker Adapters.  Additionally, the Honest Broker Adapters do not need to perform the complex task of expanding the query and instead directly evaluate the ontology terms requested within the query.
+
+\subsection{File Transfers}
+  In the sleep research community, researchers need access to study data which can come in the form of the PSG whose size usually ranges from hundreds of megabytes to a couple gigabytes.  In order to facilitate the sharing and access of these large files, the Physio-MIMI architecture had to be restructured to accommodate large and secure file transfers. The HBC was identified as a bottleneck within the system since the large files all needed to be sent through the HBC for security.  Figure \ref{fig:file_transfers} displays the architecture change for streaming large files to the researcher.  Benefits of the old method include: A separate file server does not need to exist to transfer files, files can be cached at different locations, and files can be aggregated before being delivered to the researcher.  However, the disadvantages were enough to redesign the infrastructure: The file serving created a bottleneck that could slow down VISAGE, and the HBC, along with the adapter, caching large files and aggregating these files created a large overhead in terms of processing time for VISAGE, and dependencies on all the individual components.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/file_routing.png}
+  \end{center}
+  \caption[File Routing In Physio-MIMI]{File Routing in Physio-MIMI: (top) The initial design that streams the files through the secure link provided by the Honest Broker Core.  A researcher initially requests the file download, and the request is propagated to the Honest Broker Adapter.  The Adapter then streams the file back through the HBC which passes the file to VISAGE, before VISAGE finally streams the file back to the researcher. (bottom) The redesign which allows a file request to come across through the use of a tokenized one-time url.  The Honest Broker Adapter generates a url that allows the researcher to access the file server directly through the web browser.}\label{fig:file_transfers}
+\end{figure}
+
+Figure \ref{fig:file_security} shows the steps required to generate a tokenized url, along with how the file server and the honest broker adapter compute and validate the encrypted file url.  In addition to providing security based on 128-bit encryption, SSL, and timestamps, the provider of the files can also put in place a firewall to limit institutions and researchers that can access the file server by doing domain based IP-filtering.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/file_security.png}
+  \end{center}
+  \caption[File Routing Redesign]{File Routing Redesign: A researcher requests the secure url for the file through VISAGE, which is then generated by the Honest Broker Adapter and returned to VISAGE.  VISAGE finishes building the url by appending the file server url to the relative url.  The full url is then returned to the researcher's web browser who can then use the url for a short period of time before it expires.  The tokenized url uses 128-bit encryption along with a an encrypted timestamp in order to secure access to the files.}\label{fig:file_security}
+\end{figure}
+
+\subsection{The Deprecation of the Honest Broker Core}
+The most significant architecture change in the project was the removal of the Honest Broker Core from the system architecture.  The Honest Broker Core was removed for several reasons. First, the HBC routed most of the messages from VISAGE to the HBAs which generated a duplicate code base to maintain for the Honest Broker team. Second, the HBC created a institutional dependency on the Physio-MIMI system.  Since the Honest Broker Core was a singular point in the architecture, the robustness of the system was directly correlated with the performance of the Honest Broker Core.  The Honest Broker Core created a bottleneck for performance and scalability which became more and more apparent with the addition of use cases.  In order to expand the system to become more scalable, a system of instances of VISAGE needed to be created to access the Honest Broker Adapters without an Honest Broker Core in the middle.  Finally, the functionality of implementing a master patient index could be moved to VISAGE which keeps track of cross data source relationships.
+
+With the deprecation of the Honest Broker Core, the functionality that was initially intended to be handled by the HBC now needs to be pushed either to VISAGE or to the underlying HBAs.  The majority of the functionality was pushed into VISAGE.  The security and the handling of certificate authority and certificate signing requests was passed to VISAGE.  File transfers was pushed into the Honest Broker Adapter with the ability to extend that functionality to a dedicated file server such as lighttpd.
+
+While the Honest Broker Core handled the initial security of the system, this security is still in place with the new system architecture.  The security has actually increased since the Honest Broker Adapters can now directly specify the instances of VISAGE that can access them.  With the Honest Broker Core, that institution had the power to add different instances of VISAGE without notifying the underlying Honest Broker Adapters.  Figure \ref{fig:multi_hba_visage} shows how individual Honest Broker Adapters can access a subset of available instances of VISAGE.  Section \ref{sec:distributed_visage} describes the system architecture using multiple instances of VISAGE.  Section \ref{sec:security_tests} provides a list of the security considerations and tests put in place for the Physio-MIMI system.
+
+\subsection{Distributed Instances of VISAGE}\label{sec:distributed_visage}
+
+Figure \ref{fig:multi_hba_visage} displays the next evolution in the Physio-MIMI system.  In order to reduce the dependencies on a single institution for accessing the system, multiple instances of VISAGE have been created.  The advantages of creating this system is the following:
+
+\begin{itemize}
+  \item Researchers can be routed to an instance of VISAGE which is geographically close to their access point.
+  \item Instances of VISAGE can provide users with a variety of access to different groups of Honest Broker Adapters.
+  \item Instances of VISAGE can share the server load of a largely distributed and scalable system.
+  \item VISAGE instances would act in a distributed fashion that could handle fluctuating server loads.
+  \item VISAGE instances use distributed knowledge to identify malicious versions of VISAGE or malicious users within the system.
+  \item Querying could be done in a widely more distributed manner increasing speed and scalability.
+  \item The robustness of the system could be maintained by allowing instances of VISAGE to go down without interrupting a researchers study analysis.
+\end{itemize}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/multi_hba_visage.png}
+  \end{center}
+  \caption[Multi-HBA VISAGE System Architecture]{Multi-HBA VISAGE System Architecture}\label{fig:multi_hba_visage}
+\end{figure}

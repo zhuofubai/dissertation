@@ -1,0 +1,495 @@
+%-------------------------------------------------------------------------------------------------------------------%
+%---------------------------------------------Define the Problem----------------------------------------------------%
+%-------------------------------------------------------------------------------------------------------------------%
+
+% Architecture Design
+%   Based on the Physio-MIMI diagram and workflow.
+
+\chapter{Introduction} % Problem: Diverse Data Integration
+% \cite{batini1986, bayardo1997, beard1998, beech1997, boll1998, chen1998, daniel1998, dao1996, drew1998, drew1993, elmagarmid1992, elmagarmid1990, elmagarmid1998, garcia1995, genesereth1995, georgakopoulos1994, goodchild1997, grosky1998, gruber1991, guarino1998, gunter1998, gupta1997, heimbigner1985, houstis1997, huhns1997, kambayashi1991, kashyap1997, kashyap1994, kashyap1996, kashyap1998, kashyap1995, khang1998, kim1993, kiyoki1998, lagoze1996, lee1996, levy1995, litwin1982, manola1998, meersman1997, meersmanmark1997, mena1998, mendelzon1997a, mendelzon1997b, mudumbai1997, ouksel1994, paepcke1998, papazoglou1998, ram1991, schek1993, shah1998, shah1997, sheth1987, sheth1991, sheth1995, sheth1996, sheth1997, sheth1993, sheth1996, sheth1990, shklar1995, shoham1991, wiederhold1992, wiederhold1997}
+% \cite{wiederhold1996, sheth1998, kim1995, hsiao1993}
+The field of clinical sleep research focuses on sleep-related disorders, diseases, medications and diagnoses, through comparative effectiveness trials and longitudinal studies.  Clinical sleep researchers depend on the availability of data and information for effective study design, cohort identification, data collection, data management and reporting, and statistical analysis.  Systems for hypothesis generation and validation are necessary aid researchers in accessing data that exists across multiple institutions.  Since individual institutions may not contain sufficient amount of cases for study design, cross-institution collaboration becomes necessary, along with systems to aid this collaboration.  Data accessibility has various challenges within and across institutional boundaries.  Challenges within an institution include the efficient storage of data, the query and retrieval of the data, and the security and control mechanisms used to access the data.  Across institutions, these challenges are compounded by data source heterogeneity and institution-specific conformance to ethical requirements.
+
+\section{Data Access Challenges}
+A research survey done by Anderson et al. \cite{anderson2007} shows that most clinical labs face challenges in organizing, storing, retrieving, and managing large data sets.  This challenge is compounded by the lack of nomenclature and standardized formats for data gathered in clinical research.  Although solutions, such as comprehensive Laboratory Information Management Systems \cite{anderson2007}, exist, a researcher will typically prefer using general-purpose tools that are simple, widely available, and require short learning curves.  The difficulties to integrate data in a laboratory by implementing a Laboratory Information Management System generally include financial limitations, along with time constraints for the steep learning curves required by such systems.  Solutions have been proposed for data consistency and data integrity that include the use of a controlled vocabulary \cite{covitz2003, Huff01051998} and an ontology-based approach \cite{shankar2007}.  Shankar et al. \cite{shankar2007} proposes that the ontology take an integral role in each step of the data management process, from data collection and data creation, to data sharing and data storing, and finally, to data analysis.  Covitz \cite{covitz2003} makes use of existing standards by addressing data integrity in cancer research by generating a subset of cancer-related terms from the National Cancer Institute (NCI) Thesaurus.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=4.5in]{images/data_access_paradigm_shift.png}
+  \end{center}
+  \caption[Data Access Paradigm Shift.]{Data Access Paradigm Shift. (a) Traditionally a clinical investigator requests (Step 1) a query of a Data Manager who then translates (Step 2) the query to a database specific query and returns (Step 3) the resulting cohort to the Clinical Investigator.  (b)  A Clinical Investigator requests (Step 1) data for immediate real-time results using the Physio-MIMI system.  A Data Manager can also manage and view (Step 2) the data directly through Physio-MIMI.  Results from Physio-MIMI can promote further collaboration (Step 3) between the Clinical Investigator and the Data Manager.}\label{fig:data_access_paradigm_shift}
+\end{figure}
+
+\section{Physio-MIMI}
+
+Today's clinical and research applications generate large quantities of data that is stored in a wide variety of formats.  The current data retrieval method involves a complex and slow process between researchers and data managers whereby the researcher requests specific properties, and the data manager generates the appropriate query resulting in a data set, Figure \ref{fig:data_access_paradigm_shift} (a).  This dissertation introduces a novel approach to creating and designing a web-based interface to seamlessly integrate data across the institutional boundary for searching, querying, and analyzing.  The National Center for Research Resources (NCRR) issued a Request for Proposal (RFP) to address the lack of tools available to aid in the translation of research findings into clinical applications in small and medium size clinical research studies \cite{ncrrrfp2008}.  The RFP addresses the need for tools that ensure confidentiality of human subjects since existing methods involve manually copying data from multiple electronic data sources.  The tools required would greatly reduce the errors produced by this manual process.  Physio-MIMI, a Multi-Modality, Multi-Resource information integration environment addresses this common problem by providing a framework to make disparate data sources more readily available to researchers.  The Physio-MIMI framework streamlines the collection, management and analysis of physiological and genomic data across both clinical and research settings.  An overview of components in the Physio-MIMI system can be seen in Figure \ref{fig:data_access_physiomimi_overview}.  Physio-MIMI falls into the category of a fully functional Third Generation data integration system described by Sheth \cite{sheth1999}. This dissertation makes use of the domain of Sleep Medicine, an exemplar domain which contains notable characteristics that make it a perfect candidate for solving the data access challenge.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/physio-mimi_architecture.png}
+  \end{center}
+  \caption{Physio-MIMI Data Access Overview.}\label{fig:data_access_physiomimi_overview}
+\end{figure}
+
+Physio-MIMI is comprised of three conceptual pieces:
+
+\begin{enumerate}
+  \item Meta Server - Provides administrative functionality, Role Based Access Control, Query Generation, and Data Analysis.
+  \item Data Resource Server - Provides a secure link to the data source and handles security, de-identification, query translation and result set normalization.
+  \item Application Server - Provides a set of tools for processing, analyzing, annotating and manipulating physiological data.
+\end{enumerate}
+
+Physio-MIMI takes an ontological approach to data querying to address the problem of data management, sharing, searching, and analysis.  This approach provides a powerful method for browsing large data sets across numerous sources, and also leverages the ontology to provide a way to combine data from disparate data sources while maintaining data integrity and data granularity.
+
+Physio-MIMI makes use of several key components from previously developed systems such as The Case Comprehensive Cancer Center MIMI (Ca-MIMI) with parameterized role based access control \cite{mueller2009} and strong emphasis on user interface design using the methodology of WYDIWYS - What You Do Is What You See \cite{wydiwys}.  This dissertation presents the design considerations in the architecture of the Physio-MIMI system, Figure \ref{fig:data_access_physiomimi_overview}. This dissertation describes the creation of the Sleep Domain Ontology, and the construction of the Data Source to Ontology Mapper, the Query Builder, the Query Manager, and the Query Explorer, along with the secure messaging system between the meta server (VISAGE) and the data servers (Honest Broker Adapters).
+
+% \begin{itemize}
+%   \item Data Exists, Ability to Access, Query Data Does Not
+%   \item Browse Data without knowledge of what data contains
+%   \item Browse Data Across Numerous Sources
+%   \item Combine Data/Compare that is in non-standardized formats
+%   \item Visualize Interface
+% \end{itemize}
+
+\section{Ontology-Driven Data Integration}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/data_access_overview.png}
+  \end{center}
+  \caption{Data Access Overview.}\label{fig:data_access_overview}
+\end{figure}
+
+Integration of data across multiple data sources has been approached by a variety of methods such as the data warehouse created using Extract, Transform, and Load (ETL) approach used by i2b2 \cite{murphy2002} and the service based approach used by caGrid as part of the caBIG initiative \cite{cabig}. A generalized view of this problem and available solutions is shown in Figure \ref{fig:data_access_overview}.  This dissertation leverages a Sleep Domain Ontology that has been created using a novel ontology segmentation algorithm developed in our group by Ogbuji et al. \cite{ogbuji2010} and linked to publicly-available ontologies including Foundational Model of Anatomy (FMA) and Systematized Nomenclature of Medicine -- Clinical Terms (SNOMED CT). FMA and SNOMED CT are large clinical and medical ontologies that cover diseases, findings, procedures, medication, and related concepts.  Physio-MIMI leverages the power provided by the Sleep Domain Ontology through data inferencing, resolution of varying levels of data granularity, and unit translation support.  The Sleep Domain Ontology provides annotations for sleep signals, disease identification, and sleep-related medication and diagnosis \cite{ogbuji2010}. Using an ontology provides several distinct benefits over other methods:
+
+\begin{enumerate}
+  \item Given a connected data source, the ontology is able to use inferencing to discover and query new data within the data source.  This inferencing is done using newly defined relationships within the ontology that create formula and equalities between terms in the ontology.  For example, Body Mass Index can be expressed in terms of Height and Weight, and Age can be expressed in terms of Study Date and Birth Date.  The ontology is designed to extract additional information from the data source, and to provide levels of data integrity by validating data.
+  \item Data described at different levels of granularity can be compared using relationships provided by the ontology.  This comparison is achieved by using a rich domain specific ontology combined with a data source to ontology mapper which provides an informatician data from the ontology to generate a valid mapping.
+  \item Additional information provided by the ontology allows researchers and informaticians to quickly find ontological terms for querying and data mapping.  The ontology makes use of common terms and labels for ontology terms, so that a researcher searching for a concept abbreviation (e.g. \emph{RLS}) will be provided the associated concept (e.g. \emph{Restless Leg Syndrome}).
+\end{enumerate}
+
+The ontology provides a flexible foundation for Physio-MIMI as it can be easily switched with an ontology from a different domain to handle data sources in different fields of research.  The ontology makes use a of the patient-centric model \cite{lorence2005} related to events to adhere to current ways of storing clinical information.  Using the patient-event model \cite{Huff01031995}, data can be combined across distributed data sources in a normalized manner with minimal changes to the original data structure and without imposing an arbitrary model on the data at its source.  The purpose of the patient-event model is to allow normalization of data across clinical and research data sources, and to also allow greater flexibility and inferencing when more data is available through the data sources. With more complex data within the data sources, the patient-event model can make use of the event object for additional inferencing capabilities.
+
+\section{Visual Query Interface}\label{sec:visual_query_interface}
+
+This section provides background research into the domain of Visual Query Interfaces, and highlights some important paradigms needed for an interface to adequately allow a researcher to generate a query.  Common visual query interface paradigms include query-by-example \cite{609635, 625656}, building query without knowledge of underlying database schema \cite{655808}, tree-based query construction \cite{4684906}, browsing results without a specific query in mind \cite{655808}.
+
+\subsection{Existing Paradigms}
+
+Query-by-example is a common paradigm in which the researcher is provided a visual cue as to what needs to be done to in order to successfully build a query.  Li et al. \cite{609635} accomplish this by providing the researcher an example image that helps the researcher understand how the query is constructed.  Madurapperuma et al. \cite{625656} take a similar approach by providing the researcher with a visual view of the database schema.  The approach used allows customizable views of the database schema based on the researcher's preference, either ER, EER, or OMT diagrams.  The schema graphs used by databases are directed graphs with nodes connected by directed edges.  The query is then generated by allowing the user to select a subset of the database schema in order to generate the query.  While this approach is definitely a considerable enhancement to using textual languages to create the query, there are still many limitations to this approach.  Most importantly, this approach expects the researcher to have extensive knowledge about the manipulation of the database schema.  While a graphical representation of the schema is given, the building blocks given to create the query are very primitive with a one-to-one mapping to the textual query.  Second, this approach is not extensible to multiple databases since it does not allow the researcher to generate a single multi-database query.  Finally, the interface expects the user to have extensive knowledge of the underlying database in order to successfully generate a query with meaningful results.  This expectation of the user leads to the second important paradigm for creating a visual query interface, allowing the user to build a query without knowledge of the underlying database schema.
+
+
+
+% \subsubsection{A Visual Query Interface for a Customisable Schema Visualization System}
+% \cite{625656}.  Uses a tree based query interface.
+% Databases are created by expert programmers, but used by researchers from other scientific disciplines.
+% Most graphical query languages derive their interfaces from the database schema, and allow the user to manipulate this schema graphically to acquire the desired result.
+% 
+% Uses a rule-based meta-programming technique to customize how schemas are graphically represented within the system.
+% States that users should be able to understand the structure of the data, formulate a query and view the results in a simple and consistent manner.
+% Users can create query subschemas.
+% The database designer needs to be able to create a rule-base for the database.
+% This step requires knowledge of the database, and is a bottle-neck for this system.
+% Users use a set of graphical operators on the database schema to formulate a query.
+% Creating a query requires knowledge of add\_attribute and add\_association to be able to chain the query together.
+% This approach forces the user to understand the schema.
+% The resulting graphical query looks no less complex than the translated string query.
+% The display of the user's query looks more similar to the actual textual query than to the abstract query the user had in mind.
+% Still working on result presentation in a user defined format, still working on making it a fully functional graphical query language, to provide support on the level of a textual query.
+
+An important aspect of querying a data source is to keep the database structure separate from the query interface.  Building a query without knowledge of the underlying database schema is addressed in the paper by Hibino and Rundensteiner \cite{655808}. Hibino addresses the notion of querying against ranges of data within a data source. Hibino presents a rudimentary range query construct used to create an easy interface for the researcher to enter in a range of values.  The range query construct is important since it creates a level of abstraction from the database schema for researchers.  The range query construct also creates a visual object that is more representative of the query the researcher has in mind.  The VISAGE Query Builder presents an extension of the range query construct in the form of a range slider which is explained in further detail in Section \ref{sec:query_builder}.  Figure \ref{fig:sample_query} shows the range query construct in use for the ontology term \emph{Age at time of Test or Study}. Other primitive query constructs can also be seen in Figure \ref{fig:sample_query} including categorical terms such as \emph{Age}, and date terms such as \emph{Study Date} all available in the Physio-MIMI Query Builder.  Hibino also addresses browsing results without specific query in mind which will be discussed below.  The paper by Liu also makes use of primitive query constructs in order to allow the researcher to create a query without knowledge of the database schema \cite{520781}.  The primitive blocks are used for logical tree creation which is then directly translated into an inline query using a one-to-one mapping.
+
+% \subsubsection{Processing Incremental Multidimensional Range Queries in a Direct Manipulation Visual Query Environment}
+% \cite{655808}. Describes range searching.  Uses DQ filters to dynamically update results.  Enables users to pose queries without knowing the underlying database construction, and to browse results without having a specific query in mind.  The DQ filters are limited to one range, not any combination of arbitrary ranges.  For instance it is not possible to generate the query, give me something with the range less than 0 or between 4 and 5.
+
+% \subsubsection{A Visual Interface for Querying a CASE Repository}
+% \cite{520781}  Formulates Boolean queries over a CASE repository.  Uses Primitive blocks for query tree creation.  User needs to understand Logical Operators.  The tree to inline query is a 1-to-1 mapping, and does not add any reduction of the work needed to create the query.
+
+The third visual query interface that to be discussed is tree-based query construction \cite{4684906, 520781}.  Tree-based query construction is a move to graphically represent the notion of set operations, and falls under the category of a query construct.  Tree-based query construction allows the researcher to see intermediate set results for generated queries and allows the researcher to be able to construct multiple queries on one interface.  The uses for tree-based query construction vary, and in the case of PhyQL, the construction of a tree is used to search for tree similarity within a phylogenetic database.  The Query Explorer, described in Section \ref{sec:query_explorer}, makes use of tree-based query construction in order to allow researchers to use set operations, to see intermediate results, to view multiple queries on one interface, to merge queries using set operations, and finally to create counter queries for researchers.
+
+% \subsubsection{PhyQL: A Web-Based Phylogenetic Visual Query Engine}
+%  \cite{4684906}. This paper presents an implementation of building phylogenetic trees visually and then translates this representation into a query.  The advantages shown by this approach include allowing the user to create the graph.  However the user needs to understand the underlying representation of the phylogenetic tree.  This paper does not include Query-By-Example.  This paper does not aid Building-Query-Without-Knowledge-Of-Database-Schema.  This interface does not directly support Browsing-Results-Without-Specific-Query-In-Mind.  The query generated is a direct 1 to 1 mapping of the graphical user interface.  The widgets used are primitives that exist in the database, such as roots, nodes, edges.  The trees do not handle union operations.  The results are not shown on the fly to be able to browse results without a specific query in mind.
+%  
+% Very nice web interface for building query trees.  The query trees are a 1-to-1 mapping to trees in a tree database which contains edges and nodes.  This paper describes tree similarity work, and does a straight translation from the visual interface into an edge.  The tree building blocks represent the way the data itself is stored inside of the database.  Nodes in the tree have a type property which states whether or not that are root nodes, or leaf nodes, which does not appear to add any additional help.  The graphical user interface is based on a Java tree building interface called JUNG.  The predicates are based on facts in a edge or node table.  Most of the paper discusses translating XML into a logical query, which is very trivial.
+
+The final visual query interface paradigm to be discussed is browsing results without a specific query in mind \cite{655808}.  Browsing results without a specific query in mind is important for hypothesis generation and allows the researcher to get a feel for the underlying data while generating the query.  Immediate feedback allows the researcher to quickly adjust the query in order to return more meaningful results.  Hibino achieves this by returning results as the range query construct is changed, and the underlying data reports back to the subquery.
+
+
+While the four paradigms discussed provide a good foundation for a visual query interface, there are still other areas that would increase the usefulness of a visual query interface.
+
+\begin{enumerate}
+  \item Merging queries
+  \item Automatic generation of counter queries, queries that are opposite or parallel of what the researcher is asking
+  \item Result Set Normalization across distributed and disparate databases.
+  \item Support of Relational and Object Oriented Databases.
+  \item Viewing Intermediate query results as well as the full query result.
+\end{enumerate}
+
+\subsection{VISAGE for Physio-MIMI}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/visage_in_physiomimi.png}
+  \end{center}
+  \caption{VISAGE Component of Physio-MIMI}\label{fig:visage_in_physiomimi}
+\end{figure}
+
+
+The Visual Aggregator and Explorer (VISAGE), seen in Figure \ref{fig:visage_in_physiomimi}, is the web-interface component of Physio-MIMI that handles the creation, management, and exploration of queries generated by researchers. VISAGE consists of five major components: the Sleep Domain Ontology, the Data Source to Ontology Mapper, the Query Builder, the Query Manager and the Query Explorer.  These parts are further explained in Chapter \ref{chp:visage_and_honest_broker_adapter}. 
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/sample_query.png}
+  \end{center}
+  \caption{Physio-MIMI Query Builder}\label{fig:sample_query}
+\end{figure}
+
+The VISAGE Query Builder, Figure \ref{fig:sample_query}, provides the clinical sleep researcher with an interface to generate a query.  The VISAGE Query Builder is the web-interface clinical researchers access to create queries and retrieve patient counts for queries. Table \ref{tab:visual_query} shows a comparison of the VISAGE Query Builder interface to existing visual query interfaces.
+
+\begin{table}[htp]
+  \begin{centering}
+\begin{tabular}{ | p{1in} | p{0.75in} | p{0.9in} | p{0.9in} | p{0.75in} | p{0.70in} | }
+  \hline
+  Interface & Query-By-Example & Building without Schema Knowledge & Tree-based \par query \par construction & Browsing \par Results & Query \par Fed-eration\\ \hline
+  IFQ \cite{609635} & Yes & Yes & & & \\ \hline
+
+  Madura \cite{625656} & Yes & & Yes & & \\ \hline
+  Hibino \cite{655808} & & Yes & & Yes & \\ \hline
+  PhyQL \cite{4684906} & & & Yes & & \\ \hline
+  i2b2 \cite{i2b2webclient} &  & Yes & & Yes & Yes \\ \hline
+  VISAGE & Yes & Yes & Yes & Yes & Yes \\
+  \hline
+\end{tabular} \caption{Comparison of Visual Query Interfaces}\label{tab:visual_query}
+  \end{centering}
+\end{table}
+
+% Supports integration of offline and online queries.
+% Predicates are hidden within the creation of the query graph.  This is achieved by making the interface appear to be the graphical combination and separation of sets.
+% Database information records is normalized by the ontology, such as Male being a categorical concept instead of appearing as `gender = m'.
+% Supports and saves intermediate results for further use and investigation while also maintaining the full query.
+% Supports maintaining records as history in case a distributed database goes offline.
+% The database join operation is done on the database mapping level, and is not needed on the database query interface.
+% This change benefits users creating queries who have no knowledge of the underlying databases.
+% Supports Query/Set negation.
+% The Concepts can be searched by using a local viewer and a global tree view for where the concept is located.
+% Distributes the difficulty of getting database information from the database to the researcher by allocating a minimal amount of data at each point to allow the user to think in terms of the specific setting.
+% The abstract query to the conceptual query created by the interface is a large leap, however the GUI handles this translation transparently.
+% Problem that is solved, since the database schema cannot be visualized, the typical techniques of visualizing the database schema cannot be used \cite{625656}.
+
+\section{Clinical Data Management Systems}
+Various approaches exist for clinical data management.  First, institutions may use an ad-hoc approach of data integration by making use of spreadsheets and simple databases in order to categorize information within their institution.  Querying data using this approach is difficult since querying needs to be done on manually for each query, since automated querying is not supported by the ad-hoc framework.  Second, institutions may employ the use of a controlled vocabulary.  Laboratory Information Management Systems (LIMs) often take this approach in a means to regulate the manner in which data is created, gathered, and stored.  The controlled vocabulary then provides a manner to query the underlying data in a more consistent manner.  One drawback to using the controlled vocabulary approach is that associations between terms is not explicitly defined.  In order to address this issue, Physio-MIMI uses the approach of integrating data by using a domain ontology.  The use of a domain ontology allows data to be gathered at varying levels of granularity, and allows additional data to be inferred by leveraging the relationships and properties of terms defined in the ontology.
+
+Different methods exist for storing data for querying: (1) the data warehouse approach, (2) data federation.  The data warehouse approach uses a controlled vocabulary to extract raw data and data from databases that have not been curated into a single curated data warehouse that can be queried consistently.  The data federation approach accesses data across institutions through the use of a standardized set of query services. Two notable systems in clinical data management include Harvard's i2b2 system and the National Cancer Institute's caBIG effort.  Both systems take different approaches in implementing clinical data integration.  The architecture designed by both are compared to those proposed by Physio-MIMI.  Table \ref{tab:data_management} gives a comparison of the available clinical data management and query systems.
+
+
+\begin{table}[htp]
+  \begin{centering}
+\begin{tabular}{ | p{1in} | p{1in} | p{1in} | p{1in} | p{1in} | }
+  \hline
+  Management \par System & Controlled \par Vocabulary & Domain \par Ontology & Data \par Warehouse & Data \par Federation \\ \hline
+  i2b2 \cite{i2b2webclient} & Yes & & Yes & \\ \hline
+  SHRINE \cite{Weber2009624} & Yes & & Yes & Yes \\ \hline
+  caGrid \cite{cabig} & Yes & & & Yes \\ \hline
+  VISAGE & & Yes & & Yes \\ \hline
+\end{tabular} \caption{Comparison of Clinical Data Management Systems}\label{tab:data_management}
+  \end{centering}
+\end{table}
+
+
+\subsection{Case Example: i2b2 and SHRINE}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/data_access_i2b2.png}
+  \end{center}
+  \caption{I2B2 Data Access Overview.}\label{fig:data_access_i2b2}
+\end{figure}
+
+i2b2 \cite{murphy2002} makes use of the data warehouse model which is illustrated in Figure \ref{fig:data_access_i2b2}. SHRINE \cite{Weber2009624} is the query interface created to interact with i2b2 data warehouses.  Creating a data warehouse requires the use of ETL which is a time consuming effort in order to recreate the institutions databases to conform with the i2b2 messaging format.  In ETL, the institutions available databases are analyzed and information is extracted from the individual databases in a common database.  This information is then curated and transformed to adhere with the messaging format expected by i2b2.  Finally the data is loaded into the final data warehouse where it can be queried via i2b2 queries.  This time consuming and expensive process needs to be repeated every time a new data source is added to i2b2.  Also, since the data warehouse does not directly access the original databases, repopulating the data in the data warehouse needs to go through the necessary ETL steps again.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/i2b2_web_client_age.png}
+  \end{center}
+  \caption{i2b2 Web Client.}\label{fig:i2b2_age_blocks}
+\end{figure}
+
+i2b2 is in many ways similar to Physio-MIMI, however Physio-MIMI has some notable differences and enhancements to the functions of i2b2.  Physio-MIMI emphasizes the visual query interface which has been designed for efficiency and speed when building a query.  Preliminary survey results suggest that the interface provided by Physio-MIMI is more useable than that provided by i2b2 web client. Physio-MIMI also provides a novel framework for analyzing resulting data after the query has been created which does not exist in the i2b2 environment.  Additionally, Physio-MIMI does not require the underlying data to be altered using the data warehouse model due to the integration of the data source to ontology mapper.  The i2b2 web client \cite{i2b2webclient} has a few shortcomings in its ability to construct and manage queries which are listed here and are addressed in the design of Physio-MIMI.
+
+\begin{enumerate}
+  \item Entering a non-discrete range term such as \emph{Age} requires the user to drag multiple increment blocks to the appropriate panel.  More complex queries may require redundant clicking and dragging of the same blocks.  This can be seen in the screenshot in Figure \ref{fig:i2b2_age_blocks}.
+  \item More complex queries using disjunctive normal form, as opposed to conjunctive normal form are difficult to enter since the framework provided assumes that a conjunctive normal form query be entered.  The example query ``Men age 20 to 30 or Women age 25 to 35'' becomes difficult to enter.
+  \item i2b2 does not generate immediate feedback when entering in a query, but waits for the user to evaluate the query before returning results.
+  \item Managing and sharing multiple queries is difficult or nonexistent in i2b2.
+\end{enumerate}
+
+%The interface that i2b2 provides is split into separate panels that do not clearly distinguish the type of query to be generated.
+
+%The i2b2 interface also lacks an efficient way to enter a range in for continuous terms such as Age, and instead forces the user to put in the Age by dragging 10 year increment blocks from the dictionary to the panels.
+
+%The interface also has difficulty generating more complex queries which are easier and faster to generate using the Query Builder explained in Section \ref{sec:query_builder}.    
+
+On the backend, i2b2 supports tools that discover if a user is maliciously creating queries to find potentially identifiable information on patients within the system, and will block that user access if the queries continue.  Physio-MIMI itself supports an auditing system to identify similar exploits by users.
+
+% Another important difference between i2b2 and physioMIMI is the way new databases are added to the system.  In Physio-MIMI, an instance of an Honest Broker Adapter is deployed which creates a secure web-service from the database which can then be quickly mapped by the institution's informatician within the Data Source to Ontology Mapper.
+
+\subsection{Case Example: caGrid and caBIG}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/data_access_cabig.png}
+  \end{center}
+  \caption[caBIG and caGrid Data Access Overview.]{caBIG and caGrid Data Access Overview \cite{cabig}.}\label{fig:data_access_cabig}
+\end{figure}
+
+The caGrid approach is different from the i2b2 approach.  caGrid provides the data manager with a toolbox that is used to provide common tools for data sharing, including security, access privileges, and a web-based sharing framework \cite{cabig, kakazu2004}.  caGrid shares the data by allowing the informatician to wrap a service-based architectural framework around the existing data source.  An informatician with sufficient knowledge in Java can also extend the framework to wrap non-relational databases and provide access to those in an object-oriented fashion.  Figure \ref{fig:data_access_cabig} shows how data sources are added to caBIG.  While the individual nodes within caBIG have their own services and WSDLs describing the services provided, the data sources may not provide similar information as other nodes, which makes result sets from a federated query less likely to combine results from multiple data sources.  Unlike Physio-MIMI, caGrid does not take advantage of an ontology in order to quickly connect a data source.  Physio-MIMI utilizes the novel additions to the ontology to be able to make inferences on partially mapped data sets and in order to verify data integrity within the data source which is not possible within the caGrid framework.  Physio-MIMI is able to curate the data from uncurated data sources through help of the additions provided by the ontology which are described in further detail in Chapter \ref{chp:sleep_domain_ontology}.
+
+
+% THESE TWO NEED TO BE EVALUATED FURTHER AND INCLUDED IN THE LITERATURE REVIEW SECTION
+% \subsubsection{A Graphical User Interface for Object-Oriented Database}
+% A Graphical User Interface for Object-Oriented Database \cite{637095} Has comparison to other graphical databases.  Presents visual solution for Object-Oriented Databases.  States that the downside of structured query languages are, hard to understand, poor feedback, learning time, high cognitive load,  poor dialogue.  Schema creation is done visually, but does not seem to be imported from the database.  The schema creation is similar to a paint program.  The visual query is generated by removing pieces of the database schema until all the necessary parts form a subgraph of the initial schema graph.  This approach forces the user to understand the original schema, and the request, and does not provide immediate feedback, or allow the user to browse results in the result set.  The interface only provides one query to be made, however this query can be saved and reviewed later.  This approach is not extendible across multiple databases, as linking database schemas is not supported.  The Physio-MIMI database mapper solves the problem of mapping to different databases.  Fails to separate the database schema from the end user.  The end user has to understand how the database schema works, and how tables therein are related.  The specification of predicates for boolean expressions is done in a separated viewport.  Selection criteria is still entered manually.  Example you need to say `star = 3'.  The database information isn't normalized in a way that the user can easily interact with.  The user is not informed if information in the database does not contain the query set until the query is run, the user is not informed quickly enough of this change, which eliminates the ability to immediately browse the results without a specific query in mind.  Supports intermediate results.  Supports fairly simple interface to create database table joins during the query.  This paper also allows negation of queries.  The example given is `Print the name of hotels that have NOT been reserved'.  In general, interesting approach to allow users to more easily set up Object-Oriented Databases through the use of visual schemas, and allows the user to create a query based on that visual schema.  However, once again, it's very closely tied to the actual database, doesn't handle multiple database environment, user needs to be able to understand the database schema to create the queries, even with them being visual, and the user needs to be able to understand joins, predicates, and database values to make full use of the query.
+
+% \subsubsection{ISWIVE: an Integrated Semantic Web Interactive Visualization Environment}
+% \cite{1423777} Creates graphical views of the semantic web given a text query.  The query itself is not constructed visually, only the results are shown in lattice format.  Displays and Queries use of RDF.  Allows Graphical browsing of the result set, zoom in, zoom out functionality.  Visual graph representation of Topic Maps in the RDF Framework in essence integrating to different semantic web formats.  Allows user to understand semantics visually.  Creates a standard for display.  Makes use of two algorithms for tree visualization.  Multi-scale force-directed algorithm which groups nodes closely that have strong relationships and hv-tree-drawing algorithm which shows parent-child-sibling relationships as a binary tree.  Provides a local viewer and a global semantic web map along with text input field to identify a location in the semantic web.  The global viewer can switch between showing a topic map, and a RDF tree view.  Uses color schemes to show different relations for the nodes in the graph.  Parses the users input into triple statements, subject predicate object, using RDF Data Query Language, RDQL.  RDQL uses a SQL like structure.  The GUI takes care of hiding these details from the end user.  Developed in Java.
+
+
+% \subsubsection{BilVideo: A Video Database Management System}
+% \cite{1167924} Uses a web based Java applet to get video annotations and queries against those video annotations.  The annotations help discover movement of objects through frames of the videos.  The graphical part of this query interface is actually the related to how the annotations are pasted into each frame of the uploaded videos.  The annotation labels are used as query concepts.
+% 
+% 
+% \subsubsection{Visual Querying on Human Motion for the Disabled}
+% \cite{1698791} Captures motion as a query input for evaluation against a motion archive.  Uses ontology specifications and hierarchical data organization.
+% 
+% \subsubsection{3D VQI: 3D Visual Query Interface}
+% \cite{5070814}  Implements Shape-based queries.  Users go to the web site and draw the specific shape they are looking for, the drawing is saved as a mathematical curves which are used to design the query to find vessels with similar parameters with a distance function.  The results are 3d models that can be viewed and retrieved.
+
+\section{The Polysomnogram and the Sleep Domain}
+
+One of the primary contributions of Physio-MIMI is the addition of tools, methods, and best research practices that are applied to the field of clinical sleep research.  Physio-MIMI addresses the issues in sleep research which occur when collecting, gathering and analyzing complex information on sleep disorders and diseases.  One of the fundamental sources of sleep data is represented in the form of the polysomnogram (PSG).  In addition to the polysomnogram, the associated annotations and patient forms are used for clinical research and hypothesis generation and validation.  The polysomnogram is a complex source of data, not only due to the multiple signals embedded within it, but also due to the nature of its large size.  In order to reduce this complexity, clinical researchers assign definitions to attributes that can be drawn from the polysomnogram.  These definitions can have nuances across multiple institutions and create difficulty for sharing and integrating data across the institutions.  Many sleep studies depend on the availability of physiological and genomic data across disparate clinical and research data sources.  This section discusses the polysomnogram, typical sleep disorders and medications, and a representative sleep algorithm to diagnosis sleep apnea.
+
+The polysomnogram is a comprehensive source of data recorded during the sleep.  Figure \ref{fig:polysomnogram} shows a sample section of a polysomnogram.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/polysomnogram.png}
+  \end{center}
+  \caption[Polysomnogram]{Polysomnogram: A multi-channel series of signals of physiological data gathered while the patient is asleep, along with annotations provided by an expert polysomnographer.}\label{fig:polysomnogram}
+\end{figure}
+
+The polysomnogram records signals such as blood oxygen saturation level, brain activity recorded as the electroencephalogram (EEG), eye motion recorded as an electrooculogram (EOG) for both eyes, muscle activity recorded as the electromyogram (EMG), and electrical activity of the heart recorded as the electrocardiogram (ECG).  Each of these signals can provide a trained polysomnographer with detailed information that can lead to the diagnosis of a variety of sleep disorders and diseases.  A drop in the blood oxygen saturation level may suggest obstructive sleep apnea (OSA) which could then be treated using a continuous positive airway pressure (CPAP) treatment.  Information retrieved from the EOG could indicate the sleep stage of the patient, either rapid eye movement (REM) sleep or non rapid eye movement (NREM) sleep.  Irregularities in the EOG may also suggest that the patient has REM behavioral disorder.  Finally a trained polysomnographer could diagnosis restless leg syndrome (RLS) from the EMG.
+
+Data can also be extracted and annotated along with the polysomnogram.  The polysomnographer can make annotations of events within the polysomnogram which are overlaid onto the polysomnogram.  Additional information such as the blood oxygen desaturation can be calculated using the blood oxygen saturation baseline along with the patient's blood oxygen saturation.  However, the blood oxygen saturation baseline may be calculated in different ways across multiple institutions which can change the calculated value of the patient's blood oxygen desaturation.  This data integration issue is addressed by Physio-MIMI through the use of ontology formula, described in Section \ref{sec:formula}.
+
+\subsection{Sleep Disorders and Medications}
+
+Physio-MIMI defines and expands a sleep domain ontology that is segmented semi-automatically from the existing SNOMED CT and FMA ontologies.  This process is fully described by Ogbuji in \emph{Segmenting and Merging Domain-specific Ontology Modules for Clinical Informatics} \cite{ogbuji2010}.  A few of the most common disorders closely associated with the sleep domain are listed below.
+
+\begin{itemize}
+  \item Obstructive Sleep Apnea: Recurrent episodes of complete (apnea) or partial (hypopnea) upper airway obstruction occurring during sleep.
+  \item Central Sleep Apnea: Recurrent cessation of respiration during sleep with the apnea having no associated ventilatory effort.
+  \item REM Behavioral Sleep Disorder: Abnormal behaviors emerging during REM sleep that cause injury or sleep disruption.
+  \item Narcolepsy: Form of hypersomnia characterized by cataplexy, hypnagogic hallucinations, excessive daytime sleepiness, sleep paralysis, and sleep disruption
+  \item Restless Leg Syndrome: Sleep disorder characterized by sensory symptoms and motor disturbances of the limbs, mainly during rest.
+  \item Periodic Limb Movement Disorder: Sleep disorder characterized by periodic episodes of repetitive, highly stereotyped, limb movements that occur during sleep and by clinical sleep disturbance that cannot be accounted for by another primary sleep disorder.
+  \item Systemic Arterial Hypertension: Disorder of the systemic arterial system that manifests as a persistent increase in arterial pressure (diastolic and/or systolic) above the normal values for age and sex.
+  \item Parkinsonism: Neurological syndrome characterized by tremor, hypokinesia, rigidity, and postural instability.
+\end{itemize}
+
+The following is a list of some of the drugs and medications found in the sleep domain ontology.
+
+\begin{itemize}
+  \item Benzodiazepine: Used as an anxiolytic, amnesic, sedative, hypnotic, anticonvulsant, and muscle relaxant.
+  \item Angiotensin-Converting Enzyme Inhibitor: Used in treatment of hypertension and congestive heart failure.
+  \item Calcium Channel Blocker: Used in treatment of hypertension by decreasing blood pressure.
+  \item Methyldopa: Used to treat high blood pressure.
+  \item Adenosine Diphosphate Receptor Inhibitor: Antiplatelet drug used to prevent thrombus formation 
+\end{itemize}
+
+With the large range of disorders and medications in the sleep domain, an automatic method is required for data integration to be able to do a comparative analysis of clinical research studies across multiple institutions.  The sleep domain ontology, described in Chapter \ref{chp:sleep_domain_ontology}, discusses the creation and design of the ontology to address data integration issues generated by data granularity, complex diseases and diagnoses, and complex measurements of extracted data such as the calculation of the Apnea Hypopnea Index.
+
+\subsection{Polysomnogram Tools and Analysis Algorithms}
+
+Physio-MIMI provides four tools for researchers to normalize and analyze the polysomnogram: the EDF Editor tool, the Annotation Translator tool, the STREAM RBD algorithm, and the Entropy-based Sleep Fragmentation algorithm.  
+
+\subsubsection{PSG Data Integration Tools}
+
+The EDF Editor is used to normalize and de-identify signal data stored in the European Data Format (EDF).  The following is an extract of the \emph{EDF Editor User Manual}:
+
+\begin{quote}
+``\emph{The Physio-MIMI EDF Editor is designed to facilitate the de-identification and normalization of signal data
+files saved in European Data Format (EDF). While Polysomnography (PSG) data is collected using a
+variety of software packages that each store data in a proprietary format, most vendors provide utilities
+to export raw signal data to EDF.
+In order for data to be meaningfully shared between investigators and institutions two obstacles must
+be overcome: signals must be consistently and accurately annotated, and files must be purged of
+potentially identifying patient information. The Physio-MIMI EDF Editor allows investigators to edit the
+header portion of the EDF file to accomplish this annotation and de-identification, and the use of
+templates allows multiple files to be edited simultaneously rather than having to edit them one by one.}''
+\end{quote}
+
+The Annotation Translator is used to translate vendor specific scoring annotations to a common format supported by Physio-MIMI.  The following is an extract of the \emph{Annotation Translator User Manual}:
+
+\begin{quote}
+``\emph{For storing and sharing Polysomnography (PSG) data, European Data Format (EDF) has been selected as a common non-proprietary format for signal data. Unfortunately, EDF does not support storing scoring annotations in the file with the signal data. As a result, these annotations are stored in a separate annotation file. Scoring annotations are made within the various proprietary scoring platforms for PSG. While each vendor supplies some functionality for exporting their scored annotations to a file, there is currently no standard way of storing or expressing these annotations. If data are to be shared meaningfully across institutions, it is necessary to not only have a standard for the PSG signal data, but also for the annotations.
+  As part of the Physio-MIMI project a standard XML schema was developed. This document describes programs that have been developed to translate vendor-specific annotation formats to the standard XML schema.}''
+\end{quote}
+
+\subsubsection{PSG Analysis Algorithms}
+
+The STREAM RBD algorithm is designed to measure the Supra Threshold REM EMG Activity Metric.  The output of the STREAM RBD algorithm presents a ratio or percent of REM mini-epochs where the EMG variance is greater than the threshold divided by the total number of REM mini-epochs.  The STREAM RBD algorithm is used in combination with the underlying data provided by the clinical research data sources to measure the effectiveness of discovering patients with Sleep Apnea using an automated approach and for hypothesis validation.
+
+The Entropy-based Sleep Fragmentation algorithm computes entropy-based sleep fragmentation measures of a hypnogram.  The algorithm can compute the following values:
+
+\begin{itemize}
+  \item Walsh Spectral Entropy (WSE)
+  \item Haar Spectral Entropy (HSE)
+  \item Conditional Entropy (CE)
+  \item Corrected Conditional Entropy (CCE)
+\end{itemize}
+
+The following is an extract from the \emph{Entropy-based Sleep Fragmentation User Manual} that describes these different measures:
+
+\begin{quote}
+  ``\emph{The Walsh Spectral Entropy (WSE) is a measure of regularity of the hypnogram with respect to the discrete Walsh functions. Similarly, the Haar Spectral Entropy is a measure of regularity of the hypnogram with respect to the discrete Haar functions. These measures are normalized to range from 0 to 1, with lower values indicating more regularity and higher values indicating less regularity (more fragmentation).
+  Conditional Entropy (CE) and Corrected Conditional Entropy (CCE) quantify the predictability of the hypnogram, with lower values indicating greater predictability and higher values indicating less predictability (more fragmentation). Specifically, these measures are computed with a pattern length of 2 in order to capture predictability of transitions.}''
+\end{quote}
+
+
+\section{Contributions}
+
+The main contribution of this dissertation is an domain ontology infrastructure for handling data access across disparate sleep domain data sources.  This infrastructure includes the management, searching, analysis, discovery and querying of data using an ontology-based approach to infer data and combine data across a wide variety of disparate data sources.
+
+The novel contributions described by this dissertation include the following:
+
+\begin{enumerate}
+  \item Introduces a novel framework to integrate disparate data after querying for further in depth analysis.
+  \item Provides an integrated approach for identifying case-control patient sets.
+  \item Implements novel extensions to the ontology framework via formula, units and data types to increase the utility of an existing ontology and for the purpose of inferring, discovering, and validating data across disparate data sets.
+\end{enumerate}
+
+While existing frameworks such as i2b2 and caGrid provide methods for retrieving a patient cohort, neither has the integrated ability to do further analysis on the patient cohorts across disparate data sets.  Researchers often require this additional information to assure that they have an appropriate population for further clinical research.  Once a case population is identified, researchers return the result to the data analyst who generates SAS or R macros in order to statistically determine a control population based on matching parameters similar to the traditional process given in Figure \ref{fig:data_access_paradigm_shift}(a).  Unlike other frameworks, Physio-MIMI streamlines the case-control identification to match the process described by Figure \ref{fig:data_access_paradigm_shift}(b).
+
+The data integration achieved using an domain ontology can be applied to various fields of research, although the sleep domain ontology is an exemplar for clinical research.
+
+% Part I: Architecture, Analysis, and Design
+
+  % Architecture Design
+  %   Based on the Physio-MIMI diagram and workflow.
+
+  % Security
+  % Scalability (HBC => No HBC)
+  % Functionality Resides
+  %   Decision Where Ontology Resides
+  %   Functionality Upstream vs Downstream
+  %   Bottleneck Identification
+  %   File Downloading (Large Size PSG)
+  %   Distributed instances of VISAGE
+
+% Part II: Ontology, Query, and Cohort Identification
+  % Ontology Design Considerations
+  % Units Ontology (Creating Buckets and Unit Conversions)
+  % Development of Concept Types and Widget Integration, (What belongs in Ontology and What does not)
+  %   Additional Refinements for Widgets and Creating
+  %   Importing Ontologies
+  % The Unified Data source View via Ontology
+  %   Flexibility to Data Source Schemas (Row-based vs Column-based representations)
+    % Formula Expansion
+  % Query
+  %   What a Query Means (a boolean query), Interpreting Date Considerations
+  %   Data Granularity
+  % Query Explorer Design and Redesign
+
+% Part III: Implementation and Evaluation, and Management
+%   VISAGE
+%     Dynamic GUI via AJAX, Web 2.0, Clean Limited
+%   
+%   The Honest Broker Adapter
+% 
+%   Evaluation - Interface, Handling Different Datasource schemas
+%   
+% 
+%   Model View Controller with RBAC and Fine-grained Data source access controls
+%     Methods to do Access Privilege based vs Schema Based
+%     Transition from more complex to simpler model (Ca-MIMI => Physio-MIMI)
+% 
+%   Agile Project Development and Management
+%     Rally, Ruby on Rails, Deployment (Phusion), Messaging (RESTful vs SOAP XML)
+%     
+%   Updating to Rails 3.0, Unobtrusive JavaScript
+%     Version Control (Branching)
+%     
+%   Future Work
+% 
+% Part IV or Appendix: 
+%   Patterns in RoR Programming
+%     Refactoring
+%     Partials
+%       Overview Flow Diagram of Partials and Functions in Physio-MIMI
+%   Complete Messaging w/ HBA
+%   Auditing
+
+
+\section{Organization of Dissertation}
+
+This dissertation covers that following facets of Physio-MIMI: The first chapters describe the architecture, analysis and design considerations in creating a scalable distributed architecture for accessing large disparate data sets.   Chapter \ref{chp:scalability_and_functionality} discusses design considerations building a scalable distributed infrastructure and describes the important functionality requirements and responsibilities that exist for components within a distributed system. Chapter \ref{chp:abstract_query} describes the formulation of the abstract query and provides specific details related to the design of the ontology and the abstract queries, along with providing an overview of the query exploration provided by Physio-MIMI.  Chapter \ref{chp:sleep_domain_ontology} presents the sleep domain ontology and the units ontology designed for the Physio-MIMI system. Chapter \ref{chp:data_source_abstraction_layer} details the data source abstraction layer that accepts and interprets abstract queries. Chapter \ref{chp:visage_and_honest_broker_adapter} describes the implementation of VISAGE from a design perspective along with a description of query analysis through the use of frequency matching, and describes the process of making distributed disparate data sources available for querying through the use of the Honest Broker Adapter.  Chapter \ref{chp:rbac} covers Physio-MIMI's underlying role-based access control system that has been expanded with fine-grained data source access controls. Chapter \ref{chp:rbac} also covers security design considerations that have gone into Physio-MIMI due to the access to patient healthcare information.  Chapter \ref{chp:agile} discusses agile project management and development used to quickly prototype and rapidly develop Physio-MIMI strongly focusing on end-user feedback.  Chapter \ref{chp:agile} also discusses some best-coding practices in developing production-grade systems and demonstrates the use of the GIT version control system.  Finally, Chapter \ref{chp:conclusion} summarizes the contributions of Physio-MIMI and discusses future development plans.
+
+% Backus–Naur Form
+
+
+
+% Focus on a few components then show how the others fall in to place to support those critical components
+% 
+% Architecture Design (With Core and Without Core) Pros and Cons (
+% Design Rational Multiple Instances of VISAGE
+%   Conceptually how this works
+% 
+% 
+% Features of Important Points (Critical Points of importance...) (get some from proposal).
+%   In relation to existing state of art systems
+% 
+% Get Complete Dump of Physio-MIMI wiki.
+% 
+% 
+% Most important: Results (analysis of results and evaluation).
+%   Lessons learned,
+%   Good practices
+%   What conclusions can be drawn
+%   Why is it done, comparison with other approaches.
+%   What all has been considered in the design process.
+% 
+% 
+% Multi-site collaboration, agile development and management
+% 
+% User Interface Design Considerations (does and don't does) measures for useability.
+%   Evaluating interface after you are familiar with it.
+%   Discuss with Satya (gold standard for i2b2 federated query tools, prior references).
+% 
+% Sections
+%   Discuss Polysomnogram Domain (Sleep Domain) key features (ron chervin's use case)
+% 
+% Chapters
+%   
+%   Role-based Access Control (3rd Tier, Database specific roles) Naresh (Example of special access role).
+%   
+%   Original Query Explorer change to Case Control Interface.  (Chapter by itself, Query Explorer)
+%   
+%   Ontology Creation, Curation, Design (Chapter on Ontology)
+% 
+%   Honest Broker (Chapter)
+% 
+%   Conclusions that can be drawn
+% 
+% Appendix
+%   Design Documentation
+%   Screenshots
+%   Code Segments
+%   Appendix for Modelling
+%   Schema Description and Analysis
+%     Picture
+%   GIT Environment for Project Management
+%     Installation
+% 
+%   Screenshots
+%     Design Consideration and Scientific Informatics Value (Innovation)
+%
+

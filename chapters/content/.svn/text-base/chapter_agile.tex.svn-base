@@ -1,0 +1,223 @@
+\chapter{Physio-MIMI Software Development and Management}\label{chp:agile}
+
+% Rally, Ruby on Rails, Deployment (Phusion), Messaging (RESTful vs SOAP XML)
+
+Agile project development and management have played a key role in the design, creation, and deployment of the Physio-MIMI architecture.  The process of scaling agile software development to a large scale multi-institution project is described by Smits \cite{4076938}.  Smits outlines the foundation of Lean principles in order to create a scalable agile software development framework.  In Physio-MIMI the agile methodology focuses on rapid prototyping and development, weekly end-user feedback and critiques, clear communication between small dynamic teams, and timely iteration and release planning meetings.  Ruby on Rails provides the necessary tool to rapidly launch a production grade web server.
+
+This chapter reviews the agile methodology based on the Lean principles as presented by Smits \cite{4076938}, the use of Rally for product management, and the use of Ruby on Rails for fast prototyping and product development.  Also discussed is the use of GIT version control for source code management.
+
+\section{Agile Principles}
+The agile principles used in Physio-MIMI are closely related to the original Lean principles \cite{1248986}, \emph{muri}, \emph{mura}, and \emph{muda}, or load, flow, and waste respectively.  Physio-MIMI first makes use of the principle of \emph{muda}.  Muda is the waste of time spent on a portion of a project on a feature that has little to no significance to the project as a whole.  In order to overcome this, Physio-MIMI emphasizes end-user priority by allowing the end-user to specify a list of needs and requirements for the system.  Once these requirements have been enumerated, the end-user prioritizes the list by putting the requirements that are needed most at the top of the list.  As the project advances through product iterations, this list is updated and re-prioritized.  Features that cover a larger scope of the project are placed into the release backlog.  During each release cycle a subset of the release backlog is implemented to meet project milestones and deliverables.  Features that cover a smaller scope are place in the iteration backlog, and usually represent atomic portions of the features within the release backlog.
+
+Using the release and iteration backlog, Physio-MIMI then makes use of the next two principles of agile development: \emph{muri}, and \emph{mura}.  At the beginning of each iteration, an iteration planning meeting is set to assign specific features and tasks to developers.  The iteration planning meeting includes both the end-users and the developers, and focuses on making sure that every developer on the team has a balanced work load for that iteration.  In order to assure that no developer is overburdened, \emph{muri}, each developer fills in an estimate of how much time each task will take the developer.  If the developer does not have enough time for the tasks assigned to him, the high priority items are selected first, and the rest are pushed into the following iteration.  One of the important parts of agile development is that the iteration and releases do not get pushed back, and instead that the features and tasks are designed to be completed within the iteration time frame which is generally two to three weeks.  In order to eliminate uneven workloads, \emph{mura}, the iteration planning meetings use the task estimates to make sure that each developer has a similar balance based on the developer's availability during the iteration timeframe.
+The use of the agile principles has allowed the rapid development of Physio-MIMI within a two-year pilot project timeframe.
+
+\section{Rally}
+Both iteration and release planning are an important part of the agile software development cycle.  Iteration planning is done at the beginning of each iteration which can last from two to three weeks, and release planning is done at the beginning of a release cycle which can contain two to six iterations.  For Physio-MIMI, Rally \cite{rally} was used as the crucial tool for iteration and release planning.  While Rally is not the only tool that allows for agile development management, it most closely follows the workflow of the agile development process used for the Physio-MIMI project.  Rally makes strong use of the agile principles and terminology.  A quick list of the terminology used in Rally are: \emph{product owner}, \emph{delivery team}, \emph{backlog}, \emph{features}, and \emph{tasks} \cite{4076938}.  Each of these terms has a corresponding link in the Physio-MIMI project and are outlined here.
+
+\begin{itemize}
+  \item The \emph{product owner} in Physio-MIMI is often the end-user who uses the services provided by Physio-MIMI.  Since Physio-MIMI is divided into VISAGE and the Honest Broker Adapter, VISAGE in turn becomes an end-user of the services provided by the Honest Broker Adapter.  Therefore, a lot of the development of the messaging and types of services between VISAGE and the Honest Broker Adapter were driven by needs within the VISAGE interface itself.  VISAGE in turn was driven by the needs of the researchers of the system who access the underlying data via the abstract query interface.
+  \item The \emph{delivery team} is the team responsible for creating the functionality within the system.  In Physio-MIMI, there were three primary \emph{delivery teams}, the Honest Broker Adapter developers, the developers of VISAGE, and the domain experts in charge of developing the sleep domain ontology.  These teams work closely together to create a cohesive product that was guided by the \emph{product backlog}.
+  \item The \emph{product backlog} contains all the requirements and goals of the Physio-MIMI project that are strongly connected to the project milestones and deliverables, and release and iteration \emph{features}.  The \emph{product backlog} is prioritized by the end-users and then \emph{features} and \emph{tasks} are moved into the iteration and release during the corresponding planning meetings.
+  \item The \emph{features} are broken into \emph{tasks} by the \emph{delivery team} in order to judge the time requirements of completing a feature.  A \emph{feature} whose \emph{tasks} span multiple iterations is split into smaller \emph{features} which are then completed within the iteration timelines.
+\end{itemize}
+
+One of the important features of agile software development is the ability to showcase the new features iterations at the end of the iteration.  At this point, the end-user can see the features that were implemented, and either accept or reject them.  This immediate feedback allows for the creation of a product that is very similar to that which is expected by the end-user.  The ability to demonstrate a functioning system at the end of each iteration is a vast difference to the development cycle of the waterfall model, which puts a lot of effort into the initial requirements specification.  The Rally system allows for the efficient planning and management of Physio-MIMI which contains multiple development teams at different institutions, multiple end-users, and a large two year project scope for deliverables.
+
+\section{Ruby on Rails}
+Ruby on Rails \cite{rubyonrails} provides a solid framework for designing and rapidly prototyping web applications based on the Ruby programming language. The Ruby language itself is a concise pure object-oriented language that allows for generating complex code with few lines.  Ruby on Rails has been used for a variety of projects at Case Western Reserve University, one of them being Ca-MIMI, the predecessor to the expanded role-based access control system that is found in Physio-MIMI.  The Ruby on Rails framework uses \emph{Convention over Configuration}.  \emph{Convention over Configuration} is used in programming to limit the amount of code that needs to be written to accomplish a certain task.  A programmer only needs to write additional code if he is trying to achieve something that is not using the convention provided by the Ruby on Rails framework.  For example, the convention for a foreign key relationship in the Ruby on Rails framework expects the foreign key to be in the format \emph{tablename\_id}.
+
+A simple relationship using the convention may look as follows:
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+# Database Table (Column) Structures
+books.id
+chapters.id
+chapters.book_id
+
+# Model Definition
+class Chapter < ActiveRecord::Base
+  belongs_to :book
+end
+
+class Book < ActiveRecord::Base
+  has_many :chapters
+end
+\end{verbatim}}\normalsize
+\doublespacing
+
+A programmer not using this convention, and instead using the following table structures, would need to specify the foreign key explicitly.
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+# Database Table (Column) Structures
+books.id
+chapters.id
+chapters.BOOKID
+
+# Model Definition
+class Chapter < ActiveRecord::Base
+  belongs_to :book, :foreign_key => 'BOOKID'
+end
+
+class Book < ActiveRecord::Base
+  has_many :chapters
+end
+\end{verbatim}}\normalsize
+\doublespacing
+
+Ruby on Rails is based on and expands the Model-View-Controller (MVC) framework.  The MVC framework is used to separate the functionality of code within a web-based system architecture.  The \emph{model} is used to access the underlying database items and provides methods, relationships, scopes, and instantiations of the underlying data.  The \emph{controller} is used to route incoming web-browser messages to the appropriate actions.  The \emph{view} is used to generate a result for the requesting web-browser using a template with embedded Ruby.  The \emph{view} may pass back information to the web-server using HTML or XML.
+
+\subsection{Phusion Passenger Web Server}
+
+Physio-MIMI uses the Phusion Passenger gem to tightly integrate the Ruby on Rails server directly with Apache 2.  Phusion Passenger is a production grade web server system that allows Apache 2 to load and serve Ruby On Rails applications \cite{1593045}. Phusion Passenger is straightforward to configure by adding methods to the Apache virtual server, and it also transparently handles load balancing and server management.  The following code shows a sample configuration for an instance of Physio-MIMI that makes use of secure https along with url rewriting for a public instance of the Physio-MIMI wiki.
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+# Loads the compiled passenger module for Apache
+LoadModule passenger_module /usr/local/.../apache2/mod_passenger.so
+PassengerRoot /usr/local/.../gems/passenger-3.0.0
+PassengerRuby /usr/local/bin/ruby
+
+# Number of Simultaneous Servers
+PassengerMaxPoolSize 60
+# Servers Are Always On
+PassengerPoolIdleTime 0
+
+Listen 443
+
+<VirtualHost _default_:443>
+  ServerName mimi.case.edu
+  
+  # Use Signed Certificate for Security
+  SSLEngine on
+  SSLCertificateFile /.../cert_file.pem
+  SSLCertificateKeyFile /.../cert_key.pem
+
+  # Location of the Physio-MIMI Ruby on Rails code
+  DocumentRoot "/.../physiomimi/public"
+  RailsEnv production
+  PassengerHighPerformance on
+
+  <Directory "/.../physiomimi/public">
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  RewriteEngine On
+  # Reroute Wiki Traffic to wiki site
+  RewriteRule ^/wiki(.*)  http://mimi.case.edu:8080/wiki$1 [R,L]
+  RewriteRule ^/public(.*) http://mimi.case.edu:8080/public$1 [R,L]
+</VirtualHost>
+
+<VirtualHost *:80>
+  ServerName mimi.case.edu
+  # Reroute Incoming Insecure Connections to Secure Server
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+</VirtualHost>
+\end{verbatim}}\normalsize
+\doublespacing
+
+The above configuration file shows how Phusion Passenger can be integrated with an Apache virtual server.  The integration allows for the use of the underlying technology already provided by Apache along with additional features provided by Phusion Passenger.  The primary benefit of using Phusion Passenger is the its ability to start, stop, and restart servers dynamically and transparently without requiring additional ports to be opened, or additional server load balancing to be specified.  Phusion Passenger provides a robust platform for deploying a production-ready Ruby on Rails application.
+
+
+\section{Source Code Management}\label{sec:git_and_rails3}
+
+In order to handle the complex requirements and specifications of Physio-MIMI, the code base is stored in a GIT code repository. A GIT repository allows for flexible handling of requirements that are produced in an agile software development environment \cite{1523278}.  This section discusses branching strategies that are used within Physio-MIMI to address changing end-user requirements, along with a specific example of updating the code base from Ruby on Rails version 2.3 to Ruby on Rails version 3.0. 
+
+% This chapter discusses the process of upgrading to Rails 3, making use of GIT branching strategies and unobtrusive JavaScript.
+
+\subsection{Branching Strategies}
+
+GIT allows for a number of branching strategies, each of which can be used effectively in differing scenarios. The branching strategy chosen for VISAGE is flexible, easy to maintain, and has a small learning curve for new developers on the project.  In the Physio-MIMI code base the master branch is responsible for the production ready code.  Whenever new features for a release are generated, the source code is branched from the master branch for development.  This branch is then tagged with the next release number for that branch.  Once the features in this branch have been fully tested, the branch is then merged back into the master branch.  The development branch is then tagged an is maintained as a development checkpoint.  During the time of new feature development, an end-user may find a critical bug in the master branch.  In this case, an additional bug fix branch is created from the master branch.  Once the fix is in place, the bug branch is merged back into the master branch, and the development branch then pulls these changes from the master branch using a merge operation.  The bug fix is merged into the development branch in order to ensure that no regression bugs are reintroduced when the feature branch is merged back with the master branch.  Figure \ref{fig:git_branching} shows this process.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/git_branching.png}
+  \end{center}
+  \caption[Branching Strategy for Production Environment]{Branching Strategy for Production Environment}\label{fig:git_branching}
+\end{figure}
+
+Physio-MIMI is tested and deployed in three environments, one for development, one for quality assurance, and one for production.  The development environment is on the software developer's local machine, and can switch between branches within the GIT repository.  Most often, the development environment is focused on the latest development branch, or in the case of a bug fix, is focused on the bug fix branch.  The quality assurance environment exists on a machine that is accessible to the developers and end-users in charge of quality assurance.  The quality assurance environment is always focused on the branch that will be pushed into production with the next release.  Finally, the production environment is for end-users working with real underlying data stores.  The production environment is always on the master branch, and is never updated without thorough testing of a new feature within the development and quality assurance environments.  Bugs found within the production environment are given high priority during iteration and release planning meetings.  In summary, the GIT code repository paired with agile software development creates an environment for rapid prototyping for Physio-MIMI.
+
+\subsection{Updating Code Base to Ruby on Rails 3.0}
+
+Using the branching strategy above, it was possible to create a versioned branch solely devoted to updating the code base, developed in Ruby on Rails 2.3, to Ruby on Rails 3.0.  The primary motivation behind this update is to allow Physio-MIMI to work using the latest technology.  In the case of Ruby on Rails 3.0, the update provides better coding practices, easier installation of VISAGE, and a more flexible login system for VISAGE.  Many of these updates also inherently reduce the lines of code required to accomplish specific tasks which creates a more readable code base for new developers.
+
+Better coding practices are created through the emphasis on unobtrusive \\JavaScript in Ruby on Rails 3.0.  Unobtrusive JavaScript uses the same idea presented by CSS when CSS was first created for HTML web pages.  CSS presents the notion that web-page style information should be removed from the content or HTML portion of the web-page.  This procedure allows for more readable source code of web-pages.  This idea is then propagated to be used with JavaScript.  With the event of Web 2.0 applications, JavaScript has become more heavily used within web-pages.  Unobtrusive JavaScript enforces the idea that JavaScript should not be present in the content or HTML portion of the web-page.  With this new coding practice in place, the content for a web-page resides in the HTML, the styling information resides in an associated CSS, and the JavaScript is stored in JS files. The following code demonstrates how unobtrusive JavaScript can be used to clarify code within the HTML.
+
+HTML File with embedded JavaScript:
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=HTML]
+<div url="/users/search" update="user_search"
+  method="post" class="pagination">
+  <a onclick="showLoading(); new Ajax.Updater('user_search',
+      '/users/search?authenticity_token=AXgKRqNj&page=1&search=',
+      {asynchronous:true, evalScripts:true, method:'post',
+      onComplete:function(request){hideLoading()},
+      parameters:'authenticity_token='+encodeURIComponent('AXgKRqNj')});
+      return false;" href="#">1</a>
+  <a onclick="showLoading(); new Ajax.Updater('user_search',
+      '/users/search?authenticity_token=AXgKRqNj&page=2&search=',
+      {asynchronous:true, evalScripts:true, method:'post',
+      onComplete:function(request){hideLoading()},
+      parameters:'authenticity_token='+encodeURIComponent('AXgKRqNj')});
+      return false;" href="#">2</a>
+  <a onclick="showLoading(); new Ajax.Updater('user_search',
+      '/users/search?authenticity_token=AXgKRqNj&page=3&search=',
+      {asynchronous:true, evalScripts:true, method:'post',
+      onComplete:function(request){hideLoading()},
+      parameters:'authenticity_token='+encodeURIComponent('AXgKRqNj')});
+      return false;" href="#">3</a>
+</div>
+\end{lstlisting}}\normalsize
+\doublespacing
+
+HTML files using unobtrusive JavaScript:
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=HTML]
+<div class="pagination ajax">
+  <a href="/users/search?page=1">1</a>
+  <a href="/users/search?page=2">2</a>
+  <a href="/users/search?page=3">3</a>
+</div>
+\end{lstlisting}}\normalsize
+\doublespacing
+
+JS File:
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=C]
+document.observe("dom:loaded", function() {
+  var container = $(document.body)
+  if (container) {
+    container.observe('click', function(e) {
+      var el = e.element()
+      if (el.match('.pagination.ajax a')) {
+        new Ajax.Request(el.href, {method: 'post',
+          parameters: $('search-form').serialize() })
+        e.stop()
+      }
+    })
+  }
+})
+\end{lstlisting}}\normalsize
+\doublespacing
+
+The above demonstrates how the use of Unobtrusive JavaScript creates cleaner HTML documents.
+
+With the update to Ruby on Rails 3.0 it is now easier to install VISAGE using the new gem bundler.  Gems are external dependencies that provide additional functionality to a Ruby on Rails project.  A sample of gems used within Physio-MIMI provide a login system, pagination, MySQL and SQLite 3 adapters, form auto-complete functionality, and calendar date select functionality.  While most of the gems are straightforward to install, a few of them, such as the MySQL and SQLite 3 gems, require compilation before being available to the Ruby on Rails project.  Ruby on Rails 3.0 provides access to updated versions of these gems that are more straightforward to compile across operating systems.
+
+Finally, Ruby on Rails 3.0 offers a flexible authentication gem called Devise.  Devise provides a number of authentication features such as providing open authentication (OAuth2) login support, logging out users after a certain time of inactivity, functionality to reset forgotten passwords, and the ability to remember the user using a remember token.
+
+By providing branching strategies, GIT allowed the Physio-MIMI project to be transparently upgraded to Ruby on Rails 3.0 without affecting the ability to fix bugs within the production environment.  The use of Ruby on Rails 3.0 allows VISAGE to be on the front end of development, as the most active community development occurs with the latest releases of Ruby on Rails.  Ruby on Rails 3.0 provides Physio-MIMI with access to this rich development environment and innovative community.

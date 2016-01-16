@@ -1,0 +1,377 @@
+\chapter{Role-Based Access Control}\label{chp:rbac}
+
+The Role-Based Access Control has two major components within the Physio-MIMI architecture.  The first component is comprised of the Parameterized Role-Based Access Control, which handles user responsibilities within the system.  The second component is the Data Source Access Control which uses a fine-grained approach to describe user information access rights.  Both of these components work together synergistically to create a secure access to shared sensitive data within the system.
+
+
+  \section{Parameterized role-based access control}
+  \label{sec:introduction}
+
+  Physio-MIMI takes advantages of the parameterized role-based access control provided by X-MIMI \cite{mueller2009}.  The X-MIMI architecture addresses significant challenges in biomedical research facilities in the efficient management of costly instrumentation, staff time, and large and complex data sets.  According to \cite{washington} the challenges faced by facilities is both widespread and acute, a problem that is magnified by the addition of new tools and techniques, a trend recognized by the NIH Roadmap~\cite{roadmap}.  X-MIMI provides a solution to this problem by providing a framework on top of the successful information called MIMI (Multi-Modality, Multi-Resource Informatics Infrastructure) that seamlessly integrates administrative support and scientific support in a single system.  X-MIMI provides a scalable and useable system that is applied to various clinical research areas from proteomics to imaging~\cite{mimi} to cancer research.  Here scalability refers to a system architecture's ability in setting up and managing a large set of administrative workflows and roles in a secure manner in a complex organization without direct, centralized control.  Usability refers to strengthened user interface design in order to account for large discrepancies in computer experience among the users of such a system.  Web 2.0 allows us to address the usability issue in a way such that a web application such as MIMI compromises neither features nor responsiveness compared to a typical stand-alone desktop application.
+  
+
+  X-MIMI has the following set of features:
+  \begin{itemize}
+    \item it provides an integrated solution for managing all informatics aspects of centers and their facilities in a single system, from resource scheduling, operations management, user management, project and data management to billing and report generation;
+
+    \item it is scalable for deployment by using a decentralized setup framework supported by a parametric RBAC model;
+
+    \item it is user friendly with an WYDIWYS Web 2.0 user interface with rich menu-driven drag-and-drop features;
+
+    \item it has been developed closely with the end-user in the loop using an Agile development methodology, and has been fully tested and deployed for over two years.
+  \end{itemize}
+
+  The implementation of Physio-MIMI takes advantage of the MVC software design pattern in a Ruby-on-Rails developmental environment~\cite{rubyonrails}, which embodies many of the Web 2.0 characteristics. In particular, AJAX and RESTful techniques have been incorporated whenever applicable and appropriate to improve usability of Physio-MIMI.
+
+
+  \section{Organizational Structure of an Institution}
+
+  A quick overview of an institution is given in this section.  In order to cover a wide variety of institutions, the roles provided are necessarily coarse to account for differences.  This structure provides a basis for the Physio-MIMI architecture in the next section.
+
+  The overall design philosophy of Physio-MIMI is a system that manages resources to be used by researchers in a structured way. Both the ``resources'' and
+  the ``users'' are to be interpreted in the broadest sense.  In using X-MIMI as a foundation for Physio-MIMI the users have become the sleep researchers, while the resources become the available sleep data in the form of data files such as PSGs, and meta data associated with a patient's clinical visits.
+  User types may include researchers, domain experts, institution administrators, informaticians, and system administrators.
+
+  Since Physio-MIMI addresses the problem of data integration across disparate data sources, an administrative role structure needs to be put into place that involves the various ``user'' roles.  Figure~\ref{fig:institution} shows an overview of roles provided by Physio-MIMI to capture the institutional setting.  Each institution acts as an administratively independent unit, however Physio-MIMI provides rules for data access and sharing across institutions.
+
+  \begin{figure}[htp]
+   \begin{center}
+     \includegraphics[width=6.0in]{images/institution_roles.png}
+    \end{center}
+    \caption{Institution Role Hierarchy.}\label{fig:institution}
+  \end{figure}
+
+
+  The human resources (i.e. people) of a institution can be classified as follows.
+
+  {\em Institution Administrator.} An Institution Administrator is responsible for setting up and maintaining the users within the institution and granting the individual users roles along with specific access privileges and access to certain data sets provided by the institution.  The Institution Administrator can also generate and review audit reports of the Physio-MIMI system to see what data has been accessed and by whom.
+
+  {\em Domain Expert.} The Domain Expert is responsible for setting up anchors within the domain ontology to appropriately guide the institution's users to the terms most commonly used by the institution.  The Domain Expert also has the ability to request new terms for the facility that can be integrated and added to the ontology.  The Domain Expert also clarifies definitions of terms provided by his institution in the case of discrepancies in the domain ontology.
+
+  {\em Informatician.} The Informatician is responsible for setting up access to data sources within the institution.  The Informatician provides the location of the de-identified data and files and uses the Ontology Database Mapper to connect to the data to Physio-MIMI.  The Informatician can also provide certain levels of access to the data per institution or per user, along with allowing other users to help map the data source.
+
+  {\em Researcher.} The Researcher can access the connected distributed data sources via the Query Builder, Manager, and Explorer for cohort identification and case-control retrieval.  The Researcher uses the system in order to generate and test hypothesis, along with uploading data results generated from offline data analysis tools provided through Physio-MIMI.
+
+  Together, these categories of users make up the roles in our parametric ARBAC.
+
+
+  \section{The Physio-MIMI Architecture}\label{architecture}
+
+  What distinguishes Physio-MIMI from other existing systems is its seamless integration of administrative support and scientific support
+  in a single system, to be deployed in the complex organizational structure of a research center. With respect to administrative support, Physio-MIMI's functionalities include data set sharing, auditing, and role assignment.
+
+   With respect to scientific support, Physio-MIMI's functionalities include the querying of disparate data sets of sleep data provided by various institutions, query management, further query analysis and evaluation, cohort, case and control identification, hypothesis generation and validation, and result set sharing and downloading.
+
+  Figure \ref{fig:physiomimi_system_architecture} is a high-level view of the system architecture for Physio-MIMI. The next section provides details on each individual component of the Physio-MIMI architecture.
+
+
+  \begin{figure}[htp]
+   \begin{center}
+     \includegraphics[width=6.0in]{images/system_architecture.png}
+    \end{center}
+    \caption{Physio-MIMI System Architecture.}\label{fig:physiomimi_system_architecture}
+  \end{figure}
+
+
+  Role-Based Access Control (RBAC~\cite{rbac,rbac0}) organizes and manages access to information in a web-based system.  Roles are defined by a set of privileges that grant users certain rights within the web-based system.  Roles can be dynamically changed by associating a different subset of privileges with each role.  Along with this, the roles are used as an abstraction so that the administrator can make system wide assignments without unnecessary complexity that could lead to potential access errors within the system.  Parametric Administrative RBAC is comprised of both Administrative RBAC ARBAC~\cite{arbac} and User-to-User delegation system~\cite{delegation}.
+
+  \subsection{Parametric Administrative RBAC}
+
+  ARBAC is designed to efficiently administrate roles through a role hierarchy.  The role hierarchy for Physio-MIMI can be seen in Figure~\ref{fig:institution}.  Roles higher in the hierarchy have the privilege to assign roles to users lower in the hierarchy.  For example, a Institution Administrator can assign the roles for Domain Expert, Informatician and Researcher, however the Institution Administrator cannot assign another user the role of Institution Administrator or System Administrator as this would break the rules enforced by ARBAC.  The use of the ARBAC allows a system to have a cascading role effect in which responsibility for assigning new roles can be accomplished at lower levels.  This process alleviates the amount of work that has to be initially done by the System Administrator as these tasks can be delegated to others.  ARBAC is further extended to parametric ARBAC to increase scalability.  The roles are parameterized which gives the role the format $Role(i_1,...,i_n)$ in which $i_j$ represents an institution URI created within Physio-MIMI.  For example, a user with the role of Institution Administrator~( ``http://www.case.edu'' ) is effectively the Case Western Reserve University Institution Administrator.  This user has the ability to assign others role within the institution, in this instance Case Western Reserve University.  The System Administrator is able to select the appropriate institution when setting up the Institution Administrator.  The use of parameterized ARBAC also allows specific data sharing rules to be set up within the system.  For instance, an informatician can specify that a data source is available to all roles at Any~ (~``http://www.case.edu''~), however only the role Researcher~(~``http://www.marsh.edu''~) can access the data source.
+
+  \subsection{User-to-User Delegation}
+
+  Physio-MIMI also makes use of the User-to-User delegation provided by the X-MIMI architecture.  A user is able to delegate his role to another user.  A delegation takes the form $delegation(U1, U2, R, n)$.  $U1$ is the user that is delegating his role $R$ to user $U2$. In this example $n$ is the number of steps that the role can be further delegated by $U2$.  In Physio-MIMI this is always limited to one step since there is no need to delegate roles more than once in order to maintain simplicity in the system.  Physio-MIMI makes use of this via the proxy system.  The proxy system allows developers to quickly test roles throughout the system by proxying users within the system.  Proxying is most useful in order to quickly replicate bugs and errors reported by users.  While delegating a user, the developer is able to view the system through the eyes of the user and is able to replicate any steps reported by the user to recreate the reported error.  Users can also alternatively delegate other users in the system to view and manage both data sources and queries within the system.  This delegation can increase collaboration between users from different institutions, and provides a way to quickly share data and results with other users.
+
+  %%%%%%%%%%%%% Stopped here. need to revise the rest
+
+  % \subsection{Parametric Administrative RBAC}
+  % 
+  % In ARBAC, the administration of roles is included 
+  % as a permission, so that roles higher up in the 
+  % security hierarchy can assign roles to users 
+  % that are lower in the hierarchy.
+  % In X-MIMI, this feature will allow the center administrator to
+  % delegate much of the administrative tasks to facility administrators,
+  % including the assignment of operators for instruments, admitting PIs to
+  % use resources in the facility. We further extend ARBAC to a parametric ARBAC to improve the scalability of X-MIMI. A role is described in the form of $Role(i_1,...,i_n)$ in which $i_j$ represents a facility, a service or an equipment... For example, Facility Administrator(flow cytometry) is assigned to users who have Administrator role in Flow Cytometry Facility. User who has Facility Administrator in facility $i$ may have only role of baseline user in other facilities. Another example, Operator(s,i) is operator on instrument $s$ in facility $i$. 
+
+  % User-to-User delegation allows a grantor to delegate part or  all of his roles and resources to another user. 
+  % A delegation has the form
+  % $delegation(U1, U2, R, n)$
+  % where $U1$ is the grantor and $U2$ is the proxy.  
+  % $R$ represents the roles and resources given to the proxy.  
+  % The number $n$ indicates that the proxy will have  
+  % the ability to further delegate $R$ to another user who can further
+  % delegate in no more than $n-1$ steps. When $n=1$, only immediate delegation
+  % is permitted. In X-MIMI, this delegation is limited to one step, 
+  % so that the proxy (the user who is being delegated) 
+  % does not have the right to further delegate the 
+  % delegated roles and resources to another user.
+
+  % The application of ARBAC requires a predefined role-hierarchy.
+  % Ensuring the consistency of this hierarchy and role-permission table,
+  % so that a role in the upper hierarchy does not have less permissions
+  % than a role in the lower hierarchy,
+  % is a topic that has not been adequately addressed systematically in the past.
+  % We use Formal Concept Analysis (FCA~\cite{fca}) as the mathematical framework to address
+  % this issue. 
+  % FCA provides a general framework for translating a
+  % binary relation such as a role-permission table called ``context''
+  % into a lattice, with nodes representing closed-sets or concepts, and
+  % links among them representing subsumption. In PRBAC, 
+  % such a lattice determines the desired role-hierarchy which is
+  % guaranteed to be consistent with the starting role-permission table,
+  % as a consequence of the general property of FCA. 
+
+  % For example, in our implementation (see Section~4), we use the following
+  % as part of the role-permission table for RBAC.
+  % 
+  % \begin{table}[htp]
+  %   \caption{Role-Permission Table for X-MIMI}
+  %   \vspace{0.2cm}
+  %   \centering
+  % 
+  %   \scalebox{0.8}{
+  % 
+  %   \begin{tabular}{|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.8cm}|p{1.5cm}|p{1.5cm}|}\hline
+  %   &Global & Manage Project & Complete Session & Administrate Session & Setup Center & Setup Facility  \\
+  %   \hline
+  %   Center & $\times$ & $\times$ & & & $\times$ & \\ Administrator & & & & & & \\
+  %   \hline
+  %   Facility & &  $\times$ & &  $\times$& & $\times$\\ Administrator & & & & & & \\
+  %   \hline
+  %   Operator & & & $\times$ &  $\times$& &\\& & & & & &\\
+  %   \hline
+  %   Principle & &  $\times$& & & &\\ Investigator & & & & & &\\
+  %   \hline
+  %   \end{tabular}
+  %   }
+  % \end{table}
+
+  % This systematically generates a role-hierarchy using any of the
+  % software tools for FCA (such as ConExp). The cascade of role-assignment 
+  % permission matches perfectly with our application needs in the center-facility
+  % setting, which the ARBAC permissions consistent with the role-permission table.
+
+  % \begin{figure}[htp]
+  %   \begin{center}
+  %      \includegraphics[width=2.5in]{images/xmimi/rolehierarchy.jpg}
+  %     \end{center}
+  %   \caption{Role Hierarchy in MIMI}\label{rolehierarchy}
+  % \end{figure}
+
+  % \subsubsection{Database}
+  % We use ontological modeling to design a database schema that is generic enough to be expanded to many different research centers with minimal modifications.
+  % 
+  % Figure \ref{relationships} indicates the main data tables used for MIMI system and the relationships between them implemented to assure the scalability of the X-MIMI system and make it more adaptable. 
+  % Arrow headed connectors indicate a hierarchical or ``part-of'' relationship.
+  % For example, the arrow from {\em project} to {\em study} shows that 
+  %  ``a project has many studies'', or 
+  %  ``a study is a part of a project''.
+  %    Circle headed connectors indicate an attribute relationship. 
+  %  For example,   ``PI is an attribute of a project'' and ``grant (or funding-status) is also an attribute of a project''.
+  % 
+  % Different shapes  in Fig.~\ref{relationships}  indicate different object categories. 
+  % Oval corresponds to  concrete objects; a core is made up of facilities which in turn provide services through the use of equipment.  
+  % The squared objects are for project organization. 
+  %  Octagons are used for PI and grant, which are somewhat independent of the other objects.  
+  %  The ``component'' object is shown with a dashed outline in order to indicate that it is invisible anywhere in the user-interface.
+  %  It is used to group sessions  scheduled within a particular facility (i.e. a realization of an experimental  workflow
+  %  which may involve several services in sequence).
+  %    Component and session are shown with rounded corners to indicate that they are associated with a particular facility (oval) 
+  %    (but project and study are not) though still part of the project hierarchy (square).  
+  %   
+  % \begin{figure}[htp]
+  %  \begin{center}
+  %    \includegraphics[width=2.5in]{images/xmimi/relationships.jpg}
+  %   \end{center}
+  %   \caption{Relationships among some key terms.}\label{relationships}
+  % \end{figure}
+  % 
+  % Roles and permissions are also stored as entries in the database which allows for new roles to be easily created and added later to the X-MIMI system.
+
+  % \subsection{Data/Information Flow}
+  % X-MIMI operates in two modes: Setup Mode and Deployed Mode.
+  % \\
+  % \subsubsection{Setup Mode}
+  % Setup Mode describes the state of the X-MIMI application as administrators create a virtual representation of their cancer center and its facilities.  X-MIMI is initialized with a single system administrator active inside the system.  The system administrator has the permission to assign a user as a center administrator. The center administrator in turn sets up the cores and facilities, programs, institutions, departments, and focus groups within the system along with assigning users as facility administrators. Each facility administrator can then set up facility specific items such as services, equipment, workflows, and discounts and give users roles as principal investigators or operators within the facility. As soon as services are assigned operators, the system is considered to be in deployed mode. The hierarchy of roles can be seen in Figure \ref{rolehierarchy}. X-MIMI can also be set up by migrating information directly from previous MIMIs, such as the Imaging, Proteomics, and Flow-Cytometry MIMIs, or by preloading users from an existing user database, as in the case of loading users from an existing cancer center member database.
+  % 
+  % \subsubsection{Deployed Mode}\label{deployed}
+  % X-MIMI enters Deployed Mode when the predominant activity consists of users scheduling and requesting time for services. A service that has been scheduled by a user is called a session. A session goes through the following states: pending, approved, completed, invoiced, and audited.  A user requests a session (pending) for a particular service.  A facility administrator approves and schedules the session (approved).  An operator runs the service and completes the session (completed).  A facility administrator creates an invoice for the session (invoiced) and bills the principal investigator.  An auditor audits the session (audited) at which point the session can no longer be modified.
+  % 
+  % Sessions form the basis for usage report for equipment, facility and center.
+
+
+  \subsection{WYDIWYS Web Inferface}\label{subsec:wydiwys}
+  Physio-MIMI is designed utilizing a WYDIWYS web interface~\cite{wydiwys}.  This system allows views to be generated through the Ruby-on-Rails framework that display to the user everything needed by his particular set of roles and privileges.  Information that is irrelevant to the current user is hidden, and actions in the Ruby-on-Rails controller are limited to users with sufficient privileges.  The roles and privileges set up by parameterized RBAC help to organize the framework and architecture of Physio-MIMI.
+
+  \section{Data Source Access Control}\label{sec:data_source_access_control}
+  Physio-MIMI extends the original X-MIMI role-based access control architecture by further expanding access control to shared resources within the system.  While the role-based access control grants the user responsibilities in the system, the data source access control provides the user with securely shared resources in the system.  These resources consist of patient record counts, de-identified patient record meta data, query meta data, and patient files, such as polysomnograms in the EDF file format and polysomnogram annotations in XML files.  The data source access control mechanism operates in the following manner.
+  
+  The data source provides resource to VISAGE in the form of sensitive patient information.  In order to determine how this information can be accessed, a set of rules is defined by the data source.
+  
+  The rule is in the form $Rule(d, i, r, a, u, b)$ where $d$ refers to the data source, $i$ a set of institutions, $r$ is a set of roles, $a$ is a set of actions, $u$ is a set of users, and $b$ grants or denies access. The data access rule is defined below in Backus–Naur Form:
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+<rules>          ::= "[" <rule> {, <rule>} "]"
+<rule>           ::= (<data-source>, <institutions>,
+                      <roles>, <actions>, <users>, <block>)
+<data-source>    ::= <integer>
+<institutions>   ::= "[all]"
+                   | "[" <institution> {, <institution>} "]"
+<roles>          ::= "[all]" | "[" <role> {, <role>} "]"
+<actions>        ::= "[all]" | "[" <action> {, <action>} "]"
+<users>          ::= "[all]" | "[" <user> {, <user>} "]"
+<block>          ::= true | false
+<institution>    ::= <integer>
+<role>           ::= <integer>
+<user>           ::= <integer>
+<action-groups>  ::= "[" <action-group> {, <action-group>} "]"
+<action-group>   ::= "read actions", <read-actions>
+                   | "write actions", <write-actions>
+                   | "actions", <access-actions>
+<read-actions>   ::= "[" <read-action> {, <read-action>} "]"
+<write-actions>  ::= "[" <write-action> {, <write-action>} "]"
+<access-actions> ::= "[" <access-action> {, <access-action>} "]"
+<action>         ::= <read-action>
+                   | <write-action>
+                   | <access-action>
+<read-action>    ::= "view data source general information"
+                   | "view data source mappings"
+<write-action>   ::= "edit data source connection information"
+                   | "edit data source mappings"
+                   | "synchronize data source mappings"
+                   | "edit data source access rules"
+<access-action>  ::= "get count"
+                   | "get query result set"
+                   | "download data set"
+                   | "download files"
+<integer>        ::= <digit> {<digit>}
+<digit>          ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+\end{verbatim}}\normalsize 
+\doublespacing
+
+The following algorithm checks that a user has the appropriate action.  The algorithm requires the set of rules, the user, and the associated action.  The extended code can be found in Appendix \ref{app:data_source_access}.
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+  Function: Check if a <rule> exists in <data-source> for
+            which the <user> has the specified <action>
+  Input <data-source>, <user>, <action>
+  For Each <rule> in rules(<data-source>){
+    If (<user> has the <role>
+        Or <user> is part of the <institution>
+        Or <user> is in users(<rule>)){
+      If <rule> does not <block> the <user>
+        result = true;
+      Else
+        blocked = true;
+    }
+    If (blocked){
+      return false;
+    }Else{
+      return result;
+    }
+  }
+\end{verbatim}}\normalsize 
+\doublespacing
+
+
+The algorithm can also be rewritten to check that the user has an action contained in the action group.  The algorithm makes use of the prior algorithm to iterate through available actions within an action group.
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+  Function: Check if a <rule> exists in <data-source>
+            for which the <user> has any <action> in
+            the corresponding <action_group>
+  Input: <data-source>, <user>, <action_group>
+  For Each <action> in actions(<action_group>)
+    If (there exists <rule> in <data-source>
+               for which <user> has <action>){
+      Return true;
+    }
+  }
+  Return false;
+\end{verbatim}}\normalsize 
+\doublespacing
+
+
+The data source action groups have two main purposes within the system.  First they allow the programmer and system designer to easily check user access rules based on a group of related actions.  Since Physio-MIMI is designed using the Model-View-Controller paradigm, this design pattern becomes particularly important since it has a large influence also on the WYDIWYS Web Interface described in the Section \ref{subsec:wydiwys}.  Second the action groups allow the Informatician in the system to mass assign related rules to institutions, roles or users within the system, expanding the functionality and usability of the user interface.
+
+\section{Security Considerations}
+
+Physio-MIMI has a strong need for security at every level of the system architecture.  In order to deal with many potential security risks when dealing with patient healthcare information (PHI) many of the use cases required that the underlying data source only make de-identified PHI available through the Honest Broker Adapter.  Along with this, each link in the system architecture has security considerations enforced, from initial user registration in VISAGE using 128-bit SSL encryption, to role-based access control and fine grained data source access control, to mutual SSL connections between VISAGE and the adapters via certificate signing, and finally to retrieving files from a secure file server using a tokenized one-time url.  Additional layers of security are added in locations where PHI becomes available for varying levels of security.  An example is setting an institutional IP-filter firewall in front of the file server to make the server only accessible from within institutional boundaries. This section discusses the the auditing and security considerations that are put into place for Physio-MIMI.  Additionally, the section gives an endpoint to endpoint analysis of security layers in place at each link in the system.  Each link is critical since a system is only as strong as its weakest security link.
+
+The following is a list of security considerations for the Physio-MIMI system.
+
+\begin{itemize}
+
+	\item Mutual SSL is used to communicate between the Honest Broker Adapter and VISAGE.  VISAGE generates the Certificate Authority, along with signing certificate requests using its private key.  The Honest Broker Adapter generates the signing certificate request using its own private key.  Both of these private keys need to be protected on the computer they are on by limiting read access to the folder to only known admins.  If someone who is unauthorized gains access to the private key files, the Mutual SSL is no longer secure.  If someone gains the Honest Broker Adapters private key, they still would not be able to connect to other adapters, however if someone gains access to the VISAGE private key, then that user could imitate that server and gain access to Honest Broker Adapters that are registered to that instance of VISAGE.
+
+	\item HTTPS exists between the researcher's browser and the instance of VISAGE.  This should protect login credentials for the researcher and keeps out malicious user's who may try to intercept these messages, using man-in-the-middle attacks, and go into VISAGE acting as a researcher.
+
+	\item The File Server that is set up to serve the secure files via token based authentication needs to keep its password secure on the computer.  If a user has unauthorized access to either the Honest Broker Adapter production code, or the File Server code, the user could create a program that allows access to all the files on that file server.
+
+	\item In order to assure that users that are not privileged to access data within the system, a data source informatician should set up privileges correctly to target the audience that should be able to access the data.  The informatician can additionally explicitly block users and institutions that should not be able to access the data.  Data sources are set up to initially allow no access to users other than the System Administrator and the data source informatician.
+
+	\item Firewalls can be configured for additional protection to allow only users from a specific network or location to be able to log in to the file server, or the specific instance of VISAGE.
+\end{itemize}
+
+
+In general, if the passwords and private keys are not kept safe within the systems in which they reside, the information becomes available by whoever gets access to these keys and passwords.
+
+\subsection{Security Tests}\label{sec:security_tests}
+
+The following section provides a short list of tests for security.  Many of these items are extracted and modified from the \emph{University Hospitals Information Technology and Solutions Information Security Checklist}.
+
+\begin{itemize}
+  
+  \item Does VISAGE use roles to ensure access is granted on `need to know' and `principle of least privilege'?
+  
+  \item Does the Physio-MIMI architecture create controls for the `separation of duties'?
+  
+  \item Does VISAGE use a secured connection when accepting users credentials across the internet or are these messages `in the clear'?
+  
+  \item Does VISAGE automatically log the user off after a period of inactivity?
+  
+  \item How does the role hierarchy in VISAGE depend on the existence of a System Administrator?  Is it enforced that the System Administrator can only be accessed locally?
+  
+  \item Is information sent over public networks encrypted using SSL or other industry acceptable methods?  Is the SSL using at least version 3.0 with 128-bit encryption?
+  
+	\item Can the Honest Broker Adapters be accessed by arbitrary certificates, or without any certificate?
+
+	\item Can protected pages in VISAGE be accessed without the appropriate privileges?
+
+	\item Can VISAGE access Honest Broker Adapters without a properly signed certificates?
+
+  \item Have the components of Physio-MIMI been `hardened' with unnecessary services removed, default administrator accounts disabled, and unnecessary services and protocols disabled?
+  
+  \item Has Physio-MIMI gone through a penetration test and how are the vulnerabilities being handled?
+
+\end{itemize}
+
+Physio-MIMI addresses each of these points through security considerations that have been put into place around the system.  Code hardening, and iterative development, along with code refactoring, deprecation, and regression testing all factor into the security process and are outlined further in Section \ref{sec:git_and_rails3}.
+
+\subsection{Securing VISAGE}
+  The communication between VISAGE and the researcher is the first location within Physio-MIMI with the potential for malicious entry into the system.  The first link consists of password and registration data that is sent from the researcher's web browser to the VISAGE web server.  VISAGE is set up on an Apache 2 web server and uses https encryption to communicate with the researcher's web browser.  This practice is fairly common for web sites that deal with private user information. The researcher is now logged in to VISAGE.  Within VISAGE, the researcher is assigned a role using Role-Based Access Control.  Data sources are only available to the researcher based on specific fine-grained access criteria which are discussed in Section \ref{sec:data_source_access_control}.  Using these three components, the security between the researcher and VISAGE is established, and the researcher is only able to see and access the data that has been explicitly assigned to him.
+
+\subsection{Securing the Honest Broker Adapter}
+  The next major communication link exists between VISAGE and the Honest Broker Adapter.  This link is secured through the use of a mutual SSL connection.  The mutual SSL connection consists of three steps.  First, the information at the institution with the honest broker adapter must generate a certificate signing request (CSR), which is sent to the instance of VISAGE.  VISAGE, which controls the certificate authority (CA), signs the certificate request and sends back a signed certificate along with the certificate authority to the Honest Broker Adapter.  The informatician then adds both of these certificates to the key and trust stores in the Honest Broker Adapter.  VISAGE and the Honest Broker Adapter can now communicate with each other via the other's public key which has been shared using the process above.  VISAGE and the Honest Broker Adapter are now the only two entities that can decrypt messages that have been encoded using their own private keys.
+  
+  The final communication link exists between the Honest Broker Adapter and its underlying data source.  The data source itself provides the Honest Broker Adapter with a readonly account that is limited to de-identified patient healthcare information.  The Honest Broker Adapter is located on the same physical machine as the underlying data source, and communication is only viewable on that machine.  A final step in increasing the security for this link, the underlying adapter can be set up to only accept secure connections which would make the interprocess communication encrypted.
+
+\section{Auditing Considerations}
+  Auditing of information plays an important role in Physio-MIMI as it is used to discover malicious access to an underlying data source with the intent of deriving patient healthcare information on a specific person.  Since no data source can be fully de-identified when combined with other publicly available data sources \cite{malin2004}, it is important to limit the amount of data received from de-identified data sources by obscuring record information to researchers who do not have the appropriate access rights to that data.  This fine-grained access is discussed in Section \ref{sec:data_source_access_control}.
+  
+  Auditing takes place at two locations within the system.  VISAGE handles auditing of meta data related to user logins and information, data source mappings, and query records, and also keeps track of queries sent to individual Honest Broker Adapters, along with the resulting record count that is returned.  The Honest Broker Adapter also provides logging of audit information on a per-service level.  The Honest Broker Adapter configuration allows the informatician to specify the services that are logged in auditing.  Specific audit level services are discussed in Section \ref{sec:honest_broker_audit_services}.
+  
+  An important security consideration arises with the access to auditing information.  Auditing information itself contains private information.  One example is a researcher who has a new study idea for which he is querying the underlying data sources to see if the study has potential.  If another researcher from another institution has access to this query information, that researcher could take the original researcher's idea for that study.  Access to auditing information is therefore highly restricted, and it gives rise to requiring automated detection of malicious users through the automated inspection of the audit information.
+  
+
+  \section{Conclusion}
+
+  Overall the use of parameterized RBAC along with fine-grained data access controls is crucial in providing accountability and security for data access in Physio-MIMI. The responsibilities and views provided to the user are specified by the parameterized role-based access control.  In addition, Phyio-MIMI adds information access controls by creating fine-grained data source access rules.  These additions combined with the architecture provided by X-MIMI allows for quick adaptability of the system and creates a robust framework for management of disparate data sources, queries, and users.  The design philosophy of WYDIWYS allows the creation of a minimal and intuitive user interface with a low learning curve. Finally, Ruby-on-Rails provides a great framework for the creation of a fully functional system using Agile methodology for rapid prototyping and development.

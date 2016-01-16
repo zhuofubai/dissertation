@@ -1,0 +1,453 @@
+% This chapter discusses the importance of creating a unified data source view that is used to map ontology concepts to table.column.row pairs, instead of just mapping the ontology to table.column
+
+\chapter{Data Source Abstraction Layer}\label{chp:data_source_abstraction_layer}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=1.5in]{images/data_source_mapper_portion.png}
+  \end{center}
+  \caption[Data Source Abstraction Layer]{Data Source Abstraction Layer: Consists of the Data Source to Ontology Mapper in VISAGE and the Honest Broker Adapter on the Data Level.}\label{fig:data_source_mapper_portion}
+\end{figure}
+
+Physio-MIMI enables a wide variety of relational data sources to be accessed and interpreted by defining a set of standard services that provide an abstract view of the underlying data source.  The data source wrapper, Figure \ref{fig:data_source_mapper_portion}, takes the form of the Honest Broker Adapter, which creates a standard set of web-services that can accept XML SOAP messages from VISAGE, regardless of the structure or implementation of the underlying data source.  The abstraction layer takes care of many of the idiosyncrasies that can occur when data is put into a data source.  The abstraction layer handles: mapping concepts in the data source, unifying row- versus column-based information, allowing for differing levels of data granularity, and interpreting multi-table data representations.
+
+\section{Mapping the Ontology to the Data Source}\label{sec:mapping_ontology}
+The data source mapper is the key component in relating the underlying data using the domain ontology. A single data source mapping can be represented in the following form: $DataSourceMapping(d, o, l)$ and $Locations(p, t, c, r)$, where \emph{d} refers to the data source, \emph{o} represents the ontology term being mapped, \emph{l} defines the possible locations in the data source for the ontology term, \emph{p} is the predicate, \emph{t} is the table, \emph{c} is the column, and \emph{l} is the literal value.  The following form is defined below in Backus–Naur Form:
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+<mappings>      ::= "[" <mapping> {, <mapping>} "]"
+<mapping>       ::= (<data-source>, <ontology-term>, <locations>)
+<locations>     ::= "[" <location> {, <location>} "]"
+<location>      ::= (<predicate>, <table>, <column>, <literal>)
+<data-source>   ::= <integer>
+<ontology-term> ::= <string>
+<predicate>     ::= "EXISTS" | "DOES NOT EXIST"
+<table>         ::= <string>
+<column>        ::= <string>
+<literal>       ::= <string>
+<string>        ::= null | <characters>
+<characters>    ::= <letter> { <letter> | <character> }
+<letter>        ::= /[A-Za-z]/
+<character>     ::= '-' | '_' | '/' | ':' | '#' | '.' | <digit>
+<integer>       ::= <digit> {<digit>}
+<digit>         ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+\end{verbatim}}\normalsize 
+\doublespacing
+
+Below is an XML serialization of the form described above.  Although inserting and removing data source mappings in this format is more difficult, these tend to be one-time operations.  The design of this architecture is used for quick lookup of ontology terms as they are requested on a per-query basis, which is a more frequent operation.  Backus-Naur Form also allows the same column to be mapped to multiple concepts, which is highly important for querying against differing data sources. The Honest Broker Adapter implements a version of these mappings using services described in further detail in Section \ref{sec:honest_broker_mapping_services}.
+
+\singlespacing
+\footnotesize{
+  \begin{lstlisting}[language=XML]
+<mappings>
+  <mapping>
+    <ontology-term>SDO:RBD</ontology-term>
+    <locations>
+      <location>
+        <table>studies</table>
+        <column>dx1</column>
+        <predicate>EXISTS</predicate>
+        <literal>rbd</literal>
+      </location>
+      <location>
+        <table>studies</table>
+        <column>dx2</column>
+        <predicate>EXISTS</predicate>
+        <literal>rbd</literal>
+      </location>
+      <location>
+        <table>studies</table>
+        <column>rbd</column>
+        <predicate>EXISTS</predicate>
+        <literal>1</literal>
+      </location>
+      <location>
+        <table>studies</table>
+        <column>rbd</column>
+        <predicate>DOES NOT EXIST</predicate>
+        <literal>0</literal>
+      </location>
+      <location>
+        <table>studies</table>
+        <column>rbd</column>
+        <predicate>DOES NOT EXIST</predicate>
+        <literal></literal>
+      </location>
+    </locations>
+  </mapping>
+  <mapping>
+    <ontology-term>SDO:OSA</ontology-term>
+    <locations>
+      <location>
+        <table>studies</table>
+        <column>dx1</column>
+        <predicate>EXISTS</predicate>
+        <literal>osa</literal>
+      </location>
+    </locations>  
+  </mapping>
+</mappings>
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+In this XML serialization, two possible sleep domain ontology terms can be queried against: \emph{Obstructive Sleep Apnea} and \emph{REM Behavioral Disorder}.  Each is evaluated whether or not they exist using the mapping information.  The rationale for this design is discussed in Section \ref{sec:row_and_column_information}.
+
+
+\section{Row and Column Information}\label{sec:row_and_column_information}
+
+Data sources can have data stored in a variety of representations, including row-based and column-based representations.  The abstraction layer described in  Section \ref{sec:mapping_ontology} allows the generation of abstract queries that have no prior knowledge of the underlying data source structure.
+
+Two major types of data source representations are discussed: row-based and column-based representations.  A single data source is not limited to a single representation, but instead can contain a combination of these representations.
+
+Chapter \ref{chp:abstract_query} provided an in-depth look at the generation of queries.  The two queries below are represented in human-readable syntax:
+
+\begin{enumerate}
+  \item Patients Diagnosed with REM Sleep Behavior Disorder
+  \item Patients Without REM Sleep Behavior Disorder
+\end{enumerate}
+
+  These two queries are used to provide concrete examples of how row and column information is interpreted within a data source.
+
+\subsection{Column-Based Representation}
+
+Table \ref{tab:column_based} displays a data source containing a patient table with a column for diagnosis.  The diagnosis column contains various values that represent different disorders, such as \emph{Obstructive Sleep Apnea} (osa), \emph{REM Sleep Behavior Disorder} (rbd), and \emph{Restless Leg Syndrome} (rls).
+
+\begin{table}[htp]
+  \begin{centering}
+    \begin{tabular}{cc}
+      \hline
+      table & \emph{studies}\\
+      \hline
+      column & \emph{dx1}\\
+      \hline
+      literals & [\emph{osa}, \emph{rbd}, \emph{rls}]\\
+      \hline
+      column & \emph{dx2}\\
+      \hline
+      literals & [\emph{osa}, \emph{rbd}, \emph{rls}]\\
+      \hline
+  \end{tabular}\caption[Column-based Data Representation]{Column-based Data Representation.}\label{tab:column_based}
+\end{centering}
+\end{table}
+
+Note that the data source term for Restless Leg Syndrome, \emph{rls}, is intentionally left unmapped for this example.  For the first query, Patients Diagnosed with REM Sleep Behavior Disorder, the data source provides three possible locations within the data source which can be used to provide a positive match for this query.  Two of these possibilities are column-based representations of the underlying data.  A positive match can occur if diagnosis column \emph{dx1} or diagnosis column \emph{dx2} has an occurrence of the literal \emph{rbd}.  The following SQL is generated to evaluate for column-based data representations:
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+  SELECT *
+  FROM   studies
+  WHERE  dx1 = 'rbd' OR dx2 = 'rbd'
+\end{verbatim}}\normalsize 
+\doublespacing
+
+The abstract data source layer makes it straightforward to appropriately return existing data.  The second query however, is slightly more complicated because the application is forced to choose between an open world or a closed world assumption of the underlying data.  The second query (\emph{Patients Without REM Sleep Behavior Disorder}) is more difficult to evaluate.  In this case, Physio-MIMI chooses the closed world assumption that the underlying data is a closed set and the absence of a term represents nonexistence.  The following SQL shows negation for a column-based data representation:
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+  SELECT *
+  FROM   studies
+  WHERE  dx1 != 'rbd' AND dx2 != 'rbd'
+\end{verbatim}}\normalsize 
+\doublespacing
+
+In this case, the Data Source mapper retrieves records where a diagnosis for REM Behavioral Disorder does not exist elsewhere in the data source.  The next section further explores the row-based representation, which allows for explicit definitions of existence and non-existence.
+
+\subsection{Row-Based Representation}
+
+Table \ref{tab:row_based} displays a data source containing a patient table with a column \emph{rbd} for \emph{REM Sleep Behavior Disorder}.  The values in the column represent the presence or absence of this diagnosis.
+
+\begin{table}[htp]
+  \begin{centering}
+    \begin{tabular}{cc}
+      \hline
+      table & \emph{studies}\\
+      \hline
+      column & \emph{rbd}\\
+      \hline
+      literals & [1, 0, null]\\
+      \hline
+  \end{tabular}\caption[Row-based Data Representation]{Row-based Data Representation.}\label{tab:row_based}
+\end{centering}
+\end{table}
+
+The row-based representation allows for an explicit representation of the existence or non-existence of underlying data, which makes it more straightforward.  The first query (\emph{Patients Diagnosed with REM Sleep Behavior Disorder}) is interpreted in SQL in the following manner.
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+  SELECT *
+  FROM   studies
+  WHERE  rbd = 1
+\end{verbatim}}\normalsize 
+\doublespacing
+
+The second query is also easily interpreted from the data source abstraction layer.  Since row-based columns allow for the explicit mapping of underlying data, the terms can be combined using the logical OR, which requires the existence of one or more of the data source mappings to return the row data to the researcher.  
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+  SELECT *
+  FROM   studies
+  WHERE  rbd = 0
+     OR  rbd IS NULL
+\end{verbatim}}\normalsize 
+\doublespacing
+
+If the data source did not have an explicit mapping for the non-existence of data, the query could still be completed by using the closed-world assumption that is used typically for column-based representations.
+
+\subsection{Combining Row- and Column-Based Representations}
+
+The following syntax now displays the resulting combined syntax for row- and column-based representations for the first query (\emph{Patients Diagnosed with REM Sleep Behavior Disorder}):
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+  SELECT *
+  FROM   studies
+  WHERE  (dx1 = 'rbd' OR dx2 = 'rbd')
+     OR  rbd = 1
+\end{verbatim}}\normalsize 
+\doublespacing
+
+The second query (\emph{Patients Without REM Sleep Behavior Disorder}) is combined in a similar manner as seen below.  Since the query requires the nonexistence of underlying data, the AND operator is used to assure that all data need to point toward the non-existent query term.
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+  SELECT *
+  FROM   studies
+  WHERE  (dx1 != 'rbd' AND dx2 != 'rbd')
+    AND  (rbd = 0 OR rbd IS NULL)
+\end{verbatim}}\normalsize 
+\doublespacing
+
+Note that the existence of \emph{REM Behavioral Disorder} in any of the underlying data will keep this row from being returned as a valid result for the query.
+
+\section{Data Source Mappings for Range Data}\label{sec:data_source_continuous_data}
+Data may also be represented as a non-discrete range data type.  This data typically occurs with terms such as \emph{Age}, \emph{Body Mass Index}, \emph{Total Sleep Time}, or other calculable terms.  To accommodate these concepts, the $Locations(p, t, c, r, u)$ formula is updated to include a reference the appropriate unit $u$, from the units ontology.  The Backus-Naur Form is modified in the following manner:
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+<location>      ::= (<predicate>, <table>, <column>,
+                    <literal>, <unit>)
+<unit>          ::= <string>
+\end{verbatim}}\normalsize 
+\doublespacing
+
+Figure \ref{xml:continuous_mappings} demonstrates how this update to the location block allows Physio-MIMI to map a ontology term with a non-discrete range, such as \emph{Age}, to the underlying data source.  For mappings that include the unit block, the predicate and literal are ignored.  An incoming abstract query, (e.g. \emph{Patients with Age Greater Than or Equal to 18 Years}) will check to make sure the units are identical; otherwise a lookup is made to the units ontology for the expanded conversion formula.
+
+\singlespacing
+\begin{figure}[htp]\label{xml:continuous_mappings}
+    \footnotesize{
+  \begin{lstlisting}[language=XML]
+<mappings>
+  <mapping>
+    <ontology-term>SDO:Age</ontology-term>
+    <locations>
+      <location>
+        <table>studies</table>
+        <column>age</column>
+        <predicate></predicate>
+        <literal></literal>
+        <unit>UO:Year</unit>
+      </location>
+    </locations>  
+  </mapping>
+</mappings>
+\end{lstlisting}}\normalsize 
+\caption[XML Data Source Mappings.]{This abstract data layer displays mappings for two ontology terms: \emph{Obstructive Sleep Apnea} and \emph{REM Behavioral Sleep Disorder}.}
+\end{figure}
+\doublespacing
+
+If a query arrives that does not match the underlying data's units, the following process occurs: First, the data source layer retrieves the conversion between the two units.  The data source abstraction layer then has enough information to build the corresponding SQL expression.  Given a query that requested Patients with Age Greater Than or Equal to 6575 Days given the above mapping and the conversion $years : (days / 365.25)$ would result in the following SQL:
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+  SELECT *
+  FROM   studies
+  WHERE  age >= (6575 / 365.25)
+\end{verbatim}}\normalsize 
+\doublespacing
+
+For further information, Section \ref{sec:querying_units} has an overview of the incoming query format.  Section \ref{sec:honest_broker_query_services} also provides a look at the exact syntax for creating this query.
+
+\section{Formula Expansion and Inferred Terms}\label{sec:formula}
+% However, the blood oxygen saturation baseline may be calculated in different ways across multiple institutions which can change the calculated value of the patient's blood oxygen desaturation.  This data integration issue is nuance that is addressed by Physio-MIMI through the use of ontology formula, described in Section \ref{sec:formula}.
+Although ontology terms with formulae do not have a specific appearance within the system, formulae play an important role in allowing researchers to derive additional information from sparsely mapped data sources.  Within the Sleep Domain ontology, a term may be defined along with a formula that represents an additional way of deriving the data. This provides the Data Source to Ontology Mapper with the ability to query terms that do not explicitly exist in the database.  The following example illustrates this scenario.  This technique is based on the formula property described below.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/ontology/concept_formula.png}
+  \end{center}
+  \caption{Formula Definition for Body Mass Index in Prot\'{e}g\'{e}.}\label{fig:concept_formula}
+\end{figure}
+
+The formula property is a new addition to ontologies that is used in order to show mathematical similarities between terms.  Figure \ref{fig:concept_formula} shows how \emph{Body Mass Index} is defined in terms of \emph{Height} and \emph{Weight}.  The formula definition makes use of the terms' ``qualified names'' also known as the terms' QName.  The QName in this case is used for legibility, however the full term URI, including the namespace is extracted when the formula is expanded with Physio-MIMI to avoid ambiguity.  Since the formula is already defined by \emph{Body Mass Index}, it is not necessary for the domain ontology designer to explicitly add formula for \emph{Height} and \emph{Weight} since these can be inferred.  However, if the formula is sufficiently complex the designer may opt to include these definitions to ease the burden off of the formula translation within Physio-MIMI.  Physio-MIMI takes advantage of knowledge stored within the ontology, but will additionally add on to that knowledge if there are gaps in the data.  Physio-MIMI contains a formula expansion algorithm which can be seen in use in the units ontology.
+
+Physio-MIMI is able to to use ontology formula expansion in order to extract additional on-the-fly information from underlying data sources.  Given a data source including \emph{Study Date} and \emph{Birth Date}, the term for \emph{Age at time of Test or Study} can be inferred due to its ontology formula:
+\begin{align*}
+  Age At Time Of Test Or Study = (Study Date - Birth Date)
+\end{align*}
+
+
+  Given that the ontology has the following terms
+
+\begin{enumerate}
+  \item Height
+  \item Weight
+  \item Body Mass Index, with formula
+  \\ \emph{(Height [in meters] / Weight [in kilograms squared])}
+\end{enumerate}
+
+The database has columns mapped to \emph{Height} and \emph{Weight}, but no column exists in the database that uses \emph{Body Mass Index}.  \emph{Body Mass Index} becomes an inferred term in the database due to the fact that it is implicitly defined.  Another example would be \emph{Age At Time Of Test Or Study} which has the formula \emph{StudyDate} - \emph{BirthDate}.
+
+When a query hits the database the query goes through a the following process.
+\begin{enumerate}
+  \item Check whether the abstract query contains concepts explicitly mapped in the database
+  \item For all query terms that are not explicitly found, use the ontology to see whether or not the calculated terms exist in the database
+\end{enumerate}
+
+The query
+  \footnotesize{
+\begin{verbatim}
+  Age = 50 years
+    and
+  BodyMassIndex = 20 kilograms per meter squared
+\end{verbatim}}\normalsize 
+would find \emph{Age} as a directly mapped column, and then discover that \emph{Body Mass Index} is not explicitly mapped. The query translator would then look at the ontology for \emph{Body Mass Index} and find that the formula contains the terms \emph{Height} and \emph{Weight} which are both explicitly mapped.
+
+
+\section{Multi-Table Representation}
+
+The data source abstraction layer also transparently handles multi-table representations of data.  There are two key components to how this is done, first the generation of key mappings between tables, and second, the mapping of two unique ontology concepts, Patients and Events.
+
+\subsection{Key Mappings}
+The data source abstraction layer provides a method of mapping relations between different tables within the data source.  The creation of these key mappings is trivial; however, this process creates an important link between data source tables that may not be enforced via the underlying data sources.  Although well-formed data sources contain primary and foreign key constraints, this is not necessarily true for all data sources.  By explicitly requiring the key mappings to be created, the query can take advantage of all related information within the data source.  The following Backus-Naur Form shows the rule associated with creating a key mapping $KeyMapping(d, t1, c1, t2, c2)$, where \emph{d} is the data source, \emph{t1} and \emph{c1} represent the table column that has a key that matches with another key in another table column, \emph{t2} and \emph{c2}.
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+<key_mappings>  ::= "[" <mapping> {, <mapping>} "]"
+<key_mapping>   ::= (<data-source>, <table_from>, <column_from>,
+                     <table_to>, <column_to>)
+<data-source>   ::= <integer>
+<table_from>    ::= <string>
+<column_from>   ::= <string>
+<table_to>      ::= <string>
+<column_to>     ::= <string>
+<string>        ::= null | <characters>
+<characters>    ::= <letter> { <letter> | <character> }
+<letter>        ::= /[A-Za-z]/
+<character>     ::= '-' | '_' | '/' | ':' | '#' | '.' | <digit>
+<integer>       ::= <digit> {<digit>}
+<digit>         ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+\end{verbatim}}\normalsize 
+\doublespacing
+
+The key mappings play a crucial role in allowing the creation of a Patient Event Tree using identifiers described in the Section \ref{sec:patient_event_tree}.
+
+\subsection{Data Source Identifiers}\label{sec:patient_event_tree}
+Although Physio-MIMI is fairly ontology agnostic, the inclusion of a Patient identifier and an Event identifier are crucial to organize and normalize data that is returned to the researcher.  Although different ontologies can be described within Physio-MIMI, it is important that they include terms that act as identifiers. An \emph{identifier} is an ontology term that allows the creation of end-points within the data sources.  These end-points create a series of points in a graph $G$ that are linked by \emph{key mappings} that act as edges $E$ between these end-points $N$.  While the \emph{key mappings} join specific table column pairs, it is important to note that the \emph{identifier} end-points need not be mapped to the same column as the \emph{key mapping}.  It suffices that the \emph{identifier} is in the same table as a corresponding \emph{key mapping} and that the \emph{key mapping} connects to another table with another \emph{identifier}.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/identifier_web.png}
+  \end{center}
+  \caption{Dynamic Identifier Web Normalization.}\label{fig:identifier_web}
+\end{figure}
+
+Figure \ref{fig:identifier_web} shows a dynamically created web of identifiers using a primary \emph{identifier} that is specified by the incoming query.  Within Physio-MIMI the Patient identifier is unique within the data source, and is usually mapped to one location within the data source.  However, this restriction is not enforced since the Patient identifier may exist in disparate tables.  The Patient identifier is linked to one or more Event identifiers that may or may not be in the same table.  These Event identifiers can represent different clinical events that may occur as patient information is entered into the system. An example of the Patient Event model follows:
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+Tables: patients, cases, diagnosis
+
+patients columns
+id, gender
+
+cases columns
+id, total_sleep_time
+
+diagnosis columns
+id, rbd, rls
+
+
+Mappings:
+
+patients.id = PatientID
+patients.gender = Gender
+patients.file_location = FileLocation
+
+cases.id = EventID
+cases.total_sleep_time = TotalSleepTime
+cases.file_location = FileLocation
+
+diagnosis = EventID
+diagnosis.rbd = RemBehavioralDisorder
+diagnosis.rls = RestlessLegSyndrome
+\end{verbatim}
+
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=XML]
+<patients>
+  <patient>
+    <identifier>P0001</identifier>
+    <p_params>
+      <concept>
+        <uri>Gender</uri>
+        <value>Male</value>
+      </concept>
+      <concept>
+        <uri>FileLocation</uri>
+        <value>patient_info.doc</value>
+      </concept>
+    </p_params>
+    <events>
+      <event>  <!-- A Row from the Cases Table -->
+        <e_identifier>E0002</e_identifier>
+        <e_params>
+          <concept>
+            <uri>TotalSleepTime</uri>
+            <value>260</value>
+            <units>minutes</units>
+          </concept>
+          <concept>
+            <uri>FileLocation</uri>
+            <value>case_psg.zip</value>
+          </concept>
+        </e_params>
+      </event>
+      <event>  <!-- A row from the diagnosis table -->
+        <e_identifier>E0003</e_identifier>
+        <e_params>
+          <concept>
+            <uri>RemBehavioralDisorder</uri>
+            <value>true</value>
+          </concept>
+          <concept>
+            <uri>RestlessLegSyndrome</uri>
+            <value>false</value>
+          </concept>
+        </e_params>
+      </event>
+      
+      ... <!-- Other rows from the diagnosis or
+               cases table that match with the patient -->
+      
+    </events>
+  </patient>
+</patients>
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+\section{Conclusion}
+The data source abstraction layer provides a meaningful way of to interpret underlying data using a closed-world assumption.  Mapped data define the scope of information that can be returned to the researcher for further analysis. Data can be represented in a variety of formats, including row-based and column-based formats.  Multi-table representations of data are also addressed using the data source abstraction layer by creating key mappings and a Patient Event identifier tree.

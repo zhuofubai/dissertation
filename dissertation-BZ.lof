@@ -1,0 +1,13 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Domain knowledge guided strategy in designing approaches for biomedical application. The strategy is applied in three contexts: (1) retrieving medically-related web images, (2) detecting genetic basis for human diseases, and (3) repositioning drug treatments.\relax }}{2}{figure.caption.6}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Motivating Example\relax }}{10}{figure.caption.7}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Causal diagram of treatment, outcome, and confounder.\relax }}{12}{figure.caption.8}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Matching units based on their propensity scores breaks the link between cofounding variables and treatment.\relax }}{14}{figure.caption.9}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Matching units based on their propensity scores breaks the link between cofounding variables and treatment.\relax }}{24}{figure.caption.12}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces {\it NUMFL} Algorithm\relax }}{25}{figure.2.5}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Performance of NUMFL-GPS-QRM relative to baseline metrics on individual single-fault program versions.\relax }}{35}{figure.caption.17}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{37}{figure.caption.19}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Performance of GPS-QRM relative to baseline metrics on individual two-fault program versions .\relax }}{39}{figure.caption.21}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces . Relative performance of NUMFL-GPS-QRM and NUMFL-CBPS-QRM on individual single-fault program versions .\relax }}{42}{figure.caption.24}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Relative performance of NUMFL-GPS-QRM and NUMFL-CBPS-QRM on individual two-fault program versions .\relax }}{43}{figure.caption.25}

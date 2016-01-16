@@ -1,0 +1,233 @@
+\chapter{Abstract Query}\label{chp:abstract_query}
+
+Ontological queries are widely used in content-based image retrieval, however there is limited use of ontology-based queries in clinical research.  Many current systems instead use controlled vocabularies which lack the full power of a domain ontology.  Physio-MIMI uses the ontology-based query approach in order to extract the full potential of information from the distributed data sources.  Since distributed data sources have data mapped in a variety of disparate formats, it is important to leverage a technology that supports relationships between varying levels of granularity within systems.  This chapter discusses the novel approaches used by the ontology-based query to fully make use of the data within disparate data sources using the power of the relationships and properties of ontological terms.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/role_visage_technology.png}
+  \end{center}
+  \caption{VISAGE Control Flow Overview.}\label{fig:role_visage_technology}
+\end{figure}
+
+The ontology-based query is generated through the Query Builder and federated across the various Honest Broker Adapters.  Physio-MIMI uses a modular approach in order to successfully translate a query at a given data source.  In order to translate a researcher's query into a database query the following components must exist:
+
+\begin{itemize}
+  \item A Domain Ontology
+  \item A Unit Ontology
+  \item One or More Partially or Fully Mapped Databases
+  \item A Query Designed on the Query Builder
+\end{itemize}
+
+The query is designed in the Query Builder. This process is described in Section \ref{sec:query_builder}.  The following series of steps demonstrate the process a query goes through as it is translated at the individual data source.
+
+\begin{enumerate}
+  \item The query is generated as an abstract query based on input from the researcher in the Query Builder.
+  \item The query is then sent to one or more selected databases via query federation.
+  \item The query is rewritten for the specific database based on the mapping as described in Section \ref{sec:data_granularity} and \ref{sec:formula}.
+  \item The query result is returned, normalized, and aggregated across databases as described in Section \ref{sec:result_set_normalization}.
+\end{enumerate}
+
+The query translation process provided by Physio-MIMI makes use of the novel additions added to the sleep domain ontology.  The addition of the formula property to the sleep domain ontology and the units ontology allows Physio-MIMI to generate queries against disparate data sources and to combine the results in a meaningful way.  Physio-MIMI also makes significant use of the query translation process in order to gather result sets for further analysis in the Query Explorer by normalizing the data.
+
+\section{Abstract Query Formulation}
+
+Physio-MIMI enables querying against disparate data sources by using the abstract query.  The abstract query is created by making use of the following components, the targeted data sources, the ontology terms, the units ontology, the query panels, and optionally the ontology terms for which to return data. The purpose of the abstract query is to retrieve identifier counts and to retrieve record information from the data sources.  The abstract query can be represented in Backus-Naur Form as follows:
+
+\singlespacing
+  \footnotesize{
+\begin{verbatim}
+<query>          ::= (<data-sources>, <query_panels>, <return-terms>)
+<data-sources>   ::= "[" <data-source> {, <data-source>} "]"
+<data-source>    ::= <integer>
+<query_panels>   ::= ......
+<return-terms>   ::= "count" | "all" | <ontology_terms>
+<ontology_terms> ::= "[" <ontology_term> {, <ontology_term>} "]"
+<ontology_term>  ::= <string>
+<string>         ::= null | <characters>
+<characters>     ::= <letter> { <letter> | <character> }
+<letter>         ::= /[A-Za-z]/
+<character>      ::= '-' | '_' | '/' | ':' | '#' | '.' | <digit>
+<integer>        ::= <digit> {<digit>}
+<digit>          ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+\end{verbatim}}\normalsize 
+\doublespacing
+
+The creation of Query Panels is explained in detail in Section \ref{sec:query_panels}.
+
+The main purpose of a query in the Physio-MIMI system is to evaluate the existence of specific criteria for a particular study.  The following Use Cases are utilized to test functional limitations of the Physio-MIMI system as it has evolved.
+
+\begin{figure}[htp]
+  \begin{itemize}
+    \item Sleep Study Diagnosis With or Without RBD
+    \item REM: Equal to, greater or less than 20 minutes
+    \item NREM: Equal to, greater or less than 2 hours
+    \item Treatments: CPAP, TI, or Splits
+    \item Gender: Male, Female
+    \item Age: Equal to, greater or less than 18 Years
+  \end{itemize}
+  \caption[Query Input Parameters and Criteria]{First Tier Query Selection Input Parameters and Selection Criteria}
+  \label{fig:use_case_1}
+\end{figure}
+
+
+Use Case 1, shown in Figure \ref{fig:use_case_1}, focuses on queries that return structured data from the underlying data sources.  This structured data is atomic data such as text, number, boolean, and date values, as opposed to more complex data that may be included in polysomnograms or gene sequences.  Given these selection input parameters, the researcher can create an abstract query by defining a logical expression in either disjunctive normal form or in conjunctive normal form.  The ontology terms are selected from the ontology and are specified as selection criteria.  The ontology terms have associated predicates and data ranges associated with them to specify inclusion criteria. The logical combination of ontology terms is presented in Section \ref{sec:query_panels}.  Once the query has been built, the expected return value is specified.  The query can either return a unique count of underlying data source primary or secondary identifiers (described in Section \ref{sec:patient_event_tree}), or it can request to retrieve the underlying data source data.  This data can either be selected as all available, or specific ontology terms can be selected as the return set.  The process of creating this abstract query using the VISAGE interface is described in detail in \ref{chp:visage_and_honest_broker_adapter}.
+
+The system architecture design for Use Case 1 can be seen in Figure \ref{fig:use_case_1_architecture}.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/use_case_1_architecture.png}
+  \end{center}
+  \caption[Use Case 1: Ad Hoc Query for Counts and Structured Data Sets]{Use Case 1: Ad Hoc Query for Counts and Structured Data Sets - First Tier Query Selection Input Parameters and Selection Criteria}
+  \label{fig:use_case_1_architecture}
+\end{figure}
+
+
+\section{Ontology Terms}
+The ontology terms that can be selected are divided into five different types of atomic data that can be queried, non-discrete ranges, categorical, boolean, dates, and identifiers.  Non-discrete range terms include terms such as \emph{Age at Time of Procedure}, \emph{Body Mass Index}, and \emph{Total Sleep Time}.  The query requires ranges and unit type to be specified for each term included in a query.  A categorical term is a term such as \emph{Gender}, \emph{Race}, or \emph{Ethnicity} whose range is explicitly defined within the ontology.  For example, \emph{Race} may have a range that includes \emph{African}, \emph{American Indian}, \emph{Asian or Pacific Islander}, \emph{Caucasian}, or \emph{Mixed Race}.  Boolean terms are similar to categorical terms in that they have a range, however boolean terms are always limited to the range that includes \emph{true} and \emph{false}.  Boolean terms include \textbf{diagnoses}, such as \emph{Restless Leg Syndrome}, or \emph{Rapid Eye Movement Behavioral Disorder}, and \textbf{medications}, such as \emph{Benzodiazepine}, or \emph{Monoamine oxidase inhibitor}.  Boolean terms allow for powerful data integration by utilizing the structure of the underlying ontology along with data granularity at different data sources.  Section \ref{sec:data_granularity} discusses the implications of data source granularity.  Date terms are also supported in Physio-MIMI.  Date terms allow for a range of dates given a start and end date.  Date terms also support multiple ranges for more flexible queries.  Ontology terms such as \emph{Study Date}, \emph{Diagnosis Date}, and \emph{Event Date} are all examples of date terms within the ontology.  These five types of data allow Physio-MIMI to handle a majority of queries that come across that are similar to Use Case 1.  An additional term called an identifier is used to generate appropriate groupings for underlying data.  The identifier is fully explained in Section \ref{sec:patient_event_tree} and is used to transparently handle complex data sources with multi-table schemas.  These identifiers also have will be heavily used in future development of Physio-MIMI for cross data source joins.  Identifiers create a generalized method to create functionality similar to how a master patient index links patient data across data sources.
+
+Table \ref{tab:ontology_terms} shows how these ontology concepts are represented in the Physio-MIMI schema.
+
+\begin{table}[htp]
+  \begin{centering}
+\begin{tabular}{ | p{1in} | p{0.75in} | p{0.75in} | p{0.75in} | p{0.75in} | p{1in} | }
+  \hline
+  Concept \par Name & Concept \par Type & Units & Minimum & Maximum & Formula\\ \hline
+  SDO\#Age & non-discrete & UO\#year & 0 & 120 & \#StudyDate - \#BirthDate \\ \hline
+  SDO\#Patient & identifier & NULL & NULL & NULL & NULL \\ \hline
+  SDO\#Restless \par LegSyndrome & boolean & NULL & NULL & NULL & NULL \\ \hline
+  SDO\#Study \par Date & datetime & NULL & NULL & NULL & NULL\\ \hline
+  SDO\#Gender & categorical & NULL & NULL & NULL & NULL\\ \hline
+\end{tabular} \caption{Physio-MIMI Concept Schema}\label{tab:ontology_terms}
+  \end{centering}
+\end{table}
+
+\section{Units Ontology}
+
+In terms of generating an abstract query, the units ontology has the important role of specifying the appropriate range values for non-discrete range terms that are placed into the query.  When combined together with the ontology term, the ranges, and the unit, query translation can be accomplished at the data source abstraction level.  The process of doing the query translation is described in Section \ref{sec:querying_units} and Section \ref{sec:data_source_continuous_data}.
+
+\section{Query Panels}\label{sec:query_panels}
+
+Query panels are a core concept within the query.  The format for query panels is an expanded version of the format provided by i2b2 \cite{murphy2002}.  The query panels help define a flexible framework to write a query in disjunctive normal form (DNF) or in conjunctive normal form (CNF).  Each query contains multiple query panels.  Each of the query panels contains a list of terms along with the selected range, and unit information.  The query panels represent the clauses in DNF or CNF form.  In order to determine whether the query panels should be evaluated in CNF or DNF form, the block \emph{$<$mod:panel\_set$>$} can contain the values \emph{all} or \emph{some}.  \emph{All} requires each query panel to evaluate true, while \emph{some} creates a union of the results of each of the query panels.  It is important to note that while the query panels follow the rules of CNF and DNF by requiring the intersection of unions, or the union of intersections respectively.  In order to fully support CNF or DNF, the block \emph{$<$mod:invert$>$} can be inserted either on the level of the query, the query panels, and the individual terms within the term lists.  This allows for the negation of the query, query panel, or term. The following examples show different queries with a variety of scenarios. (\emph{Gender is Male and Age is 24 Years, or Gender is Female and Age is 18 Years.})
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=XML]
+<query>
+  <mod:panel_set>some</mod:panel_set>
+  <mod:panel><mod:Panel><mod:concepts>
+    <mod:item>
+      <mod:name>SDO.owl#AgeAtTimeOfProcedure</mod:name>
+      <mod:unit>UnitsOntology#year</mod:unit>
+      <mod:values><web:string>24</web:string></mod:values>
+    </mod:item>
+    <mod:item>
+      <mod:name>SDO.owl#GenderFinding</mod:name>
+      <mod:values>SDO.owl#MaleGender</mod:values>
+    </mod:item>
+  </mod:concepts></mod:Panel></mod:panel>
+  <mod:panel><mod:Panel><mod:concepts>
+    <mod:item>
+      <mod:name>SDO.owl#AgeAtTimeOfProcedure</mod:name>
+      <mod:unit>UnitsOntology#year</mod:unit>
+      <mod:values><web:string>18</web:string></mod:values>
+    </mod:item>
+    <mod:item>
+      <mod:name>SDO.owl#GenderFinding</mod:name>
+      <mod:values>SDO.owl#FemaleGender</mod:values>
+    </mod:item>
+  </mod:concepts></mod:Panel></mod:panel>
+</query>
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+Anyone who is not under the Age of 21 Years
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=XML]
+<query>
+  <mod:panel_set>all</mod:panel_set>
+  <mod:invert>true</mod:invert>
+  <mod:panel><mod:Panel><mod:concepts>
+    <mod:item>
+      <mod:name>SDO.owl#AgeAtTimeOfProcedure</mod:name>
+      <mod:unit>UnitsOntology#year</mod:unit>
+      <mod:ranges>
+        <quer:Range>
+          <quer:lowerBound>
+            <quer:operator>GTE</quer:operator>
+            <quer:value>0</quer:value>
+          </quer:lowerBound>
+          <quer:upperBound>
+            <quer:operator>LT</quer:operator>
+            <quer:value>22</quer:value>
+          </quer:upperBound>
+        </quer:Range>
+      </mod:ranges>
+    </mod:item>
+  </mod:concepts></mod:Panel></mod:panel>
+</query>
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+An in depth review of the query structure is defined in Section \ref{sec:honest_broker_query_services}.  Further examples can be viewed in Appendix \ref{app:messaging_formats}.
+
+\section{Data Source Information Granularity}\label{sec:data_granularity}
+As described in Section \ref{sec:functionality_residence}, the query is responsible for extracting additional information from the ontology before being federated to the individual data sources.  The query itself is expanded by using the \emph{is-a} relationship provided by the ontology.  Given that data is stored at varying levels of granularity at the data sources, the query needs to account for all levels.  A common example is a search for a general form of diagnosis such as \emph{Sleep Related Disorders}.  \emph{Sleep Related Disorders} has a number of descendants, including \emph{Sleep Apnea}, \emph{Restless Leg Syndrome}, and \emph{Rapid Eye Moment Sleep Behavior Disorder}.  The following query shows how the query term is expanded.  The same strategy is also implemented for terms other than just boolean terms.
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=XML]
+<query>
+  <mod:panel_set>all</mod:panel_set>
+  <mod:invert>true</mod:invert>
+  <mod:panel><mod:Panel><mod:concepts>
+    <mod:item>
+      <mod:name>
+        SDO.owl#SleepRelatedDisorders,
+        SDO.owl#SleepApnea,
+        SDO.owl#RestlessLegSyndrome,
+        SDO.owl#REMBehaviorDisorder,
+      </mod:name>
+      <mod:values>
+        <web:string>
+          SDO.owl#TRUE
+        </web:string>
+      </mod:values>
+    </mod:item>
+  </mod:concepts></mod:Panel></mod:panel>
+</query>
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/ontology/drug_ontology.png}
+  \end{center}
+  \caption{Drug Ontology Example.}\label{fig:drug_ontology}
+\end{figure}
+
+The power of the query translation is most evident in the abstract query to database query translation.  The following case illustrates the effect of database mapping granularity versus query granularity in use with query translation. The institution has the records mapped seen in Figure \ref{fig:inferred_terms}.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/ontology/inferred_records.png}
+  \end{center}
+  \caption{Drug Ontology Mapped Records.}\label{fig:inferred_terms}
+\end{figure}
+
+The researcher requests a query for all records that contain \emph{benzodiazepine}.
+\begin{equation*}
+  \textbf{benzodiazepine} = true
+\end{equation*}
+The abstract query knows that the granularity of the database mapping is more precise than that of the query and generates the query: 
+\begin{equation*}
+  \textbf{benzodiazepine} = true \textrm{ or } (\textit{descendentsOf}(\textbf{benzodiazepine}) = true)
+\end{equation*}
+\begin{align*}
+  \textbf{benzodiazepine} = true \textrm{ or } (\textbf{clobazam} = true \textrm{ or }\\
+  \textbf{clonazepam} = true \textrm{ or } \textbf{diazepam} = true \textrm{ or } \textbf{lorazepam} = true)~
+\end{align*}
+
+Using the expanded query, the query translator is able retrieve not only record 6, but also records 1, 2, 3 and 5.  On a side note, if the query had been for \emph{anticonvulsant}, then every record would have been included, including record 4 which was omitted from the original query for \emph{benzodiazepine}.

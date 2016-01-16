@@ -1,0 +1,414 @@
+\chapter{VISAGE and the Honest Broker Adapter}\label{chp:visage_and_honest_broker_adapter}
+
+Physio-MIMI provides a Visual Query Interface in order to help researchers transparently create an ontology-based query.  In order to accomplish this task, the following visual query interface paradigms are combined and implemented \cite{visage2010}.
+
+\begin{itemize}
+  \item Query-By-Example \cite{609635, 625656}
+  \item Building query without knowledge of database schema \cite{655808}
+  \item Tree-based query construction \cite{4684906}
+  \item Browsing results without specific query in mind \cite{655808}
+\end{itemize}
+
+This chapter discusses the design implementations used for the Query Builder, the Query Manager, the Query Explorer, and the Data Source Mapper.  The Query Builder, the Query Manager, and the Query Explorer are used by the researcher to construct, manage, and explore an ontology-based query.  The Data Source Mapper is used to allow the informatician to make his data source accessible to queries from the other three interfaces.
+
+The ontology-based query consists of a few components.  The elements of the query are saved in conjunctive normal form or disjunctive normal form depending on the type of query the user is creating.  Each element references a term in the ontology, along with a value or a range expected for that value.  For example, an abstract query for all men with average \emph{Body Mass Index} who have been diagnosed with \emph{REM Behavioral Disorder} would look as follows.
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=XML]
+  <meta>
+    Conjuctive Normal Form
+  </meta>
+  <panel>
+    <term>Gender</term>
+    <value>Male</value>
+  </panel>
+  <panel>
+    <term>AgeAtTimeOfTestOrStudy</term>
+    <value>18:100</value>
+  </panel>
+  <panel>
+    <term>BodyMassIndex</term>
+    <value>19:25</value>
+  </panel>
+  <panel>
+    <term>RapidEyeMovementBehavioralDisorder</term>
+    <value>true</value>
+  </panel>
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+This Abstract Ontological Query highlights some of the important features of the query design.  While the term element always references a term in the ontology, the value can be one of three different value types.  The value can either be a non-discrete range as seen for \emph{Age At Time Of Test Or Study} and \emph{Body Mass Index}.  The value can also be another term in the ontology as seen in \emph{Gender} which references the ontological term \emph{Male} as its value.  Finally the term can also have a boolean value associated with it.
+
+Other than what is seen in the above query, panels can also be negated and the panels can contain multiple term-value pairs.  Negating the \emph{Body Mass Index} would give all \emph{Male} patients outside of the average \emph{Body Mass Index} who have been diagnosed with \emph{REM Behavioral Disorder}.  An example with multiple term-value pairs would be, give all \emph{Male} patients with average \emph{Body Mass Index} who have been diagnosed with \emph{REM Behavioral Disorder} or with \emph{Restless Leg Syndrome}.
+
+\section{The Query Builder}\label{sec:query_builder}
+The Query Builder uses basic query constructs to allow the researcher to build any query in conjunctive or subjunctive normal form.  The interface is set up into three distinct areas. The first area allows the researcher to select one or more data sources to query from a list of available data sources. The second area is used to add ontological terms to the query and acts as a dictionary or reference of possible terms.  The user can save favorites here, add and remove containers, and even suggest to move terms to more appropriate containers.  Given the researcher's domain, the researcher will see a different subset of containers here initially but is allowed to add and remove containers for quicker navigation.  Example containers are Favorites, Demographics, Diagnosis/Disorders, and Medications. To the right of the ontology selection bar is the Query Builder area.  The researcher can select values for selected terms here, rearrange the terms, and group terms together. The query count will automatically update as the user changes parameters of the query.  Once the researcher is satisfied with the query, he can save the query, which will then be automatically transfer to the Query Manager which is discussed in Section \ref{sec:query_manager}.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/query_builder.png}
+  \end{center}
+  \caption[Query Builder]{Physio-MIMI Query Builder - A Sample Query Showing \emph{Male} Patients with \emph{Systolic Blood Pressure} above 140 mmHg.}\label{fig:query_builder}
+\end{figure}
+
+The Query Builder, Figure \ref{fig:query_builder}, has many features that are included in only some of the visual query interfaces from Section \ref{sec:visual_query_interface}.  One of the largest advantages of the Query Builder is that the researcher does not have to have knowledge of the underlying databases's architecture.  This feature is accomplished by the strong integration of the Ontology with the Database itself.  The ontology helps the user generate an abstract query which is very similar to the way the researcher would formulate the query in plain English.  The ontology also helps normalizing values in the ontology so the researcher does not have to know that a specific database column is mapped to $1$, or $0$, or $true$ or $false$, or in the case of gender, $m$, $f$, $0$, or $1$.
+
+The second important feature of the Query Builder is that the researcher is able to quickly browse the results without having a specific query in mind.  Most often, the researcher is looking for an available cohort of patients without knowing the exact parameters of the query.  Since the Query Builder is designed with immediate feedback in mind, the researcher can see the cohort count increase or decrease as he modifies his query.
+
+The third important feature of the Query Builder is its ability to support Relational or Object Oriented Databases.  This feature is accomplished by creating a web-service around the databases to be able to edit Data Source to Ontology Mappings.
+
+\section{The Query Manager}\label{sec:query_manager}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/query_manager_overview.png}
+  \end{center}
+  \caption{Physio-MIMI Query Manager.}\label{fig:query_manager_overview}
+\end{figure}
+
+The Query Manager is currently used by the researcher to keep track of queries that have been run, to retrieve record information on the queries, to share the query with other users, and to be able to view publicly available queries.  The Query Manager is designed much like an email inbox so that a researcher can quickly identify queries, and to lessen the learning curve.
+
+\section{The Query Explorer}\label{sec:query_explorer}
+
+The exploration and analysis of queries is the final component of the Physio-MIMI system. After the initial query or queries are built in the Query Builder, the researcher can do further hypothesis generation and study design analysis within the Query Explorer. Query exploration from data acquired from disparate systems is achieved through the use of result set normalization, described in Section \ref{sec:result_set_normalization}. The Query Explorer in Physio-MIMI provides an interface to perform case-control study design. The case-control study design is based on requirements generated by the Physio-MIMI Domain-Driven Use Cases.  The Domain-Driven Use Cases are as follow:
+
+\begin{enumerate}
+  \item Determine availability of a potential research candidate cohort based on inclusion and exclusion criteria.
+  \item Identify members of a potential research candidate cohort based on inclusion and exclusion criteria.
+  \item Retrieve immediately available complex data. (PSGs, XML Annotations, etc.)
+\end{enumerate}
+
+The Query Explorer is tool designed to exercise the usage scenarios provided above.  In the Query Explorer, a researcher first defines two queries, each representing a population of patients that have specific characteristics in common as described by their associated queries.  One of the queries is defined as the cases, while the other defines the population of available controls.  Using a frequency matching algorithm, that combines specific matching criteria, a stratification on these matching criteria is created, and cases are matched to available controls based on a predetermined matching ratio.  The Query Explorer then allows the researcher to save the exploration, compare data within the cases and the matched controls, and to download the files associated with the matched controls.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/query_explorer_01.png}
+  \end{center}
+  \caption[Query Explorer Selection Criteria]{Physio-MIMI Query Explorer - Selecting Cases and Available Control Populations, Number of Controls Per Case, and Matching Criteria}\label{fig:query_explorer_01}
+\end{figure}
+
+Figure \ref{fig:query_explorer_01} displays an exploration on two patient populations.  The first population is a set of male patients whose \emph{Systolic Blood Pressure} is above 140 mmHg.  This population is contained in the query \emph{Zhang Cases}.  The second population, \emph{Zhang Available Controls}, is the set of available controls and is a set of male patients whose \emph{Systolic Blood Pressure} is under 140 mmHg.  The matching criteria selected are whether the patient used \emph{Benzodiazepine} and whether the patient was diagnosed with \emph{Obstructive Sleep Apnea}.  The results for the exploration are shown in Figure \ref{fig:query_explorer_02}.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/query_explorer_02.png}
+  \end{center}
+  \caption[Query Explorer Results]{Physio-MIMI Query Explorer - Results of the Frequency Matching and Stratification of Matching Criteria}\label{fig:query_explorer_02}
+\end{figure}
+
+Figure \ref{fig:query_explorer_results} displays the specific statistics between the cases and the matched controls. The expanded details for \emph{Benzodiazepine} and \emph{Obstructive Sleep Apnea} show the researcher that the frequency matching algorithm criteria matched an appropriate subset of available controls to the cases.  If the number of available controls was insufficient, the matching algorithm would create a matching that would not necessarily be able to match a case to a control.  In this case, the researcher would either need to change the query criteria when defining the case and available controls populations, or modify the matching criteria to retrieve a different result for the frequency matching. 
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/query_explorer_results.png}
+  \end{center}
+  \caption[Query Explorer Cases and Matched Controls]{Physio-MIMI Query Explorer - Comparison of Population Statistics between the Cases and Matched Controls}\label{fig:query_explorer_results}
+\end{figure}
+
+
+
+%-------------------------------------------------------------------------------------------------------------------%
+%------------------------------------------------Informatician------------------------------------------------------%
+%-------------------------------------------------------------------------------------------------------------------%
+\section{Data Source to Ontology Mapper Interface}\label{sec:data_source_mapper}
+
+In order to link disparate data across a wide variety of systems, a common ontology or vocabulary must be used.  The Data Source to Ontology Mapper provides this interface by making use of an interface intimately familiar to the institution's informatician, namely the database schema.  In order for quick and efficient data mapping, the Data Source to Ontology Mapper provides a powerful interface that allows the informatician to specify the granularity of the databases.  More importantly the Data Source to Ontology Mapper allows the informatician to view the successful mappings along with sample views of the database information for validation.  The Data Source to Ontology Mapper achieves a thorough mapping by recommending ontology terms to the informatician as he is going through the mappings.  The domain ontology is leveraged to easily find correct terms.  This section goes into detail on the various tasks performed by the Data Source to Ontology Mapper to quickly prepare a database for querying.
+
+The Data Source to Ontology Mapper is used in the following ways:
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/database_mapper/database_mapper_ex1.png}
+  \end{center}
+  \caption{Data Source Mapper.}\label{fig:database_mapper_ex1}
+\end{figure}
+
+\begin{itemize}
+  \item Allows quick mapping of the data source to the ontology.
+  \item Allows the informatician to see data source inconsistencies.
+  \item Allows the informatician to visually see data distribution in the data source to assure accurate mappings.
+  \item Allows the informatician to specify units for help in query translation.
+  \item Creates a list of inferred terms that can be used in querying.
+  \item Allows the informatician to reference files associated with the record.
+  \item Allows the informatician to easily set up tables that are linked using foreign keys.
+\end{itemize}
+
+\subsection{Connecting to a Database}
+The process of setting up a database to be used with Physio-MIMI is explained in this section.  The sections include, setting up the Honest Broker Adapter, registering the Adapter with the Honest Broker Core, and mapping the database columns to the ontology within the Data Source to Ontology Mapper.
+
+The first step of connecting an existing data source is shown in Figure \ref{fig:new_data_source}.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/new_database.png}
+  \end{center}
+  \caption{Connecting a New Data Source}\label{fig:new_data_source}
+\end{figure}
+
+% TODO Fill in how to connect the data source.
+
+\subsubsection{Mapping Database Tables and Columns}
+
+Within VISAGE, the informatician now has access to his institution's database.  The informatician is given a list of tables and columns within the database, along with a summary view of values within each of the columns.  The informatician can then choose to map a specific column to the ontology, and is given a list of possible ontology terms that may be the closest to the column.  Once a term from the ontology is chosen, the informatician can continue and assign units for concepts with a non-discrete range, or assign terms to the values within the column.  Once a sufficient number of terms are mapped, inferred terms (Section \ref{sec:formula}) may appear that have been automatically generated by VISAGE.  The informatician also has the ability to set up foreign key relations and joins between tables within the database.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/database_mapper/continuous_concept_data.png}
+  \end{center}
+  \caption{Mapping Units to Concepts}\label{fig:continuous_concept_data}
+\end{figure}
+
+The Ontology Database Mapper can handle information that is stored in the database on the column level, or even within the values of the rows within the database.  For example, the diagnosis of Obstructive Sleep Apnea can be stored at varying levels in the database.  In one database, the information may be stored in a boolean column called hasObstructiveSleepApnea.  In this case, a value of true would indicate a diagnosis of Obstructive Sleep Apnea, while a value of false would imply the contrary.  In a second database, a column may exist simply called Diagnosis.  Values in this column maybe be `osa' for Obstructive Sleep Apnea, `rbd' for REM Behavioral Disorder, and `csa' for Central Sleep Apnea.  The Ontology Database Mapper can handle both of these instances by allowing the informatician to map the column, or to directly map the values within a column.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/database_mapper/boolean_concept_data.png}
+  \end{center}
+  \caption{Mapping Boolean and Categorical Concepts}\label{fig:boolean_concept_data}
+\end{figure}
+
+A variety of different terms can be mapped inside the Ontology Database Mapper.  These include identifiers, dates, categorical, boolean, and non-discrete range terms.  Identifiers allow the informatician to anchor patients and event objects within the database.  Identifiers are used to generate a patient-centric model that can be compared across various data sources.  Dates allow special widgets to be used in the Query Builder for easier querying, but are more importantly used to generate inferred data such as calculated Age at Time of Study term, given a Birth Date and Study Date.  Categorical and boolean are the same type of term since this information can be stored at two levels in the database as seen above, and these are represented in a similar format in the query.  Gender would be a categorical concept as it contains a specific subset of children, specifically Male and Female, while a medication such as benzodiazepine is boolean since it is not necessarily defined by its children.  However both categorical and boolean terms are evaluated in an identical fashion the query translation, and also allow the database to queried over an extended list of ontology terms.  Non-discrete range terms are columns that contain data such as Weight, and the units of this can be explicitly set by the informatician.  For example, a query might come across for Weight in kilograms however the database has Weight in pounds.  This case is handled by the Units Ontology.   Once a portion of the database has been mapped, the Ontology Database Mapper can provide of a list of inferred terms that are created via ontology traversal and formula expansion.
+
+% TODO Expand/Complete Data Source Mapper
+
+
+% \subsection{Populating the Patient-Event Model}
+% Getting Data into Patient Model (from different database schemas)
+% Setting up the ontology
+
+% 1. Mapping and anchoring the data sources
+% 1.1 Units Ontology
+% 1.2 Mapping column values, as opposed to columns, allows complex queries against different data types
+% 1.3 Visualizing the Database-Ontology Mapper
+% 2. Setting up Join Criteria and Handling Patient and Event Anchors
+
+% What does it mean to map and anchor locations in the data source?
+% Terms from the ontology are assigned by an informatician to values within the data source.
+
+
+
+% \section{Conclusion}
+% TODO UPDATE
+% So far the system is able to do rudimentary query translation, it can aggregate results from distributed databases, it can manage queries generated by a single user, it can import and make full use of multiple RDF/OWL ontologies, it provides a data source to ontology mapper for the Informatician, and it provides a Query Explorer for comparison across multiple queries.
+
+% Distributed Databases, Intended to Support I2B2 databases, ORACLE, POSTGRES, MYSQL, INGRES, etc
+\section{The Honest Broker Adapter}\label{sec:honest_broker_adapter}
+
+A distributed system is defined by a series of nodes or computers that interact with each other via messaging passing to solve a particular problem.  Distributed systems have been used for problems that can be solved in parallel but that take a large amount of computing power, in this case, the individual nodes in the distributed system work on a subset of the overall problem.  Distributed systems are also used in environments were data is not available at all nodes, but where the nodes can request the data from each other as needed.
+
+In the case of Physio-MIMI, the distributed system of data sources helps solve two problems.  First, since the information does not reside in one place, the distributed system allows queries to be generated across the system without needing all of the data to reside in one central location.  In essence this property allows Physio-MIMI to operate without the need of a data warehouse.  Since the data is stored locally at each database, additional data can be inferred and transmitted back to researcher by running local applications for data analysis.  This additional information is usually much smaller than the original size of the data which enables quicker response time and saves bandwidth, especially when analyzing polysomnogram (PSG) files which can be hundreds of megabytes to a few  gigabytes in size.  Second, the ability to run the query in parallel against the individual data sources allows the retrieval of real-time results for queries issued by a researcher.
+
+The architecture of the system supports distributed databases.  Distributed databases are connected via the University of Michigan's Honest Broker technology.  Honest Broker is designed to offer a secure solution for creating a web-service around an arbitrary database.  This solution allows Physio-MIMI to securely query any database attached through the Honest Broker services.
+
+The purpose of the Honest Broker Adapter (HBA) is to provide a unified view of the underlying database.  The Honest Broker Adapter accepts and translates queries coming from the Honest Broker Core and sends result sets back through to the Honest Broker Core.  The HBA achieves this by creating a secure web-service around the database.  The Honest Broker Adapter has direct contact with the database and is located behind the institutions firewall.  Once the HBA has been registered with the HBS, the adapter communicates via mutual SSL with the Honest Broker Core.  Additionally, in order to aid the Ontology Database Mapping in VISAGE, the HBA provides database table and column information, returns query results, handles query translation and result set normalization, contains a meta data database that stores the adapters data source to ontology mappings, and provides a file service to securely transmit files through the Honest Broker Core and back to the researcher in VISAGE.  Examples of messaging formats between VISAGE and the Honest Broker Core can be seen in Appendix \ref{app:messaging_formats}.
+
+%%%%%%%%%%
+\subsubsection{Setting up the Honest Broker Adapter}
+% TODO Fit this somewhere
+The Honest Broker Adapter is a self contained Java WAR file that can be quickly deployed in a Tomcat instance running under the Apache web server.  The WAR file includes configuration for the adapter to be able to directly communicate with the target database along with information to connect to files associated with the database records.  Once Tomcat has been started, the WAR file is deployed, and a web-service is created.  It is important to note that this web-service uses mutual SSL encryption with the Honest Broker Core for maximum security.  The deployed web-service provides database table and column information, the status of the attached database along with the status of the adapter, and also an interface to accept ontology and unit information, and an interface to accept and give results to abstract ontological queries.
+%%%%%%%%%%%%%
+
+% %%%%%%%%%%% TODO MOVE BELOW
+% \subsection{The Honest Broker Core}\label{honestBrokerCore}
+% 
+% \begin{figure}[htp]
+%  \begin{center}
+%    \includegraphics[width=6.0in]{images/data_access_physiomimi_details.png}
+%   \end{center}
+%   \caption{Physio-MIMI Data Access Details.}\label{fig:data_access_physiomimi_details}
+% \end{figure}
+% 
+% Figure \ref{fig:data_access_physiomimi_details} shows the Honest Broker Core as a midway point between VISAGE and the Honest Broker Adapters.  The Honest Broker Core is primarily responsible for providing a secure messaging link between VISAGE and all of the Honest Broker Adapters.  This functionality helps alleviate VISAGE from having to vet each data source on an individual basis.  The Honest Broker Core also provides a framework to generate a federated query when a query is sent through to the Honest Broker Core, along with aggregating results that return from the individual adapters.  A list of the Honest Broker Core responsibilities can be seen in the following list:
+% 
+% 
+% 
+% \begin{itemize}
+%   \item Creating a Secure SSL link between VISAGE and the Honest Broker Adapter
+%   \item Registering and Making Available Adapters to VISAGE
+%   \item Informing VISAGE of the status of connected Honest Broker Adapters
+%   \item Aggregating results across adapters
+%   \item Returning records and specific patient cohort information
+%   \item Secure File Streaming from the Adapter to VISAGE
+%   \item Provide auditing trails to show which client applications, such as VISAGE, are accessing the distributed databases.
+% \end{itemize}
+% %%%%%%%%%%%%% TODO MOVE ABOVE
+
+
+\section{Preliminary Evaluation of Physio-MIMI}
+
+% Evaluation - Interface, Handling Different Datasource schemas
+
+% Read and comment on Marti Hearst Publications http://people.ischool.berkeley.edu/~hearst/publications.html
+Physio-MIMI presents a novel architecture for querying distributed data sources through the use of a visual query interface.  Several other systems, such as Harvard's i2b2 and Vanderbilt's REDCap also present systems that allow for the querying of underlying patient records.  While the underlying architecture of these systems is different, the interface presented to the researcher can be compared in terms of usability.  This chapter presents an outline of evaluation criteria presented in various papers, along with comparisons between Physio-MIMI and these systems using usability criteria, and a comparative usability study of Physio-MIMI.
+
+\subsection{Criteria for System Evaluations}
+Setting criteria for evaluative studies of user interfaces becomes more difficult as user interfaces have quickly advanced in the past few years.  Hearst describes a method for automating usability interfaces \cite{503114}.  This process is adopted here in order to do effectively \emph{capture}, \emph{analysis}, and \emph{critique} the VISAGE interface.  Hartmann describes a way to measure the general usefulness for a website by defining five major criteria \cite{hartmann2007}.  Hartmann's criteria are described below to provide a foundation for the preliminary evaluation of Physio-MIMI in Section \ref{sec:physiomimi_evaluation}.
+
+\begin{itemize}
+  \item \emph{Usability} is defined as the ability to easily learn and memorize functionality in the system, the efficiency provided by the system, the ability of the system to minimize the amount of errors the user may make, and the subjective satisfaction the user may get from the system.  Usability is described as a standard by the International Organization for Standardization \cite{iso1997}.
+  \item \emph{Content} is measured by the relevance to the field for which the website is used.  Popular websites can attribute much of their success to providing interesting and appropriate content \cite{lynch2001}.
+  \item \emph{Aesthetics} represents the format of the content within the web site along with the general layout of the system. 
+  \item \emph{Reputation} is portrayed by the ability of the user to relate to the identity of the owner or company of the website through the use of consistent coloring, style, logos, and products.
+  \item \emph{Customizability} is defined by how much the user can modify the website in order to make the website feel like the user's own.  \emph{Customizability} has a large influence on both the \emph{usability} and \emph{content} of a website.
+\end{itemize}
+
+
+\subsection{Patient Record Systems}
+
+In this section a close look is taken at the Partners HealthCare system described by Murphy \cite{murphy2000} and which today is the foundation of the i2b2 project \cite{i2b2webclient}.  The Partners HealthCare system is a large patient healthcare record integration system that has access to 1.8 million patients.  The underlying data is stored using a data warehouse approach, and patient records are then indexed on their institution and demographics.  An important feature of the Partners HealthCare system is that it is designed for the average user.  The system user is provided with a Venn-diagram like interface that allows the user to drag items from a tree-folder hierarchy into the Venn-diagram which represents selected criteria for patient cohort identification.  Murphy also describes the security architecture that is put into place to safeguard queries that are generated to access these large data sensitive repositories \cite{murphy2002}.
+
+Another patient record system is the REDCap system designed at Vanderbilt University \cite{Harris2009377}.  The REDCap system takes the approach of providing a common structure for the construction of clinical and translational research databases.  REDCap, which stands for Research Electronic Data Capture, designs workflow methodologies that are used to facilitate the capture of data for studies.  The study design and data capture solution is then presented on a website that can query the underlying REDCap data source.
+
+\subsection{Physio-MIMI Usability Study}\label{sec:physiomimi_evaluation} %TODO add numbers of students and researchers
+The usability evaluation of Physio-MIMI is described in this section.  First, 15 participants were chosen from a group of students and researchers who have knowledge in the area of website design and patient record systems such as i2b2, REDCap or caGrid.  Second the participants were each passed through the following procedure in order to familiarize the participants with the basics of the systems to evaluate.
+
+\begin{enumerate}
+  \item Describe the overall purpose of the system.
+  \item Demonstrate the basic features and strengths of each system.
+  \item Demonstrate one complex example in the system.
+\end{enumerate}
+
+Next the participants were asked to revisit both systems after the brief tutorial to record both subjective and objective answers.  The participants were asked to evaluate the following two queries using the VISAGE interface and the i2b2 web interface.
+
+Query One:
+\begin{verbatim}
+The patient is female
+The patient's age at the time of procedure was above 18
+\end{verbatim}
+  
+Query Two:
+
+\begin{verbatim}
+The patient is female
+The patient's age at the time of procedure was above 65
+The patient has Obstructive sleep apnea disorder
+\end{verbatim}
+
+Both queries are fairly simple, however they display nuances between the two systems.  Searching for terms is a limiting factor within both systems.  Participants feedback on searching for terms within the ontology are as follows.  For VISAGE, a participant mentioned:
+
+\begin{quote}
+``\emph{The query terms: `Female sex: true/false' and `gender finding: female sex' are similar. It is hard to tell which to use unless [it is specified by someone].}''
+\end{quote}
+
+Along similar lines, another participant noted that:
+
+\begin{quote}
+``\emph{When I used Female sex and set it to true, it said it didn't map. I then used gender finding and it was ok.}''
+\end{quote}
+
+These comments show that the ontology terms have room for improvement, and that the interface should be streamlined better to make the difference more transparent to the end user between querying gender with the value of female, as opposed to querying female with the value true.  Both of these queries should return identical results within Physio-MIMI, however they are currently displayed differently.  In i2b2, participants had the following comments:
+
+\begin{quote}
+``\emph{I like that I can see a list of previous queries and the structure of the ontology. And I can select/search for `female'}''
+\end{quote}
+
+\begin{quote}
+``\emph{Not as easy to find basic terms like age and gender, searching for these terms is not possible.}''
+\end{quote}
+
+The results within the i2b2 framework were mixed as some participants struggled with the interface to find terms quickly, while others readily adapted to the interface.  In future iterations, Physio-MIMI will take a hybrid approach to searching for terms to accommodate both types of users.
+
+The overall evaluation for querying the interface and understanding the results leaned in the favor of VISAGE as can be seen in Table \ref{tab:interface_comparison}.
+
+\begin{table}[htp]
+  \begin{centering}
+\begin{tabular}{cccc}
+  \hline
+  Criteria & VISAGE & i2b2 & Result\\
+  \hline
+  Difficulty Specifying Query & 6.9 & 4.3 & +60\% improvement\\
+  \hline
+  Difficulty Understanding Results & 8.4 & 7.5 & +12\% improvement\\
+  \hline
+\end{tabular} \caption[Comparison of Query Interface]{Comparison of Query Interface between VISAGE and i2b2.  The scale goes from 1 (difficult) to 10 (easy).}\label{tab:interface_comparison}
+\end{centering}
+\end{table}
+
+
+In terms of performance in returning results for the query, both i2b2 and VISAGE were at the same level of speed, however i2b2 did not provide results for sub-portions of the query. One participant noted that:
+
+\begin{quote}
+``\emph{No records were returned [in i2b2], it was not very clear which part of the query didn’t return the results, so it will be difficult to modify the query.}''
+\end{quote}
+
+Another participant commented positively on the feedback provided by the i2b2 query interface when a query was executed.
+
+\begin{quote}
+``\emph{[i2b2 was] relatively fast. Was cool to see the execution time counting.}''
+\end{quote}
+
+The evaluation makes apparent that participants react well to interfaces that provide much more interactive feedback.  Table \ref{tab:evaluation_01} displays results pertaining to the use of the query interface between both systems.  Table \ref{tab:evaluation_01} focuses on \emph{usability} and \emph{content} presented by the websites.
+
+% Lower is better
+% Easier to Navigate Ontology in Physio-MIMI (2.2 vs 4.6)
+% Easier to Specify Query in Physio-MIMI (2.2 vs 5.0)
+% Easier to Navigate in Physio-MIMI (2.1 vs 3.7)
+% Information Less overwhelming in Physio-MIMI (4.0 vs 5.1)
+\begin{table}[htp]
+  \begin{centering}
+\begin{tabular}{cccc}
+  \hline
+  Criteria & VISAGE & i2b2 & Result\\
+  \hline
+  Navigating Ontology & 7.8 & 5.4 & +44\% improvement\\
+  \hline
+  Specifying Query & 7.8 & 5.0 & +56\% improvement\\
+  \hline
+  Page Navigation & 7.9 & 6.3 & +25\% improvement\\
+  \hline
+  Overwhelming Information & 6.0 & 4.9 & +22\% improvement\\
+  \hline
+\end{tabular} \caption[Content and Usability Comparison]{Query Interface Comparison for \emph{Content} and \emph{Usability} between VISAGE and i2b2.  The scale goes from 1 (difficult) to 10 (easy).}\label{tab:evaluation_01}
+  \end{centering}
+\end{table}
+
+VISAGE scores better for navigation and specifying the query.  The amount of information contained on the page is limited within VISAGE to create a more usable interface, and as a result, both i2b2 and VISAGE have fairly average scores for overwhelming information.  These numbers show that there is still room for improving and streamlining the VISAGE interface in order to make it easier to use for users.  Table \ref{tab:evaluation_02} continues the comparison between VISAGE and i2b2 and focuses on the \emph{reputation} and \emph{aesthetics} of the website.
+
+% Higher is better
+% Product more identifiable in Physio-MIMI (7.2 vs 6.2)
+% Consistent Color Scheme between both (7.5 vs 7.3)
+% Content more informative in Physio-MIMI (7.6 vs 6.3)
+\begin{table}[htp]
+  \begin{centering}
+\begin{tabular}{cccc}
+  \hline
+  Criteria & VISAGE & i2b2 & Result\\
+  \hline
+  Product Identifiability & 7.2 & 6.2 & +16\% improvement\\
+  \hline
+  Consistent Color Scheme & 7.5 & 7.3 & +2\% improvement\\
+  \hline
+  How Informative is Content & 7.6 & 6.3 & +20\% improvement\\
+  \hline
+\end{tabular} \caption[Reputation and Aesthetics Comparison]{Query Interface Comparison for \emph{Reputation} and \emph{Aesthetics} between VISAGE and i2b2.  The scale is from 1 (weak) to 10 (strong).}\label{tab:evaluation_02}
+\end{centering}
+\end{table}
+
+Finally the participants were asked to give overall impressions of the three overall criteria, \emph{aesthetics}, \emph{usability}, \emph{customizability}.  The results are shown in Table \ref{tab:evaluation_03}.  Overall VISAGE rated higher than i2b2.
+
+% Higher is better
+% Overall Aesthetics better in Physio-MIMI (7.8 vs 5.7)
+% Overall usability better in Physio-MIMI (8.2 vs 5.7)
+% Overall customizability better in Physio-MIMI (6.0 vs 4.6)
+\begin{table}[htp]
+  \begin{centering}
+\begin{tabular}{cccc}
+  \hline
+  Criteria & VISAGE & i2b2 & Result\\
+  \hline
+  Content & 7.3 & 5.4 & +35\% improvement\\
+  \hline
+  Aesthetics & 7.8 & 5.7 & +36\% improvement\\
+  \hline
+  Reputation & 7.4 & 6.6 & +12\% improvement\\
+  \hline
+  Customizability & 6.0 & 4.6 & +52\% improvement\\
+  \hline
+  Usability & 8.2 & 5.7 & +43\% improvement\\
+  \hline
+\end{tabular} \caption[Overall Interface Comparison]{Overall Query Interface Comparison between VISAGE and i2b2. The scale is from 1 (weak) to 10 (strong).}\label{tab:evaluation_03}
+  \end{centering}
+\end{table}
+
+In conclusion, the evaluation shows that VISAGE has important areas to focus on for future development.  The presentation of the ontology on the Query Builder interface needs to be streamlined to accommodate users who like to search with search terms, and to those who like to search using folder hierarchies.  In addition, the VISAGE interface can greatly benefit from more feedback during the query creation process.  Participants in both evaluations for i2b2 and VISAGE both indicated that they did not use the help sections which indicates that users prefer visual indicators embedded directly within the interface.  Finally, users were a lot more comfortable with both query interfaces after the initial learning curve.  This shows that reducing this learning curve by creating a more interactive and intuitive interface could greatly attract more users to both systems.

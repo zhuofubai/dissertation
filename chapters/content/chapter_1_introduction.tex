@@ -1,0 +1,249 @@
+\chapter{Introduction}\label{chap:introduction}
+
+\section{Domain knowledge guided strategy for developing computational approaches for biomedical applications}
+Biomedicine and healthcare have become data intensive fields \cite{costa2014big}.
+Currently,  researchers have generated and shared access to vast amounts of
+genetic, genomic, and phenomic data.
+With the increase in amount and heterogeneity of biomedical data,
+developing approaches for data integration, analysis, and interrogation
+has become a key step to fulfill the translational needs of
+understanding human diseases, discovering new treatment options and
+facilitating medically-relevant decision making \cite{shah2012coming,bellazzi2011data}.
+
+
+
+One of the major challenges in designing computational approaches for biomedical applications
+is to ask the right question, gather relevant data and develop algorithms based on a deep understanding of the problem.
+In this dissertation, I present a domain knowledge guided strategy towards addressing this challenge.
+I use problem-specific motivations based on domain knowledge
+to guide the process of (1) gathering relevant data from massive amounts of existing biomedical data,
+(2) connecting heterogenous data, and (3) designing algorithms to discover knowledge from the data (Fig. \ref{methodology}).
+
+I demonstrate the effectiveness of the strategy using applications in three distinct contexts:
+(1) retrieving medically-related images from massive web images based on their contents,
+(2) detecting genetic basis for human diseases towards
+genetics-based drug discovery,
+and (3) repositioning drug treatments based on disease genetics.
+Among them, the goal of web medical image retrieval is to support patients'
+self-education and decision-making.
+Disease-associated gene prediction and drug repositioning are fundamental components
+of translational biomedical research.
+The rest of this chapter will describe the background, challenges and the application of the
+knowledge guided strategy in each context.
+
+
+\begin{figure}[htb!]
+\vspace{0em}
+\begin{center}
+\includegraphics[width=\textwidth]{Chap1_methodology.eps}
+\vspace {0em}\caption{Domain knowledge guided strategy in designing approaches for biomedical application. The strategy is applied in three contexts: (1) retrieving medically-related web images, (2) detecting genetic basis for human diseases, and (3) repositioning drug treatments.} \label{methodology}
+\end{center}
+\vspace {0em}
+\end{figure}
+
+
+% the picture
+
+\section{Retrieving medically-relevant web images}
+Medical knowledge in both textual and visual format is important for health information retrieval
+and clinical applications. A number of comprehensive textual knowledge
+bases have been constructed and made available in the medical domain,
+such as the Unified Medical Language System (UMLS) {\cite{humphreys1998unified}}.
+In comparison, fewer studies have attempted to systematically organize medical
+knowledge in a visual format. Many medical image bases concentrate on specific domains, such as lung
+CT images \cite{armato2004lung}, cardiovascular MRI images \cite{keator2008national},
+and human anatomy images \cite{adma}. The scale of these databases
+is limited, largely because the image collection processes are manual and laborious.
+Also, they annotate images by natural language sentences,
+which introduce ambiguities in image
+retrieval. Last but not least, most existing image
+bases are not freely available.
+
+Our eventual goal is to build a freely accessible, large scale and patient
+oriented health image base, which contains images of human disease
+manifestations, organs, drugs and other medical entities.
+Unlike existing databases, we plan to build up our image base in line with
+the UMLS structure and annotate images by terms from
+standard medical ontologies, such as the FMA (Foundational Model of
+Anatomy) \cite{rosse2003reference}, ICD9 (International Classification of
+Diseases, 9th revision) \cite{slee1978international} and RxNorm \cite{liu2005rxnorm}.
+For each medical term,
+we seek to provide a set of high quality images with relevant contents,
+creating a rich and reusable information resource for patient education,
+patient selfcare and web-content illustration.
+Since the image base is designed for consumers, we
+collect photographic images, which are a significant
+subset of all biomedical images.
+
+
+The most challenging problem in building the image base is
+how to collect a large number of credible images for tens of thousands of medical terms.
+The web is a readily available source: it is free, it contains billions of images
+and is fast growing, and search engines such as Google can already do reasonable
+image retrieval based on text queries. However, the web is heterogeneous, and most
+of the images are non-medical and need to be filtered.
+Generic image retrieval engines such as Google are not specialized for medical applications.
+For example, the top Google results
+for UMLS concepts ``heart," ``ear deformities,
+acquired," and ``ibuprofen" do not only contain
+images of the heart organs, ear deformities and ibuprofen
+tablets, but also include other items such as
+cartoon symbols, paper snapshots, and molecular
+formulae. In particular, image retrieval for disease terms is
+highly challenging, since disease manifestation
+images contain diverse objects and complex backgrounds.
+To collect medically-relevant images from the
+web, we clearly need a content-based image
+retrieval (CBIR) method, which requires minimal manual effort,
+as the number of disease terms is large.
+
+
+This application focuses on developing an automatic approach to retrieving
+web images on human diseases.
+Traditional supervised methods need a training
+image set for each disease, thus will not scale when the number of diseases is large.
+Our key observation is that although the
+number of diseases is in the tens of thousands, most disease manifestations are
+shown on body parts, and the number of body parts is much smaller.
+I develop an ontology-guided approach to retrieve disease images from the web.
+In this approach, I extract the knowledge of the affected body parts for a given disease term from UMLS.
+Then I use this knowledge to guide the selection of pre-trained organ detectors, and
+combined the organ detection outputs to retrieve disease images.
+
+
+\section{Detecting novel genetic basis for human diseases}
+Identifying genetic basis for human diseases plays
+an important role in elucidating disease mechanisms
+and discovering targets of drug treatments \cite{Plenge,Hurle}.
+For computational strategies to predict disease genes,
+mining relevant data for specific disease types can lead to new discoveries
+\cite{barabasi2011network,Tiffin,Piro}.
+Traditional approaches exploited human genomic data and prioritized genes
+for a disease if the genes are functionally similar to
+the known disease genes \cite{kohler2008walking,Xu,franke2006reconstruction,aerts2006gene}.
+A few recent studies incorporated clinical phenotype data
+to increase the ability of identifying new disease genes
+\cite{lage2007human,li2010genome,wu2008network,wu2009align,vanunu2010associating,hwang2012co}
+and assumed that similar disease phenotypes reflect overlapping genetic
+causes \cite{brunner2004syndrome,oti2008phenome,houle2010phenomics}.
+
+In the first application, I develop an approach to
+predicting genes for parasitic infectious diseases.
+Traditional disease gene discovery methods that exploit human protein
+interactome are insufficient for infectious diseases,
+which naturally involve human-pathogen protein interactions.
+I hypothesize that the study on human-parasite protein interactions can
+provide insights into the molecular signatures
+for disease-specific host immune responses
+\cite{wu2014strain, khor2011revealing,
+janes2011investigating}.
+I construct a cross-species network
+to integrate human-human, parasite-parasite and human-parasite protein
+interactions. Then I use known disease genes as the seeds to find novel candidate disease associated genes.
+I apply the approach on {\it Plasmodium falciparum} malaria, which is the most deadly parasitic
+infectious disease and killed six millions people worldwide in 2012 \cite{who}.
+I demonstrate that the top-ranked candidate genes are not only associated with malaria, but also
+have the potential to guide genetics-based anti-malaria drug discovery.
+
+In the second application, I develop a phenotype-driven approach to predicting disease-associated genes.
+For syndromes and many multifactorial diseases,
+systematically analyzing disease phenotype networks in combination
+with protein functional interaction networks have great potential in illuminating
+disease pathophysiological mechanisms
+\cite{barabasi2011network,oti2008phenome,houle2010phenomics}.
+However, disease phenotype networks remain largely incomplete, and
+most current disease gene discovery studies used only one data source of human disease phenotypes
+\cite{lage2007human,li2010genome,wu2008network,wu2009align,vanunu2010associating}.
+Incorporating more comprehensive phenotype data can enhance the performance
+of disease gene prediction.
+Therefore, I explore a new disease phenotype data source--the disease-manifestation
+semantic relationships in the UMLS, and constructed a
+Disease Manifestation Network (DMN).
+I demonstrate through comparative analysis that the phenotype clustering
+in DMN reflects common disease genetics and contains different knowledge from mimMiner, which is a
+widely-used phenotype database.
+Then I develop an innovative and generic strategy to combine DMN, mimMiner,
+and a genetic network, and predict disease-gene associations from the integrated network.
+I apply the approach on Crohn's disease and demonstrate that the predicted genes have the translational
+potential in drug discovery by integrating with drug-target associations.
+
+In the third application, I develop a comorbidity network analysis approach
+to infer novel genetic basis for the link between two diseases,
+and apply the approach on colorectal cancer (CRC) and obesity.
+Phenotype-driven approaches to predicting novel disease genes
+may not be suitable for cancers, which usually have non-specific
+disease manifestations, such as pain, fever and ascites.
+Disease comorbidity often leads to unexpected disease links \cite{oti2008phenome}
+and offers novel insights into disease genetic mechanisms \cite{blair2013nondegenerate,avery2011phenomics}.
+Specially, studying cancer comorbidity has impacted the understanding of cancer mechanisms \cite{chen2014mining}.
+The common comorbidity between CRC and obesity in the context of comorbidity network
+provides insights into the novel molecular evidence underlying both diseases.
+Traditional comorbidity studies usually focus on pairwise disease links
+\cite{rzhetsky2007probing,park2009impact,hidalgo2009dynamic,roque2011using}, and
+the results are often biased due to noises and intrinsic bias in the patient data.
+I explore new patient data, which are not biased towards patients of certain ages and genders, and
+develop a comorbidity mining approach to reduce the bias towards rare diseases.
+Instead of studying pairwise disease comorbdity,
+I construct a disease comorbidity network and design a network analysis approach to identify common comorbidity between two diseases.
+Gene expression analysis guided by the detected common comorbidity identifies a few genes that have the potential to explain the link between CRC and obesity.
+
+\section{Predicting novel drug treatments based on disease genetics}
+Computational drug repositioning approaches lead to rapid drug discovery.
+Previous studies have predicted new indications for existing drugs
+by analyzing multiple types of data, such as drug side effects \cite{campillos2008drug},
+drug response gene expressions \cite{dudley2011computational},
+and disease similarities \cite{gottlieb2011predict}.
+Recent studies demonstrate that disease genetics in
+genome-wide association studies (GWAS) \cite{sanseau2012use} and
+Online Mendelian Inheritance in Man (OMIM) \cite{wang2013rational} has great
+potential to guide drug discovery.
+On the other hand, International Mouse Phenotyping Consortium (IMPC) \cite{brown2012towards}
+has made available large amounts of phenotypic descriptions for mouse genetic mutations
+based on systematic gene knockouts, which are impossible on human.
+The mouse phenotype data enrich the knowledge on disease genetic basis,
+and has facilitated the detection of new disease genes \cite{hoehndorf2011phenomenet}
+and drug targets \cite{hoehndorf2014mouse}.
+Combining human disease genetics and mouse phenotype data will provide novel
+insights into the genetics of many complex diseases, which can guide the discovery
+of novel drug options.
+
+In this application, I develop a novel drug repositioning approach leveraging
+both disease genetics and mouse model phenotypes.
+I apply the approach on drug repositioning for Parkinson's disease (PD).
+I first identify PD-specific mouse phenotypes using well-studied human disease genes.
+Then I search all FDA-approved drugs for candidates that share
+similar mouse phenotype profiles with PD.
+I also compare the approach with pure genetics-based approaches and a
+state-of-art drug repositioning approach based on mouse phenotypes \cite{hoehndorf2012linking}
+to demonstrate the importance of combining these two kinds of data.
+
+
+\section{Contribution and organization of the dissertation}
+In this dissertation, I use five applications to demonstrate that the knowledge guided
+strategies of combining unique data and novel computational approaches effectively contribute
+in solving specific medical problems.
+This dissertation makes the following contributions: the development of a novel ontology-guided approach to retrieving
+disease manifestation images from the web; the development of three computational approaches to predicting
+genetic basis for parasitic infectious diseases, multifactorial diseases, and cancers, respectively;
+the demonstration of the translational potential of predicted disease genes in drug discovery;
+and development of a novel drug repositioning approach based on disease genetics and mouse model phenotypes.
+
+
+
+The remainder of the dissertation is organized as follows:
+
+Chapter \ref{image2} presents an ontology-guided image retrieval method for identifying disease web images.
+
+Chapter \ref{chap:malaria} presents a disease gene prediction approach for malaria based on studying the cross-species genetic networks.
+
+Chapter \ref{phenotype} describes the construction of a novel disease phenotype network and development of a generalizable disease gene prediction approach based on multiple disease phenotype data sources.
+
+Chapter \ref{cancer} introduces the construction of a disease comorbidity network and development of a novel network analysis approach to detecting genetic basis for the link between colorectal cancer and obesity.
+
+Chapter \ref{drug} presents a computational drug repositioning approach combining disease genetics and mouse model phenotypes and its application on Parkinson's disease.
+
+Chapter \ref{conclusion} concludes this dissertation and discusses the possible improvements
+for future work.
+
+
+

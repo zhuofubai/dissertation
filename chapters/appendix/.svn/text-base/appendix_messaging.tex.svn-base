@@ -1,0 +1,530 @@
+\chapter{Messaging Formats}\label{app:messaging_formats}
+
+The Honest Broker Adapter provides the following services for accessing underlying data: Mapping Services used by the Data Source to Ontology Mapper, Querying Services used by the Query Builder and the Query Manager, File Services used to generate urls for secure file downloading, Auditing Services available to administrators.
+
+\section{Mapping Services Provided}\label{sec:honest_broker_mapping_services}
+
+\subsection{StatusService}
+\begin{itemize}
+  \item getStatus: \emph{returns Status message ``OK''}
+\end{itemize}
+
+\subsection{DatastoreIntrospectiveService}
+\begin{itemize}
+  \item datastoreIsAvailable: \emph{returns true if available}
+  \item getTableMetadata: \emph{returns a list of all the tables and their columns}
+  \item getCategoricalValuesForColumn: \emph{returns a list of the categorical values, if the column is categorical. Otherwise, it returns an empty result}
+  \item getAllValuesForColumn: \emph{returns a list of all a column's values, so there may be duplicates}
+\end{itemize}
+
+\subsection{OntologyMappingService}
+
+\subsubsection{ConceptMapping}
+\begin{itemize}
+  \item addConceptMapping: \emph{adds a mapping for a concept, and potentially for a concept's categorical values}
+  \item addConceptMappings: \emph{adds a list of concept mapping}
+  \item getAllMappings: \emph{returns a list of all mapped concepts, and the categorical values of the categorical concepts}
+  \item removeConceptMapping: \emph{removes a mapping for a table/column and its categorical/boolean values, if it has them}
+  \item removeAllConceptMappings: \emph{removes all concept mappings}
+\end{itemize}
+
+
+\subsubsection{SDOConcept Service Calls}
+\begin{itemize}
+  \item addOrUpdateSDOConcepts: \emph{adds a versioned set of SDO concepts, or overwrites the existing concepts of that version}
+  \item findSDOConceptsByVersion: \emph{returns the set of SDO Concepts identified by a given version}
+  \item removeSDOConcepts: \emph{removes the specified version of a set of SDO concepts}
+  \item getAllSDOVersions: \emph{returns a space-delimited list of all of the SDO Concept versions found in adapter}
+\end{itemize}
+
+\subsubsection{Unit Conversion Service Calls}
+\begin{itemize}
+  \item addOrUpdateUnitConversionsOnt: \emph{adds a set of conversions from one unit to another, with a version tag}
+  \item removeUnitConversionsOnt: \emph{removes the specified version of a set of SDO concepts}
+  \item findUnitConversionsByVersion: \emph{returns the set of unit conversions matching the provided version}
+  \item getAllUnitConversionVersions: \emph{returns a space-delimited list of all of the Unit Conversion versions found at the adapter}
+\end{itemize}
+
+\subsubsection{Key mapping Service Calls}
+\begin{itemize}
+  \item addKeyMapping: \emph{adds to the specified adapter a mapping between one key (a table and a column) to another key (a different table/column pair)}
+  \item addKeyMappings: \emph{adds to the specified adapter a list of key mappings}
+  \item removeKeyMapping: \emph{removes from the specified adapter a specified mapping between one key and another}
+  \item removeAllKeyMappings: \emph{removes from the specified adapter all key mappings}
+  \item getAllKeyMappings: \emph{returns all the foreign/primary key pairs defined for a given adapter}
+\end{itemize}
+
+\section{Querying Services Provided}\label{sec:honest_broker_query_services}
+
+\begin{itemize}
+  \item getCount: \emph{returns a PatientData object with the count based on the queryExpression of the submitted Query}
+  \item getSampleDataForAbstractQuery: \emph{returns dummy data to illustrate our new Patient/Event XML message format}
+  \item getDataForQuery: \emph{returns Patient/Event data based on an abstract query}
+\end{itemize}
+
+\section{File Services Provided}\label{sec:honest_broker_file_services}
+
+\begin{itemize}
+  \item getListOfFiles
+  \item getFileDownloadUrl
+  \item getFileServiceConfiguration
+  \item configureFileService
+\end{itemize}
+
+
+
+
+\section{Auditing Services Provided}\label{sec:honest_broker_audit_services}
+
+\subsection{AuditEventReaderService}
+\begin{itemize}
+  \item getRecentAuditEvents: \emph{enables the client to retrieve the most recent audit events}
+  \item getRecentEventsForUser: \emph{returns recent Audit Events for the specified user}
+  \item getRecentEventsForMethod: \emph{is very much like getRecentEventsForUser except that it only returns events for the specified method}
+  \item configureAuditing: \emph{allows you to dynamically set values for the audit interceptors. Setting them using this service does not set them permanently -- those settings are in the hba.properties file (see Honest Broker Adapter Deployment. However, it enables you to quickly experiment without waiting for the adapter to re-deploy, as you would have to do if you edited hba.properties directly}
+  \item getAuditingConfiguration: \emph{returns configuration values as they are currently set for auditing. These are the values cached in the running adapter, not the configuration values stored in hba.properties}
+\end{itemize}
+
+
+\subsection{ProfilerService}
+
+\begin{itemize}
+  \item getAverage: \emph{returns the average amount of time taken to run a sub-operation of a given query}
+  \item getAverages: \emph{returns a list of the performance of all sub-operations for a given query. Note: calling getAverages clears the profiling data for the query, in addition to reporting those data} 
+\end{itemize}
+
+
+\section{Client-Server Messaging Format}
+The client-server messaging format is in the form of HTML and XML.
+
+An example of HTML looks like:
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=HTML]
+<html>
+  <head>
+    <title>
+      Physio-MIMI - Query Builder
+    </title>
+  </head>
+  <body>
+    <div class="title">
+      Query Builder
+    </div>
+    <div class="content">
+      Query Builder Content Area ...
+    </div>
+  </body>
+</html>
+\end{lstlisting}}\normalsize
+\doublespacing
+
+An example of XML looks like:
+\singlespacing
+\footnotesize{
+\begin{lstlisting}[language=XML]
+<?xml version="1.0"?>
+<concept>
+  <concept-type>boolean</concept-type>
+  <data-type nil="true"/>
+  <description>
+    SNOMED-concept_id: 63094006
+  </description>
+  <formula nil="true"/>
+  <id type="integer">5888</id>
+  <maximum type="integer" nil="true"/>
+  <minimum type="integer" nil="true"/>
+  <name>
+  http://mimi.case.edu/ontologies/2009/9
+    /DrugOntology#anticonvulsant
+  </name>
+  <source nil="true"/>
+  <status>complete</status>
+  <unit-type nil="true"/>
+  <units nil="true"/>
+  <version>130.0</version>
+</concept>
+\end{lstlisting}}\normalsize
+\doublespacing
+
+
+\section{VISAGE-Honest Broker Messaging Format}
+The messaging format between VISAGE and Honest Broker uses SOAP XML.  SOAP defines a messaging envelope that wraps around an XML message. Here is an example message to and response from the Honest Broker Core.
+
+\singlespacing
+\footnotesize{
+\begin{lstlisting}[language=XML]
+<soapenv:Envelope
+  xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:hb="http://www.umich.edu/michr/hb-core">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <hb:getAllAdapters/>
+   </soapenv:Body>
+</soapenv:Envelope>
+\end{lstlisting}}\normalsize
+\doublespacing
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=XML]
+<soap:Envelope
+  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns1:getAllAdaptersResponse
+      xmlns:ns1="http://www.umich.edu/michr/hb-core">
+      <databases>
+        <ns2:Adapter
+          xmlns:ns2="http://www.umich.edu/michr/model">
+          <ns2:adapterKey>
+            CASE_ID1
+          </ns2:adapterKey>
+          <ns2:adapterURL>
+            http://localhost:8880/hb2-adapter/ws/
+          </ns2:adapterURL>
+          <ns2:institutionUri>
+            http://www.case.edu
+          </ns2:institutionUri>
+        </ns2:Adapter>
+      </databases>
+    </ns1:getAllAdaptersResponse>
+  </soap:Body>
+</soap:Envelope>
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+\section{OWL Format}
+The following description shows two terms from the Sleep Domain Ontology in OWL format.  Seen here are \emph{Age Finding} and one of its children \emph{Age At Time Of Test}.  \emph{Age Finding} has additional information including valid range parameters for \emph{Age Finding}, and also default units for \emph{Age Finding}.  Child terms will inherit properties and ranges from their parents, and makes defining these much simpler.
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=XML]
+<!-- http://mimi.case.edu/ontologies/2009/1/SDO.owl#AgeAtTime
+      OfTest -->
+
+<owl:Class rdf:about="#AgeAtTimeOfTest">
+    <rdfs:label
+        >Age at time of Test or Study</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#AgeFinding"/>
+</owl:Class>
+
+<!-- http://mimi.case.edu/ontologies/2009/1/SDO.owl#Age
+  Finding -->
+
+<owl:Class rdf:about="#AgeFinding">
+    <rdfs:label>Age</rdfs:label>
+    <rdfs:subClassOf
+      rdf:resource="#GeneralClinicalFinding"/>
+    <rdfs:subClassOf>
+        <owl:Restriction>
+            <owl:onProperty rdf:resource="#hasDataValue"/>
+            <owl:someValuesFrom>
+                <rdf:Description>
+                    <rdf:type
+                      rdf:resource="&rdfs;Datatype"/>
+                    <owl:onDatatype
+                      rdf:resource="&xsd;integer"/>
+                    <owl:withRestrictions
+                      rdf:parseType="Collection">
+                        <rdf:Description>
+                          <xsd:minInclusive
+                            rdf:datatype="&xsd;integer">
+                            0
+                            </xsd:minInclusive>
+                        </rdf:Description>
+                    </owl:withRestrictions>
+                </rdf:Description>
+            </owl:someValuesFrom>
+        </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+        <owl:Restriction>
+            <owl:onProperty
+              rdf:resource="#hasDataValue"/>
+            <owl:someValuesFrom
+              rdf:resource="&xsd;integer"/>
+        </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+        <owl:Restriction>
+            <owl:onProperty
+              rdf:resource="&cpr;representationOf"/>
+            <owl:someValuesFrom
+              rdf:resource="&biotop;AgeQuality"/>
+        </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+        <owl:Restriction>
+            <owl:onProperty
+              rdf:resource="#hasUnits"/>
+            <owl:someValuesFrom
+              rdf:resource="&unit;year"/>
+        </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+        <owl:Restriction>
+            <owl:onProperty
+              rdf:resource="#hasDataValue"/>
+            <owl:someValuesFrom>
+                <rdf:Description>
+                    <rdf:type
+                      rdf:resource="&rdfs;Datatype"/>
+                    <owl:onDatatype
+                      rdf:resource="&xsd;integer"/>
+                    <owl:withRestrictions
+                      rdf:parseType="Collection">
+                        <rdf:Description>
+                            <xsd:maxInclusive
+                              rdf:datatype="&xsd;integer">
+                                120
+                            </xsd:maxInclusive>
+                        </rdf:Description>
+                    </owl:withRestrictions>
+                </rdf:Description>
+            </owl:someValuesFrom>
+        </owl:Restriction>
+    </rdfs:subClassOf>
+</owl:Class>
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+\section{Abstract Query Representation}
+
+The abstract query is represented in the following messaging format.  The query uses panels to distinguish between conjunctive and disjunctive normal form.  This message is in turn wrapped in a SOAP message which is forwarded to the appropriate database adapters through the Honest Broker Core.  Also of note here is the version of the current Sleep Ontology Domain is required along with the current version of the Unit Conversions table.
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=XML]
+  <query>
+    <mod:panel>
+       <mod:Panel>
+          <mod:concepts>
+             <mod:item>
+                <mod:name>
+http://mimi.case.edu/ontologies/2009/1/SDO.owl#GenderFinding
+                </mod:name>
+                <mod:value>
+http://mimi.case.edu/ontologies/2009/1/SDO.owl#MaleGender
+                </mod:value>
+             </mod:item>
+          </mod:concepts>
+       </mod:Panel>
+    </mod:panel>
+    <mod:versions>
+       <quer:sdoVersion>1.0</quer:sdoVersion>
+       <quer:ucVersion>1.0</quer:ucVersion>
+    </mod:versions>
+  </query>
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+
+% <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hb="http://www.umich.edu/michr/hb-adapter" xmlns:hb1="http://www.umich.edu/michr/hb-model">
+%    <soapenv:Header/>
+%    <soapenv:Body>
+%       <hb:getListOfFiles>
+%          <auditInfo>
+%             <hb1:user>
+%                <hb1:email>phayes@umich.edu</hb1:email>
+%                <hb1:firstName>Pam</hb1:firstName>
+%                <hb1:lastName>Hayes</hb1:lastName>
+%                <hb1:userId>1</hb1:userId>
+%             </hb1:user>
+%          </auditInfo>
+%          <path>200297</path>
+%          <filter>*</filter>
+%       </hb:getListOfFiles>
+%    </soapenv:Body>
+% </soapenv:Envelope>
+% 
+% Response:
+% 
+% <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+%    <soap:Body>
+%       <ns1:getListOfFilesResponse xmlns:ns1="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%          <ns1:Fileset>
+%             <ns2:fileFilter xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu">*</ns2:fileFilter>
+%             <ns2:filenames xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu">
+%                <ns3:string xmlns:ns3="http://websvcs.adapter.hb2.michr.med.umich.edu/">carol.txt</ns1:string>
+%                <ns3:string xmlns:ns3="http://websvcs.adapter.hb2.michr.med.umich.edu/">anotherfile</ns1:string>
+%                <ns3:string xmlns:ns3="http://websvcs.adapter.hb2.michr.med.umich.edu/">afile</ns1:string>
+%                <ns3:string xmlns:ns3="http://websvcs.adapter.hb2.michr.med.umich.edu/">carol100M.zip</ns1:string>
+%                <ns3:string xmlns:ns3="http://websvcs.adapter.hb2.michr.med.umich.edu/">carol.zip</ns1:string>
+%                <ns3:string xmlns:ns3="http://websvcs.adapter.hb2.michr.med.umich.edu/">azipfile.zip</ns1:string>
+%             </ns2:filenames>
+%          </ns1:Fileset>
+%       </ns1:getListOfFilesResponse>
+%    </soap:Body>
+% </soap:Envelope>
+% 
+% Request with <web:filter>*.zip</web:filter>:
+% 
+% Response:
+% 
+% <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+%    <soap:Body>
+%       <ns1:getListOfFilesResponse xmlns:ns1="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%          <ns1:Fileset>
+%             <ns2:fileFilter xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu">*.zip</ns2:fileFilter>
+%             <ns2:filenames xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu">
+%                <ns3:string xmlns:ns3="http://websvcs.adapter.hb2.michr.med.umich.edu/">carol100M.zip</ns1:string>
+%                <ns3:string xmlns:ns3="http://websvcs.adapter.hb2.michr.med.umich.edu/">carol.zip</ns1:string>
+%                <ns3:string xmlns:ns3="http://websvcs.adapter.hb2.michr.med.umich.edu/">azipfile.zip</ns1:string>
+%             </ns2:filenames>
+%          </ns1:Fileset>
+%       </ns1:getListOfFilesResponse>
+%    </soap:Body>
+% </soap:Envelope>
+% 
+% getFileDownloadUrl
+% 
+% <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hb="http://www.umich.edu/michr/hb-adapter" xmlns:hb1="http://www.umich.edu/michr/hb-model">
+%    <soapenv:Header/>
+%    <soapenv:Body>
+%       <hb:getFileDownloadUrl>
+%          <auditInfo>
+%             <hb1:user>
+%                <hb1:email>phayes@umich.edu</hb1:email>
+%                <hb1:firstName>Pam</hb1:firstName>
+%                <hb1:lastName>Hayes</hb1:lastName>
+%                <hb1:userId>1</hb1:userId>
+%             </hb1:user>
+%          </auditInfo>
+%          <path>1234</path>
+%          <fileName>archive.zip</fileName>
+%       </hb:getFileDownloadUrl>
+%    </soapenv:Body>
+% </soapenv:Envelope>
+% 
+% The response might look something like this:
+% 
+% <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+%    <soap:Body>
+%       <ns1:getFileDownloadUrlResponse xmlns:ns1="http://www.umich.edu/michr/hb-adapter">
+%          <File>/filesets/782788f60eba3daf2b61bd6b01cd9445/4cb5f39d/1234/archive.zip</File>
+%       </ns1:getFileDownloadUrlResponse>
+%    </soap:Body>
+% </soap:Envelope>
+% 
+% getFileServiceConfiguration
+% 
+% The request looks like this:
+% 
+% <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%    <soapenv:Header/>
+%    <soapenv:Body>
+%       <web:getFileServiceConfiguration/>
+%    </soapenv:Body>
+% </soapenv:Envelope>
+% 
+% The response looks like this:
+% 
+% <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+%    <soap:Body>
+%       <ns1:getFileServiceConfigurationResponse xmlns:ns1="http://www.umich.edu/michr/hb-adapter">
+%          <Configuration>
+%             <ns2:entry xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%                <ns2:key>fileset.rootDirectory</ns2:key>
+%                <ns2:value>/Users/phayes/Documents/helios/hb2/hb2-adapter/filesets</ns2:value>
+%             </ns2:entry>
+%             <ns2:entry xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%                <ns2:key>fileset.timeout</ns2:key>
+%                <ns2:value>30</ns2:value>
+%             </ns2:entry>
+%             <ns2:entry xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%                <ns2:key>fileset.secret</ns2:key>
+%                <ns2:value>**********</ns2:value>
+%             </ns2:entry>
+%             <ns2:entry xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%                <ns2:key>fileset.mappingStrategy</ns2:key>
+%                <ns2:value>edu.umich.med.michr.hb2.adapter.web.BasicFilesetMapping</ns2:value>
+%             </ns2:entry>
+%             <ns2:entry xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%                <ns2:key>fileset.authPath</ns2:key>
+%                <ns2:value>/filesets</ns2:value>
+%             </ns2:entry>
+%          </Configuration>
+%       </ns1:getFileServiceConfigurationResponse>
+%    </soap:Body>
+% </soap:Envelope>
+% 
+% configureFileService
+% 
+% A request might look like this:
+% 
+% <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hb="http://www.umich.edu/michr/hb-adapter">
+%    <soapenv:Header/>
+%    <soapenv:Body>
+%       <hb:configureFileService>
+%          <filesetRootDirectory>/Users/phayes/Documents/helios/hb2/hb2-adapter/filesets</filesetRootDirectory>
+%          <authPath>/filesets</authPath>
+%          <timeout>30</timeout>
+%          <secret>somesecretyoumakeup</secret>
+%       </hb:configureFileService>
+%    </soapenv:Body>
+% </soapenv:Envelope>
+% 
+% and the response might look like this:
+% 
+% <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+%    <soap:Body>
+%       <ns1:configureFileServiceResponse xmlns:ns1="http://www.umich.edu/michr/hb-adapter">
+%          <Result>
+%             <ns2:entry xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%                <ns2:key>fileset.rootDirectory</ns2:key>
+%                <ns2:value>/Users/phayes/Documents/helios/hb2/hb2-adapter/filesets</ns2:value>
+%             </ns2:entry>
+%             <ns2:entry xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%                <ns2:key>fileset.timeout</ns2:key>
+%                <ns2:value>30</ns2:value>
+%             </ns2:entry>
+%             <ns2:entry xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%                <ns2:key>fileset.secret</ns2:key>
+%                <ns2:value>**********</ns2:value>
+%             </ns2:entry>
+%             <ns2:entry xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%                <ns2:key>fileset.mappingStrategy</ns2:key>
+%                <ns2:value>edu.umich.med.michr.hb2.adapter.web.BasicFilesetMapping</ns2:value>
+%             </ns2:entry>
+%             <ns2:entry xmlns:ns2="http://websvcs.adapter.hb2.michr.med.umich.edu/">
+%                <ns2:key>fileset.authPath</ns2:key>
+%                <ns2:value>/filesets</ns2:value>
+%             </ns2:entry>
+%          </Result>
+%       </ns1:configureFileServiceResponse>
+%    </soap:Body>
+% </soap:Envelope>
+
+\chapter{Physio-MIMI Schema}\label{app:schema}
+
+The Physio-MIMI architecture is supported by the flexible meta-data schema.  This appendix presents two key models, the \emph{User} model and the \emph{Ontology} model, in the Physio-MIMI schema along with their relationships to other models.
+
+The \emph{User} model is displayed within the schema of the system in Figure \ref{fig:user_portion_schema}.  The \emph{User} model is a central model in Physio-MIMI since it interacts with many of the other models in the system.  The \emph{User} model handles account registration and creation, audit tracking, and query creation.  The \emph{Query} model allows researchers to share queries through the \emph{QueryUser} model.  The \emph{Query} model is also linked to the \emph{Database} model which represents federated data sources that have been connected to Physio-MIMI.  These data sources contain \emph{DataAccessRules} that are used to grant granular access to the data for particular users.  The \emph{User} model also links to the system \emph{Roles} which provide flexible role creation within the system and allow the user to have multiple roles in the system each with their own set of permissions.  Finally, additional user information is collected for reporting purposes such as browser tracking through the \emph{Browser} model, and audit tracking through the \emph{Audit} model.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/user_portion_schema.png}
+  \end{center}
+  \caption{Physio-MIMI Schema: \emph{User} Model Relationships}\label{fig:user_portion_schema}
+\end{figure}
+
+Figure \ref{fig:user_model_specifics} displays methods and attributes related to the \emph{User} model.  The relationships between models are shown, and can be accessed through table joins defined in the Ruby on Rails model files.  The attributes and methods in the user model cover basic user information, along with encrypted passwords for account authentication, and additional attributes for account creation and deletion.  Various statistics are also kept in the \emph{User} model related to logins by the user.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=3.0in]{images/user_model_specifics.png}
+  \end{center}
+  \caption{Physio-MIMI Schema: \emph{User} Model Methods and Attributes}\label{fig:user_model_specifics}
+\end{figure}
+
+Figure \ref{fig:concept_portion_schema} displays the models closely associated with the \emph{Ontology} model.  The \emph{Concept} model is the central model that keeps track of all the classes defined within the imported OWL file.  Relationships between classes are stored in the \emph{ConceptPropertyConcept} model which handles everything from simple \emph{is\_a} relationships, to more complex relationships such as the \emph{includes} relationship.  Classes are provided with multiple non-unique labels which are stored in the \emph{Term} model, and are related to the \emph{Concept} model through the \emph{ConceptTerm} model.  Finally, concepts can be added to a query through the use of the \emph{QueryConcept} model which tracks the position, grouping, negation, and value assigned to a particular concept in a query.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/concept_portion_schema.png}
+  \end{center}
+  \caption{Physio-MIMI Schema: \emph{Ontology} Model Methods and Attributes}\label{fig:concept_portion_schema}
+\end{figure}
+
+The schema for Physio-MIMI is developed to be modular and compact in order to separate functionality clearly.  The schema is designed in an effort to support a variety of different implementations and requirements without making any portion to domain or application specific.

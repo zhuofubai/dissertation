@@ -1,0 +1,296 @@
+%-------------------------------------------------------------------------------------------------------------------%
+%------------------------------------------------Domain Expert------------------------------------------------------%
+%-------------------------------------------------------------------------------------------------------------------%
+\chapter{Sleep Domain Ontology Infrastructure}\label{chp:sleep_domain_ontology}
+
+This chapter provides an overview of a domain ontology and discusses the design considerations of the generating the Physio-MIMI Sleep Domain Ontology.  Novel additions to the ontology are introduced to display the interaction between the Physio-MIMI interface and the ontological representation of terms and the needs of a domain ontology. Physio-MIMI requires the inclusion of additions to the domain ontology terms in order to provide guidance for the graphical relation within VISAGE.  The relationship of concepts using formulae, the \emph{has\_unit} property, labels and alternate labels, and the use of inference mechanism for the Sleep Domain Ontology are discussed in detail.
+
+\section{Constructing the Sleep Domain Ontology}
+
+An ontology is a set of explicitly defined concepts within a domain along with their properties and relations \cite{gruber1993}.  Ontologies are used in a wide variety of applications including but not limited to artificial intelligence and clinical informatics.
+
+The Physio-MIMI Sleep Domain Ontology is created using a novel ontology segmentation algorithm developed in our group by Ogbuji et al. \cite{ogbuji2010} and links to publicly-available ontologies including Foundational Model of Anatomy (FMA) and Systematized Nomenclature of Medicine -- Clinical Terms (SNOMED CT).  This process creates a set of upper sleep domain terms that are then expanded by the domain expert with the use of Prot\'{e}g\'{e}.  Prot\'{e}g\'{e} in turn creates an Web Ontology Language (OWL) file that gives an XML serialization of the ontology structure.  Physio-MIMI then uses this serialization to import the ontology into the distributed system.  Physio-MIMI makes use of the ontology for data organization and integration, and hypothesis generation and validation.  Many types of ontologies exist, one of which is the upper ontology which represent generic concepts, properties and relationships that are used across a wide set of domains.  A domain ontology is an ontology which describes a certain field of research or a part of the world.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/ontology/SleepDisorders.png}
+  \end{center}
+  \caption{Sleep Domain Ontology Disorders.}\label{fig:sdo_disorders}
+\end{figure}
+
+Physio-MIMI focuses on the Sleep Domain Ontology which includes concepts ranging from sleep medication, disorders, diagnosis to specific concepts that describe polysomnography.  Figure \ref{fig:sdo_disorders} shows a portion of the Sleep Domain Ontology that describes the relationships between various sleep disorders.  A large focus of the Sleep Domain Ontology is the description of the polysomnogram, PSG, which is a recording of various body functions while the body is at sleep.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=2.5in]{images/ontology/protege_sdo.png}
+  \end{center}
+  \caption[Ontology Class Hierarchy Example]{Example of a Class Hierarchy in the Sleep Domain Ontology visualized using Prot\'{e}g\'{e}.}\label{fig:protege_sdo}
+\end{figure}
+
+The ontology is one of the most important pieces in generating queries that can translate across institutions.  The Domain Expert is responsible for setting up the ontology given the specific domain of application.  i2b2 addresses this by adding cells to extend their application.  The approach proposed is that a Domain Expert with sufficient knowledge of the field, in this case the Sleep Domain Ontology, generates a hierarchy of terms that describes the data in the patient records, provide terms to query across, and provide an elegant way to translate between queries.  The Domain Expert has two responsibilities in the system.  The Domain Expert must generate the ontology using OWL and also set anchors within the ontology in order to appropriately group terms together for various roles in the system.  The novel contributions added to the Domain Ontology include:
+
+% Provides novel extensions to the ontology framework via formula, units and data types to increase the utility of an existing ontology and for the purpose of inferring, discovering, and validating data across disparate data sets.
+
+\begin{enumerate}
+  \item Extends existing terms and relationships in the ontology via formula.
+  \item Extends terms with units and data types for data translation and validation.
+\end{enumerate}
+
+These novel additions to the Sleep Domain Ontology have a heavy influence on the amount of data that can be inferred, discovered, and validated within disparate data sources. Section \ref{sec:ontology_units} describes the units ontology provided by Physio-MIMI, along with the use of data types and unit types for data translation, and describes the addition of formulas to the domain ontology for data inferencing.
+% A summary of this chapter is provided in Section \ref{sec:ontology_conclusion}.
+
+\section{The Web Ontology Language (OWL)}\label{sec:ontology_technology}
+
+The ontology is created using the Resource Description Framework (RDF) combined with the Web Ontology Language (OWL).  Both of these are W3 compliant standards.  OWL is a powerful descriptive language that allows a Domain Expert to create ontological hierarchies to describe a specific domain.  Use of this framework gives access to preexisting ontologies that can be easily integrated and extended within the system.  The system makes heavy use of OWL descriptive properties and \emph{is-a} relationships, along with set relationships that give control over the way terms are defined.  A sample of a class defined in OWL serialized as XML can be seen below.
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=XML]
+<owl:Class rdf:about="#AHI_NREM">
+  <rdfs:label>
+    Apnea hypopnea index (AHI) during NREM sleep
+  </rdfs:label>
+  <rdfs:comment>Calculated Apnea Hypopnea Index (AHI)
+    based on: 1. apneas that are associated with
+    NREM sleep stage, and 2. hypopneas that are
+    associated with NREM sleep stage.
+    This includes all desaturation levels.
+  </rdfs:comment>
+  <rdfs:subClassOf rdf:resource="#ApneaHypopneaIndex"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty
+        rdf:resource="#hasConsciousnessState"/>
+      <owl:someValuesFrom
+        rdf:resource="#NonRapidEyeMovementSleep"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+\end{lstlisting}}\normalsize
+\doublespacing
+
+\section{Units Ontology}\label{sec:ontology_units}
+
+Physio-MIMI provides a key data integration component in the form of the Units Ontology. The Units Ontology is the crucial component that ties an abstract query into a concrete query result set.  This chapter describes how the Units Ontology is created and dynamically expanded, and how it plays an integral role in query translation, unit conversions, data source mapping, query exploration, and user-interface configurability.
+
+The Sleep Domain Ontology provides a Units Ontology that provides unit conversions for standard units.  A quick partial overview of the Units Ontology can be seen in Figure \ref{fig:unit_ontology_overview}.  Terms in the Sleep Domain Ontology are assigned to a unit bucket which is used to determine what type of information is stored in the mapping.  The Units Ontology is developed in order to easily and efficiently add units and translations to allow comparison between different data sources.  For example, \emph{Age at Time of Test or Study} in one data source may be in years, in another may be in days.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=2.5in]{images/ontology/unit_ontology_overview.png}
+  \end{center}
+  \caption{Unit Ontology Overview.}\label{fig:unit_ontology_overview}
+\end{figure}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/ontology/ontology_unit_pound.png}
+  \end{center}
+  \caption{Definition of the English Weight Pound.}\label{fig:ontology_unit_pound}
+\end{figure}
+
+Figure \ref{fig:ontology_unit_pound} shows the definition for the English Weight Pound in Prot\'{e}g\'{e}.  Two conversions are given for a pound, one for a pound to an ounce, and one for a pound to a gram.  These formulae define important links between leaf nodes within the unit ontology.  Since the metric and the english units for mass are in different locations within the ontology, the formula is used to combine these two separate ontology trees together.
+
+\subsection{Dynamic Units Ontology Expansion}
+As with other components of the within Physio-MIMI, the Units Ontology makes great use of implicitly defined data.  Physio-MIMI expands the Unit Ontology dynamically as the Units Ontology is invoked. The result of the dynamic formula expansion can be seen in Figure \ref{fig:expanded_formula}.  Physio-MIMI allows the units ontology designer to minimally specify conversions, and then proceeds to fill in the remaining gaps.  It is important to note here that all conversion formulae do not need to be explicitly defined within the ontology.  For instance, the conversion from ounces to pounds is not defined within the units ontology since the inverse conversion already exists.  This flexibility provides the benefit that new ontology terms that are added only need to be associated with one other unit for Physio-MIMI to be able to calculate the rest of the conversions.  The benefit of this is increased scalability of a growing units ontology.  However if the units ontology designer requires a specific conversion from one unit to another, the conversion can still be explicitly added.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/ontology/expanded_formula.png}
+  \end{center}
+  \caption{Expanded Formulae.}\label{fig:expanded_formula}
+\end{figure}
+
+The following algorithm gives a quick overview of how the Ontology Units are calculated by the system.  First, the leaf nodes are extracted from the Units Ontology tree.  Each of these leaf nodes represent a different unit within a similar category that is defined by their parent nodes.  All the sibling leaf nodes within a Units Ontology tree can be directly converted between.  For example, Mass Unit may be the parent concept, and the leaf node concepts might be Grams and Pounds.  Each leaf node in these buckets has at least one formula that relates itself to one of the other leaf nodes.  It is important that these relations are traversable so that the algorithm can reach any other leaf node through this formula chain.  In order to fully expand the relations between the leaf node siblings, each leaf node needs to be initialized to have a formula between itself and every sibling.  This formula will initially be blank.  The next step checks that for a single leaf node $A$, it traverses one level down its formula chain to its joined sibling $B$.  This sibling will have a formula converting the sibling $B$ to yet another unit $C$ within the bucket.  The formula converting the initial leaf node $A$ to this extended leaf node $C$ can be calculated by combining the formulae that convert the initial leaf node $A$ to its formula chain connection $B$, and then replacing terms for this formula with ones from the formula that converts $B$ to $C$.  This expansion is repeated for each leaf node within a bucket until no more expansions can be made. Next, the inter-bucket relationships are calculated.  This can happen if a unit references a unit not within the same bucket.  At this point, the buckets are linked together and the buckets are further expanded.  One example of this is if Mass Units is divided into two buckets, one for SI Mass Units and one for US Mass Units.  The algorithm results in a hash of units with conversion formula to associated units.  Figure \ref{fig:expanded_formula} shows a portion of this hash table.
+
+\subsection{Data Source Mapping}
+The Units Ontology plays an important role in the mapping of the data source.  The units ontology handles complexity associated with storing values in disparate formats.  Physio-MIMI accomplishes this by including the appropriate units when the data sources are mapped from within VISAGE.  The following is a snippet of a SOAP message that is sent from VISAGE to the Honest Broker Adapter.  The message maps the unknown column to a specific location within the Sleep Domain Ontology.  The concept \emph{http://mimi.case.edu/ontologies/2009/1/SDO.owl\#Age} contains information that allows the unit to expect values associated with it to be measured in a unit of time.
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=XML]
+<hb:addConceptMapping>
+  <database_concept>
+    <hb1:column>age</hb1:column>
+    <hb1:conceptId>
+      http://mimi.case.edu/ontologies/2009/1/SDO.owl#Age
+    </hb1:conceptId>
+    <hb1:localUnit>
+      http://mimi.case.edu/ontologies/2009/1/UnitsOntology#year
+    </hb1:localUnit>
+    <hb1:table>studies</hb1:table>
+  </database_concept>
+</hb:addConceptMapping>
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+\subsection{Providing Units in the Query Translation of Units}\label{sec:querying_units}
+The handling of unit conversions can be seen in the Abstract Query that is federated to the Honest Broker Adapters from VISAGE.  The following code excerpt shows how units are passed within the Abstract Query.  The \emph{$<$mod:unit$>$} block contains a URI reference to the unit described by the Units Ontology, in the case below the unit that describes a year.  The concept \emph{http://mimi.case.edu/ontologies/2009/1/\linebreak UnitsOntology\#year} is contained in the bucket defined by \emph{http://mimi.case.edu/\linebreak ontologies/2009/1/UnitsOntology\#time\_unit}.  The \emph{$<$mod:unit$>$} block defines the units described in the range, along with defining the expected return type for the query.
+
+\singlespacing
+  \footnotesize{
+\begin{lstlisting}[language=XML]
+<mod:item>
+  <mod:name>
+    http://mimi.case.edu/ontologies/2009/1/SDO.owl#Age
+  </mod:name>
+  <mod:unit>
+    http://mimi.case.edu/ontologies/2009/1/UnitsOntology#year
+  </mod:unit>
+  <mod:ranges>
+    <quer:Range>
+      <quer:lowerBound>
+        <quer:operator>GTE</quer:operator>
+        <quer:value>40</quer:value>
+      </quer:lowerBound>
+      <quer:upperBound>
+        <quer:operator>LTE</quer:operator>
+        <quer:value>50</quer:value>
+      </quer:upperBound>
+    </quer:Range>
+  </mod:ranges>
+</mod:item>
+\end{lstlisting}}\normalsize 
+\doublespacing
+
+\subsection{Unit Conversions}\label{unitConversions}
+
+Unit conversions are handled during run-time when an abstract query arrives at the Honest Broker Adapter.  The Honest Broker uses three pieces of information to do the appropriate calculation.  First, the Honest Broker Adapter checks the units from the Data Source Mapping.  Second, the Honest Broker Adapter retrieves the units from the incoming query.  Finally, the Honest Broker Adapter looks up the associated translation between the units provided in the Unit Conversion table that is received from VISAGE.  The formula is translated into the appropriate SQL and the result set is normalized to the requested unit type and returned back to VISAGE.
+
+Data may be stored using different units across institutional databases.  One institution may define Weight in kilograms while another may enter Weight in pounds.  This translation is handled by the Unit Ontology.  The unit ontology is an easily expandable OWL Ontology that uses buckets of similar units with single conversions between them.  For example, a kilogram would include the formula
+\begin{align*}
+  kilogram &= gram / 1000
+\end{align*}
+which states that when entering a number in grams, the query translator needs to divide by 1000 in order to get the unit in kilograms.  Pounds might be another unit in the mass bucket which would be defined as
+\begin{align*}
+  pound &= kilogram * 2.2
+\end{align*}
+
+The matrix of all possible permutations is dynamically derived when the Unit Ontology is initially loaded.
+
+Each term in the ontology has a default unit assigned to it, most commonly the metric unit.  For example, \emph{Weight} is measured in kilograms. The query would be sent across to a database as follows.
+
+  \footnotesize{
+\begin{verbatim}
+Query:            Weight = 70 kilograms
+
+Database Mapping: Weight in Pounds
+
+Query Translator: Weight = (70 * 2.2) pounds
+                  Weight = 154 pounds
+
+Database:         Result Set [records]
+\end{verbatim}}\normalsize 
+
+The query translator first changes the query to match the units provided in the database.  Once this is accomplished, the query is run against the database to return the result set.  If the result set requires \emph{Weight} to be returned, the \emph{Weight} is then once again converted back to kilograms since that is the format in which the original query requested the data.
+
+
+\subsection{Result Set Normalization}\label{sec:result_set_normalization}
+Metadata that is retrieved for a query from the Honest Broker Adapters is provided for further analysis in the Query Explorer.  The Query Explorer makes use of the units and allows the user to run additional queries against the underlying data.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/result_set_normalization.png}
+  \end{center}
+  \caption{Result Set Normalization.}\label{fig:result_set_normalization.png}
+\end{figure}
+Most often query results are returned as a count of the total number of records discovered that match the query.  However, this system also provides further analysis methods via the Query Explorer which allows comparison of data across \\databases and across queries.  In order to achieve this, the data needs to be normalized before it returns to the system.  The data is normalized using the Unit Ontology along with the default units provided by the ontological terms given in the query.  So for the example in Section \ref{unitConversions}, \emph{Weight} = 70 kilograms, and the database stores the \emph{Weight} in pounds, the database record for \emph{Weight} needs to be changed back to the units that were initially requested by the query. The formula to convert Pounds to Kilograms ($Kilograms = Pounds / 2.2$) is retrieved from the unit conversion table.  The normalized result can be seen below.
+
+% \subsection{Extracting Data from the Patient-Event Model}
+% Getting Information out of Patient Model (from the sqlite3 database)
+% 1. Querying Data Sources Ontology-based Query
+% 1.1 Visualizing the Query Builder
+% 2. Inferencing and Formula and Unit Conversions
+% 3. Viewing and flattening the Patient-Event Anchor Web
+% 4. Example of Different Schemas map to the Patient-Event Model Single Table Vs Multi Table
+
+% What initiates a request for a Patient-Event Model?
+% A researcher now creates an Ontology-based Query which contains information that will be passed to the data sources.  The Ontology Based Query has several components:  SELECT patient-event-model FROM data-sources WHERE ontology-based-query
+% 
+% The Patient-Event Model is the expected return format of the query.
+% 
+% The Data Sources that are queried can be in different formats, and may have the same patients (can be handled by a master-patient index)
+% 
+% The Ontology-based Query has the following characteristics:
+% A set of ontology terms that is written in Conjunctive or Disjunctive Normal Form including Negation
+% Contains Ontology Terms with a defined value, and units when appropriate
+% 
+% Several changes occur to the Ontology-based Query as it reaches the data source.  The data source translates units as necessary, and the data source infers derived ontological terms.  EXAMPLE: ONTOLOGY UNIT CONVERSION  EXAMPLE: ONTOLOGY FORMULA EXPANSION  The query may request BMI
+
+Once the correct subset of patients and events is retrieved, the Patient-Event Model is filled in with other derived ontological terms and normalized to match the units given by the ontology.  At this point to, the data source also applies secondary de-identification of data if necessary. Once the Patient-Event Model is retrieved from the data sources, it is combined based on patients and events, and similar terms from the ontology.  The Patient-Event model may return partial results from both data sources, which it combines in overlapping sections as appropriate.  After the query translation that is handled at the adapter level, VISAGE retrieves the individual results and recombines the data for further comparison in the Query Explorer.  An example of combined data can be seen in Figure \ref{fig:result_set_combination}.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/query_translation/result_set_combination.png}
+  \end{center}
+  \caption{Result Set Combination.}\label{fig:result_set_combination}
+\end{figure}
+
+
+\subsection{User Interface Configurability}
+The final use of the Units Ontology is to enable researchers to view any underlying data in any unit type that they prefer.  This process is done on the fly, and allows researchers to view data in the appropriate setting.  In this manner, the researcher can specify the units being queried for a non-discrete range term within the Query Builder interface and in turn provides greater flexibility to the researcher to define a query using units with which he is familiar.  For example, a researcher may prefer to work with weight in kilograms as opposed to pounds, or the researcher may prefer to measure in grams to increase the resolution of the query.
+
+\section[Graphical Representation of the Sleep Domain Ontology]{Graphical Representation of the Sleep \\Domain Ontology}\label{sec:widgets}
+
+\subsection{The has\_unit Property}\label{sec:has_unit}
+The \emph{has\_unit} property is the important ontological component that closes the gap between the units ontology and the sleep domain ontology.  The property assigns a default unit type to a term within the domain ontology.  For example, the term \emph{Age} is given the property \emph{has\_unit} \emph{year}.  Since this unit is related to other units through the unit arrays and unit conversions available in Physio-MIMI, an underlying data source can now map the term \emph{Age} using any of the units within this unit conversion bucket.  While \emph{year} may be the default unit set for \emph{Age}, no constraints exist in the system that force \emph{Age} to be mapped or queried using this unit.  Given that the sleep domain ontology follows inheritance properties, any term below \emph{Age}, such as \emph{Current Age}, \emph{Age At Time Of Procedure}, or \emph{Age At Time Of Study} all inherit this value from the parent term \emph{Age}.  This process greatly reduces the amount of information that needs to be added to the ontology.  Additionally this defines this term as being a non-discrete range term. These terms have a slider widget, Figure \ref{fig:slider}, that is used to query them in the Query Builder, a frequency graph, Figure \ref{fig:frequency_graph}, that appears in the Data Source Mapper, and a box plot, Figure \ref{fig:boxplot}, that shows underlying data sources in the Query Explorer.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/slider.png}
+  \end{center}
+  \caption[Slider Widget]{Slider Widget}\label{fig:slider}
+\end{figure}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/frequency_graph.png}
+  \end{center}
+  \caption{Frequency Graph for Body Mass Index}\label{fig:frequency_graph}
+\end{figure}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=3.0in]{images/boxplot.png}
+  \end{center}
+  \caption[Box Plot in Query Explorer]{Box Plot in Query Explorer}\label{fig:boxplot}
+\end{figure}
+
+
+\subsection{The includes Property}\label{sec:property_includes}
+The \emph{includes} property is important in defining the relationship in the ontology between a categorical term, and the terms that represent the range of values that the categorical term may evaluate.  An example here is \emph{Race Finding}.  \emph{Race Finding} is a categorical term that has a range of \emph{Racial Group}.  This relationship is defined using the \emph{includes} property and defines the scope of the values available for \emph{Race Finding}.  \emph{Racial Group} itself has children through the \emph{is\_a} relationship which include \emph{African}, \emph{American Indian}, \emph{Asian}, \emph{Caucasian}, \emph{Pacific Islander}, \emph{Asian Or Pacific Islander}, and \emph{Mixed Race}.  Each of these terms are considered boolean terms however since the terms could be mapped to individual columns within a data source, as described in Section \ref{sec:row_and_column_information} which discusses row-based versus column-based data representations.  Both categorical and boolean terms are represented using check boxes in the Query Builder, Figure \ref{fig:categorical_boolean_check_box}, and using pie charts in both the data source mapper and the query explorer, Figure \ref{fig:categorical_boolean_pie_chart}.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/categorical_boolean_check_box.png}
+  \end{center}
+  \caption[Check Box Widget in Query Builder]{Check Box Widget in Query Builder for Categorical and Boolean Terms}\label{fig:categorical_boolean_check_box}
+\end{figure}
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=3.0in]{images/categorical_boolean_pie_chart.png}
+  \end{center}
+  \caption[Pie Chart in Data Source Mapper]{Pie Chart in Data Source Mapper for Categorical and Boolean Terms}\label{fig:categorical_boolean_pie_chart}
+\end{figure}
+
+\subsection{The some\_value\_from Property}\label{sec:some_value_from}
+The two remaining term data types, date terms and identifier terms, derive their meaning from the \emph{some\_value\_from} OWL property.  This value can either be \\\emph{http://www.w3.org/2001/XMLSchema\#dateTime} for date terms, or \\\emph{http://www.w3.org/2001/XMLSchema\#ID} for identifier terms.  Date terms are queried using the date widgets seen in Figure \ref{fig:date_widget}.  The identifier terms are not queried and do not have a visual representation within the Physio-MIMI system.
+
+\begin{figure}[htp]
+ \begin{center}
+   \includegraphics[width=6.0in]{images/date_widget.png}
+  \end{center}
+  \caption[Date Widget in Query Builder]{Date Widget in Query Builder}\label{fig:date_widget}
+\end{figure}
+
+\subsection{Labels and Alternate Labels}
+  % Discuss: The use of preferred labels (and the removal of preferred labels).
+  Labels are used within Physio-MIMI to allow a term in the ontology to be searched and displayed using different inputs.  A term may have a preferred label which is used by Physio-MIMI to display it throughout the system.  However the term may have alternate labels that help the term be more easily discovered within the ontology.  Labels are not unique to a specific terms, and can be used for different terms.  For example, \emph{Multiple Sclerosis}, and \emph{Mitral Stenosis}, may have the same alternate label \emph{MS}.  When a user searches for \emph{MS} the search would return the primary label appended with the alternate label that allowed the term to be found.  If no alternate label was used for the search, the search results would just show the primary label.  In the above example, a search for \emph{MS} would return: \emph{Multiple Sclerosis (\textbf{MS})}, \emph{Mitral Stenosis (\textbf{MS})}.  Since both of these could be in different medical fields, the search terms could be further limited by the researchers specific domain, which would be accomplished by using separate domain-specific ontologies in the same system.  
+
+\subsection{Property Inheritance}
+
+Mentioned briefly in Section \ref{sec:has_unit}, property inheritance is very useful in defining terms within the ontology.  Terms can be either non-discrete range, categorical, boolean, date, or identifiers.  Given the \emph{is\_a} relationship in all ontologies, terms that fall into one of these categories automatically propagate their properties to their descendants.  This step is crucial for algorithms that depend on expanding medication or diagnosis lists in order to efficiently handle data granularity, Section \ref{sec:data_granularity}, that may exist at the individual data sources.
+
+\section{Conclusion}\label{sec:ontology_conclusion}
+The Sleep Domain Ontology used by Physio-MIMI is an integral part of this dissertation. The underlying addition to the ontology is the formula property which can be seen prominently in the Sleep Domain Ontology and the Units Ontology.  The strengths of using the domain ontology is for data curation and comparative evaluation and analysis.  The specific use of the domain ontology can be seen in the Query Builder and the Data Source Mapper, however the ontology also plays a crucial role in query generation and translation, result set normalization and disparate data integration.

@@ -1,0 +1,43 @@
+% List of Abbreviations (optional)
+\newpage
+\section*{List of Abbreviations}
+\begin{itemize}
+  \item AHRQ: Agency for Healthcare Research and Quality
+  \item CA: Certificate Authority
+  \item CNF: Conjunctive Normal Form
+  \item COMET: Comparative Outcomes Management with Electronic Data Technology
+  \item CPAP: Continuous Positive Airway Pressure treatment for sleep apnea
+  \item CSR: Certificate Signing Request
+  \item CSS: Cascading Style Sheets
+  \item CTSA: Clinical and Translational Science Awards
+  \item DNF: Disjunctive Normal Form
+  \item DSOM: Data Source to Ontology Mapper
+  \item EDF: European Data Format
+  \item EER: Enhanced Entity Relationship model
+  \item ER: Entity Relationship model
+  \item FMA: Foundational Model of Anatomy
+  \item GIT: Global Information Tracker, open-source distributed version control system
+  \item HBA: Honest Broker Adapter
+  \item HBC: Honest Broker Core
+  \item HTML: HyperText Markup Language
+  \item MIMI: Multi-Modality Multi-Resource Informatics Infrastructure
+  \item MVC: Model-View-Controller framework
+  \item NCI: National Cancer Institute
+  \item NCRR: National Center for Research Resources
+  \item NIH: National Institutes of Health
+  \item NREM: Non Rapid Eye Movement sleep
+  \item OMT: Object Modeling Technique
+  \item PHI: Patient Healthcare Information
+  \item PSG: Polysomnogram
+  \item RBD: Rapid eye movement Behavioral Disorder
+  \item REM: Rapid Eye Movement sleep
+  \item RLS: Restless Leg Syndrome
+  \item SNOMED CT: Systematized Nomenclature of Medicine -- Clinical Terms
+  \item Splits: Split night study where half of the night is performed as a diagnostic PSG and in the case of severe apnea a titration during the second half of the night
+  \item SQL: Structured Query Language
+  \item SSL: Secure Sockets Layer
+  \item SVN: Subversion, open-source revision control system
+  \item TI: Titration Study to determine the appropriate pressure for the CPAP treatment
+  \item VISAGE: VISual AGgregator and Explorer
+  \item XML: Extensible Markup Language
+\end{itemize}

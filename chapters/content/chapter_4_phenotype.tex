@@ -1,0 +1,941 @@
+\chapter{Combining multiple human phenotype networks to predict disease-associated genes: application on Crohn's disease}\label{phenotype}
+\section{Motivation}
+
+Systematic study on disease phenotype networks in combination
+with protein functional interaction networks can offer insights into
+disease mechanisms.
+However, the disease phenotype networks remain largely incomplete, and
+most current disease gene prediction
+approaches \cite{lage2007human,li2010genome,wu2008network,wu2009align,vanunu2010associating,hwang2012co}
+used only one single data source of human disease phenotypes.
+Phenotypic similarity databases were usually obtained through
+extracting phenotype knowledge from texts,
+such as biomedical literature \cite{korbel2005systematic} and
+the phenotype descriptions in Online Mendelian
+Inheritance in Man (OMIM) \cite{van2006text,lage2007human, robinson2008human}.
+Among them, mimMiner \cite{van2006text} and human phenotype
+ontology \cite{robinson2008human} are based on OMIM and
+has been widely-used in disease gene prediction
+studies \cite{li2010genome,vanunu2010associating,hwang2012co,natarajan2014inductive,hoehndorf2011phenomenet}.
+
+
+Combining different phenotype data has the potential to reduce the bias in each data source
+and improve the network-based prediction models \cite{mestres2008data, oti2009biological}.
+In this study, we explore new accurate and publicly accessible disease phenotype data in addition to the existing phenotype networks.
+We create Disease Manifestation Network (DMN)
+using the highly accurate and structured clinical manifestation data from
+Unified Medical Language System (UMLS) \cite{lindberg1993unified, bodenreider2004unified, mccray2003upper}.
+Clinical manifestation captures a major aspect of disease phenotype and can predict disease causes \cite{brunner2004syndrome}.
+For example, the Stickler syndrome, Marshall syndrome and Otospondylomegaepiphyseal dysplasia (OSMED)
+have highly similar manifestations and also involve mutations in interacting collagen genes COL2A1, COL11A2, and COL11A1, respectively \cite{annunen1999splicing}.
+The UMLS semantic network currently uses 50,543 disease-manifestation semantic relationships to explicitly link 2,305 diseases to their clinical manifestations.
+In this knowledge base, all disease and manifestation terms are formally represented by unified concepts
+and the semantic relationships between concepts were collected from multiple different ontologies.
+
+We demonstrate that DMN
+not only reflects known disease-gene relationships, but also contains different phenotypic knowledge compared with mimMiner.
+We test the hypothesis through network comparative analysis between DMN, mimMiner \cite{van2006text},
+and the two variants of human disease network (HDN) \cite{goh2007human}, which connects diseases if they share genes.
+The correlation between DMN and HDNs indicated that DMN reflects existing knowledge on genetic relationships among diseases.
+The comparison between DMN and mimMiner demonstrated that the two phenotype networks are largely complementary in nodes, edges and community structures.
+The overall analysis suggests that combining DMN with previous phenotype data sources, such as mimMiner,
+may potentially improve the data-driven  methods for biomedical applications, such as disease gene discovery and drug repositioning.
+
+
+
+Then we develop a novel and generic
+approach to combine multiple
+different data sources on human disease phenotype, and predict
+disease genes from seamlessly integrated phenotypic and genomic data.
+Specifically, we integrate DMN, mimMiner,
+a protein interaction network and known disease-gene associations.
+We predict disease genes from the heterogeneous network,
+and demonstrate the benefit of incorporating an additional
+phenotype network DMN through comparing with a baseline approach,
+which is also based on network analysis but only used mimMiner.
+
+Several recent studies showed
+that genetic basis of diseases from OMIM \cite{wang2013rational} and GWAS \cite{sanseau2012use}
+may lead to the discovery of candidate drug treatments.
+Here, we demonstrate
+that the disease genes predicted by our approach,
+in combination with the drug-target data, may
+guide the discovery of new candidate drugs.
+We use Crohn's disease as examples,
+which both have increasing worldwide prevalence \cite{molodecky2012increasing}
+and is currently incurable \cite{atreya2014vivo,cosnes2011epidemiology}.
+We predict candidate genes for each of the two disease, and
+prioritized candidate drugs based on the rank of drug target genes.
+Then we validate the result with the FDA-approved therapies.
+Our result provides empirical evidence that our disease genetics prediction strategy,
+which combined unique data and a novel systems approach,
+can lead to rapid drug discovery.
+
+
+
+
+
+
+\section{Data and methods}
+In creating the novel phenotype network,
+our approach consists of the following steps (Fig. \ref{dmnmethod}):
+We first constructed DMN using the disease-manifestation associations from UMLS.
+Then we compared phenotypic relationships in DMN and genetic relationships among diseases.
+Finally, we compared DMN with mimMiner \cite{van2006text}.
+  \begin{figure}[h!]
+  \begin{center}
+\includegraphics[width=\textwidth]{Chap4_method1.eps}
+\end{center}
+  \caption{The three steps of network analysis for DMN. }\label{dmnmethod}
+  \end{figure}
+
+In using the novel phenotype network to predict disease-associated genes,
+our approach consists of the following steps.
+We first integrated DMN, mimMiner, and
+a genetic network based on protein-protein
+interactions (PPIs), and constructed a heterogeneous network in Fig.\ref{multiphen_network}.
+Given a disease, we then prioritized the genes using
+a ranking algorithm extended from the random walk model.
+We validated our approach using well-studied disease-gene associations from OMIM
+and compared the performance with a baseline
+disease gene prediction method that used only one
+phenotype network.
+We also evaluated our approach in predicting genes
+for diseases of different classes.
+Finally, we identified
+candidate drug therapies for Crohn's disease based on gene prediction results,
+and demonstrated the translational potential of
+our newly predicted genes.
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.7\textwidth]{Chap4_network.eps}
+\caption{Integrating the knowledge in DMN, mimMiner and the genetic network.}
+\vspace{-.5cm}
+\label{multiphen_network}
+\end{figure}
+
+\subsection{Construct DMN using disease-manifestation associations in UMLS}
+We first extracted disease-manifestation relationships from the UMLS file MRREL.RRF (2013 version).
+The file contains 647 different kinds of semantic relationships between biomedical concepts.
+We collected the concepts pairs linked by the ``has manifestation" relationship,
+and obtained 50,543 disease-manifestation pairs.
+The disease-manifestation relationships come from OMIM \cite{hamosh2005online},
+Ultrasound Structured Attribute Reporting \cite{bell1992form},
+and Minimal Standard Digestive Endoscopy Terminology \cite{tringali2002integration}.
+OMIM is the major contributor among these data sources.
+
+The manifestation terms vary greatly in abundance.
+For example, common manifestations such as ``seizures" are associated with many diseases,
+while rare manifestations such as ``Amegakaryocytic thrombocytopenia" are only associated with one disease.
+We used the information content (1) in to weight each manifestation concept.
+\begin{equation}
+w_c=-log (n_c/N) \label{ic}
+\end{equation}
+Variable $w_c$ is the weight of the manifestation concept $c$,
+$n_c$ is the number of diseases associated with manifestation $c$,
+and $N$ is the total number of diseases.
+Then we modeled the manifestation similarity between disease $x$ and $y$ by
+the cosine of their feature vectors in (2),
+in which the feature vectors consist of manifestations $x_i$ and $y_i$ for disease $x$ and $y$.
+The cosine similarity was used before \cite{lage2007human, van2006text} to quantify phenotype overlaps.
+\begin{equation}
+s\left( {x,y} \right) = \frac{{\mathop \sum \nolimits_i {x_i}{y_i}}}{{\sqrt {\mathop \sum \nolimits_i x_i^2} \sqrt {\mathop \sum \nolimits_i y_i^2} }} \label{cos}
+\end{equation}
+We constructed DMN as a weighted network with the manifestation similarities.
+The edges weights are in the range (0, 1].
+
+\subsection{Compare phenotypic relationships in DMN with genetic disease associations}
+We conducted two experiments to evaluate whether
+the phenotypic relationships in DMN reflect genetic associations among diseases.
+The first experiment is to calculate the correlation between the disease similarities in DMN
+and two quantified measures of genetic associations.
+We first ranked the edges (disease pairs) in DMN by their weights (disease similarities)
+from large to small.
+For top $N$ disease pairs,
+we counted the percentage of disease pairs that share associated genes in OMIM and
+the average number of genes shared by the $N$ disease pairs.
+Then we calculated the Pearson's correlations between $N$ and the genetic measures.
+
+
+In the second experiment, we compared the network topologies between DMN and two genetic disease networks.
+A well-studied genetic disease network is HDN, in which diseases were connected if they share associated genes in OMIM
+and edges were weighted by the number of overlapping genes \cite{goh2007human}.
+Here we inherited the network construction method of HDN, but used two different disease-gene association data:
+the updated data in OMIM (April, 2013) and GWAS catalog (August, 2013).
+We represented the disease terms in OMIM-based HDN and GWAS-based HDN with 2974 and 355 UMLS concept unique identifiers,
+respectively, to enable the comparison with DMN.
+The two genetic disease networks both contains rich information of disease genetics \cite{lee2013network,li2012complex},
+but are largely different.
+The OMIM-based HDN mostly contains Mendelian diseases with strong genetic causes;
+the GWAS-based HDN mostly contains common complex diseases.
+The two networks only share 45 diseases.
+
+We compared the edges and community structures between DMN and the two HDNs.
+Network community structure reveals the biological network properties
+and offered insights into cell functions, protein interactions, and disease dynamics
+\cite{caretta2007bottleneck, palla2005uncovering, salathe2010dynamics}.
+We applied a widely-used community detection algorithm \cite{newman2004finding}
+and calculated the two-way similarities between community groups:
+\begin{equation}
+S_{DMN \to HDN}  =|X \cap Y|/|X|, \label{wallace1}
+\end{equation}
+\begin{equation}
+S_{HDN \to DMN} =|X \cap Y|/|Y|. \label{wallace2}
+\end{equation}
+%While a number of criteria, such as Rand measure \cite{rand1971objective},
+%Jaccard index \cite{levandowsky1971distance} and Fowlkes-Mallows index \cite{fowlkes1983method},
+%have been used to evaluate the community similarity, we used the Wallace indices \cite{wallace1983comment}
+%since these measures provide two-way comparison of community partitions.
+%Higher Wallace index values represent more similarity in community partitions between two networks.
+$|X|$ and $|Y|$ are the number of disease pairs that appear in the same community in DMN and HDN, respectively.
+$|X \cap Y|$ is the count of disease pairs that were grouped into one community in both networks.
+
+We tested the significance of edge and community similarities between DMN and HDNs
+by creating a background distribution of similarities expected at random.
+We kept the number and size of communities in DMN, and randomly swapped the assignments of disease nodes into each community.
+Then we linked nodes inside a community with probability $P_{in}$, and those across communities with
+probability $P_{out}$.
+The $P_{in}$ and $P_{out}$ were estimated from the edge density
+within and between communities in DMN, respectively.
+We repeated 100 times of randomizing DMN, and compared each random network to HDNs to create the background signals.
+Finally, we compared the observed similarities with the background signals using Wilcoxon signed-rank test.
+
+\subsection{Compare DMN with the widely-used disease phenotype network mimMiner}
+DMN and mimMiner both contain phenotypic knowledge based on clinical observations.
+Here, we compared DMN with mimMiner to demonstrate that the two phenotype networks
+contain different knowledge, so that combining them in applications, such as disease gene discovery and
+drug repositioning, may potentially lead to improved performance.
+We first mapped the 5,080 diseases in mimMiner from OMIM identifiers to UMLS concept unique identifiers to allow the comparison.
+Since text mining introduced false positive disease-phenotype relationships, we needed to tradeoff between the data coverage and accuracy in mimMiner.
+Based on previous analysis \cite{van2006text}, we chose to connect two disease nodes if their similarities are above 0.3.
+The network of mimMiner contains 4,391 disease nodes after these processes.
+We then compared the node, edges and community structures between DMN with mimMiner.
+
+
+\subsection{Integrate networks}
+We integrate DMN, mimMiner and the PPI network as shown in Fig.\ref{multiphen_network}.
+To construct DMN, we used 50,543 disease-manifestation pairs
+from UMLS and calculated pairwise disease similarities based on disease manifestations.
+Then we downloaded mimMiner \cite{van2006text} and built the
+PPI network using 37,039 binary interactions among 9,465 genes in
+Human Protein Reference Database (HPRD), which has
+high coverage and accuracy \cite{moreau2012computational} and has
+been used in many disease gene discovery studies
+\cite{li2010genome,wu2008network,wu2009align,vanunu2010associating}.
+
+To construct the heterogeneous network, we linked the disease nodes
+with the same semantic meanings in DMN and mimMiner
+using 1,313 pairwise mappings between UMLS and
+OMIM identifiers from the UMLS metathesaurus.
+We also connected 1,188 disease nodes in DMN and 1,542 in
+mimMiner to the gene nodes in the PPI network
+based on the disease-gene associations in OMIM.
+Note that our approach can easily incorporate more
+phenotypic or genetic networks in the same way,
+given that the new networks contains different knowledge
+from the existing ones.
+
+The adjacency matrix of the heterogeneous network is:
+\begin{equation}\label{adj}
+{\mathop{\rm A}\nolimits}  = \left[ {\begin{array}{*{20}{c}}
+{{A_G}}&{{A_{G{P_1}}}}&{{A_{G{P_2}}}}\\
+{A_{G{P_1}}^T}&{{A_{{P_1}}}}&{{A_{{P_1}{P_2}}}}\\
+{A_{G{P_2}}^T}&{A_{{P_1}{P_2}}^T}&{{A_{{P_2}}}}
+\end{array}} \right],
+\end{equation}
+where $P_1$, $P_2$ and $G$ represent DMN, mimMiner
+and the genetic network, respectively, and the diagonal sub-matrices
+$A_G$, $A_{P_1}$, and $A_{P_2}$ are their adjacency matrices.
+The off-diagonal $A_{GP_1}$, $A_{GP_2}$, and $A_{P_1P_2}$ are the
+adjacency matrices of the bipartite graphs connecting each
+pair of the three networks, and $A^T_{GP_1}$, $A^T_{GP_2}$,
+and $A^T_{P_1P_2}$ represent their transposes.
+
+
+
+\subsection{Predict disease genes from the integrated network}
+Our prediction model was based on random walk with restart,
+which is a network-based ranking algorithm.
+The random walk model avoids over emphasizing the connections
+through high-degree nodes and has been useful in biomedical
+applications \cite{kohler2008walking,li2010genome,berger2010systems}.
+It simulates a random walker starting from a set of seed nodes
+and ranks all the nodes by the probability of being reached
+by the random walker after converge.
+We set certain disease nodes as the seeds and ranked all the gene nodes
+to predict their association with the given diseases.
+
+We extended the algorithm by regulating the movements of
+the random walker between any two networks among DMN, mimMiner
+and the PPI network with the
+jumping probabilities ${\lambda _{{N_i}{N_j}}}$
+$({N_i},{N_j} \in \{ {P_1},{P_2},G\} )$ (Fig.\ref{multiphen_network}).
+For example, if the random walker stands on a node in DMN,
+which is connected with both mimMiner and the genetic network,
+it has the option to walk to mimMiner with the probability ${\lambda _{{P_1}{P_2}}}$,
+to the PPI network with the probability ${\lambda _{P_1G}}$,
+or stay within DMN with the probability ${\rm{1 - }}{\lambda _{{P_1}{P_2}}}{\rm{ - }}{\lambda _{{P_1}G}}$.
+
+
+We calculated the ranking scores for all nodes as follows.
+Assume $p_0$ is a vector of initial scores for each node,
+$p_k$ is the score vector at step k and was iteratively updated by:
+\begin{equation}\label{rw}
+{p_{k + 1}} = (1 - \gamma ){M^T}{p_k} + \gamma {p_0},
+\end{equation}
+where $\gamma$ is the probability that the random walker restarts
+from the seeds at each step, and $M$ is the transition matrix defined
+based on the adjacency matrix in \eqref{adj}.
+The transition matrix consists of three intra-network transition
+matrices on the diagonal, and six inter-network transition matrices off-diagonal:
+\begin{equation}
+{\mathop{\rm M}\nolimits}  = \left[ {\begin{array}{*{20}{c}}
+{{M_G}}&{{M_{G{P_1}}}}&{{M_{G{P_2}}}}\\
+{M_{G{P_1}}^T}&{{M_{{P_1}}}}&{{M_{{P_1}{P_2}}}}\\
+{M_{G{P_2}}^T}&{M_{{P_1}{P_2}}^T}&{{M_{{P_2}}}}
+\end{array}} \right]
+\end{equation}
+We calculated the inter-network transition matrices in \eqref{Mintra},
+which first normalized the adjacency matrices of the bipartite network
+${{\mathop{\rm A}\nolimits} _{{N_i}{N_j}}}({N_i},{N_j} \in \{ {P_1},{P_2},G\} )$,
+and then weighted them with the jumping probabilities between networks $N_i$ and $N_j$.
+\begin{equation}\label{Mintra}
+{({M_{{N_i}{N_j}}})_{kl}} = \left\{ {\begin{array}{*{20}{c}}
+{{\lambda _{{N_i}{N_j}}}{\raise0.7ex\hbox{${{{({A_{{N_i}{N_j}}})}_{kl}}}$} \!\mathord{\left/
+ {\vphantom {{{{({A_{{N_i}{N_j}}})}_{kl}}} {\sum\nolimits_l {{{({A_{{N_i}{N_j}}})}_{kl}}} }}}\right.\kern-\nulldelimiterspace}
+\!\lower0.7ex\hbox{${\sum\nolimits_l {{{({A_{{N_i}{N_j}}})}_{kl}}} }$}}}&{\sum\nolimits_l {{{({A_{{N_i}{N_j}}})}_{kl}}}  \ne 0}\\
+0&{otherwise}
+\end{array}} \right.
+\end{equation}
+The intra-network transition matrices were calculated in \eqref{Minter},
+which normalized the adjacency matrix of a network $N_i$,
+and weighted the matrix with the probability that the random walker
+jumps within the same network.
+%In eq.\eqref{Minter}, ${N_j} \in \Omega$ if
+%$\sum\nolimits_l {{{({A_{{N_i}{N_j}}})}_{kl}}}  \ne {\rm{0}}$.
+\begin{equation}\label{Minter}
+\begin{split}
+{({M_{{N_i}}})_{kl}} = (1 - \sum {I_{N_j}}  \cdot {\lambda _{{N_i}{N_j}}}){({A_{{N_i}}})_{kl}}/\sum\nolimits_l {{{({A_{{N_i}}})}_{kl}}} %(1 - \sum\nolimits_{{N_j} \in \Omega } {{\lambda _{{N_i}{N_j}}})} {({A_{{N_i}}})_{kl}}/\sum\nolimits_l {{{({A_{{N_i}}})}_{kl}}}\\
+\end{split}
+\end{equation}
+In \eqref{Minter}, $\cdot$ represent dot product and $I_{N_j}$ is an indicator function,
+which value is 1 if the $k_{th}$ row of $A_{{N_i}{N_j}}$ contains at least one non-zero element.
+For the generic case, where $N$ phenotype networks were incorporated,
+the transition matrix $M$ is defined as:
+\begin{equation}
+ {\rm{M = }}\left[ {\begin{array}{*{20}{c}}
+{{M_G}}&{{M_{G{P_1}}}}&{...}&{{M_{G{P_N}}}}\\
+{M_{G{P_1}}^T}&{{M_{{P_1}}}}&{...}&{{M_{{P_1}{P_N}}}}\\
+{...}&{...}&{{M_{{P_i}}}}&{...}\\
+{M_{G{P_N}}^T}&{M_{{P_1}{P_N}}^T}&{...}&{{M_{{P_N}}}}
+\end{array}} \right].
+\end{equation}
+The inter-network transition matrices $M_{{N_i}{N_j}}$ (off-diagonal)
+and intra-network transition matrices $M_{N_i}$ (diagonal) can still be calculated
+with \eqref{Mintra} and \eqref{Minter}, respectively.
+
+
+Our gene prediction model allows accumulating
+evidences from different disease phenotype networks and
+preserves the unique information in each network.
+For example, if a pair of diseases are
+connected in both DMN and mimMiner, the random walker
+can reach one disease node from the other with a strengthened probability;
+if the diseases are connected in only one network,
+the random walker may still reach one disease from the other
+through the links between networks,
+but with a relatively lower probability.
+
+\subsection{Evaluate gene prediction in cross validation analyses}
+%We conducted two experiments--leave-one-out cross validation and
+%de novo gene prediction--to compare our approach with a baseline method
+%that used only one phenotype network.
+%In the leave-one-out cross validation analysis,
+We first performed a leave-one-out cross validation analysis
+and compared our approach with a baseline method \cite{li2010genome}, which
+only used one phenotype network.
+We removed one disease-gene association each time,
+set the disease as the seed, and tested the rank of the
+retained gene.
+If the same disease appeared in the both phenotype networks
+(diseases from the two networks have the same semantic meaning)
+and were connected to the same gene, the redundant
+disease-gene association was also removed.
+
+
+
+We evaluated the ranks of the tested genes with two metrics:
+(1) we calculated the percentage of successful prioritizations,
+in which the retained genes were ranked in top one (excluding the other known disease genes),
+and (2) we generated a receiver operating characteristic (ROC) curve for each method
+and calculated the the area under the curve (AUC).
+To generate the ROC, we followed the definitions in
+\cite{aerts2006gene,kohler2008walking,li2010genome}: sensitivity refers to
+the percentage of tested genes that are ranked above a particular threshold among all prioritizations, and
+specificity refers to the percentage of genes ranked below this threshold.
+For instance, a sensitivity/specificity value of 70/90
+indicates that the correct disease gene was ranked among the top 10\% of genes in 70\% of the prioritizations.
+The ROC shows the plot of sensitivity against 1-specificity
+when varying the rank threshold from the top to bottom.
+The two metrics are complimentary: the AUC evaluates the entire rank of genes while the
+success ratio is more strict and evaluates the top-ranked genes.
+%We compared AUC and success ratio between our approach and the baseline approach.
+
+
+Currently, the causal genes for over 1,500 genetic disorders
+remain unknown \cite{antonarakis2006mendelian}.
+%Identifying genes for these
+%diseases could contribute significantly to the understanding
+%of their pathogenic mutations, gene functions,
+%and even the molecular basis of complex diseases.
+A primary advantage of phenotype-driven gene prediction approaches,
+compared to the conventional gene function-driven approaches,
+is that they can predict genes for diseases without known genetic basis.
+Therefore, we further conducted a de novo gene prediction analysis
+to evaluate our approach.
+In de novo gene prediction,
+we removed all disease-gene links for a query disease each time.
+If the disease
+appeared in both phenotype networks, we removed all its
+gene associations through both phenotype networks.
+Then we set the disease as the seed, ranked all the genes,
+and compared the AUCs between different approaches.
+In this experiment, we have different settings from the leave-one-out
+cross validation and tested multiple retained genes in each prioritization.
+We generated an ROC curve for each prioritization following the definitions in \cite{chenROC,hwang2012co}
+and averaged AUCs across all prioritizations.
+For each ROC, sensitivity is the percentage of retained genes that are ranked
+above a threshold among all the retained genes in one prioritization;
+and specificity is the percentage of negative genes
+(genes that are not known disease genes) ranked below
+the threshold among all the negative genes.
+Since the top ranked genes are more important than the lower ranked genes,
+we highlighted a set of false positive cutoffs for the ROC curves
+and compared the corresponding average AUCs between methods.
+A better method will rank more true positive genes above the false positives,
+resulting in larger average AUCs at smaller cutoffs.
+
+
+\subsection{Evaluate gene prediction for different disease classes}
+The degree that phenotypic associations reflect genetic overlaps
+varies for different disease classes.
+Thus phenotype-driven gene predictions may have varying performance.
+We classified diseases into nine groups based on
+International Classification of Diseases (10th edition),
+and repeated the two cross validation experiments within each group
+to evaluate the performance variance of our method.
+
+\subsection{Investigate translational potential in drug discovery of the predicted genes for Crohn's disease}
+We used Crohn’s disease as an example to demonstrate that our gene
+prediction method has the translation potential to guide drug discovery.
+Crohn's disease is a chronic and relapsing inflammatory disorder that affects millions
+of people and has an increasing prevalence \cite{molodecky2012increasing}.
+It involves genetic
+abnormalities that lead to overly aggressive responses to commensal enteric
+bacteria \cite{sartor2006mechanisms}. Current treatment options, such as systemic anti-inflammatory
+drugs, targeted drugs and surgeries, may be effective for only a subset of
+patients or lead to severe side effects \cite{baumgart2007inflammatory}. Therefore, discovering new drug
+therapies for Crohn's disease is of great interests.
+
+We first predicted genes for Crohn’s disease using our approach.
+Then we compared the result with the disease associated genes
+in Genome-wide association studies (GWAS) catalog \cite{hindorff2009potential}.
+We also evaluated the ranks of drug target genes extracted from DrugBank \cite{law2014drugbank}.
+We hypothesized that if the predicted genes are useful for guiding drug discovery,
+the top-ranked candidate disease genes would be enriched for
+the disease associated genes in GWAS and drug target genes.
+
+Then we extracted 1,190 drugs targeting on the genes in our PPI network using
+the drug-target data from Drugbank. We ranked these candidate drugs based on the
+sum of the random walk scores for their target genes. We validated our
+rank of candidate drugs with 7 FDA-approved Crohn’s disease drugs (extracted from the
+drug-indication data in Drugbank), and further investigated the literature evidence
+for the top 200 candidate drugs.
+
+
+
+\section{Result}
+\subsection{DMN network properties}
+DMN contains 2,305 nodes and 373,527 edges.
+The network has a long-tail degree distribution and is robust to random removal of nodes.
+Removing the nodes with large degrees can quickly break down the network into small components
+(Figure \ref{robust}).
+Table \ref{basics} lists the network properties of DMN. To understand DMN better,
+we also showed the properties of three other disease networks,
+including OMIM-based HDN, GWAS-based HDN and mimMiner.
+DMN is denser than mimMiner, but the nodes tend to cluster into
+disjoint components.
+Both the phenotype networks are evidently different from the genetic networks:
+DMN and mimMiner are denser (higher network density),
+less cliquish (lower clustering coefficients)
+and more connective (less connected components) than HDNs.
+%\begin{adjustwidth}{-1in}{-1in}
+\begin{table*}[h!]
+\caption{Global properties of DMN and the other disease networks, including HDNs (genetic disease networks) and mimMiner (widely-used phenotype network) based on OMIM text mining. The last three columns represent average shortest path, average cluster coefficient, and connected component, respectively. \label{basics}}
+\vspace{0.3cm}
+\begin{tabular}{lllllll}
+\hline
+Disease  & Number  & Network  & Network  & Avg.  & Avg.  & Conn. \\
+network & of nodes & density & diameter & shortest path & clu. coeff. &comp. \\\hline
+DMN      & 2305	&0.14	&6	&2.042	&0.649	&6\\\hline
+HDN(OMIM)      & 2974	&0.001	&9	&2.341	&0.74	&797\\\hline
+HDN(GWAS)      & 355  &0.054  &5  &2.505  &0.702  &17\\\hline
+MimMiner & 4391	&0.044	&7	&2.445	&0.421	&1\\\hline
+\end{tabular}
+\end{table*}
+%\end{adjustwidth}
+Figure \ref{subgraph} shows example subnetworks from DMN, mimMiner, and HDNs containing randomly sampled nodes.
+In contrast to the densely-connected subnetworks of DMN and mimMiner,
+OMIM-based HDN mostly contains small components such as triangles and chains.
+GWAS-based HDN contains complex diseases, which are often associated with multiple genes,
+thus its edge density is higher than OMIM-based HDN, but still lower than DMN.
+\begin{figure}[h!]
+  \begin{center}
+  \vspace{-3cm}
+\includegraphics[width=0.65\textwidth]{Chap4_robust.eps}
+\end{center}
+  \vspace{-3cm}
+\caption{Robustness of DMN with respect to the removal of random nodes and hub nodes.}\label{robust}
+\end{figure}
+\begin{figure}[h!]
+  \begin{center}
+\includegraphics[width=5in]{Chap4_subnetworks.eps}
+\end{center}
+\caption{Randomly selected subgraphs of (a) DMN (b) mimMiner (c) OMIM-based HDN and (d) GWAS-based HDN.
+       Only part of the node labels are shown in the figure due to space limit. In contrast to DMN and mimMiner, the sub-graphs in HDNs are less connective and cliquish.}\label{subgraph}
+\end{figure}
+
+The differences in global structures between phenotype and genetic
+disease networks indicate that we may have not fully discovered the genes
+accounting for the observed phenotypic connections.
+Systematic studying the disease phenotype networks offers a chance to detect new disease genes,
+particularly for the disease whose genetic basis is completely unknown.
+Note that non-genetic factors, such as common environments and life styles,
+may also contribute to the overlapping phenotypes.
+To evaluated the potential of phenotype networks to predict disease genes,
+we show the correlation between phenotypic and genetic relationships
+in the next section.
+
+\subsection{DMN partially correlates with the genetic disease networks}
+%We performed two experiments to analyze if DMN reflects genetic relationships among diseases.
+%The first experiment evaluated the correlation between manifestation similarities of disease pairs and their shared genetic associations.
+%OMIM contains gene information for 77\% of the diseases in DMN,
+%which correspond to 226,940 disease-disease pairs that are considered in this experiment.
+In the first experiment, we found that the manifestation similarities in DMN have correlations with quantified measures of disease genetic associations.
+Figure \ref{corrcurve} (left) shows that the disease pairs with larger manifestation similarities (higher ranks) are more likely to share genes.
+The Pearson's correlation between the ranks of manifestation similarities and the probabilities of sharing gene is -0.603 ($p \ll E^{-8}$).
+%The negative value here represents positive correlations between the values of manifestation similarity and genetic association measures.
+Also, Figure \ref{corrcurve} (right) shows that diseases with larger manifestation similarities tend to share more genes.
+The Pearson's correlation between the ranks of manifestation similarities and average number of shared genes is -0.647 ($p \ll E^{-8}$).
+      \begin{figure}[h!]
+        \begin{center}
+\includegraphics[width=0.8\textwidth]{Chap4_corrcurve.eps}
+\end{center}
+  \caption{Correlation between manifestation similarities and genetic associations.
+       Left: Correlation between proportion of genetically associated disease pairs (x-axis) and the phenotype similarity ranks (y-axis) in DMN. Right: Correlation between the average numbers of genes shared by disease pairs (x-axis) and the phenotype ranks (y-axis) in DMN. Diseases with larger phenotype similarity in DMN tend have stronger genetic association.}\label{corrcurve}
+      \end{figure}
+
+We found that only a small percentage of disease pairs share associated genes despite the significant correlations between phenotype similarities and genetic associations.
+For example, among the top five disease pairs with highest phenotype similarities,
+only one pair shared associated genes.
+This observation indicates that the overlapping manifestations may result from unknown genes, shared pathways, protein complexes, or common environment.
+Discovering unknown genetic factors responsible for overlapping phenotypes among diseases is one of the goals of studying the disease phenotype networks.
+
+In the second experiment, we compared the edges and community structures of DMN with the genetic disease networks.
+Table \ref{edgecompare} shows that the number of common edges between DMN and HDNs is significant higher than the random distribution.
+We found that mimMiner also contains 520 common edges with OMIM-based HDN and 14 with GWAS-based HDN.
+However, DMN and mimMiner share different disease connections with HDNs:
+76 of 278 (27\%) edge overlaps between DMN and OMIM-based HDN do not appear in mimMiner,
+and 5 of 6 edge overlaps between DMN and GWAS-based HDN do not appear in mimMiner.
+\begin{table}[h!]
+\caption{Compare the edge overlaps $N$ between DMN and the genetic disease networks. Network $B^{'}$ represents the randomized graph that preserves the properties of Network B. Column $N_{(A,B^{'})}$ represents the average number of edge overlap comparing network A and the randomized networks.\label{edgecompare}}
+\begin{tabular}{l l l l l}
+\\\hline
+Network A & Network B &$N_{(A,B)}$  & $N_{(A,B^{'})}$  & P-value\\\hline
+HDN(OMIM)        & DMN       &278	      &65.4	            &$\ll E^{-8}$\\\hline
+HDN(GWAS)        & DMN       &6	      &2.93	            &$\ll E^{-8}$\\\hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+Table \ref{community} lists the community structure similarities between DMN and HDNs.
+If two diseases are grouped together in OMIM-based HDN,
+they have over 60\% chances to stay in one community in DMN.
+On the other hand, diseases in one community in DMN have 0.6\% chance of being grouped together in OMIM-based HDN. The absolute values of community structure similarities may be biased:
+OMIM-based HDN mostly contains small size clusters, and the probability of two diseases share one cluster
+is naturally low.
+However, statistical test shows that the similarities in community partitions between DMN and HDN are significantly higher than the random distribution,
+indicating that the observed similarities reflect intrinsic correlations between the biological networks.
+The community structure correlation between DMN and GWAS-based HDN is also significant compared with random signals.
+%We found similar correlations in community structures between mimMiner and HDNs.
+%The similarity is 0.512 from OMIM-based HDN to mimMiner, 0.006 from mimMiner to OMIM-based HDN,
+%0.555 from GWAS-based HDN to mimMiner and 0.308 from mimMiner to GWAS-based HDN.
+\begin{table*}[h!]
+\caption{Compare the community structures between DMN and the genetic disease networks. $S_{A\to B}$ and $S_{B\to A}$ represent the two-way the similarity in community partitions between network $A$ and $B$.\label{community}}
+\begin{tabular}{llllllll}
+\\\hline
+Network A & Network B & $S_{A\to B}$ & $S_{A \to B^{'}}$ & P-value   &$S_{B \to A}$  &$S_{B \to A^{'}}$ &P-value\\\hline
+HDN(OMIM)       &DMN        &0.655         &0.281	                   &$\ll E^{-8}$	 &0.006	      &0.002	          &$\ll E^{-8}$\\\hline
+HDN(GWAS)      & DMN       &0.611	     &0.279	                   &$\ll E^{-8}$	 &0.297	      &0.156	          &$\ll E^{-8}$\\\hline
+\end{tabular}
+\end{table*}
+
+
+
+
+
+In summary, DMN is partially correlated with the genetic disease networks in both edges and community structures. On the one hand, the phenotype relationships among diseases in DMN reflects shared genetic mechanisms. On the other hand, many disease-associated genes and pathways may have not been discovered yet. In addition, comparative analysis to HDNs also show that DMN and mimMiner contain different knowledge. The phenotype relationships in DMN have the potential to provide leads for discovering new disease genetics.
+
+\subsection{DMN contains knowledge different from mimMiner}
+We compared DMN with the widely-used phenotype network mimMiner to show their differences.
+Table \ref{nwdifference} summarizes their differences in nodes, edges, and community structures.
+Though DMN shares 75\% of the nodes with mimMiner, 295,975 edges (79.2\%) are unique and do not appear in mimMiner. Examples of the unique edges are
+schizophrenia--myopia, autism--tuberous sclerosis, and familial mediterranean fever--alport syndrome.
+We extracted all unique disease pairs in DMN and made the data publicly accessible.
+In addition, the community structures of DMN and mimMiner are partly correlated.
+The community similarities in the two directions are comparable and both moderate,
+showing that we cannot completely predict the phenotype clusters in one network based on the other.
+Therefore, the knowledge captured in DMN and mimMiner is complementary. Integrating these two networks is valuable for better prediction of candidate disease genes.
+\begin{table*}[h!]
+\caption{Compare DMN with mimMiner in nodes, edges and community structures. \label{nwdifference}}
+\vspace{0.3cm}
+\begin{tabular}{llllll}
+\hline
+Network A	&Network B	&Unique Node	&Unique Edge	& $W_{A \to B}$ &	$W_{B \to A}$\\\hline
+mimMiner	&DMN	    &582 (25.2\%)	&295,975(79.2\%)	&0.392	     &0.533\\\hline
+\end{tabular}
+\end{table*}
+
+\subsection{Integrating DMN with mimMiner significantly
+improves the performance of disease gene predictions}
+We compared our gene prediction approach with a baseline method,
+which integrated mimMiner and the PPI network used in our approach,
+and predicted disease genes with a random walk model \cite{li2010genome}.
+We tuned parameters for both the methods
+to achieved optimal performance in the cross validations,
+but different parameter values only slightly affect the results.
+For our method, the jumping probabilities
+${\lambda _{{P_1}{P_2}}}$ and ${\lambda _{{P_2}{P_1}}}$ were set to 0.1;
+${\lambda _{{P_1}{G}}}$ and ${\lambda _{{P_2}{G}}}$ were set to 0.7;
+and ${\lambda _{{G}{P_1}}}$ and ${\lambda _{{G}{P_2}}}$ were set to 0.4.
+For the baseline method, the jumping probability between mimMiner
+and the PPI network were set to 0.9.
+The probability of restarting from seeds ($\gamma$ is \eqref{rw})
+was set to 0.7 for both methods.
+
+\subsubsection{Leave-one-out cross validation}
+Our approach achieved significantly better success ratio and AUCs than the baseline method.
+The integrated network in our approach contains a total of 2,397 unique
+disease-gene associations. If one disease appeared in the two phenotype
+networks and were connected to a same gene, the two disease-gene links
+were counted only once. In 1,100 out of 2,397 validation runs (45.89\%),
+our approach successfully ranked the retained genes in top one.
+The success ratio is significantly higher ($p<e^{-4}$) than 10.36\%
+for the baseline method (Table \ref{looratio}).
+In addition, Fig.\ref{roc_loo} compares the ROC curves for gene prediction methods.
+Our approach achieved an AUC of 90.65\%, which is significantly higher ($p<e^{-4}$) than
+84.2\% for the baseline approach.
+\begin{table}[!t]
+\caption{Ratios of successful disease-gene association predictions in the leave-one-out cross validation experiment. All diseases were included in the experiment.}
+\label{looratio}
+\centering
+\begin{tabular}{ccc}
+\hline
+Phenotype networks & Success number & Success ratio\\
+\hline
+mimMiner & 219 & 10.36\%\\
+\hline
+DMN and mimMiner & 1100 &45.89\%\\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{figure}[!tpb]
+\vspace{0cm}
+\centerline{\includegraphics[width=0.6\textwidth]{Chap4_roc_loo.eps}}
+\vspace{0cm}
+\caption{The ROC curves and AUCs for the our method (red) and the baseline method (blue) in the leave-one-out cross validation analysis.}
+\vspace{-.5cm}
+\label{roc_loo}
+\end{figure}
+
+\subsubsection{De novo gene prediction}
+Our approach is effective in de novo gene predictions,
+and outperforms the baseline method by boosting the phenotype knowledge.
+Specifically, our method achieves an average AUC of 90.33\%, which is
+significantly higher than 81.28\% for the baseline method
+using mimMiner alone ($p < e^{-12}$). Fig.\ref{denovo_roc} shows
+that at six false positive cutoffs, integrating DMN and mimMiner
+achieves significantly higher AUCs ($p<e^{-18}$)
+than using only mimMiner.
+For example, at the cutoff of 10, we achieve an average
+AUC of 59.19\%, while that for the baseline method is 24.17\% ($p<e^{-95}$).
+For the diseases that only have one associated gene in OMIM,
+our method successfully predicted the tested genes in top one for 52.12\%
+diseases, while the baseline method succeeded in 11.47\% prioritizations ($p<e^{-4}$).
+These results show that de novo gene prediction highly
+depends on disease phenotype relationships,
+and our method successfully
+took the advantage of more comprehensive knowledge
+in multiple phenotypic networks to achieve better performance.
+
+\begin{figure}[!tpb]
+\vspace{-.5cm}
+\centerline{\includegraphics[width=0.7\textwidth]{Chap4_denovo_roc.eps}}
+\vspace{-.5cm}
+\caption{Average AUCs of de novo gene prediction for our approach (red) and the baseline approach (green). We compared overall AUCs, as well as the AUCs when the numbers of false positive genes are up to 10, 50, 100, 300, 500, and 1000.}
+%\vspace{-.5cm}
+\label{denovo_roc}
+\end{figure}
+
+%Our result shows that for diseases with unknown genetic causes, gene predictions
+%highly depends on the disease phenotype relationships.
+%Experiment results show that our method successfully
+%took the advantage of more comprehensive knowledge
+%in multiple phenotypic networks, and
+%achieved better performance than the baseline method in
+%de novo gene prediction.
+
+\subsection{Our method achieves high but varying performance for different disease classes}
+We evaluated the approach for nine disease classes.
+In the leave-one-out cross validation,
+93.4\% retained genes was ranked within top 100,
+and the AUCs for all disease classes are close and above 90\%.
+But the ranks of the retained genes vary up and down within
+the top 100 for different disease classes.
+Fig.\ref{roc_loo_class} shows the top part of ROC
+curves for each disease class. The corresponding AUC
+is the highest for ``congenital malformations and deformations,"
+and lowest for ``mental diseases" and ``malignant neoplasms."
+Table \ref{ratio_class} (the column of ``All diseases")
+compares the success ratio for all diseases between disease classes,
+and shows that our approach ranked
+78\% retained genes for ``congenital malformations and deformations"
+in top one, while prioritized 26\% and 27\% retained genes for
+``malignant neoplasms" and ``mental diseases," respectively.
+\begin{figure}[!t]
+\centering
+%\vspace{-.5cm}
+\includegraphics[width=0.7\textwidth]{Chap4_roc_loo_class.eps}
+%\vspace{-2.5cm}
+\caption{The ROC curves for each disease class in de novo gene prediction. We compared the top part of ROC curves and AUC scores based on the top 100 genes in each validation run.}
+\vspace{-.4cm}
+\label{roc_loo_class}
+\end{figure}
+
+\begin{table*}[!t]
+\caption{Success ratio of disease-gene association predictions for all diseases and monogenetic diseases in the nine disease classes.}
+\label{ratio_class}
+\centering
+\begin{tabular}{lll}
+\hline
+Disease classes & All diseases & Monogenetic diseases\\\hline
+Congenital malformations and deformations &	77.97\%	&90.48\%\\\hline
+Skin and subcutaneous tissue disease	&70.80\% &	81.58\%\\\hline
+Nervous system disorder	&66.67\%	&89.89\%\\\hline
+Musculoskeletal and connective tissue disorder&	65.09\%	&84.06\%\\\hline
+Digestive system disorder	&65.06\%	&80.00\%\\\hline
+Metabolic disorder	&61.67\%	&75.33\%\\\hline
+Cardiovascular disease	&48.84\%	&84.09\%\\\hline
+Mental disorder	&27.12\%	&71.43\%\\\hline
+Malignant neoplasm	&26.04\%	&50.00\%\\\hline
+
+\end{tabular}
+\end{table*}
+
+In the de novo gene prediction, we observed similar performance variance
+among the nine disease classes. Fig.\ref{roc_class} shows that
+the averaged AUC is the highest for ``congenital malformations
+and deformations" and lowest for ``malignant neoplasms"
+at all cutoffs. Table \ref{ratio_class} (the column of ``Monogenetic diseases")
+shows that for monogenetic diseases, which have only one gene in OMIM,
+90\% predictions ranked the disease genes for ``congenital malformations
+and deformations" in top one, while 50\% predictions succeeded for ``malignant neoplasms."
+\begin{figure*}[!t]
+\centering
+\vspace{-.5cm}
+\includegraphics[width=1\textwidth]{Chap4_roc_class.eps}
+\vspace{-.5cm}
+\caption{The ROC curves for each disease class in de novo gene prediction. }
+\vspace{-.5cm}
+\label{roc_class}
+\end{figure*}
+
+We traced the disease phenotype features to explain
+the performance variance. The ``congenital malformations
+and deformations" often have specific phenotypic features.
+For example, Otospondylomegaepiphyseal dysplasia (OSMED)
+has manifestations such as ``Sensorineural Hearing Loss"
+and ``Pierre Robin Syndrome." These features link OSMED
+to phenotypically similar diseases in the network,
+such as Stickler syndrome and Marshall Syndrome,
+which are also genetically related to OSMED.
+On the other hand, ``malignant neoplasms" usually have
+non-specific manifestations, such as pain, fever and ascites,
+which are common in cancers with different genetic causes.
+Therefore, while our approach achieves high performance for
+all disease classes, building disease-specific models
+and introducing prior knowledge of disease phenotypes
+may further improve the accuracy of disease gene predictions.
+
+\subsection{Our gene prediction method has the potential to guide the drug discovery for Crohn's disease}
+We ranked the 9,465 genes in the PPI network for Crohn's disease
+and compared the result with 70 Crohn's disease genes from GWAS catalog.
+These 70 genes also appeared our gene rank,
+and have no overlap with the data in OMIM.
+Fig.\ref{CD} A1 shows that the number of GWAS disease genes drops
+when the rank based on our approach change from the top to the bottom,
+while this number distributes evenly among random ranks (Fig.\ref{CD} A2).
+Among the top 10\% in our rank, we found 19 overlaps with the GWAS disease genes,
+which is a 2.5-fold enrichment ($p<e^{-4}$) compared with the average of 50 random gene ranks.
+The result shows that our approach tends to prioritize the disease genes obtained through
+statistical analysis on large-scale patient data.
+\begin{figure*}[!t]
+\centering
+%\vspace{-.5cm}
+\includegraphics[width=1\textwidth]{Chap4_CD.eps}
+%\vspace{-.5cm}
+\caption{A1-A2: Compare our gene rank with the Crohn's disease genes from GWAS.
+B1-B2: Compare our gene rank with the drug target genes.
+C1-C2: Compare our drug rank with the FDA-approved drugs.}
+\vspace{-.5cm}
+\label{CD}
+\end{figure*}
+
+Among the top genes in our rank, we found RIPK2, NLRC4
+and ERBIN, which have substantial literature supports on their roles in Crohn's disease
+\cite{jostins2012host,philpott2014nod,lupfer2013receptor,tomalka2011novel,standaert2009candida,gerard2013immunological,kufer2006role}
+and directly interact with NOD2 (a Crohn's disease gene in OMIM).
+In addition,
+we also found literature evidence to support a few top-ranked genes that
+are not directly interacting with the disease genes from OMIM
+and were not identified in GWAS. For example,
+NLRP3 (ranked top 32), CASP1 (ranked top 45) and BCL10 (ranked top 46)
+are associated with the innate immune responses to the intestinal microbiota,
+which has been linked with the pathogenesis of Crohn's disease
+\cite{villani2009common,hirota2011nlrp3,netea20101beta,borthakur2007carrageenan}.
+
+We also investigated the distribution of 1,502 drug target genes (from DrugBank)
+among our gene rank.
+Fig.\ref{CD} B1 and B2 show that our rank is more likely to prioritize
+druggable genes than the random ranks.
+The top 10\% genes in our rank contains 331 drug target genes,
+which is a 2.1-fold enrichment ($p<e^{-21}$) compared
+to the average of random cases.
+The result shows that our top-ranked predicted genes are enriched for druggable
+genes associated with Crohn's disease, and offer
+the opportunities to detect candidate drugs for Crohn’s disease.
+
+We ranked 1,190 candidate drugs (from Drugbank) based on the sum of the random
+walk scores for their target genes. Fig.\ref{CD} C1-C2 show
+that our approach can prioritize the approved Crohn's disease therapies.
+The top 200 in our rank contains
+4 FDA-approved drugs, which is a 3.3-fold enrichment ($p<e^{-3}$)
+compared with the average of random cases.
+Note that these 4 approved drugs, including Sulfasalazine, Mesalazine,
+Adalimumab, and Natalizumab, do not directly target on the
+Crohn's disease genes in OMIM, and were detected through the
+prioritized genes using our approach.
+We further investigated the other candidate drugs in top 200 in our rank,
+and found that a number of them are supported by literature evidence
+as candidate Crohn's disease treatments.
+%For example,
+%antidepressants act on the NF-$\kappa$B pathway,
+%which regulates the immune response to infection and plays a role in
+%Crohn's disease \cite{amitriptyline,Maeda}.
+Table \ref{example}
+shows a few examples of candidate drugs and their supports.
+Among them, the efficacy of tocilizumab
+has recently been tested in a randomized clinical trial \cite{lazzerini2013effect}
+and showed positive results in clinical remission.
+\begin{table*}[!t]
+\caption{Drug candidates for Crohn’s disease that are supported by literature.}
+\label{example}
+\centering
+\begin{tabular}{llll}
+\hline
+Rank&Drugs & Current drug indications & References\\\hline
+3&tocilizumab & rheumatoid arthritis	 & \cite{nishimoto2008humanized,gergis2010effectiveness}\\\hline
+%etanercept	&LTA,TNFRSF1B	&rheumatoid arthritis, ankylosing spondylitis &\cite{}\\\hline
+11&sargramostim&	myeloid reconstitution&\cite{korzenik2005sargramostim,roth2011sargramostim}\\\hline
+31&minocycline&infections &\cite{margolis2010potential}\\\hline
+78&amitriptyline& depression & \cite{rahimi2012antidepressants}\\\hline
+%basiliximab & kidney transplant rejection&\cite{}\\\hline
+80&desipramine&depression&\cite{rahimi2009efficacy}\\\hline
+86&mecasermin&growth failure&\cite{rosenbloom2009mecasermin,puche2012human}\\\hline
+194&thalidomide & erythema nodosum leprosum & \cite{lazzerini2013effect}\\\hline
+\end{tabular}
+\end{table*}
+
+
+
+\section{Discussion }
+Incorporating clinical phenotype data
+can improve the prediction power of disease gene discovery methods.
+In this study, we developed a disease gene prediction framework
+leveraging multiple different human phenotype data sources.
+We explored a unique phenotype data source and
+constructed a new phenotype network called DMN.
+We designed an innovative strategy to predict disease associated genes
+from the heterogeneous network combining DMN with mimMiner
+(a widely-used phenotype database) and a genetic network.
+Comparing with the gene prediction approach using only one phenotype network,
+our approach significantly improved the performance through boosting phenotypic knowledge.
+Using Crohn's disease as an example, we demonstrated that our gene prediction result
+has translational potentials to guide drug discovery.
+
+
+As more human
+disease phenotype data become available,
+our approach can be further improved by integrating
+new disease phenotype networks, given that the new networks contain different
+knowledge. For example, our approach in this study included
+many Mendelian diseases. Adding phenotypic associations involving
+common complex diseases may offer novel insights.
+Also, the phenotypic relationships in this study are
+primarily based on disease-manifestation pairs.
+Other kinds of disease phenotype data,
+such as disease co-morbidities and gene expression profiles,
+may also reflect different aspects of genetic mechanisms.
+In the future, we will develop new approaches to rationally
+integrate heterogeneous phenotype data.
+For common complex diseases, we will also incorporate
+multiple different types of genetic
+associations besides the PPI network, such as
+the gene regulatory network into the approach.
+
+In addition, phenotype-driven disease gene prediction approaches are
+effective at different degrees for disease classes (as we have demonstrated)
+and among different patients. Building disease-specific and patient-specific
+computational models may further improve the quality
+of disease gene predictions. We recently studied cancer-specific comorbidities
+and analyzed the variation of comorbidity patterns among stratified patients in
+different age and gender brackets \cite{chen2014network,chen2014mining}. Based in these results,
+we plan to build a cancer-specific gene prediction model.
+
+
+Currently, we directly used disease-gene associations in drug discovery.
+The method to identifying candidate drugs can be further enhanced if more detailed information is available,
+including drug actions and disease pathogenesis, such as the direction of the genetic abnormality.
+For example, if a disease results from the loss of function,
+agonists will be potential drugs, whereas antagonists will lead to side effects.
+In the future work, we will develop rational drug discovery approach
+on the basis of our result and more data on both diseases and drugs.
+
+\section{Conclusions}
+We constructed a new phenotype network DMN
+using a unique data source of human disease phenotype,
+and demonstrated that it contains different knowledge comparing
+with a widely-used phenotype network mimMiner.
+We designed an innovative strategy to predict disease associated genes
+from the heterogeneous network combining DMN with
+mimMiner and a genetic network.
+Our approach achieved significantly improved the performance
+comparing with the gene prediction approach using only one phenotype
+data source.
+We applied the approach on Crohn's disease and demonstrated that the gene prediction result
+has translational potentials to guide drug discovery.
