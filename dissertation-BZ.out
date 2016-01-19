@@ -6,24 +6,14 @@
 \BOOKMARK [1][-]{section.1.5}{Contribution and organization of the dissertation}{chapter.1}% 6
 \BOOKMARK [0][-]{chapter.2}{Causal Inference Based Fault Localization for Numerical Software with NUMFL}{}% 7
 \BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 8
-\BOOKMARK [1][-]{section.2.2}{Introduction}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.3}{Motivating Example}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.4}{BACKGROUND}{chapter.2}% 11
-\BOOKMARK [2][-]{subsection.2.4.1}{Causal Inference Methodology}{section.2.4}% 12
-\BOOKMARK [2][-]{subsection.2.4.2}{Ordinary Propensity Scores}{section.2.4}% 13
-\BOOKMARK [2][-]{subsection.2.4.3}{Generalized Propensity Score \(GPS\)}{section.2.4}% 14
-\BOOKMARK [2][-]{subsection.2.4.4}{Covariate Balancing Propensity Score \(CBPS\)}{section.2.4}% 15
-\BOOKMARK [1][-]{section.2.5}{TWO VERSIONS OF NUMFL}{chapter.2}% 16
-\BOOKMARK [2][-]{subsection.2.5.1}{NUMFL-GPS}{section.2.5}% 17
-\BOOKMARK [2][-]{subsection.2.5.2}{NUMFL-CBPS}{section.2.5}% 18
-\BOOKMARK [1][-]{section.2.6}{EMPIRICAL EVALUATION}{chapter.2}% 19
-\BOOKMARK [2][-]{subsection.2.6.1}{Experimental Platform and Data Collection}{section.2.6}% 20
-\BOOKMARK [2][-]{subsection.2.6.2}{Subject Programs, Faults, and Tests}{section.2.6}% 21
-\BOOKMARK [2][-]{subsection.2.6.3}{Baseline SFL Metrics and Cost Measure}{section.2.6}% 22
-\BOOKMARK [2][-]{subsection.2.6.4}{Comparative Performance of NUMFL vs. Baselines}{section.2.6}% 23
-\BOOKMARK [2][-]{subsection.2.6.5}{NUMFL-GPS Applied only to Failing Runs}{section.2.6}% 24
-\BOOKMARK [2][-]{subsection.2.6.6}{Application of NUMFL-GPS to Programs with Multiple Faults}{section.2.6}% 25
-\BOOKMARK [2][-]{subsection.2.6.7}{Comparison of NUMFL-GPS and NUMFL-CBPS}{section.2.6}% 26
-\BOOKMARK [2][-]{subsection.2.6.8}{Limitations}{section.2.6}% 27
-\BOOKMARK [1][-]{section.2.7}{RELATED WORK}{chapter.2}% 28
-\BOOKMARK [1][-]{section.2.8}{CONCLUSION}{chapter.2}% 29
+\BOOKMARK [1][-]{section.2.2}{BACKGROUND}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.1}{Regression Tree}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.2}{BART Machine}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.3}{Generalized Propensity Score \(GPS\)}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.4}{Covariate Balancing Propensity Score \(CBPS\)}{section.2.2}% 13
+\BOOKMARK [1][-]{section.2.3}{TWO VERSIONS OF NUMFL}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.3.1}{NUMFL-GPS}{section.2.3}% 15
+\BOOKMARK [1][-]{section.2.4}{EMPIRICAL EVALUATION}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.4.1}{Limitations}{section.2.4}% 17
+\BOOKMARK [1][-]{section.2.5}{RELATED WORK}{chapter.2}% 18
+\BOOKMARK [1][-]{section.2.6}{CONCLUSION}{chapter.2}% 19

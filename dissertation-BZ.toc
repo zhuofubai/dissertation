@@ -5,30 +5,18 @@
 \contentsline {section}{\numberline {1.4}Predicting novel drug treatments based on disease genetics}{7}{section.1.4}
 \contentsline {section}{\numberline {1.5}Contribution and organization of the dissertation}{8}{section.1.5}
 \contentsline {chapter}{\numberline {2}Causal Inference Based Fault Localization for Numerical Software with NUMFL}{9}{chapter.2}
-\contentsline {section}{\numberline {2.1}Introduction}{10}{section.2.1}
-\contentsline {section}{\numberline {2.2}Introduction}{10}{section.2.2}
-\contentsline {section}{\numberline {2.3}Motivating Example}{14}{section.2.3}
-\contentsline {section}{\numberline {2.4}BACKGROUND}{17}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Causal Inference Methodology}{17}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Ordinary Propensity Scores}{17}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Generalized Propensity Score (GPS)}{20}{subsection.2.4.3}
-\contentsline {subsection}{\numberline {2.4.4}Covariate Balancing Propensity Score (CBPS)}{20}{subsection.2.4.4}
-\contentsline {section}{\numberline {2.5}TWO VERSIONS OF NUMFL}{21}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}NUMFL-GPS}{22}{subsection.2.5.1}
-\contentsline {subsubsection}{Control of Confounding.}{23}{section*.10}
-\contentsline {subsubsection}{Failure-causing Effect Estimation.}{25}{section*.11}
-\contentsline {subsection}{\numberline {2.5.2}NUMFL-CBPS}{31}{subsection.2.5.2}
-\contentsline {subsubsection}{Control of Confounding.}{31}{section*.13}
-\contentsline {subsubsection}{Failure-causing Effect Estimation.}{32}{section*.14}
-\contentsline {section}{\numberline {2.6}EMPIRICAL EVALUATION}{32}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}Experimental Platform and Data Collection}{33}{subsection.2.6.1}
-\contentsline {subsection}{\numberline {2.6.2}Subject Programs, Faults, and Tests}{33}{subsection.2.6.2}
-\contentsline {subsection}{\numberline {2.6.3}Baseline SFL Metrics and Cost Measure}{36}{subsection.2.6.3}
-\contentsline {subsection}{\numberline {2.6.4}Comparative Performance of NUMFL vs. Baselines}{37}{subsection.2.6.4}
-\contentsline {subsection}{\numberline {2.6.5}NUMFL-GPS Applied only to Failing Runs}{40}{subsection.2.6.5}
-\contentsline {subsection}{\numberline {2.6.6}Application of NUMFL-GPS to Programs with Multiple Faults}{42}{subsection.2.6.6}
-\contentsline {subsection}{\numberline {2.6.7}Comparison of NUMFL-GPS and NUMFL-CBPS}{43}{subsection.2.6.7}
-\contentsline {subsection}{\numberline {2.6.8}Limitations}{48}{subsection.2.6.8}
-\contentsline {section}{\numberline {2.7}RELATED WORK}{48}{section.2.7}
-\contentsline {section}{\numberline {2.8}CONCLUSION}{50}{section.2.8}
-\contentsline {chapter}{Appendices}{}{section*.26}
+\contentsline {section}{\numberline {2.1}Introduction}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}BACKGROUND}{10}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Regression Tree}{10}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}BART Machine}{10}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Generalized Propensity Score (GPS)}{10}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Covariate Balancing Propensity Score (CBPS)}{10}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}TWO VERSIONS OF NUMFL}{10}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}NUMFL-GPS}{10}{subsection.2.3.1}
+\contentsline {subsubsection}{Control of Confounding.}{10}{section*.7}
+\contentsline {subsubsection}{Failure-causing Effect Estimation.}{10}{section*.8}
+\contentsline {section}{\numberline {2.4}EMPIRICAL EVALUATION}{10}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Limitations}{10}{subsection.2.4.1}
+\contentsline {section}{\numberline {2.5}RELATED WORK}{10}{section.2.5}
+\contentsline {section}{\numberline {2.6}CONCLUSION}{10}{section.2.6}
+\contentsline {chapter}{Appendices}{}{section*.9}

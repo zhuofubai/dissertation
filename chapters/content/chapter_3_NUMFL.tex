@@ -3,8 +3,6 @@
 NUMFL is a value-based causal inference model for localizing faults in numerical software.  NUMFL combines causal and statistical analyses to characterize the causal effects of individual numerical expressions on output errors.  Given value-profiles for an expression's variables, NUMFL uses generalized propensity scores (GPSs) or covariate balancing propensity scores (CBPSs) to reduce confounding bias caused by evaluation of other, faulty expressions.  It estimates the average failure-causing effect of an expression using quadratic regression models fit within GPS or CBPS subclasses.  We report on an empirical evaluation of NUMFL involving components from four Java numerical libraries, in which it was compared to five alternative statistical fault localization metrics.  The results indicate that NUMFL is the most effective technique overall. We also found that NUMFL works fairly well with data from failing runs alone.
 
 \section{Introduction}\label{introduction}
-
-\section{Introduction}
 \vspace{-2pt}
 Numerical software plays a very important role in science, industry, and defense, and failures of numerical software have been reported as the cause of several well-publicized ``disasters" \cite{VuikWeb,Kanewala2014}.  However, automated techniques intended specifically for localizing numerical faults based on execution data have received relatively little attention from researchers, although there has been substantial research on general {\it statistical fault localization} (SFL) techniques (e.g. \cite{Jones2002,Liblit2004,Liu2005}) and on other general automated debugging techniques (see Section \ref{relatedwork}).
 

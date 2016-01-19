@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  17 JAN 2016 17:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  17 JAN 2016 23:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1390,7 +1390,7 @@ erted-to.pdf Chap1_methodology.eps>
 (epstopdf)             \includegraphics on input line 38.
 Package epstopdf Info: Output file is already uptodate.
 
-<Chap1_methodology-eps-converted-to.pdf, id=267, 924.45375pt x 492.84125pt>
+<Chap1_methodology-eps-converted-to.pdf, id=262, 924.45375pt x 492.84125pt>
 File: Chap1_methodology-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Chap1_methodology-eps-converted-to.pdf>
@@ -1616,6 +1616,9 @@ Overfull \hbox (1.62662pt too wide) in paragraph at lines 222--230
 LaTeX Warning: Reference `image2' on page 8 undefined on input line 235.
 
 
+LaTeX Warning: Reference `chap:malaria' on page 8 undefined on input line 237.
+
+
 LaTeX Warning: Reference `phenotype' on page 8 undefined on input line 239.
 
 
@@ -1624,519 +1627,15 @@ LaTeX Warning: Reference `cancer' on page 8 undefined on input line 241.
 
 LaTeX Warning: Reference `drug' on page 8 undefined on input line 243.
 
-) (./chapters/content/chapter_3_malari.tex [8]
+) (./chapters/content/chapter_4_BART.tex [8]
 Chapter 2.
-
-LaTeX Warning: Citation `VuikWeb' on page 9 undefined on input line 9.
-
-
-LaTeX Warning: Citation `Kanewala2014' on page 9 undefined on input line 9.
-
-
-LaTeX Warning: Citation `Jones2002' on page 9 undefined on input line 9.
-
-
-LaTeX Warning: Citation `Liblit2004' on page 9 undefined on input line 9.
-
-
-LaTeX Warning: Citation `Liu2005' on page 9 undefined on input line 9.
-
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 13.
+)
+No file dissertation-BZ.bbl.
 [9
 
-]
-
-LaTeX Warning: Citation `Fenton1999' on page 10 undefined on input line 11.
-
-
-LaTeX Warning: Citation `Jones2002' on page 10 undefined on input line 13.
-
-
-LaTeX Warning: Citation `Liblit2004' on page 10 undefined on input line 13.
-
-[10]
-
-LaTeX Warning: Citation `Baah2010' on page 11 undefined on input line 15.
-
-
-LaTeX Warning: Citation `Baah2011' on page 11 undefined on input line 15.
-
-
-LaTeX Warning: Citation `Gore2012' on page 11 undefined on input line 15.
-
-
-LaTeX Warning: Citation `Shu2013' on page 11 undefined on input line 15.
-
-
-LaTeX Warning: Citation `Pearl2003' on page 11 undefined on input line 15.
-
-
-LaTeX Warning: Citation `Imai2004' on page 11 undefined on input line 15.
-
-
-LaTeX Warning: Citation `Imai2014' on page 11 undefined on input line 15.
-
-
-LaTeX Warning: Citation `Hirano2004' on page 11 undefined on input line 17.
-
-[11]
-Overfull \hbox (5.05792pt too wide) in paragraph at lines 25--26
-[]\OT1/ppl/m/n/12 A new, value-based ap-proach to SFL for nu-mer-i-cal pro-gram
-s, named NUMFL,
- []
-
-
-Overfull \hbox (3.43863pt too wide) in paragraph at lines 25--26
-\OT1/ppl/m/n/12 NUML, de-noted NUMFL-GPS and NUMFL-CBPS, based on al-ter-na-tiv
-e forms
- []
-
-[12]
-
-LaTeX Warning: Citation `Bai2015' on page 13 undefined on input line 33.
-
-[13]
-Package epstopdf Info: Source file: <MotivatingExample.eps>
-(epstopdf)                    date: 2016-01-17 13:34:42
-(epstopdf)                    size: 858112 bytes
-(epstopdf)             Output file: <MotivatingExample-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-01-17 17:03:13
-(epstopdf)                    size: 327103 bytes
-(epstopdf)             Command: <repstopdf --outfile=MotivatingExample-eps-conv
-erted-to.pdf MotivatingExample.eps>
-(epstopdf)             \includegraphics on input line 47.
-Package epstopdf Info: Output file is already uptodate.
-
-<MotivatingExample-eps-converted-to.pdf, id=356, 1250.6725pt x 684.5575pt>
-File: MotivatingExample-eps-converted-to.pdf Graphic file (type pdf)
-
-<use MotivatingExample-eps-converted-to.pdf>
-Package pdftex.def Info: MotivatingExample-eps-converted-to.pdf used on input l
-ine 47.
-(pdftex.def)             Requested size: 346.89731pt x 189.86772pt.
- [14 <./MotivatingExample-eps-converted-to.pdf>]
-
-LaTeX Warning: Citation `Philip2012' on page 15 undefined on input line 54.
-
-[15]
-Package epstopdf Info: Source file: <CausalDAG1.eps>
-(epstopdf)                    date: 2016-01-17 13:34:42
-(epstopdf)                    size: 823633 bytes
-(epstopdf)             Output file: <CausalDAG1-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-01-17 17:03:14
-(epstopdf)                    size: 80406 bytes
-(epstopdf)             Command: <repstopdf --outfile=CausalDAG1-eps-converted-t
-o.pdf CausalDAG1.eps>
-(epstopdf)             \includegraphics on input line 72.
-Package epstopdf Info: Output file is already uptodate.
- <CausalDAG1-eps-converted-to.pdf, id=375, 289.08pt x 166.6225pt>
-File: CausalDAG1-eps-converted-to.pdf Graphic file (type pdf)
-
-<use CausalDAG1-eps-converted-to.pdf>
-Package pdftex.def Info: CausalDAG1-eps-converted-to.pdf used on input line 72.
-
-(pdftex.def)             Requested size: 216.81pt x 124.96655pt.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 80.
-
-
-LaTeX Warning: Citation `Pearl2003' on page 16 undefined on input line 81.
-
-
-LaTeX Warning: Citation `Pearl2003' on page 16 undefined on input line 81.
-
-[16]
-
-LaTeX Warning: Citation `Grossman2005' on page 17 undefined on input line 86.
-
-
-LaTeX Warning: Citation `Rosenbaum1983' on page 17 undefined on input line 86.
-
-[17 <./CausalDAG1-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <CausalDAG2.eps>
-(epstopdf)                    date: 2016-01-17 13:34:42
-(epstopdf)                    size: 838541 bytes
-(epstopdf)             Output file: <CausalDAG2-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-01-17 17:03:16
-(epstopdf)                    size: 84278 bytes
-(epstopdf)             Command: <repstopdf --outfile=CausalDAG2-eps-converted-t
-o.pdf CausalDAG2.eps>
-(epstopdf)             \includegraphics on input line 90.
-Package epstopdf Info: Output file is already uptodate.
-
-<CausalDAG2-eps-converted-to.pdf, id=391, 289.08pt x 166.6225pt>
-File: CausalDAG2-eps-converted-to.pdf Graphic file (type pdf)
-
-<use CausalDAG2-eps-converted-to.pdf>
-Package pdftex.def Info: CausalDAG2-eps-converted-to.pdf used on input line 90.
-
-(pdftex.def)             Requested size: 216.81pt x 124.96655pt.
-
-
-LaTeX Warning: Citation `Rosenbaum1983' on page 18 undefined on input line 96.
-
-
-LaTeX Warning: Citation `Rosenbaum1983' on page 18 undefined on input line 96.
-
-
-Overfull \hbox (12.71294pt too wide) in paragraph at lines 98--99
-[]\OT1/ppl/m/n/12 Suppose that for each unit $\OML/cmm/m/it/12 i$ \OT1/ppl/m/n/
-12 ex-am-ined in an ob-ser-va-tional study, we have recorded
- []
-
-[18 <./CausalDAG2-eps-converted-to.pdf>]
-
-LaTeX Warning: Citation `Silvapulle1981' on page 19 undefined on input line 104
-.
-
-
-LaTeX Warning: Citation `Rosenbaum1983' on page 19 undefined on input line 112.
-
-
-
-Overfull \hbox (7.16814pt too wide) in paragraph at lines 112--113
-[]\OT1/ppl/m/n/12 After the propen-sity score model is es-ti-mated, co-vari-ate
- bal-ance may be achieved
- []
-
-
-LaTeX Warning: Citation `Imai2004' on page 19 undefined on input line 114.
-
-
-LaTeX Warning: Citation `Imai2014' on page 19 undefined on input line 114.
-
-
-LaTeX Warning: Citation `Imai2004' on page 19 undefined on input line 117.
-
-
-LaTeX Warning: Citation `Imai2004' on page 19 undefined on input line 117.
-
-[19]
-
-LaTeX Warning: Citation `Imai2014' on page 20 undefined on input line 120.
-
-
-LaTeX Warning: Citation `Imai2014' on page 20 undefined on input line 121.
-
-[20]
-
-LaTeX Warning: Citation `Imai2014' on page 21 undefined on input line 125.
-
-
-LaTeX Warning: Citation `Rosenblueth1981' on page 21 undefined on input line 12
-5.
-
-
-LaTeX Warning: Citation `Hansen1982' on page 21 undefined on input line 129.
-
-
-LaTeX Warning: Citation `Jones2002' on page 21 undefined on input line 132.
-
-[21]
-
-LaTeX Warning: Citation `Pearl2003' on page 22 undefined on input line 137.
-
-[22] [23] [24]
-
-LaTeX Warning: Citation `Zhao2013' on page 25 undefined on input line 159.
-
-[25]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 185.
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--189
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--189
-
- []
-
-[26]
-Overfull \hbox (4.43626pt too wide) in paragraph at lines 194--195
-[]\OT1/ppl/m/n/12 Summarize the failure-causing ef-fect of $\OML/cmm/m/it/12 T[
-]$ \OT1/ppl/m/n/12 by adding the two es-ti-mated slopes'
- []
-
-[27]
-Underfull \hbox (badness 10000) in paragraph at lines 198--204
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 198--204
-
- []
-
-Package epstopdf Info: Source file: <DRF_curves.eps>
-(epstopdf)                    date: 2016-01-17 13:34:42
-(epstopdf)                    size: 2755277 bytes
-(epstopdf)             Output file: <DRF_curves-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-01-17 17:03:18
-(epstopdf)                    size: 208538 bytes
-(epstopdf)             Command: <repstopdf --outfile=DRF_curves-eps-converted-t
-o.pdf DRF_curves.eps>
-(epstopdf)             \includegraphics on input line 207.
-Package epstopdf Info: Output file is already uptodate.
-<DRF_curves-eps-converted-to.pdf, id=466, 433.62pt x 216.81pt>
-File: DRF_curves-eps-converted-to.pdf Graphic file (type pdf)
-
-<use DRF_curves-eps-converted-to.pdf>
-Package pdftex.def Info: DRF_curves-eps-converted-to.pdf used on input line 207
-.
-(pdftex.def)             Requested size: 303.53267pt x 151.77257pt.
- [28 <./DRF_curves-eps-converted-to.pdf>]
-Overfull \hbox (9.96019pt too wide) in paragraph at lines 260--261
-\OT1/ppl/m/n/12 stan-dard-ized $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x \OMS/cmsy/m
-/n/12 ! []\OT1/cmr/m/n/12 )$ \OT1/ppl/m/n/12 to ad-just for dif-fer-ences in sc
-ale be-tween vari-ables. NUMFL-
- []
-
-[29] [30]
-
-LaTeX Warning: Citation `Hansen1982' on page 31 undefined on input line 266.
-
-
-LaTeX Warning: Citation `CBPS' on page 31 undefined on input line 274.
-
-[31] [32]
-
-LaTeX Warning: Citation `Java' on page 33 undefined on input line 292.
-
-
-LaTeX Warning: Citation `ASM' on page 33 undefined on input line 292.
-
-
-LaTeX Warning: Citation `NUMFL' on page 33 undefined on input line 294.
-
-
-LaTeX Warning: Citation `R' on page 33 undefined on input line 294.
-
-
-LaTeX Warning: Citation `Commons' on page 33 undefined on input line 297.
-
-
-LaTeX Warning: Citation `Oj' on page 33 undefined on input line 297.
-
-
-LaTeX Warning: Citation `JAMA' on page 33 undefined on input line 297.
-
-
-LaTeX Warning: Citation `SciMark' on page 33 undefined on input line 297.
-
-[33]
-Overfull \hbox (59.79138pt too wide) in paragraph at lines 302--322
-[][] 
- []
-
-[34]
-
-LaTeX Warning: Citation `Abreu2007' on page 35 undefined on input line 331.
-
-
-LaTeX Warning: Citation `Wong2014' on page 35 undefined on input line 331.
-
-[35]
-
-LaTeX Warning: Citation `Liu2005' on page 36 undefined on input line 341.
-
-
-LaTeX Warning: Citation `Gore2011' on page 36 undefined on input line 341.
-
-[36]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 356.
- [37] [38]
-Package epstopdf Info: Source file: <QRM_VS_Base.eps>
-(epstopdf)                    date: 2016-01-17 13:34:42
-(epstopdf)                    size: 11128279 bytes
-(epstopdf)             Output file: <QRM_VS_Base-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-01-17 17:03:20
-(epstopdf)                    size: 508472 bytes
-(epstopdf)             Command: <repstopdf --outfile=QRM_VS_Base-eps-converted-
-to.pdf QRM_VS_Base.eps>
-(epstopdf)             \includegraphics on input line 394.
-Package epstopdf Info: Output file is already uptodate.
- <QRM_VS_Base-eps-converted-to.pdf, id=533, 433.62pt x 216.81pt>
-File: QRM_VS_Base-eps-converted-to.pdf Graphic file (type pdf)
-
-<use QRM_VS_Base-eps-converted-to.pdf>
-Package pdftex.def Info: QRM_VS_Base-eps-converted-to.pdf used on input line 39
-4.
-(pdftex.def)             Requested size: 433.62pt x 216.81938pt.
- [39]
-
-LaTeX Warning: Citation `Baah2010' on page 40 undefined on input line 400.
-
-[40 <./QRM_VS_Base-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <QRM_allFail.eps>
-(epstopdf)                    date: 2016-01-17 13:34:42
-(epstopdf)                    size: 272083 bytes
-(epstopdf)             Output file: <QRM_allFail-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-01-17 17:03:21
-(epstopdf)                    size: 17803 bytes
-(epstopdf)             Command: <repstopdf --outfile=QRM_allFail-eps-converted-
-to.pdf QRM_allFail.eps>
-(epstopdf)             \includegraphics on input line 436.
-Package epstopdf Info: Output file is already uptodate.
-
-<QRM_allFail-eps-converted-to.pdf, id=549, 1170.3725pt x 799.98875pt>
-File: QRM_allFail-eps-converted-to.pdf Graphic file (type pdf)
-
-<use QRM_allFail-eps-converted-to.pdf>
-Package pdftex.def Info: QRM_allFail-eps-converted-to.pdf used on input line 43
-6.
-(pdftex.def)             Requested size: 260.17464pt x 177.8413pt.
- [41]
-Overfull \hbox (13.46718pt too wide) in paragraph at lines 443--443
-[]\OT1/ppl/b/n/14.4 Application of NUMFL-GPS to Pro-grams with Mul-ti-ple Fault
-s 
- []
-
-[42 <./QRM_allFail-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <QRM_VS_Base_MultipleFault.eps>
-(epstopdf)                    date: 2016-01-17 13:34:42
-(epstopdf)                    size: 6064437 bytes
-(epstopdf)             Output file: <QRM_VS_Base_MultipleFault-eps-converted-to
-.pdf>
-(epstopdf)                    date: 2016-01-17 17:03:23
-(epstopdf)                    size: 345573 bytes
-(epstopdf)             Command: <repstopdf --outfile=QRM_VS_Base_MultipleFault-
-eps-converted-to.pdf QRM_VS_Base_MultipleFault.eps>
-(epstopdf)             \includegraphics on input line 466.
-Package epstopdf Info: Output file is already uptodate.
-
-<QRM_VS_Base_MultipleFault-eps-converted-to.pdf, id=569, 433.62pt x 216.81pt>
-File: QRM_VS_Base_MultipleFault-eps-converted-to.pdf Graphic file (type pdf)
-
-<use QRM_VS_Base_MultipleFault-eps-converted-to.pdf>
-Package pdftex.def Info: QRM_VS_Base_MultipleFault-eps-converted-to.pdf used on
- input line 466.
-(pdftex.def)             Requested size: 433.62pt x 216.81938pt.
- [43]
-Underfull \hbox (badness 1661) in paragraph at lines 475--475
-[]\OT1/ppl/m/it/10.95 Table 2.5: |AV-ER-AGE FAULT LO-CAL-IZA-TION COSTS OF NUMF
-L-GPS-QRM AND
- []
-
-[44 <./QRM_VS_Base_MultipleFault-eps-converted-to.pdf>]
-Underfull \hbox (badness 1661) in paragraph at lines 506--506
-[]\OT1/ppl/m/it/10.95 Table 2.6: |AV-ER-AGE FAULT LO-CAL-IZA-TION COSTS OF NUMF
-L-GPS-QRM AND
- []
-
-Package epstopdf Info: Source file: <CBPS_VS_GPS.eps>
-(epstopdf)                    date: 2016-01-17 13:34:42
-(epstopdf)                    size: 274000 bytes
-(epstopdf)             Output file: <CBPS_VS_GPS-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-01-17 17:03:24
-(epstopdf)                    size: 18562 bytes
-(epstopdf)             Command: <repstopdf --outfile=CBPS_VS_GPS-eps-converted-
-to.pdf CBPS_VS_GPS.eps>
-(epstopdf)             \includegraphics on input line 524.
-Package epstopdf Info: Output file is already uptodate.
-<CBPS_VS_GPS-eps-converted-to.pdf, id=585, 1170.3725pt x 799.98875pt>
-File: CBPS_VS_GPS-eps-converted-to.pdf Graphic file (type pdf)
-
-<use CBPS_VS_GPS-eps-converted-to.pdf>
-Package pdftex.def Info: CBPS_VS_GPS-eps-converted-to.pdf used on input line 52
-4.
-(pdftex.def)             Requested size: 433.62pt x 296.39403pt.
-Package epstopdf Info: Source file: <CBPS_VS_GPS_MultipleFault.eps>
-(epstopdf)                    date: 2016-01-17 13:34:42
-(epstopdf)                    size: 236905 bytes
-(epstopdf)             Output file: <CBPS_VS_GPS_MultipleFault-eps-converted-to
-.pdf>
-(epstopdf)                    date: 2016-01-17 17:03:26
-(epstopdf)                    size: 17342 bytes
-(epstopdf)             Command: <repstopdf --outfile=CBPS_VS_GPS_MultipleFault-
-eps-converted-to.pdf CBPS_VS_GPS_MultipleFault.eps>
-(epstopdf)             \includegraphics on input line 531.
-Package epstopdf Info: Output file is already uptodate.
-
-<CBPS_VS_GPS_MultipleFault-eps-converted-to.pdf, id=586, 1170.3725pt x 799.9887
-5pt>
-File: CBPS_VS_GPS_MultipleFault-eps-converted-to.pdf Graphic file (type pdf)
- <use CBPS_VS_GPS_MultipleFault-eps-converted-to.pdf>
-Package pdftex.def Info: CBPS_VS_GPS_MultipleFault-eps-converted-to.pdf used on
- input line 531.
-(pdftex.def)             Requested size: 433.62pt x 296.39403pt.
-
-Overfull \hbox (5.43123pt too wide) in paragraph at lines 537--538
-\OT1/ppl/m/n/12 ploys re-gres-sion mod-els for two pur-poses: es-ti-mat-ing gen
--er-al-ized propen-sity scores
- []
-
-[45] [46 <./CBPS_VS_GPS-eps-converted-to.pdf>] [47 <./CBPS_VS_GPS_MultipleFault
--eps-converted-to.pdf>]
-
-LaTeX Warning: Citation `Jones2002' on page 48 undefined on input line 540.
-
-
-LaTeX Warning: Citation `Liblit2005' on page 48 undefined on input line 540.
-
-
-LaTeX Warning: Citation `Baah2010' on page 48 undefined on input line 540.
-
-
-LaTeX Warning: Citation `Baah2011' on page 48 undefined on input line 540.
-
-
-LaTeX Warning: Citation `Gore2012' on page 48 undefined on input line 540.
-
-
-LaTeX Warning: Citation `Shu2013' on page 48 undefined on input line 540.
-
-[48]
-
-LaTeX Warning: Citation `Cleve2005' on page 49 undefined on input line 542.
-
-
-LaTeX Warning: Citation `Jeffrey2008' on page 49 undefined on input line 542.
-
-
-LaTeX Warning: Citation `Zeller2002' on page 49 undefined on input line 542.
-
-
-LaTeX Warning: Citation `Ernst2007' on page 49 undefined on input line 542.
-
-
-LaTeX Warning: Citation `Hangal2002' on page 49 undefined on input line 542.
-
-
-Overfull \hbox (4.36343pt too wide) in paragraph at lines 542--543
-\OT1/ppl/m/n/12 are among the few fault lo-cal-iza-tion tech-niques based on va
-l-ues of vari-ables. Cause-
- []
-
-
-LaTeX Warning: Citation `Scott2007' on page 49 undefined on input line 545.
-
-
-LaTeX Warning: Citation `Tang2010' on page 49 undefined on input line 545.
-
-
-LaTeX Warning: Citation `Lam2013' on page 49 undefined on input line 545.
-
-
-LaTeX Warning: Citation `Bao2013' on page 49 undefined on input line 545.
-
-
-Overfull \hbox (4.74377pt too wide) in paragraph at lines 545--546
-[]\OT1/ppl/m/n/12 Some re-cent stud-ies have de-vel-oped tech-niques to an-a-ly
-ze in-sta-bil-ity in floating-
- []
-
-[49]
-
-LaTeX Warning: Citation `Hirano2004' on page 50 undefined on input line 548.
-
-
-LaTeX Warning: Citation `Zhao2013' on page 50 undefined on input line 548.
-
-) [50]
-No file dissertation-BZ.bbl.
-[51]
+] [10]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
  (./dissertation-BZ.aux)
@@ -2149,8 +1648,8 @@ Package rerunfilecheck Warning: File `dissertation-BZ.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `dissertation-BZ.out':
-(rerunfilecheck)             Before: A3CBA7688104DA7CA93BE6040BA199E6;2431
-(rerunfilecheck)             After:  190FFC96427FE43E1A4C5BED6D9181AE;2384.
+(rerunfilecheck)             Before: 02CE2F4C49A9AC6B545F504C9DF5B863;2325
+(rerunfilecheck)             After:  165EF645164CBAF4195599CC0C5AF00C;1499.
 
 LaTeX Warning: There were undefined references.
 
@@ -2160,30 +1659,112 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 171.
  ) 
 Here is how much of TeX's memory you used:
- 26177 strings out of 493117
- 500769 string characters out of 6135433
- 634685 words of memory out of 5000000
- 28905 multiletter control sequences out of 15000+600000
- 31505 words of font info for 91 fonts, out of 8000000 for 9000
+ 25978 strings out of 493117
+ 497562 string characters out of 6135433
+ 625639 words of memory out of 5000000
+ 28782 multiletter control sequences out of 15000+600000
+ 26066 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,13n,80p,3216b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
-xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
-ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2
-014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/te
-xmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
-/urw/palatino/uplri8a.pfb>
-Output written on dissertation-BZ.pdf (61 pages, 1956841 bytes).
+ 48i,7n,80p,3216b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{figure.caption.25} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.24} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.21} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.19} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.17} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.2.5} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.12} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.9} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.8} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.7} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.23} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.22} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.20} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.18} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.16} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.15} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section*.26} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.2.7} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.5.8} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.5.7} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.5.6} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.5.5} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.5.4} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.5.3} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.5.2} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.5.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.4.2} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.3.4} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.3.3} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.3.2} has been referenced but does not 
+exist, replaced by a fixed one
+
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2014/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on dissertation-BZ.pdf (20 pages, 195351 bytes).
 PDF statistics:
- 699 PDF objects out of 1000 (max. 8388607)
- 585 compressed objects within 6 object streams
- 138 named destinations out of 1000 (max. 500000)
- 295 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 371 PDF objects out of 1000 (max. 8388607)
+ 326 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 242 words of extra memory for PDF output out of 10000 (max. 10000000)
 
