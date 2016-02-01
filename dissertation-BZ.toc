@@ -6,17 +6,17 @@
 \contentsline {section}{\numberline {1.5}Contribution and organization of the dissertation}{8}{section.1.5}
 \contentsline {chapter}{\numberline {2}Causal Inference Based Fault Localization for Numerical Software with NUMFL}{9}{chapter.2}
 \contentsline {section}{\numberline {2.1}Introduction}{9}{section.2.1}
-\contentsline {section}{\numberline {2.2}BACKGROUND}{10}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Regression Tree}{10}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}BART Machine}{10}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Generalized Propensity Score (GPS)}{10}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Covariate Balancing Propensity Score (CBPS)}{10}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}TWO VERSIONS OF NUMFL}{10}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}NUMFL-GPS}{10}{subsection.2.3.1}
-\contentsline {subsubsection}{Control of Confounding.}{10}{section*.7}
-\contentsline {subsubsection}{Failure-causing Effect Estimation.}{10}{section*.8}
-\contentsline {section}{\numberline {2.4}EMPIRICAL EVALUATION}{10}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Limitations}{10}{subsection.2.4.1}
-\contentsline {section}{\numberline {2.5}RELATED WORK}{10}{section.2.5}
-\contentsline {section}{\numberline {2.6}CONCLUSION}{10}{section.2.6}
+\contentsline {section}{\numberline {2.2}BART Model Algorithm}{9}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}A Single Regression Tree model}{10}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}A sum of regression trees model}{11}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}A regularization prior}{11}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Bayesian Backfitting MCMC Algorithm}{11}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}TWO VERSIONS OF NUMFL}{11}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}NUMFL-GPS}{11}{subsection.2.3.1}
+\contentsline {subsubsection}{Control of Confounding.}{11}{section*.7}
+\contentsline {subsubsection}{Failure-causing Effect Estimation.}{11}{section*.8}
+\contentsline {section}{\numberline {2.4}EMPIRICAL EVALUATION}{11}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Limitations}{11}{subsection.2.4.1}
+\contentsline {section}{\numberline {2.5}RELATED WORK}{11}{section.2.5}
+\contentsline {section}{\numberline {2.6}CONCLUSION}{11}{section.2.6}
 \contentsline {chapter}{Appendices}{}{section*.9}

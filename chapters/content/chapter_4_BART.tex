@@ -4,31 +4,63 @@
 \section{Introduction}\label{introduction}
 \vspace{-2pt}
 
+The benefits of using BART is:
+
 
 The main contributions of this paper are:
 
 The rest of the chapter is organized as follows: 
 
-\section{BACKGROUND}\label{background}%what is BART and why BART
-\subsection{Regression Tree}\label{IIIA}
+\section{BART Model Algorithm}\label{background}%what is BART and why BART
+The BART model algorithm consists of three pars: a sum of regression trees model, a regularization prior and a fitting algorithm Marcov Chain Mote Carlo (MCMC) 
+\subsection{A Single Regression Tree model}\label{IIIA}
+Regression tree is one type of decision tree that predicts the value of a target variable based on several input variables. Regression tree handles the situation when the target variable is continuous. Figure{} shows a single regression tree model. All the interior nodes of a regression tree have decision rules which send the input data set to either left or right side. After the input data set go through the interior nodes and reach the bottom of the tree, the data set is divided into several disjoint subgroup. Each group of data is represent by a leaf node. 
+
+A single regression tree model is denoted as:
+$
+y=g(T, R, M)+\epsilon
+$
+
+Here $R$ denotes a binary regression tree consisting a set of interior node decision rules and a set of terminal nodes, and let $M=
+\begin{Bmatrix}
+ \mu _1, \mu _2, . . ., \mu _b   & 
+\end{Bmatrix}$
+denotes a set of parameter value associated with each of the b terminal nodes of $R$. Each terminal node represent a regression model of outcome $Y$ on Treatment $T$
 
 
+\subsection{A sum of regression trees model}
+BART model 
+\subsection{A regularization prior}
 
-\subsection{BART Machine}\label{IIIB}
-
-
-
-\section{TWO VERSIONS OF NUMFL}\label{twoversion}% how to use BART
-
-
-\subsection{NUMFL-GPS}\label{IVA}
+\subsection{Bayesian Backfitting MCMC Algorithm}
 
 
-\subsubsection{Control of Confounding.}
+\section{BART Model with Causal Inference}\label{twoversion}% how to use BART
 
+For binary treatment, BART model primarily estimate average causal effects such as $E(Y(1)|\pmb{X}=\pmb{x}) - E(Y(0)|\pmb{X}=\pmb{x})=E(Y|T=1, \pmb{X}=\pmb{x})-E(Y|T=0, \pmb{X}=\pmb{x})=f(1,\pmb(x))-f(0,\pmb(x))$ . The algorithm contains the following steps:
+\begin{ienumerate}
+\item Fit BART model using MCMC algorithm to full sample
+\item Get posterior prediction for each unit by setting the treatment variable value $T=1$ and keep confounding variable value unchanged..
+\item Get posterior prediction for each unit by setting the treatment variable value $T=0$ and keep confounding variable value unchanged.
+\item	Calculate the difference between the posterior predictions for each unit.
+\item Estimate average causal effect by averaging all the differences of posterior predictions. 
+\end{enumerate}
 
+The first step is to use BART model to estimate the model $Y=f(T,\pmb(x))$, which specified the causal relationship of treatment $T$ and outcome $Y$. The second step is to 
 
-\subsubsection{Failure-causing Effect Estimation.}
+For continuous treatment, causal effect estimation with BART model contains the following steps:
+\begin{enumerate}
+\item Fit BART model using MCMC algorithm to full sample
+\item Increase the treatment variable value of each unit and keep the confounding variable value unchanged, so we have a new data set
+\item Calculate the difference between the posterior predictions of each unit in original data set and the posterior predictions of each unit in the new data set.
+\item Estimate average causal effect by averaging all the differences of posterior predictions.
+\end{enumerate}
+
+The first step is 
+
+In the step2,  one problem is how to increase the treatment variable value for each unit. 
+
+The Algorithm of BART model based statistical fault localization is shown in Figure: 
 
 
 

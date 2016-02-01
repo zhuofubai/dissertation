@@ -6,11 +6,11 @@
 \BOOKMARK [1][-]{section.1.5}{Contribution and organization of the dissertation}{chapter.1}% 6
 \BOOKMARK [0][-]{chapter.2}{Causal Inference Based Fault Localization for Numerical Software with NUMFL}{}% 7
 \BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 8
-\BOOKMARK [1][-]{section.2.2}{BACKGROUND}{chapter.2}% 9
-\BOOKMARK [2][-]{subsection.2.2.1}{Regression Tree}{section.2.2}% 10
-\BOOKMARK [2][-]{subsection.2.2.2}{BART Machine}{section.2.2}% 11
-\BOOKMARK [2][-]{subsection.2.2.3}{Generalized Propensity Score \(GPS\)}{section.2.2}% 12
-\BOOKMARK [2][-]{subsection.2.2.4}{Covariate Balancing Propensity Score \(CBPS\)}{section.2.2}% 13
+\BOOKMARK [1][-]{section.2.2}{BART Model Algorithm}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.1}{A Single Regression Tree model}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.2}{A sum of regression trees model}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.3}{A regularization prior}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.4}{Bayesian Backfitting MCMC Algorithm}{section.2.2}% 13
 \BOOKMARK [1][-]{section.2.3}{TWO VERSIONS OF NUMFL}{chapter.2}% 14
 \BOOKMARK [2][-]{subsection.2.3.1}{NUMFL-GPS}{section.2.3}% 15
 \BOOKMARK [1][-]{section.2.4}{EMPIRICAL EVALUATION}{chapter.2}% 16
