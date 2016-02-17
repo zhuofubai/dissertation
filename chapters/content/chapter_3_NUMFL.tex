@@ -12,11 +12,11 @@ Typical SFL techniques take data characterizing a set of both passing and failin
 
 Although purely numerical programs, and numerical components of other programs, are often relatively small, the intricacy of their computations can make them very difficult to debug manually.  In order to provide automated fault localization assistance to developers who need to debug numerical programs or components, we present a new approach to SFL, denoted by {\it NUMFL}, that is designed specifically to localize faults in numerical code.  NUMFL, like some other recent work on SFL \cite{Baah2010,Baah2011, Gore2012,Shu2013}, is based on {\it causal inference methodology} \cite{Pearl2003}, which seeks to mitigate biases like confounding bias that can badly distort SFL scores used to guide the search for faults.  However, in contrast to previous work, NUMFL is based on generalized forms of {\it propensity scores} \cite{Imai2004,Imai2014}, which are a fairly recent development in causal inference that provide a means of reducing confounding bias when estimating the causal effect of a numeric {\it treatment} or {\it exposure} variable on an outcome variable.
 
-In this paper, each value of the ``treatment" variable $T_e$ is the result of evaluating a numerical expression or subexpression with a {\it unique program location} identified by $e$,   and the outcome variable $Y$ represents the error (possibly zero) in the output of the numerical program or component under consideration.  The causal effect of $T_e$ on $Y$ is characterized by a function $r_e (t)$, which in medical research is called a {\it dose-response function} (DRF) \cite{Hirano2004}.  To enable localization of faults, NUMFL summarizes the behavior of $r_e (t)$ over a set of evaluations of expression $e$, with a single quantity $susp(e)$ called a {\it suspiciousness score}. It employs generalized propensity scores to make it less likely that a correct expression will receive a high suspiciousness score because it used variables whose values were erroneous due to faults in {\it other} expressions. Note that we do {\it not} use propensity scores themselves as suspiciousness scores; the two kinds of scores have very different purposes.
+In this chapter, each value of the ``treatment" variable $T_e$ is the result of evaluating a numerical expression or subexpression with a {\it unique program location} identified by $e$,   and the outcome variable $Y$ represents the error (possibly zero) in the output of the numerical program or component under consideration.  The causal effect of $T_e$ on $Y$ is characterized by a function $r_e (t)$, which in medical research is called a {\it dose-response function} (DRF) \cite{Hirano2004}.  To enable localization of faults, NUMFL summarizes the behavior of $r_e (t)$ over a set of evaluations of expression $e$, with a single quantity $susp(e)$ called a {\it suspiciousness score}. It employs generalized propensity scores to make it less likely that a correct expression will receive a high suspiciousness score because it used variables whose values were erroneous due to faults in {\it other} expressions. Note that we do {\it not} use propensity scores themselves as suspiciousness scores; the two kinds of scores have very different purposes.
 
 We assume that (in most cases) users of NUMFL have a set of program or component inputs that induces multiple failing and multiple passing runs.  For these inputs, NUMFL requires corresponding {\it expected outputs} (not just PASS/FAIL labels) and execution profiles characterizing variable values.  The expected outputs are provided by testers or end-users, and the profiles are recorded automatically by program instrumentation.  To compute the suspiciousness score $susp(e)$,  NUMFL requires, in addition to values of the treatment variable $T_e$ and the output-error variable $Y$, corresponding values of the set of variables {\it used} in expression $e$.  Although the value-profiles used by NUMFL are more detailed than basic coverage profiles used by typical SFL techniques, the potential cost of recording and analyzing value profiles is offset by the relatively small size of many numerical programs.   Moreover, we assume that developer-time is a more critical resource in debugging than is computation time, because developers usually can do other work while an SFL algorithm runs.
 
-The main contributions of this paper are:
+The main contributions of this chapter are:
 \vspace{-0.2cm}
 \begin{itemize}
 \item NUMFL, a new, value-based approach to SFL for numerical programs, which is based on sound causal inference methodology
@@ -28,9 +28,7 @@ The main contributions of this paper are:
 \item	An empirical comparison of NUMFL-GPS and NUMFL-CBPS to each other
 \end{itemize}
 
-The present paper is a revised and extended version of \cite{Bai2015}, which presented NUMFL-GPS, but not NUMFL-CBPS, and which evaluated NUMFL-GPS on only single-fault programs and with a mixture of passing and failing executions.  The new contributions of this paper, besides NUMFL-CBPS, include the evaluation of NUMFL with multi-fault programs, its evaluation with only failing executions, and the empirical comparison of NUMFL-GPS and NUMFL-CBPS.
-
-The rest of the paper is organized as follows: we present a motivating example in Section \ref{motivating}; background for our approach is presented in Section \ref{background}; NUMFL is described in detail in Section \ref{twoversion};  we report on its empirical evaluation in Section \ref{evaluation}; related work is surveyed in Section \ref{relatedwork}; and Section \ref{conclusion} concludes the paper.
+This chapter is a revised and extended version of \cite{Bai2015}, which presented NUMFL-GPS, but not NUMFL-CBPS, and which evaluated NUMFL-GPS on only single-fault programs and with a mixture of passing and failing executions. The rest of the chapter is organized as follows: we present a motivating example in Section \ref{motivating}; background for our approach is presented in Section \ref{background}; NUMFL is described in detail in Section \ref{twoversion};  we report on its empirical evaluation in Section \ref{evaluation}; related work is surveyed in Section \ref{relatedwork}; and Section \ref{conclusion} concludes the chapter.
 
 \section{Motivating Example}\label{motivating}
 
@@ -113,6 +111,32 @@ Ordinary propensity scores are not applicable to continuous treatment variables,
 
 \subsection{Generalized Propensity Score (GPS)}\label{IIIC}
 The {\it Generalized Propensity Score} proposed by Imai and van Dyk \cite{Imai2004} is intended for use with any kind of treatment variable, including continuous ones.  Let ${p_{\pmb{\psi}} }(T|\pmb{X})$  be a model, with parameters $\pmb{\psi}$, of the {\it conditional probability density function} (p.d.f.) of the treatment variable $T$ given the covariate vector $\pmb{X}$.  The GPS for a specific unit with treatment level $T=t$ and covariate values $\pmb{X=x}$ is the density value $r = {p_{\pmb\psi} }(T = t|{\pmb X} = {\pmb x})$.  Imai and van Dyk \cite{Imai2004} require that the model ${p_{\pmb{\psi}} }(T|\pmb{X})$ has a {\it unique parameter} ${\pmb\theta}  = \pmb{\theta _\psi }(X)$ such that ${p_{\pmb{\psi}} }(T|\pmb{X})$ {\it depends on} $\pmb X$ {\it only through} $\pmb \theta$.  For example, if the treatment is represented by a {\it linear Gaussian model} $T|\pmb{X} \sim {\cal N}(\pmb{X}'{\pmb \beta} ,{\sigma ^2})$ with mean $\pmb{X}'{\pmb \beta}$  (the scalar product $\pmb{X}$-transpose times $\pmb{\beta}$) and variance $\sigma ^2$, so that $\pmb{\psi}  = \left( {\pmb{\beta} ,{\sigma ^2}} \right)$, then $\pmb{\theta}  = \pmb{X}'\pmb{\beta} $ (here $\pmb{\theta} $ is scalar).  The model parameters $\pmb{\psi}$, $r$, $\pmb{\theta}$, $\pmb{\beta}$, etc. are estimated from data; the corresponding estimates are denoted with by $\hat {\pmb\psi} $, $\hat r$, $\hat{ \pmb{\theta}} $, $\hat{ \pmb{\beta}}$, etc..  In Imai and van Dyk's approach, it is the values of the parameter estimate ${{\hat{\pmb{\theta}} }_{\hat{ \pmb{\psi}} }}(\pmb{X})$ that are used to control confounding, rather than the values of ${p_{\hat{ \pmb{\psi}} }}(T|\pmb{X})$ themselves.
+
+Table \ref{exampledata} lists 10 test cases of faulty code in the motivating example. The three inputs $a$, $b$ and $c$ are generated randomly in the range $[-5, 5]$.  Table \ref{exampledata} also shows the values of intermediate variables values of $k$ and $x$ which are defined in expressions $s_2$ and $s_3$ respectively. The variable $r$ in expression $s_8$ is the faulty code's output and the variable $r_c$ represents the output of the correct code in motivating example with the same inputs. Outcome variable $Y$ is equal to $|r-r_c|$, so all the values of $Y$ are positive in the table. All the values in the table are rounding to three decimals. We use expression $s_8$ as an example to demonstrate generalized propensity score is estimated. For expression $s_8$, the treatment variable $T_e$ is variable $r$ and the confounding variables $\pmb{X}$ are covariates $x$ amd $k$. We first fit a linear regression model $T_e = \beta_0+{\beta_1}x+{\beta_2}k$ with $r $ as response, $x$ and $k$ as predictors. Given the data in Table \ref{exampledata}, the fitted regression model is $ T_e =0.614x+1.212k-1.462$. Then we estimate GPS ${{\hat{\pmb{\theta}} }_{\hat{ \pmb{\psi}} }}(x, k)$  by inputting observed value of $x$ and $k$ into the fitted regression model.  The estimated GPS for expression $s_8$ is denoted by$ {\hat{\theta}}_{s_8} $and is shown in the last column of the table.  
+
+The confounding variables' effect on treatment variable can be controlled if conditioned on GPS. This can be proved with the data in Table\ref{exampledata}. For the confounding variable $x$'s effect on treatment variable $r$, we fit two regression models: the first model uses $r$ as respond and $x$ as predictor; the second model uses $r$ as respond, but uses both $x$ and GPS ${\hat{\theta}}_{s_8}$ as predictors. Given the data in Table\ref{exampledata}, the first model is fitted as $ r =0.487x-1.729$ and the second model is fitted as $r=-2.271E^{-16}x+ 1.0{\hat{\theta}}_{s_8}-1.461$. In the first model, the coefficient of $x$ means the variable $r$ will increase 0.487 if $x$ increased 1 unit. In the second model, the coefficient of $x$ is close to 0, while the coefficient of propensity score ${\hat{\theta}}_{s_8}$ is 1. This means the variable value of $r$ is mostly depend on the value of  ${\hat{\theta}}_{s_8}$. Similarly, we can have another two fitted model for the other confounding variable $k$: $r=0.999k-1.415$  and $r=-2.755E^{-16}k+1.0{\hat{\theta}}_{s_8}$-1.461.  The coefficient of $k$ is also reduced to 0 in the second model.  Thus, given GPS, the effect of confounding variables on treatment variable is significantly reduced, which can also be illustrated by Figure \ref{dag2}
+
+\begin{table*}[htbp!]
+\caption{VARIABLE VALUES AND GPS OF THE MOTIVATING EXAMPLE}
+\label{exampledata}
+\centering
+      \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+Test \#	&1	&2&3&4 & 5 &6& 7 & 8 & 9&10\\	\hline
+
+$a$ &-1.697	&	4.088	&	0.242	&	-0.269	&	-3.495	&	-2.081	&	-2.063	&	-2.896	&	3.839	&	-3.412 \\ 	\hline
+$b$ & -1.430	&	0.660	&	4.843	&	-1.803	&	-3.352	&	1.282	&	-1.520	&	4.568	&	1.796	&	0.325\\	\hline
+$c$ & -3.990	&	3.778	&	-2.242	&	-0.347	&	-1.678	&	-0.358	&	3.766	&	-4.690	&	-2.535	&	-1.645 \\	\hline
+$k$ & -3.127	&	4.748	&	5.084	&	-2.072	&	-6.847	&	-0.799	&	-3.583	&	1.672	&	5.636	&	-3.088\\	\hline
+$x$ &-1.564	&	6.478	&	-1.071	&	0.138	&	10.036	&	-3.025	&	6.902	&	-17.919	&	4.362	&	-2.752 \\	\hline
+$r $& -2.127	&	7.477	&	4.663	&	-2.205	&	-9.778	&	6.777	&	-7.436	&	-19.768	&	7.184	&	-1.305\\	\hline
+$r_c$ & -4.679	&	5.885	&	5.545	&	-2.540	&	-10.268	&	5.881	&	-5.334	&	-14.157	&	8.083	&	-2.371 \\	\hline
+$Y$ & 2.552	&	1.592	&	0.882	&	0.335	&	0.490	&	0.896	&	2.102	&	5.611	&	0.900	&	1.065 \\	\hline
+${\hat{\theta}}_{s_8}$ & -4.749	&	9.731	&	5.502	&	-2.426	&	-2.132	&	-2.825	&	-0.102	&	-8.978	&	9.506	&	-5.431\\	\hline
+
+\end{tabular}
+\end{table*}
+
 
 \subsection{Covariate Balancing Propensity Score (CBPS)}\label{IIID}
 Section \ref{IIIB} explained that the ordinary propensity score is a balancing score and that it can be estimated from data using a parametric statistical model.  However, if the propensity score model ${\pi _{\pmb \beta} }({\pmb{X}_i})$  is {\it misspecified}, matching on the estimated propensity scores (and related techniques) may fail to balance the covariates, yielding biased estimates of causal effects. To address this problem, Imai and Ratkovic proposed the {\it Covariate Balancing Propensity Score} (CBPS), which is robust to mild misspecification of the propensity score model \cite{Imai2014}.
@@ -283,6 +307,95 @@ Here $\hat \pi _{e,i}$ represents the calculated propensity score for each obser
 \subsubsection{Failure-causing Effect Estimation.}
 Failure-causing-effect estimation in NUMFL-CBPS follows the same process followed in NUMFL-GPS, which is shown in lines 15-29 of Figure \ref{NUMFLalg}.  For a given subexpression $e$, QRM or DLRM is used to estimate the ``penalized" AFCE of $T_e$ on $Y$ within each subclass individually. Then the failure-causing effect is calculated as a weighted average the penalized AFCEs over all subclasses. Finally, the results for all subexpressions are sorted.
 
+\begin{table*}[htbp!]
+\caption{STANDARDIZED VARIABLE VALUES OF THE MOTIVATING EXAMPLE}
+\label{exampledata2}
+\centering
+      \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+Test \#	&	1	&	2	&	3	&	4	&	5	&	6	&	7	&	8	&	9	&	10	\\	\hline
+$a$	&	-0.166	&	0.876	&	0.183	&	0.091	&	-0.490	&	-0.235	&	-0.232	&	-0.382	&	0.831	&	-0.475	\\	\hline
+$b$	&	-0.364	&	0.023	&	0.797	&	-0.433	&	-0.720	&	0.138	&	-0.381	&	0.746	&	0.233	&	-0.039	\\	\hline
+$c$	&	-0.523	&	0.834	&	-0.218	&	0.113	&	-0.119	&	0.111	&	0.832	&	-0.646	&	-0.269	&	-0.114	\\	\hline
+$k$	&	-0.336	&	0.580	&	0.619	&	-0.213	&	-0.769	&	-0.065	&	-0.389	&	0.222	&	0.683	&	-0.331	\\	\hline
+$x$	&	-0.110	&	0.404	&	-0.079	&	-0.001	&	0.631	&	-0.204	&	0.431	&	-1.156	&	0.269	&	-0.186	\\	\hline
+$r$	&	-0.027	&	0.517	&	0.358	&	-0.031	&	-0.460	&	0.478	&	-0.328	&	-1.027	&	0.501	&	0.020	\\	\hline
+$Y$	&	2.552	&	1.592	&	0.882	&	0.335	&	0.490	&	0.896	&	2.102	&	5.611	&	0.900	&	1.065	\\	\hline
+\end{tabular}
+\end{table*}
+
+We will use the expression $s_3$ and $s_8$ in the faulty code of motivating example shown in Figure\ref{code} to  demonstrate the NUMFL algorithm in Figure\ref{NUMFLalg} step by step. The variable values are come from  Table\ref{exampledata}. In the motivating example, we know that the bug exists in expression $s_3$, so the estimated suspiciousness score of $s_3$ should be larger than the estimated suspiciousness score of $s_8$. In practice, running the NUMFL algorithm requires decomposing complex numerical expression in to several subexpressons , which has relatively simple structure. But the expressions $s_3$ and $s_8$ already have simple structure, so we choose to estimate the AFCE of the expressions without decomposing them into subexpressions. 
+
+For expression $s3$ , the first step is to identify the treatment variable and confounding variables. In the expression $s3$, the treatment variable $T_e$ is variable $x$ and the confounding variables are $a$, $b$ and $c$. Then we adjust  the differences in scale between variables by standardizing the variables' values. Table\ref{exampledata2} shows all the variables values after standardization. Note that the outcome variable $Y$ is not standardized. Next we estimate propensity scores for each observations. To estimate GPS ${\hat{\theta}}_{s_3}$, we can fit a linear regression model as described in section\ref{IIIC}. If NUMFL-CBPS is used, we need to fit a multinomial logistic regression model, which is some what complex. Here we use R package "CBPS" to estimate the CBPS which can automatically fit a multinomial regression model with the treatment variables and confounding variables and then estimate the propensity score. For the detail of the package "CBPS", the reader should refer to \cite{CBPS}. Table\ref{exampledata3} shows expression $s_3$'s  estimated GPS ${\hat{\theta}}_{s_3}$ and CBPS ${\hat{\pi}}_{s_3}$ for each observation. With the estimated propensity scores, we group observations with same or similar propensity scores into $m$ subclasses. For simplicity, we use $m=2$ for the motivating example. We rank the tests according to their propensity scores in descending order. The first 5 tests are in subclass 1 and the last 5 tests are in subclass 2. The last two columns of Table\ref{exampledata3} shows the subclass index of each test for NUMFL-GPS and NUMFL-CBPS. From Table\ref{exampledata3}, we can see there is some difference between the subclassification results of NUMFL-GPS and NUMFL-CBPS. In NUMFL-GPS, test 4 and test5 are in subclass 2 , while in NUMFL-CBPS, test4 and test5 belong to subclass1.  Similarly, we calculate GPS and CBPS for expression $s_8$, which is summarized in Table\ref{exampledata4}.  
+
+The suspiciousness score of expression is estimated by the average of failure-causing effect in two subclasses. Assume we use QRM to estimate failure-causing effect,  a quadratic regression model $Y = \zeta {T_e}^2 + \eta {T_e} + c$  is fitted in each subclass. The $|t$-value$|$ of  the coefficient $\zeta$ is the estimated failure-causing effect. Table\ref{exampledata5} shows the estimated failure-causing effect in each subclass when NUMFL-GPS is used.  In Table\ref{exampledata5},  ${|t-value|}_1$ denotes the estimated failure-causing effect in subclass1 and ${|t-value|}_2$ denotes the estimated failure-causing effect in subclass2. The estimated suspiciousness score (AFCE) is equal to  $({{|t-value|}_1}+{{|t-value|}_2})/2$. For comparison, we also fit a quadratic regression model with full sample without subclassification and the estimated failure-causing effect is denoted by ${|t-value|}_0$. In Table\ref{exampledata5}, ${|t-value|}_0$ of $s_8$ is close to ${|t-value|}_0$ of $s_3$, even though $s_8$ is not faulty. This is because the faulty variable $x$ in $s_3$ is confounder of variable $r$ in  $s_8$ and make $s_8$ associate to program failure. When NUMFL-GPS is applied, the estimated AFCE of $s_8$ is significantly smaller than the estimated AFCE of $s_3$. The estimated suspiciousness scores of NUMFL-CBPS are shown in  Table\ref{exampledata6}. In Table\ref{exampledata6}, the difference between  $s_3$ and $s_8$'s suspiciousness score is larger than the difference between their ${|t-value|}_0$s. This means both GPS and CBPS are effective in controlling confounding bias.  
+
+
+\begin{table*}[htbp!]
+\caption{ESTIMATED GPS AND CBPS OF EXPRESSION $s_3$}
+\label{exampledata3}
+\centering
+      \begin{tabular}{|l|c|c|c|c|}
+      \hline
+Test \#	&	${\hat{\theta}}_{s_3}$	&	${\hat{\pi}}_{s_3}$	&	Subclass index (GPS)	&	Subclass index (CBPS)	\\ \hline
+1	&	0.057	&	0.847	&	2	&	2	\\ \hline
+2	&	0.364	&	0.716	&	2	&	2	\\ \hline
+3	&	-0.606	&	5.65E-11	&	1	&	1	\\ \hline
+4	&	0.310	&	5.05E-06	&	2	&	1	\\ \hline
+5	&	0.692	&	1.60E-09	&	2	&	1	\\ \hline
+6	&	-0.143	&	5.872	&	1	&	2	\\ \hline
+7	&	0.637	&	2.570	&	2	&	2	\\ \hline
+8	&	-1.119	&	5.22E-06	&	1	&	1	\\ \hline
+9	&	-0.113	&	0.130	&	1	&	1	\\ \hline
+10	&	-0.079	&	5.694	&	1	&	2	\\ \hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[htbp!]
+\caption{ESTIMATED GPS AND CBPS OF EXPRESSION $s_8$}
+\label{exampledata4}
+\centering
+      \begin{tabular}{|l|c|c|c|c|}
+      \hline
+Test \#	&	${\hat{\theta}}_{s_8}$	&	${\hat{\pi}}_{s_8}$	&	Subclass index (GPS)	&	Subclass index (CBPS)	\\ \hline
+1	&	-0.258	&	0.521	&	1	&	2	\\ \hline
+2	&	0.562	&	3.156	&	2	&	2	\\ \hline
+3	&	0.323	&	3.878	&	2	&	2	\\ \hline
+4	&	-0.127	&	3.099	&	1	&	2	\\ \hline
+5	&	-0.110	&	0.004	&	2	&	1	\\ \hline
+6	&	-0.149	&	1.14E-07	&	1	&	1	\\ \hline
+7	&	0.005	&	0.008	&	2	&	1	\\ \hline
+8	&	-0.498	&	1.51E-06	&	1	&	1	\\ \hline
+9	&	0.549	&	3.079	&	2	&	2	\\ \hline
+10	&	-0.297	&	0.069	&	1	&	1	\\ \hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[htbp!]
+\caption{ESTIMATED AFCE WITH NUMFL-GPS}
+\label{exampledata5}
+\centering
+      \begin{tabular}{|l|c|c|c|c|}
+      \hline
+Expression& ${|t-value|}_1$  & ${|t-value|}_2$ & Suspiciousness score & ${|t-value|}_0$\\	\hline
+
+$s_3$ &  13.861 &0.228 &7.045 &2.763 \\	\hline
+$s_8$& 1.045 &0.515 &0.78 &2.601\\	\hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[htbp!]
+\caption{ESTIMATED AFCE WITH NUMFL-CBPS}
+\label{exampledata6}
+\centering
+      \begin{tabular}{|l|c|c|c|c|}
+      \hline
+Expression& ${|t-value|}_1$  & ${|t-value|}_2$  & Suspiciousness score & ${|t-value|}_0$\\	\hline
+$s_3$ &  4.034 &2.219 &3.127 &2.763\\	\hline
+$s_8$& 1.898&0.325 &1.112 &2.601\\	\hline
+\end{tabular}
+\end{table*}
+
 \section{EMPIRICAL EVALUATION}\label{evaluation}
 To evaluate the effectiveness of NUMFL, we conducted an empirical study involving several subject programs, in which the performance of NUMFL was compared with the performance of several baselines techniques. In the study, we investigated four main research questions:  (1) What is the performance of NUMFL compare to baseline techniques when each subject program version contains only one fault?  (2) What is the performance of NUMFL compare to the baselines when each subject program version contains two faults?   (3) Given data from only failing executions, is NUMFL effective?  (4) Which is most effective, NUMFL-GPS or NUMFL-CBPS?
 
@@ -387,12 +500,14 @@ We also compare the performance of NUMFL-GPS-QRM to that of each baseline SFL me
 \textit{\textbf{ QRM vs. SOBER.}}  NUMFL-GPS-QRM performed better than SOBER on 64 subject-program versions but NUMFL-GPS-QRM performed worse than SOBER on 28 versions.  NUMFL-GPS-QRM performed at least 20\% better than SOBER on 32 versions, whereas SOBER performed at least 20\% better than NUMFL-GPS-QRM on just 7 versions.
 
 % figure example
-\begin{figure*}[!thpb]
+%\begin{landscape}
+\begin{sidewaysfigure}
 \centering
 \includegraphics[width=\textwidth]{QRM_VS_Base.eps}
 \caption{Performance of NUMFL-GPS-QRM relative to baseline metrics on individual single-fault program versions.}
 \label{QRM_VS_Base}
-\end{figure*}
+\end{sidewaysfigure}
+%\end{landscape}
 
 \subsection{NUMFL-GPS Applied only to Failing Runs}\label{VE}
 Conventional, coverage-based and predicate-based SFL techniques require profiles and PASS/FAIL labels from both passing and failing runs, in order to rank statements based on estimates of quantities like $Pr [failure \mid s covered]$ \cite{Baah2010} that vary between statements only if the data come from a mix of passing and failing runs.  However, because many numerical programs have few conditional branches, a particular fault may be executed and cause erroneous values to occur on every run that is observed.  If these values propagate to the program output, a failure may occur on every run, depending on the numerical accuracy required.
@@ -547,4 +662,4 @@ Other researchers have proposed alternatives to Imai and van Dyk's approach to d
 
 
 \section{CONCLUSION}\label{conclusion}
-In this paper, we have presented and evaluated a value-based causal model, denoted NUMFL, for localizing faults in numerical software. NUMFL employs generalized propensity scores and covariate balancing propensity scores to control confounding bias involving floating-point program variables that carry erroneous values to correct statements.  NUMFL uses a quadratic regression model (QRM) to estimate the average failure-causing effect of a numerical expression.  We reported the results of an empirical comparison of NUMFL to several competing techniques on both single-fault subject programs and multiple-fault subject programs.  NUMFL performed notably better than the other techniques. We also found that NUMFL-GPS works well with data from failing {\it runs alone}.  Finally, we compared the performance two versions of NUMFL, denoted NUMFL-GPS and NUMFL-CBPS, based on the two aforementioned types of propensity scores. We found that the NUMFL-GPS performed better than NUMFL-CBPS for both single-fault programs and two-fault programs.   In the future work, will seek to extend our empirical results to a broader range of subject programs with more varied fault types.  We intend eventually to evaluate NUMFL in a user study, but given the difficulty of conducting an unbiased one, we think it is desirable to refine NUMFL as much as possible beforehand.  Finally, we will also explore the integration of NUMFL with coverage or predicate based causal SFL techniques. 
+In this chapter, we have presented and evaluated a value-based causal model, denoted NUMFL, for localizing faults in numerical software. NUMFL employs generalized propensity scores and covariate balancing propensity scores to control confounding bias involving floating-point program variables that carry erroneous values to correct statements.  NUMFL uses a quadratic regression model (QRM) to estimate the average failure-causing effect of a numerical expression.  We reported the results of an empirical comparison of NUMFL to several competing techniques on both single-fault subject programs and multiple-fault subject programs.  NUMFL performed notably better than the other techniques. We also found that NUMFL-GPS works well with data from failing {\it runs alone}.  Finally, we compared the performance two versions of NUMFL, denoted NUMFL-GPS and NUMFL-CBPS, based on the two aforementioned types of propensity scores. We found that the NUMFL-GPS performed better than NUMFL-CBPS for both single-fault programs and two-fault programs.   In the future work, will seek to extend our empirical results to a broader range of subject programs with more varied fault types.  We intend eventually to evaluate NUMFL in a user study, but given the difficulty of conducting an unbiased one, we think it is desirable to refine NUMFL as much as possible beforehand.  Finally, we will also explore the integration of NUMFL with coverage or predicate based causal SFL techniques. 

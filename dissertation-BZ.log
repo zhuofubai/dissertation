@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  30 JAN 2016 03:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  17 FEB 2016 02:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1282,31 +1282,31 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
  (./dissertation-BZ.toc
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 1.
- [3
-
-])
+)
 \tf@toc=\write7
 \openout7 = `dissertation-BZ.toc'.
 
- [4]
+ [3
+
+]
 (./dissertation-BZ.lot)
 \tf@lot=\write8
 \openout8 = `dissertation-BZ.lot'.
 
- [5
+ [4
 
 ] (./dissertation-BZ.lof)
 \tf@lof=\write9
 \openout9 = `dissertation-BZ.lof'.
 
 
-(./chapters/forward/acknowledgements.tex [6
+(./chapters/forward/acknowledgements.tex [5
 
 ]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 4.
 )
-(./chapters/forward/list_of_abbreviations.tex [7]
+(./chapters/forward/list_of_abbreviations.tex [6]
 LaTeX Font Info:    Try loading font information for OMS+ppl on input line 5.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omsppl.fd
@@ -1315,315 +1315,50 @@ File: omsppl.fd
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
 )
-(./chapters/forward/abstract.tex [8] [9]) [10]
-(./chapters/content/chapter_1_introduction.tex
+(./chapters/forward/abstract.tex [7] [8]) [9]
+(./chapters/content/chapter_4_BART.tex
 Chapter 1.
-
-LaTeX Warning: Citation `costa2014big' on page 1 undefined on input line 4.
-
-
-LaTeX Warning: Citation `shah2012coming' on page 1 undefined on input line 11.
-
-
-LaTeX Warning: Citation `bellazzi2011data' on page 1 undefined on input line 11
-.
-
-
-Overfull \hbox (2.88446pt too wide) in paragraph at lines 15--21
-[]\OT1/ppl/m/n/12 One of the ma-jor chal-lenges in de-sign-ing com-pu-ta-tional
- ap-proaches for biomed-
- []
-
 [1
 
 ]
-Package epstopdf Info: Source file: <Chap1_methodology.eps>
-(epstopdf)                    date: 2016-01-17 13:34:42
-(epstopdf)                    size: 61556696 bytes
-(epstopdf)             Output file: <Chap1_methodology-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-01-17 17:03:11
-(epstopdf)                    size: 100890 bytes
-(epstopdf)             Command: <repstopdf --outfile=Chap1_methodology-eps-conv
-erted-to.pdf Chap1_methodology.eps>
-(epstopdf)             \includegraphics on input line 38.
-Package epstopdf Info: Output file is already uptodate.
-
-<Chap1_methodology-eps-converted-to.pdf, id=163, 924.45375pt x 492.84125pt>
-File: Chap1_methodology-eps-converted-to.pdf Graphic file (type pdf)
-
-<use Chap1_methodology-eps-converted-to.pdf>
-Package pdftex.def Info: Chap1_methodology-eps-converted-to.pdf used on input l
-ine 38.
-(pdftex.def)             Requested size: 433.62pt x 231.16916pt.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 22.
 
 
-LaTeX Warning: Citation `humphreys1998unified' on page 2 undefined on input lin
-e 51.
+LaTeX Warning: Reference `' on page 2 undefined on input line 23.
 
+[2] [3]
 
-LaTeX Warning: Citation `armato2004lung' on page 2 undefined on input line 54.
-
-
-LaTeX Warning: Citation `keator2008national' on page 2 undefined on input line 
-54.
-
-
-LaTeX Warning: Citation `adma' on page 2 undefined on input line 55.
-
-[2 <./Chap1_methodology-eps-converted-to.pdf>]
-
-LaTeX Warning: Citation `rosse2003reference' on page 3 undefined on input line 
-68.
-
-
-LaTeX Warning: Citation `slee1978international' on page 3 undefined on input li
-ne 69.
-
-
-LaTeX Warning: Citation `liu2005rxnorm' on page 3 undefined on input line 69.
-
-[3]
-
-LaTeX Warning: Citation `Plenge' on page 4 undefined on input line 117.
-
-
-LaTeX Warning: Citation `Hurle' on page 4 undefined on input line 117.
-
-
-LaTeX Warning: Citation `barabasi2011network' on page 4 undefined on input line
- 120.
-
-
-LaTeX Warning: Citation `Tiffin' on page 4 undefined on input line 120.
-
-
-LaTeX Warning: Citation `Piro' on page 4 undefined on input line 120.
-
-
-LaTeX Warning: Citation `kohler2008walking' on page 4 undefined on input line 1
-23.
-
-
-LaTeX Warning: Citation `Xu' on page 4 undefined on input line 123.
-
-
-LaTeX Warning: Citation `franke2006reconstruction' on page 4 undefined on input
- line 123.
-
-
-LaTeX Warning: Citation `aerts2006gene' on page 4 undefined on input line 123.
-
-
-LaTeX Warning: Citation `lage2007human' on page 4 undefined on input line 126.
-
-
-LaTeX Warning: Citation `li2010genome' on page 4 undefined on input line 126.
-
-
-LaTeX Warning: Citation `wu2008network' on page 4 undefined on input line 126.
-
-
-LaTeX Warning: Citation `wu2009align' on page 4 undefined on input line 126.
-
-
-LaTeX Warning: Citation `vanunu2010associating' on page 4 undefined on input li
-ne 126.
-
-
-LaTeX Warning: Citation `hwang2012co' on page 4 undefined on input line 126.
-
-
-LaTeX Warning: Citation `brunner2004syndrome' on page 4 undefined on input line
- 128.
-
-
-LaTeX Warning: Citation `oti2008phenome' on page 4 undefined on input line 128.
-
-
-
-LaTeX Warning: Citation `houle2010phenomics' on page 4 undefined on input line 
-128.
+LaTeX Warning: Reference `' on page 4 undefined on input line 57.
 
 [4]
 
-LaTeX Warning: Citation `wu2014strain' on page 5 undefined on input line 139.
+LaTeX Warning: Reference `' on page 5 undefined on input line 69.
 
-
-LaTeX Warning: Citation `khor2011revealing' on page 5 undefined on input line 1
-39.
-
-
-LaTeX Warning: Citation `janes2011investigating' on page 5 undefined on input l
-ine 139.
-
-
-LaTeX Warning: Citation `who' on page 5 undefined on input line 144.
-
-
-LaTeX Warning: Citation `barabasi2011network' on page 5 undefined on input line
- 153.
-
-
-LaTeX Warning: Citation `oti2008phenome' on page 5 undefined on input line 153.
-
-
-
-LaTeX Warning: Citation `houle2010phenomics' on page 5 undefined on input line 
-153.
-
-
-LaTeX Warning: Citation `lage2007human' on page 5 undefined on input line 156.
-
-
-LaTeX Warning: Citation `li2010genome' on page 5 undefined on input line 156.
-
-
-LaTeX Warning: Citation `wu2008network' on page 5 undefined on input line 156.
-
-
-LaTeX Warning: Citation `wu2009align' on page 5 undefined on input line 156.
-
-
-LaTeX Warning: Citation `vanunu2010associating' on page 5 undefined on input li
-ne 156.
-
-[5]
-
-LaTeX Warning: Citation `oti2008phenome' on page 6 undefined on input line 176.
-
-
-
-LaTeX Warning: Citation `blair2013nondegenerate' on page 6 undefined on input l
-ine 177.
-
-
-LaTeX Warning: Citation `avery2011phenomics' on page 6 undefined on input line 
-177.
-
-
-LaTeX Warning: Citation `chen2014mining' on page 6 undefined on input line 178.
-
-
-
-LaTeX Warning: Citation `rzhetsky2007probing' on page 6 undefined on input line
- 182.
-
-
-LaTeX Warning: Citation `park2009impact' on page 6 undefined on input line 182.
-
-
-
-LaTeX Warning: Citation `hidalgo2009dynamic' on page 6 undefined on input line 
-182.
-
-
-LaTeX Warning: Citation `roque2011using' on page 6 undefined on input line 182.
-
-
-[6]
-
-LaTeX Warning: Citation `campillos2008drug' on page 7 undefined on input line 1
-93.
-
-
-LaTeX Warning: Citation `dudley2011computational' on page 7 undefined on input 
-line 194.
-
-
-LaTeX Warning: Citation `gottlieb2011predict' on page 7 undefined on input line
- 195.
-
-
-LaTeX Warning: Citation `sanseau2012use' on page 7 undefined on input line 197.
-
-
-
-LaTeX Warning: Citation `wang2013rational' on page 7 undefined on input line 19
-8.
-
-
-LaTeX Warning: Citation `brown2012towards' on page 7 undefined on input line 20
-0.
-
-
-LaTeX Warning: Citation `hoehndorf2011phenomenet' on page 7 undefined on input 
-line 204.
-
-
-LaTeX Warning: Citation `hoehndorf2014mouse' on page 7 undefined on input line 
-205.
-
-
-LaTeX Warning: Citation `hoehndorf2012linking' on page 7 undefined on input lin
-e 217.
-
-
-Overfull \hbox (0.52242pt too wide) in paragraph at lines 222--230
-\OT1/ppl/m/n/12 ef-fec-tively con-tribute in solv-ing spe-cific med-i-cal prob-
-lems. This dis-ser-ta-tion makes
- []
-
-
-Overfull \hbox (1.62662pt too wide) in paragraph at lines 222--230
-\OT1/ppl/m/n/12 the fol-low-ing con-tri-bu-tions: the de-vel-op-ment of a novel
- ontology-guided ap-proach
- []
-
-[7]
-
-LaTeX Warning: Reference `image2' on page 8 undefined on input line 235.
-
-
-LaTeX Warning: Reference `chap:malaria' on page 8 undefined on input line 237.
-
-
-LaTeX Warning: Reference `phenotype' on page 8 undefined on input line 239.
-
-
-LaTeX Warning: Reference `cancer' on page 8 undefined on input line 241.
-
-
-LaTeX Warning: Reference `drug' on page 8 undefined on input line 243.
-
-) (./chapters/content/chapter_4_BART.tex [8]
-Chapter 2.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 16.
-[9
-
-])
+[5])
 No file dissertation-BZ.bbl.
-[10] [11]
+[6]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
  (./dissertation-BZ.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 171.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 171.
+Package rerunfilecheck Info: File `dissertation-BZ.out' has not changed.
+(rerunfilecheck)             Checksum: 9D7DE4EEF16ABA0A8B260F7AE04B5AC2;889.
 
-
-Package rerunfilecheck Warning: File `dissertation-BZ.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `dissertation-BZ.out':
-(rerunfilecheck)             Before: 165EF645164CBAF4195599CC0C5AF00C;1499
-(rerunfilecheck)             After:  78CD059DDFE23EA68B2D276A50466E90;1519.
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 171.
  ) 
 Here is how much of TeX's memory you used:
- 25913 strings out of 493089
- 496728 string characters out of 6134842
- 622298 words of memory out of 5000000
- 28769 multiletter control sequences out of 15000+600000
- 26066 words of font info for 79 fonts, out of 8000000 for 9000
+ 25821 strings out of 493089
+ 495167 string characters out of 6134842
+ 624763 words of memory out of 5000000
+ 28692 multiletter control sequences out of 15000+600000
+ 23509 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,8n,80p,3216b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,8n,80p,3216b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
@@ -1631,13 +1366,13 @@ live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texli
 ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive
 /2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
 15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/f
-onts/type1/urw/palatino/uplri8a.pfb>
-Output written on dissertation-BZ.pdf (20 pages, 232728 bytes).
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/urw/palatino/uplr8a.pfb>
+Output written on dissertation-BZ.pdf (14 pages, 124368 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
- 236 compressed objects within 3 object streams
- 49 named destinations out of 1000 (max. 500000)
- 170 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 196 PDF objects out of 1000 (max. 8388607)
+ 169 compressed objects within 2 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

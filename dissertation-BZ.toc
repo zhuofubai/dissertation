@@ -1,22 +1,13 @@
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Domain knowledge guided strategy for developing computational approaches for biomedical applications}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}Retrieving medically-relevant web images}{3}{section.1.2}
-\contentsline {section}{\numberline {1.3}Detecting novel genetic basis for human diseases}{4}{section.1.3}
-\contentsline {section}{\numberline {1.4}Predicting novel drug treatments based on disease genetics}{7}{section.1.4}
-\contentsline {section}{\numberline {1.5}Contribution and organization of the dissertation}{8}{section.1.5}
-\contentsline {chapter}{\numberline {2}Causal Inference Based Fault Localization for Numerical Software with NUMFL}{9}{chapter.2}
-\contentsline {section}{\numberline {2.1}Introduction}{9}{section.2.1}
-\contentsline {section}{\numberline {2.2}BART Model Algorithm}{9}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}A Single Regression Tree model}{10}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}A sum of regression trees model}{11}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}A regularization prior}{11}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Bayesian Backfitting MCMC Algorithm}{11}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}TWO VERSIONS OF NUMFL}{11}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}NUMFL-GPS}{11}{subsection.2.3.1}
-\contentsline {subsubsection}{Control of Confounding.}{11}{section*.7}
-\contentsline {subsubsection}{Failure-causing Effect Estimation.}{11}{section*.8}
-\contentsline {section}{\numberline {2.4}EMPIRICAL EVALUATION}{11}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Limitations}{11}{subsection.2.4.1}
-\contentsline {section}{\numberline {2.5}RELATED WORK}{11}{section.2.5}
-\contentsline {section}{\numberline {2.6}CONCLUSION}{11}{section.2.6}
-\contentsline {chapter}{Appendices}{}{section*.9}
+\contentsline {chapter}{\numberline {1}Causal Inference Based Fault Localization for Numerical Software with NUMFL}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Introduction}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}BART Model Algorithm}{2}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}A Single Regression Tree model}{2}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}A sum of regression trees model}{2}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}A regularization prior}{3}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Bayesian Backfitting MCMC Algorithm}{3}{subsection.1.2.4}
+\contentsline {section}{\numberline {1.3}BART Model with Causal Inference}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}EMPIRICAL EVALUATION}{6}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Limitations}{6}{subsection.1.4.1}
+\contentsline {section}{\numberline {1.5}RELATED WORK}{6}{section.1.5}
+\contentsline {section}{\numberline {1.6}CONCLUSION}{6}{section.1.6}
+\contentsline {chapter}{Appendices}{}{section*.6}

@@ -1,20 +1,26 @@
 \chapter{Causal Inference Based Fault Localization for Numerical Software with NUMFL}\label{chap:NUMFL}
 
 
-\section{Introduction}\label{introduction}
+\section{Introduction}\label{BARTintro}
 \vspace{-2pt}
 
-The benefits of using BART is:
-
+The motivation for using Bayesian Additive Regression Trees in statistical fault localization is:
+\vspace{-0.2cm}
+\begin{itemize}
+\item BART can flexibly fit non-linear response surfaces even with a large number of predictors
+\item BART does not require the researcher to specify the functional form of the relationship between treatment and outcome
+\item Program dependence graph can be explained as a causal graph. The casual inference techniques has been proved to be effective in both coverage based fault localization and value based fault localization. BART has good performance in estimating average causal effect of binary treatment and has potential in estimating failure-causing effect of continuous treatment \cite{}.
+\item BART algorithm software is freely available and easy to use \cite{}.
+\end{itemize}
 
 The main contributions of this paper are:
 
 The rest of the chapter is organized as follows: 
 
-\section{BART Model Algorithm}\label{background}%what is BART and why BART
+\section{BART Model Algorithm}\label{BARTbg}%what is BART and why BART
 The BART model algorithm consists of three pars: a sum of regression trees model, a regularization prior and a fitting algorithm Marcov Chain Mote Carlo (MCMC) 
 \subsection{A Single Regression Tree model}\label{IIIA}
-Regression tree is one type of decision tree that predicts the value of a target variable based on several input variables. Regression tree handles the situation when the target variable is continuous. Figure{} shows a single regression tree model. All the interior nodes of a regression tree have decision rules which send the input data set to either left or right side. After the input data set go through the interior nodes and reach the bottom of the tree, the data set is divided into several disjoint subgroup. Each group of data is represent by a leaf node. 
+Regression tree is one type of decision tree that predicts the value of a target variable based on several input variables. Regression tree handles the situation when the target variable is continuous. Figure \ref{} shows a single regression tree model. All the interior nodes of a regression tree have decision rules which send the input data set to either left or right side. After the input data set go through the interior nodes and reach the bottom of the tree, the data set is divided into several disjoint subgroup. Each group of data is represent by a leaf node. 
 
 A single regression tree model is denoted as:
 $
@@ -35,30 +41,32 @@ BART model
 \subsection{Bayesian Backfitting MCMC Algorithm}
 
 
-\section{BART Model with Causal Inference}\label{twoversion}% how to use BART
+\section{BART Model with Causal Inference}\label{BARTcausal}% how to use BART
 
-For binary treatment, BART model primarily estimate average causal effects such as $E(Y(1)|\pmb{X}=\pmb{x}) - E(Y(0)|\pmb{X}=\pmb{x})=E(Y|T=1, \pmb{X}=\pmb{x})-E(Y|T=0, \pmb{X}=\pmb{x})=f(1,\pmb(x))-f(0,\pmb(x))$ . The algorithm contains the following steps:
-\begin{ienumerate}
+For binary treatment, BART model primarily estimate failure-causing effects such as $E(Y(1)|\pmb{X}=\pmb{x}) - E(Y(0)|\pmb{X}=\pmb{x})=E(Y|T=1, \pmb{X}=\pmb{x})-E(Y|T=0, \pmb{X}=\pmb{x})=f(1,\pmb(x))-f(0,\pmb(x))$ . The algorithm contains the following steps:
+\begin{enumerate}
 \item Fit BART model using MCMC algorithm to full sample
 \item Get posterior prediction for each unit by setting the treatment variable value $T=1$ and keep confounding variable value unchanged..
 \item Get posterior prediction for each unit by setting the treatment variable value $T=0$ and keep confounding variable value unchanged.
 \item	Calculate the difference between the posterior predictions for each unit.
-\item Estimate average causal effect by averaging all the differences of posterior predictions. 
+\item Estimate failure-causing effect by averaging all the differences of posterior predictions. 
 \end{enumerate}
 
-The first step is to use BART model to estimate the model $Y=f(T,\pmb(x))$, which specified the causal relationship of treatment $T$ and outcome $Y$. The second step is to 
+In step 1, the fitted BART model characterized the causal relationship between treatment $T$ and outcome $Y$ given the confounding $\pmb{X}$. We can use the fitted model to predict the outcome $Y$ under different $(T, \pmb{X})$ conditions. For a untreated unit $(T=0, \pmb{X}=\pmb{x})$,  if we set the treatment variable to 1 and then input $(T=1, \pmb{X}=\pmb{x})$ into the BART model, the output is the estimated outcome for that unit in treated condition. Similarly, we can estimate the outcome of a treated unit in untreated condition by inputing $(T=0, \pmb{X}=\pmb{x})$ into the BART model. Thus, in step2, the BART model is used to predict outcome for each unit at observed treatment condition. In step 3, the fitted BART model is used to estimate posterior predictions for each unit at counterfactual condition. Thus, the difference calculated in step 4 is the causal effect estimation for each unit. The average of these differences is failure-causing effect causal effect which is estimated in step 5.
 
-For continuous treatment, causal effect estimation with BART model contains the following steps:
+If the treatment variable is continuous, the causal effect of treatment $T$ on outcome $Y$ is characterized by a function $r_e (T)$, which is called dose-response function in medical research. For the failure-causing effect, the dose response functions of continuous treatments are usually non-linear. For example, in Chapter\ref{}, NUMFL use parameterized quadratic model and double linear model to approximate the dose response function within subclasses and get reasonable well result. But the parameterized model has limitations. It usually requires user to make assumptions to specify form of the dose-response function.  For example, in NUMFL, we make some assumptions ($Assumptioin 1, 2, 3$).  The  $Assumptions3$ is: executions with large absolute treatment errors have larger output errors than executions with small values of treatment errors.  Although this assumption is often holds in numeric programs, it is not always to be true. In this case,  the dose response curve of treatment $T$ on outcome $Y$ is likely to deviate from the quadratic model $Y = \zeta {T_e}^2 + \eta {T_e} + c$, which may result in a bad estimation of failure-causing effect. Comparing to parametric model used in NUMFL, BART model does not require user to make assumptions or specify the functional form of the dose response function. The sum of trees structure of BART model can approximate the non-linearity of the DRF during the training phone with MCMC. 
+
+failure-causing effect estimation is a challenge for BART model. In NUMFL, the failure-causing effect is characterized by the coefficient of the regression model.  But in BART model, the sum of trees structure does not such parameters can directly characterize the ACE. To solve this problem, we propose to estimate the treatment causal effect at each unit in the sample. The average of the treatment causal effect on all sample units is the estimated ACE. The causal effect of treatment T on outcome Y for a single unit can be estimated by increasing the treatment variable value of the unit and see how outcome changes. For example, assume a unit $i$ has treatment variable $T=t$ and confounding variables$\pmb {X}=\pmb {x}$, we can use the fitted BART model to estimate the outcome of the unit $Y=y$. Then we increase the treatment variable to $t'=t+\varepsilon$, here $\varepsilon $ is a small number. We input $T'$ and $\pmb{X}$ into the fitted BART model and get the estimated posterior $Y=y'$. Then the estimated causal effect of $T$ on $Y$ for unit $i$ is $\left| {y - y'} \right|$. The algorithm is as follows:
 \begin{enumerate}
 \item Fit BART model using MCMC algorithm to full sample
-\item Increase the treatment variable value of each unit and keep the confounding variable value unchanged, so we have a new data set
+\item Increase the treatment variable value $t$ of each unit by $\varepsilon $. The new treatment value $t'=t+\varepsilon$ and the original confounding variables forms a new data set.
 \item Calculate the difference between the posterior predictions of each unit in original data set and the posterior predictions of each unit in the new data set.
-\item Estimate average causal effect by averaging all the differences of posterior predictions.
+\item Estimate failure-causing effect by averaging all the differences of posterior predictions.
 \end{enumerate}
 
-The first step is 
+In the above algorithm, the BART model fitted in first step is used to approximate a function $Y=f(T,\pmb(X))$ that specify the dose-response function of the continuous treatment $T$ and confounding variables $\pmb{X}$. Step 2 and Step 3 estimate the treatment causal effect for each sample unit. Step 4 estimate the failure-causing effect of treatment on outcome. 
 
-In the step2,  one problem is how to increase the treatment variable value for each unit. 
+One problem in step 2 is how to choose the value of the small number $\varepsilon $. To estimate the casual effect, the increased treatment variable value $t'=t+\varepsilon$ should be a reasonable value. However, treatment variables in different numerical expressions have different scale of values, it is hard to find a constant $\varepsilon$ which can make $t+\varepsilon$ be a reasonable value for all the treatments. To address this problem, we use the method illustrated by Figure\ref{}. First, we sort the sample data set in increasing order according to the value of the treatment variables before step 2. In step 2, the increased treatment variable value $t'$ is equal to the treatment variable value $t$ of the next unit in the list.  The last unit in the list will be discarded. Thus, for a data set with $n$ observational units, we will have a new data set of $n-1$ units after increasing the treatment variable.  In this method, the increased value of treatment variable is reasonable, because it is belong to one of the observation unit in the data set.
 
 The Algorithm of BART model based statistical fault localization is shown in Figure: 
 
