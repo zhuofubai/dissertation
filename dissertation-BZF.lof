@@ -1,0 +1,24 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Motivating Example\relax }}{2}{figure.caption.6}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Causal Diagram of treatment, outcome and confounder\relax }}{4}{figure.caption.7}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Erroneous Program\relax }}{10}{figure.caption.8}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Motivating Example\relax }}{25}{figure.caption.14}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Causal diagram of treatment, outcome, and confounder.\relax }}{27}{figure.caption.15}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Matching units based on their propensity scores breaks the link between cofounding variables and treatment.\relax }}{28}{figure.caption.16}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Matching units based on their propensity scores breaks the link between cofounding variables and treatment.\relax }}{40}{figure.caption.20}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces {\it NUMFL} Algorithm\relax }}{41}{figure.2.5}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Performance of NUMFL-GPS-QRM relative to baseline metrics on individual single-fault program versions.\relax }}{56}{figure.caption.30}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{57}{figure.caption.32}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Performance of GPS-QRM relative to baseline metrics on individual two-fault program versions .\relax }}{60}{figure.caption.34}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces . Relative performance of NUMFL-GPS-QRM and NUMFL-CBPS-QRM on individual single-fault program versions .\relax }}{62}{figure.caption.37}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Relative performance of NUMFL-GPS-QRM and NUMFL-CBPS-QRM on individual two-fault program versions .\relax }}{63}{figure.caption.38}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Single Regression Tree Structure\relax }}{70}{figure.caption.40}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces EXAMPLE OF TREATMENT VARIABLE INCREAMENT\relax }}{77}{figure.caption.41}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Performance of BART relative to baseline metrics on individual single-fault program versions.\relax }}{79}{figure.caption.42}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Performance of BART relative to baseline metrics on individual single-fault program versions.\relax }}{81}{figure.caption.43}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{82}{figure.caption.45}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{83}{figure.caption.46}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{84}{figure.caption.48}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{85}{figure.caption.49}

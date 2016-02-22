@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: dissertation-BZF.aux
+The style file: abbrv.bst
+Database file #1: dissertation-BZF.bib
+Warning--to sort, need author or key in ASM
+Warning--to sort, need author or key in Nanoxml
+Warning--to sort, need author or key in SIR
+Warning--to sort, need author or key in Rome
+Warning--to sort, need author or key in Xerces2
+Warning--empty journal in bembom2008data
+Warning--empty journal in wang2006diagnosing
+You've used 24 entries,
+            2118 wiz_defined-function locations,
+            626 strings with 7907 characters,
+and the built_in function-call counts, 8389 in all, are:
+= -- 858
+> -- 345
+< -- 10
++ -- 141
+- -- 114
+* -- 501
+:= -- 1251
+add.period$ -- 72
+call.type$ -- 24
+change.case$ -- 126
+chr.to.int$ -- 0
+cite$ -- 31
+duplicate$ -- 361
+empty$ -- 691
+format.name$ -- 114
+if$ -- 1876
+int.to.chr$ -- 0
+int.to.str$ -- 24
+missing$ -- 18
+newline$ -- 116
+num.names$ -- 38
+pop$ -- 182
+preamble$ -- 1
+purify$ -- 103
+quote$ -- 0
+skip$ -- 315
+stack$ -- 0
+substring$ -- 491
+swap$ -- 135
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 94
+warning$ -- 7
+while$ -- 71
+width$ -- 26
+write$ -- 243
+(There were 7 warnings)

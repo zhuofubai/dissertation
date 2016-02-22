@@ -1,14 +1,12 @@
 \chapter{Causal Inference Based Fault Localization for Numerical Software with NUMFL}\label{chap:NUMFL}
 
-NUMFL is a value-based causal inference model for localizing faults in numerical software.  NUMFL combines causal and statistical analyses to characterize the causal effects of individual numerical expressions on output errors.  Given value-profiles for an expression's variables, NUMFL uses generalized propensity scores (GPSs) or covariate balancing propensity scores (CBPSs) to reduce confounding bias caused by evaluation of other, faulty expressions.  It estimates the average failure-causing effect of an expression using quadratic regression models fit within GPS or CBPS subclasses.  We report on an empirical evaluation of NUMFL involving components from four Java numerical libraries, in which it was compared to five alternative statistical fault localization metrics.  The results indicate that NUMFL is the most effective technique overall. We also found that NUMFL works fairly well with data from failing runs alone.
-
 \section{Introduction}\label{introduction}
 \vspace{-2pt}
 Numerical software plays a very important role in science, industry, and defense, and failures of numerical software have been reported as the cause of several well-publicized ``disasters" \cite{VuikWeb,Kanewala2014}.  However, automated techniques intended specifically for localizing numerical faults based on execution data have received relatively little attention from researchers, although there has been substantial research on general {\it statistical fault localization} (SFL) techniques (e.g. \cite{Jones2002,Liblit2004,Liu2005}) and on other general automated debugging techniques (see Section \ref{relatedwork}).
 
 Typical SFL techniques take data characterizing a set of both passing and failing program executions, including PASS/FAIL labels (provided by testers or end users) and recorded profiles of internal program dynamics, and they compute statistical measures of the strength of the association, if any, between the occurrence of software failures and the occurrence of certain runtime events at particular program locations.  These measures are then used to help guide the search for the causes of observed failures, typically by ranking program statements by the strengths of their associations with failures.  When SFL techniques are evaluated they are generally used as the sole source of information about possible fault locations.  However, it seems more realistic to envision them ultimately being used in combination with other sources of information, such as programmer hunches and {\it fault prediction models} \cite{Fenton1999} based on static code properties and project history.  Potentially, SFL techniques provide a relatively inexpensive way to maximize the information obtained by testing.
 
- In the vast majority of research on SFL, execution dynamics have been characterized either purely by {\it code-coverage profiles} (also called ``spectra"), indicating which statements, branches, or paths were covered by each execution (e.g., \cite{Jones2002}), or by indicators of the outcomes of {\it predicates} (e.g., \cite{Liblit2004}) – both existing branch predicates and predicates inserted specifically to enhance SFL (e.g., ones that compare the values of numeric variables to zero).  Although the outcomes of such predicates reflect the {\it values} of program variables, they may do so inadequately for SFL, e.g., because predicates or conditions are omitted mistakenly, because they are hidden in library code or microcode, or because few predicates are actually required in the program.  These facts make typical SFL techniques {\it poorly suited} for localizing faults in numerical programs and subprograms having relatively few conditional branches.  Even predicates inserted in a program to enhance SFL are likely to characterize the values of numeric variables inadequately, unless application-specific information is available that indicates which predicates should be inserted.
+In the vast majority of research on SFL, execution dynamics have been characterized either purely by {\it code-coverage profiles} (also called ``spectra"), indicating which statements, branches, or paths were covered by each execution (e.g., \cite{Jones2002}), or by indicators of the outcomes of {\it predicates} (e.g., \cite{Liblit2004}) – both existing branch predicates and predicates inserted specifically to enhance SFL (e.g., ones that compare the values of numeric variables to zero).  Although the outcomes of such predicates reflect the {\it values} of program variables, they may do so inadequately for SFL, e.g., because predicates or conditions are omitted mistakenly, because they are hidden in library code or microcode, or because few predicates are actually required in the program.  These facts make typical SFL techniques {\it poorly suited} for localizing faults in numerical programs and subprograms having relatively few conditional branches.  Even predicates inserted in a program to enhance SFL are likely to characterize the values of numeric variables inadequately, unless application-specific information is available that indicates which predicates should be inserted.
 
 Although purely numerical programs, and numerical components of other programs, are often relatively small, the intricacy of their computations can make them very difficult to debug manually.  In order to provide automated fault localization assistance to developers who need to debug numerical programs or components, we present a new approach to SFL, denoted by {\it NUMFL}, that is designed specifically to localize faults in numerical code.  NUMFL, like some other recent work on SFL \cite{Baah2010,Baah2011, Gore2012,Shu2013}, is based on {\it causal inference methodology} \cite{Pearl2003}, which seeks to mitigate biases like confounding bias that can badly distort SFL scores used to guide the search for faults.  However, in contrast to previous work, NUMFL is based on generalized forms of {\it propensity scores} \cite{Imai2004,Imai2014}, which are a fairly recent development in causal inference that provide a means of reducing confounding bias when estimating the causal effect of a numeric {\it treatment} or {\it exposure} variable on an outcome variable.
 
@@ -28,7 +26,7 @@ The main contributions of this chapter are:
 \item	An empirical comparison of NUMFL-GPS and NUMFL-CBPS to each other
 \end{itemize}
 
-This chapter is a revised and extended version of \cite{Bai2015}, which presented NUMFL-GPS, but not NUMFL-CBPS, and which evaluated NUMFL-GPS on only single-fault programs and with a mixture of passing and failing executions. The rest of the chapter is organized as follows: we present a motivating example in Section \ref{motivating}; background for our approach is presented in Section \ref{background}; NUMFL is described in detail in Section \ref{twoversion};  we report on its empirical evaluation in Section \ref{evaluation}; related work is surveyed in Section \ref{relatedwork}; and Section \ref{conclusion} concludes the chapter.
+The rest of the chapter is organized as follows: we present a motivating example in Section \ref{motivating}; background for our approach is presented in Section \ref{background}; NUMFL is described in detail in Section \ref{twoversion};  we report on its empirical evaluation in Section \ref{numfl_evaluation}; related work is surveyed in Section \ref{relatedwork}; and Section \ref{conclusion} concludes the chapter.
 
 \section{Motivating Example}\label{motivating}
 
@@ -40,7 +38,7 @@ outerr = |{r_{correct}} - {r_{faulty}}| > \varepsilon
 
 \begin{figure*}[!thpb]
 \centering
-\includegraphics[width=0.8\textwidth]{MotivatingExample.eps}
+\includegraphics[width=0.8\textwidth]{chapter3_MotivatingExample.pdf}
 \caption{Motivating Example}
 \label{code}
 \end{figure*}
@@ -65,7 +63,7 @@ NUMFL is intended to address the aforementioned problems and to provide less-bia
 Figure \ref{dag1} shows the causal relationships between treatment, outcome, and confounding variables.
 \begin{figure*}[!thpb]
 \centering
-\includegraphics[width=0.5\textwidth]{CausalDAG1.eps}
+\includegraphics[width=1\textwidth]{chapter3_causal_dag.pdf}
 \caption{Causal diagram of treatment, outcome, and confounder.}
 %\vspace{-.5cm}
 \label{dag1}
@@ -83,7 +81,7 @@ Consider a treatment variable $T$ with two possible values 1 and 0.  (These valu
 
 \begin{figure*}[!thpb]
 \centering
-\includegraphics[width=0.5\textwidth]{CausalDAG2.eps}
+\includegraphics[width=0.5\textwidth]{chapter3_causal_dag2.pdf}
 \caption{Matching units based on their propensity scores breaks the link between cofounding variables and treatment.}
 %\vspace{-.5cm}
 \label{dag2}
@@ -226,7 +224,7 @@ We have observed that this assumption often holds.  If both Assumption 1 and Ass
 
 \begin{figure*}[!thpb]
 \centering
-\includegraphics[width=0.7\textwidth]{DRF_curves.eps}
+\includegraphics[width=0.7\textwidth]{chapter3_DRF_curves.pdf}
 \caption{Matching units based on their propensity scores breaks the link between cofounding variables and treatment.}
 %\vspace{-.5cm}
 \label{DRF_curves}
@@ -330,14 +328,17 @@ For expression $s3$ , the first step is to identify the treatment variable and c
 
 The suspiciousness score of expression is estimated by the average of failure-causing effect in two subclasses. Assume we use QRM to estimate failure-causing effect,  a quadratic regression model $Y = \zeta {T_e}^2 + \eta {T_e} + c$  is fitted in each subclass. The $|t$-value$|$ of  the coefficient $\zeta$ is the estimated failure-causing effect. Table\ref{exampledata5} shows the estimated failure-causing effect in each subclass when NUMFL-GPS is used.  In Table\ref{exampledata5},  ${|t-value|}_1$ denotes the estimated failure-causing effect in subclass1 and ${|t-value|}_2$ denotes the estimated failure-causing effect in subclass2. The estimated suspiciousness score (AFCE) is equal to  $({{|t-value|}_1}+{{|t-value|}_2})/2$. For comparison, we also fit a quadratic regression model with full sample without subclassification and the estimated failure-causing effect is denoted by ${|t-value|}_0$. In Table\ref{exampledata5}, ${|t-value|}_0$ of $s_8$ is close to ${|t-value|}_0$ of $s_3$, even though $s_8$ is not faulty. This is because the faulty variable $x$ in $s_3$ is confounder of variable $r$ in  $s_8$ and make $s_8$ associate to program failure. When NUMFL-GPS is applied, the estimated AFCE of $s_8$ is significantly smaller than the estimated AFCE of $s_3$. The estimated suspiciousness scores of NUMFL-CBPS are shown in  Table\ref{exampledata6}. In Table\ref{exampledata6}, the difference between  $s_3$ and $s_8$'s suspiciousness score is larger than the difference between their ${|t-value|}_0$s. This means both GPS and CBPS are effective in controlling confounding bias.  
 
-
 \begin{table*}[htbp!]
 \caption{ESTIMATED GPS AND CBPS OF EXPRESSION $s_3$}
 \label{exampledata3}
 \centering
       \begin{tabular}{|l|c|c|c|c|}
       \hline
-Test \#	&	${\hat{\theta}}_{s_3}$	&	${\hat{\pi}}_{s_3}$	&	Subclass index (GPS)	&	Subclass index (CBPS)	\\ \hline
+\multirow{2}{*}{Test \#}	&\multirow{2}{*}{${\hat{\theta}}_{s_3}$}	&	\multirow{2}{*}{${\hat{\pi}}_{s_3}$}	&	
+\multicolumn{2}{|c|} {Subclass index}	\\	
+\cline{4-5}
+&&&GPS	&	CBPS	\\ 
+\hline
 1	&	0.057	&	0.847	&	2	&	2	\\ \hline
 2	&	0.364	&	0.716	&	2	&	2	\\ \hline
 3	&	-0.606	&	5.65E-11	&	1	&	1	\\ \hline
@@ -357,7 +358,11 @@ Test \#	&	${\hat{\theta}}_{s_3}$	&	${\hat{\pi}}_{s_3}$	&	Subclass index (GPS)	&	
 \centering
       \begin{tabular}{|l|c|c|c|c|}
       \hline
-Test \#	&	${\hat{\theta}}_{s_8}$	&	${\hat{\pi}}_{s_8}$	&	Subclass index (GPS)	&	Subclass index (CBPS)	\\ \hline
+\multirow{2}{*}{Test \#}	&\multirow{2}{*}{${\hat{\theta}}_{s_8}$}	&	\multirow{2}{*}{${\hat{\pi}}_{s_8}$}	&	
+\multicolumn{2}{|c|} {Subclass index}	\\	
+\cline{4-5}
+&&&GPS	&	CBPS	\\ 
+\hline
 1	&	-0.258	&	0.521	&	1	&	2	\\ \hline
 2	&	0.562	&	3.156	&	2	&	2	\\ \hline
 3	&	0.323	&	3.878	&	2	&	2	\\ \hline
@@ -396,7 +401,7 @@ $s_8$& 1.898&0.325 &1.112 &2.601\\	\hline
 \end{tabular}
 \end{table*}
 
-\section{EMPIRICAL EVALUATION}\label{evaluation}
+\section{EMPIRICAL EVALUATION}\label{numfl_evaluation}
 To evaluate the effectiveness of NUMFL, we conducted an empirical study involving several subject programs, in which the performance of NUMFL was compared with the performance of several baselines techniques. In the study, we investigated four main research questions:  (1) What is the performance of NUMFL compare to baseline techniques when each subject program version contains only one fault?  (2) What is the performance of NUMFL compare to the baselines when each subject program version contains two faults?   (3) Given data from only failing executions, is NUMFL effective?  (4) Which is most effective, NUMFL-GPS or NUMFL-CBPS?
 
 \subsection{Experimental Platform and Data Collection}
@@ -503,7 +508,7 @@ We also compare the performance of NUMFL-GPS-QRM to that of each baseline SFL me
 %\begin{landscape}
 \begin{sidewaysfigure}
 \centering
-\includegraphics[width=\textwidth]{QRM_VS_Base.eps}
+\includegraphics[width=\textwidth]{chapter3_QRM_VS_Base.pdf}
 \caption{Performance of NUMFL-GPS-QRM relative to baseline metrics on individual single-fault program versions.}
 \label{QRM_VS_Base}
 \end{sidewaysfigure}
@@ -546,7 +551,7 @@ Average Cost	&	10.8\%	&	16.4\%	\\	\hline
 % figure example
 \begin{figure*}[!thpb]
 \centering
-\includegraphics[width=0.6\textwidth]{QRM_allFail.eps}
+\includegraphics[width=0.8\textwidth]{chapter3_QRM_allFail.pdf}
 \caption{Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.}
 \label{QRM_allFail}
 \end{figure*}
@@ -558,7 +563,7 @@ The empirical results presented in Section \ref{VD} indicate that NUMFL-GPS perf
 \begin{table*}[htbp!]
 \fontsize{8pt}{9pt}\selectfont
 \centering
-\caption{AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM AND BASELINE METRICS ON SINGLE-FAULT PROGRAM VERSIONS}
+\caption{AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM AND BASELINE METRICS ON MULTIPLE-FAULT PROGRAM VERSIONS}
 \label{table4}
       \begin{tabular}{|l|c|c|c|c|c|c|}
       \hline
@@ -574,12 +579,13 @@ Average Cost	&	8.3\%	&	20.8\%	&	24\%	&	20.1\%	&	18\%	&	16.7\%	\\	\hline
 \end{table*}
 
 Figure \ref{QRM_VS_Base_MultipleFault} graphically contrasts the performance of NUMFL-GPS-QRM on the individual two-fault program versions with that of the baseline metrics.  It is evident that SOBER's performance is the second best after NUMFL-GPS-QRM.  Over all 25 faulty subject-program versions, NUMFL-GPS-QRM performed better than SOBER on 15 versions but performed worse on 10 versions.  There were 8 versions for which NUMFL-GPS-QRM performed at least 10\% better than SOBER but only one version for which SOBER performed at least 10\% better than NUMFL-GPS-QRM.  Both Ochiai and ESP-SCP performed better than NUMFL-GPS-QRM on 8 versions but performed worse on 17 versions.  NUMFL-GPS-QRM performed better than ESP-SIV on 19 versions and performed better than DStar on 21 versions.
-\begin{figure*}[!thpb]
+
+\begin{sidewaysfigure}
 \centering
-\includegraphics[width=\textwidth]{QRM_VS_Base_MultipleFault.eps}
+\includegraphics[width=\textwidth]{chapter3_QRM_VS_Base_MultipleFault.pdf}
 \caption{Performance of GPS-QRM relative to baseline metrics on individual two-fault program versions .}
 \label{QRM_VS_Base_MultipleFault}
-\end{figure*}
+\end{sidewaysfigure}
 
 \subsection{Comparison of NUMFL-GPS and NUMFL-CBPS}
 In this section, we report the results of empirically comparing the performance of NUMFL-GPS-QRM with that of NUMFL-CBPS-QRM.  We applied the two techniques to the subject program versions with single faults as well as to the versions with two faults.  The average fault localization costs on the single fault versions is shown in Table \ref{table5}.  There were 13 versions for which NUMFL-GPS-QRM performed better than NUMFL-CBPS-QRM. There were only 3 versions for which NUMFL-CBPS-QRM performed better than NUMFL-GPS-QRM. Figure \ref{CBPS_VS_GPS} graphically contrasts the performance of the two methods on the single fault versions.  NUMFL-GPS-QRM performed better on 61 versions, while NUMFL-CBPS-QRM performed better on 31 versions.  NUMFL-GPS-QRM performed at least 20\% better than NUMFL-CBPS-QRM on 15 versions, whereas NUMFL-CBPS-QRM performed at least 20\% better than NUMFL-GPS-QRM on just 4 versions.
@@ -634,17 +640,50 @@ Jama\_MatrixDecompose	&	14.1\%	&	23.4\%	\\	\hline
 
 \begin{figure*}[!thpb]
 \centering
-\includegraphics[width=\textwidth]{CBPS_VS_GPS.eps}
+\includegraphics[width=0.8\textwidth]{chapter3_CBPS_VS_GPS.pdf}
 \caption{. Relative performance of NUMFL-GPS-QRM and NUMFL-CBPS-QRM on individual single-fault program versions .}
 \label{CBPS_VS_GPS}
 \end{figure*}
 
 \begin{figure*}[!thpb]
 \centering
-\includegraphics[width=\textwidth]{CBPS_VS_GPS_MultipleFault.eps}
+\includegraphics[width=0.8\textwidth]{chapter3_CBPS_VS_GPS_MultipleFault.pdf}
 \caption{Relative performance of NUMFL-GPS-QRM and NUMFL-CBPS-QRM on individual two-fault program versions .}
 \label{CBPS_VS_GPS_MultipleFault}
 \end{figure*}
+
+\subsection{Computation Time}
+We used two machines for this study: (1) a Dell Precision T5600 with two 2.30 GHz intel Xeon CPUs and 64 GB RAM; and (2) a Dell PowerEdge T300 with a 2.83 GHz Intel Xeon CPU and 24GB RAM. The computation time required to apply any of the non-causal baseline techniques was less than 1 minute per program version. The computation time for NUMFL-QRM and NUMFL-CBPS per version are summarized in table \ref{computetime}
+
+\begin{table*}[htbp!]
+\caption{AVERAGE COMPUTATION TIME OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON ONE SINGLE-FAULT PROGRAM VERSIONS }
+\label{computetime}
+\centering
+      \begin{tabular}{|l|c|c|}
+      \hline
+\multirow{2}{*}{{\bf Subject Program}}	&	\multicolumn{2}{|c|}{{\bf NUMFL}}	\\	\cline{2-3}
+  &  GPS-QRM(Seconds) &CBPS-QRM (Seconds)\\ \hline
+Apache\_EigenDecompose	&	452.32	&	8.8\%	\\	\hline
+Apache\_DScompiler	&	104.66	&	12\%	\\	\hline
+Apache\_BigMatrix	&	122.98	&	9.9\%	\\	\hline
+Apache\_Rotation3D	&	427.53	&	18.9\%	\\	\hline
+Ojaljo\_SchurDecompose	&	463.44	&	14\%	\\	\hline
+Jama\_MatrixDecompose	&	403.72	&	23\%	\\	\hline
+SciMark\_LU	&	24.72	&	27.8\%	\\	\hline
+SciMart\_FFT	&	38.20	&	19.8\%	\\	\hline
+Apache\_SymmLQ	&	64.98	&	4.4\%	\\	\hline
+Apache\_SplineInterpolator	&	31.7	&	35\%	\\	\hline
+Apche\_SimpleRegress	&	54.74	&	17\%	\\	\hline
+Apache\_SchurTransformer	&	73.62	&	14.9\%	\\	\hline
+Apache\_MillerUpdatRegress	&	97.05	&	9.9\%	\\	\hline
+Apache\_HarmonicFitter	&	58.94	&	32\%	\\	\hline
+Apache\_FastSine	&	46.59	&	13\%	\\	\hline
+Apache\_FastCosine	&	72.75	&	1.2\%	\\	\hline
+Average Cost	&	85.79	&	16.4\%	\\	\hline
+\end{tabular}
+\end{table*}
+
+From \ref{computetime}, The NUMFL is mildly slower than baseline techniques. The NUMFL's computation time is between 7 minutes and 8 minutes for large subject programs and is between  20 seconds to 100 seconds for small subject programs. It is important to mention that we did not attempt to parallelize the computation of AFCE estimates, even though AFCE estimates for different sub-expression can be computed independently.
 
 \subsection{Limitations}
 NUMFL and its evaluation are subject to several limitations.  First, NUMFL employs regression models for two purposes: estimating generalized propensity scores and estimating the causal effect of the treatment on the outcome.  We used Gaussian (Normal) linear models for both purposes in NUMFL-GPS, because they are supported by fast and robust software, and they performed well in our empirical study. In NUMFL-CBPS, we use multinomial logistic regression propensity score models.  However, other model choices may be more appropriate for applying NUMFL to different numerical software.  Determining that would require preliminary analysis of the data.  A related issue is that sufficient data must be available to adequately fit each model.  We have found that the number of failing tests should at least 100 to fit adequate regression models.  This is not a serious problem, since faults in numerical programs are usually not guarded by many branch conditions that are likely to cause ``coincidental correctness."  A limitation of our empirical study is that the seeded faults were of three basic types.  In future work, we intend to evaluate NUMFL on subject programs with more varied faults.  Finally, validity of NUMFL (with QRM) depends on Assumptions 1 and 3 in section \ref{twoversion}.  These assumptions do not always hold in practice.  For example, if the effect of a numerical fault does not propagate to the output (coincidental correctness), then Assumption 3 will be violated.

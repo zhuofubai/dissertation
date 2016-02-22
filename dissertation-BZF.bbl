@@ -1,0 +1,139 @@
+\begin{thebibliography}{10}
+
+\bibitem{ASM}
+Asm framework available.
+\newblock \url{http://asm.ow2.org/}.
+
+\bibitem{Nanoxml}
+Nanoxml.
+\newblock \url{http://nanoxml.sourceforge.net/orig/index.html}.
+
+\bibitem{Rome}
+Rome.
+\newblock \url{https://java.net/projects/rome/sources}.
+
+\bibitem{SIR}
+Sir.
+\newblock \url{http://sir.unl.edu/portal/index.php}.
+
+\bibitem{Xerces2}
+Xerces2.
+\newblock
+  \url{http://projects.apache.org/projects/xerces_for_java_xml_parser.html}.
+
+\bibitem{abreu2007accuracy}
+R.~Abreu, P.~Zoeteweij, and A.~J. Van~Gemund.
+\newblock On the accuracy of spectrum-based fault localization.
+\newblock In {\em Testing: Academic and Industrial Conference Practice and
+  Research Techniques-MUTATION, 2007. TAICPART-MUTATION 2007}, pages 89--98.
+  IEEE, 2007.
+
+\bibitem{baah2010causal}
+G.~K. Baah, A.~Podgurski, and M.~J. Harrold.
+\newblock Causal inference for statistical fault localization.
+\newblock In {\em Proceedings of the 19th international symposium on Software
+  testing and analysis}, pages 73--84. ACM, 2010.
+
+\bibitem{baah2011mitigating}
+G.~K. Baah, A.~Podgurski, and M.~J. Harrold.
+\newblock Mitigating the confounding effects of program dependences for
+  effective fault localization.
+\newblock In {\em Proceedings of the 19th ACM SIGSOFT symposium and the 13th
+  European conference on Foundations of software engineering}, pages 146--156.
+  ACM, 2011.
+
+\bibitem{ball1993s}
+T.~Ball.
+\newblock What's in a region?: or computing control dependence regions in
+  near-linear time for reducible control flow.
+\newblock {\em ACM Letters on Programming Languages and Systems (LOPLAS)},
+  2(1-4):1--16, 1993.
+
+\bibitem{bembom2008data}
+O.~Bembom, J.~W. Fessel, R.~W. Shafer, and M.~J. van~der Laan.
+\newblock Data-adaptive selection of the adjustment set in variable importance
+  estimation.
+\newblock 2008.
+
+\bibitem{crump2006moving}
+R.~Crump, V.~J. Hotz, G.~Imbens, and O.~Mitnik.
+\newblock Moving the goalposts: Addressing limited overlap in the estimation of
+  average treatment effects by changing the estimand, 2006.
+
+\bibitem{ferrante1987program}
+J.~Ferrante, K.~J. Ottenstein, and J.~D. Warren.
+\newblock The program dependence graph and its use in optimization.
+\newblock {\em ACM Transactions on Programming Languages and Systems (TOPLAS)},
+  9(3):319--349, 1987.
+
+\bibitem{gore2012reducing}
+R.~Gore and P.~F. Reynolds~Jr.
+\newblock Reducing confounding bias in predicate-level statistical debugging
+  metrics.
+\newblock In {\em Proceedings of the 34th International Conference on Software
+  Engineering}, pages 463--473. IEEE Press, 2012.
+
+\bibitem{hernan2004definition}
+M.~Hernan.
+\newblock A definition of causal effect for epidemiological research.
+\newblock {\em Journal of Epidemiology and Community Health}, 58(4):265--271,
+  2004.
+
+\bibitem{hernan2006estimating}
+M.~A. Hern{\'a}n and J.~M. Robins.
+\newblock Estimating causal effects from epidemiological data.
+\newblock {\em Journal of epidemiology and community health}, 60(7):578--586,
+  2006.
+
+\bibitem{johnson1992applied}
+R.~A. Johnson, D.~W. Wichern, et~al.
+\newblock {\em Applied multivariate statistical analysis}, volume~4.
+\newblock Prentice hall Englewood Cliffs, NJ, 1992.
+
+\bibitem{jones2002visualization}
+J.~A. Jones, M.~J. Harrold, and J.~Stasko.
+\newblock Visualization of test information to assist fault localization.
+\newblock In {\em Proceedings of the 24th international conference on Software
+  engineering}, pages 467--477. ACM, 2002.
+
+\bibitem{pearl2000models}
+J.~Pearl et~al.
+\newblock Models, reasoning and inference, 2000.
+
+\bibitem{petersen2010diagnosing}
+M.~L. Petersen, K.~E. Porter, S.~Gruber, Y.~Wang, and M.~J. van~der Laan.
+\newblock Diagnosing and responding to violations in the positivity assumption.
+\newblock {\em Statistical Methods in Medical Research}, page 0962280210386207,
+  2010.
+
+\bibitem{shu2013javapdg}
+G.~Shu, B.~Sun, T.~A. Henderson, and A.~Podgurski.
+\newblock Javapdg: A new platform for program dependence analysis.
+\newblock In {\em Software Testing, Verification and Validation (ICST), 2013
+  IEEE Sixth International Conference on}, pages 408--415. IEEE, 2013.
+
+\bibitem{shu2013mfl}
+G.~Shu, B.~Sun, A.~Podgurski, and F.~Cao.
+\newblock Mfl: Method-level fault localization with causal inference.
+\newblock In {\em Software Testing, Verification and Validation (ICST), 2013
+  IEEE Sixth International Conference on}, pages 124--133. IEEE, 2013.
+
+\bibitem{wang2006diagnosing}
+Y.~Wang, M.~L. Petersen, D.~Bangsberg, and M.~J. van~der Laan.
+\newblock Diagnosing bias in the inverse probability of treatment weighted
+  estimator resulting from violation of experimental treatment assignment.
+\newblock 2006.
+
+\bibitem{westreich2010invited}
+D.~Westreich and S.~R. Cole.
+\newblock Invited commentary: positivity in practice.
+\newblock {\em American journal of epidemiology}, page kwp436, 2010.
+
+\bibitem{wold1984collinearity}
+S.~Wold, A.~Ruhe, H.~Wold, and W.~Dunn, III.
+\newblock The collinearity problem in linear regression. the partial least
+  squares (pls) approach to generalized inverses.
+\newblock {\em SIAM Journal on Scientific and Statistical Computing},
+  5(3):735--743, 1984.
+
+\end{thebibliography}

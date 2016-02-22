@@ -1,0 +1,173 @@
+\documentclass[letterpaper,12pt]{report}
+\usepackage{palatino,url,graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+% \usepackage[ruled,vlined]{algorithm2e}
+\usepackage{setspace}
+\usepackage{appendix}
+\usepackage[graph, frame]{xy} % For X-MIMI prbac Chapter
+\usepackage[final]{pdfpages}
+\usepackage{listings}
+\usepackage{pgf,tikz}
+\usetikzlibrary{shapes,arrows,snakes,automata,backgrounds,trees,calc,matrix,positioning,fit}
+\usepackage{colortbl}
+\usepackage{enumerate}
+%\usepackage[lined,boxed,linesnumbered]{algorithm2e}
+%\usepackage{algorithmic}
+\usepackage{boxedminipage}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage[font={small,it}]{caption}
+\usepackage{rotating}
+\usepackage{array}
+\usepackage{pdflscape}
+\usepackage{bm}
+\usepackage{pdfpages}
+\usepackage{moreverb}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+
+\lstset{
+	%language=ruby,
+	keywordstyle=\bfseries\ttfamily\color[rgb]{0,0,1},
+	identifierstyle=\ttfamily,
+	commentstyle=\color[rgb]{0.133,0.545,0.133},
+	stringstyle=\ttfamily\color[rgb]{0.627,0.126,0.941},
+	showstringspaces=false,
+	basicstyle=\small,
+	numberstyle=\footnotesize,
+	numbers=none,
+	stepnumber=1,
+	numbersep=10pt,
+	tabsize=2,
+	breaklines=true,
+	prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	breakatwhitespace=false,
+	aboveskip={1.5\baselineskip},
+  columns=fixed,
+  extendedchars=true,
+% frame=single,
+% backgroundcolor=\color{lbcolor},
+}
+
+% http://www.tug.org/applications/hyperref/manual.html
+\usepackage[breaklinks=true]{hyperref}
+\hypersetup{
+   bookmarks=false,         % show bookmarks bar?
+%    unicode=false,          % non-Latin characters in Acrobat‚ bookmarks
+%    pdftoolbar=true,        % show Acrobat‚ toolbar?
+%    pdfmenubar=true,        % show Acrobat‚ menu?
+%    pdffitwindow=false,     % window fit to page when opened
+%    pdfstartview={FitH},    % fits the width of the page to the window
+   pdftitle={Zhuofu dissertation},    % title
+   pdfauthor={Zhuofu Bai},     % author
+   pdfsubject={Ph.D. Dissertation},   % subject of the document
+   % pdfcreator={TextMate},   % creator of the documentt
+%    pdfproducer={Producer}, % producer of the document
+%    pdfkeywords={keywords}, % list of keywords
+%    pdfnewwindow=true,      % links in new window
+   colorlinks=true,       % false: boxed links; true: colored links
+   linkcolor=black,          % color of internal links
+   citecolor=black,        % color of links to bibliography
+   filecolor=black,      % color of file links
+   urlcolor=black           % color of external links
+}
+
+
+\input xy
+\xyoption{all}
+
+\doublespacing
+
+\setlength\oddsidemargin{0.5in}
+\setlength\textwidth{6.0in}
+\setlength\topmargin{0in}
+\setlength\headheight{0in}
+\setlength\headsep{0in}
+\setlength\textheight{9in}
+%%sets the textwidth to 6.5, which leaves 1 for the remaining right margin with 8 1/2X11inch paper
+
+
+\begin{document}
+  \pagenumbering{roman}
+
+% UNCOMMENT BELOW
+\title{LOCALIZING FAULTS IN NUMERICAL SOFTWARE USING A VALUE-BASED CAUSAL MODEL}
+\author {by\\ZHUOFU BAI}
+\date{\vspace{0.8cm}Submitted in partial fulfillment of the requirements\\
+For the degree of Doctor of Philosophy\\
+\vspace{0.45in}
+Dissertation Advisor: Dr. Andy Podgurski\\
+\vspace{0.45in}
+Department of Electrical Engineering and Computer Science\\
+CASE WESTERN RESERVE UNIVERSITY\\
+\vspace{0.45in}
+TBD}
+
+\maketitle
+
+% Committee Signature sheet (typed version)-originals turned in with Final Materials
+% \includepdf{signature_sheet_filled_in.pdf}
+
+% % Copyright page (only if copyrighting)
+% \newpage
+% Copyright page (only if copyrighting)
+
+% % Dedication page (optional)
+% \newpage
+% Dedication page (optional)
+
+% \singlespacing
+%% UNCOMMENT BELOW
+\setcounter{page}{3}
+\tableofcontents
+\listoftables
+\listoffigures
+
+% \doublespacing
+%% UNCOMMENT BELOW
+% % Preface (optional)
+% \newpage
+% Preface (optional)
+\input{chapters/forward/acknowledgements}
+
+\input{chapters/forward/list_of_abbreviations}
+
+% % Glossary (optional)
+% \newpage
+% Glossary (optional)
+
+\input{chapters/forward/abstract}
+
+% Remember: Motivation, Pros and Cons, Lessons Learned
+
+% TODO: Search for they're their there, where were
+% Already checked: it's and its, don't => do not, your, you're
+
+
+%---------------------------Chapters---------------------------------%
+\newpage
+\pagenumbering{arabic}
+%\input{chapters/content/chapter_1_introduction}
+
+\input{chapters/content/chapter_2_Positivity}
+\input{chapters/content/chapter_3_NUMFL}
+\input{chapters/content/chapter_4_BART}
+%\input{chapters/content/chapter_5_cancer}
+%\input{chapters/content/chapter_6_drug}
+%\input{chapters/content/chapter_7_conclusion}
+%\input{chapters/content/chapter_8_zfb}
+
+%-------------------------Appendix----------------------------------%
+\appendix
+\noappendicestocpagenum
+\addappheadtotoc
+
+% \input{chapters/appendix/appendix_ruby_on_rails}
+% \input{chapters/appendix/appendix_messaging}
+
+\bibliographystyle{abbrv}
+\bibliography{dissertation-BZF}
+
+\end{document} 
