@@ -46,6 +46,7 @@
 \BOOKMARK [1][-]{section.3.4}{EMPIRICAL EVALUATION}{chapter.3}% 46
 \BOOKMARK [2][-]{subsection.3.4.1}{Comparative Performance of BART vs. Baselines}{section.3.4}% 47
 \BOOKMARK [2][-]{subsection.3.4.2}{BART model vs NUMFL}{section.3.4}% 48
-\BOOKMARK [2][-]{subsection.3.4.3}{Computation Time}{section.3.4}% 49
-\BOOKMARK [1][-]{section.3.5}{RELATED WORK}{chapter.3}% 50
-\BOOKMARK [1][-]{section.3.6}{CONCLUSION}{chapter.3}% 51
+\BOOKMARK [2][-]{subsection.3.4.3}{Sensitivity of BART model on the number of trees and number of tests}{section.3.4}% 49
+\BOOKMARK [2][-]{subsection.3.4.4}{Computation Time Analysis}{section.3.4}% 50
+\BOOKMARK [1][-]{section.3.5}{RELATED WORK}{chapter.3}% 51
+\BOOKMARK [1][-]{section.3.6}{CONCLUSION}{chapter.3}% 52
