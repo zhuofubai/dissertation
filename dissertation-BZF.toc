@@ -1,57 +1,85 @@
-\contentsline {chapter}{\numberline {1}The Importance of Being Positive in Causal Statistical Fault Localization}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Introduction}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}The Problem of Positivity Violations}{5}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}Research Questions}{6}{subsection.1.2.1}
-\contentsline {section}{\numberline {1.3}Analysis of the Research Questions}{7}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}Analysis of RQ1}{7}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}Analysis of RQ2}{9}{subsection.1.3.2}
-\contentsline {subsection}{\numberline {1.3.3}Analysis of RQ3}{11}{subsection.1.3.3}
-\contentsline {section}{\numberline {1.4}Empirical Study}{14}{section.1.4}
-\contentsline {subsection}{\numberline {1.4.1}Study Platform and Subject Programs}{14}{subsection.1.4.1}
-\contentsline {subsection}{\numberline {1.4.2}Evaluation of RQ2}{15}{subsection.1.4.2}
-\contentsline {subsection}{\numberline {1.4.3}Evaluation of RQ3}{17}{subsection.1.4.3}
-\contentsline {section}{\numberline {1.5}Related Work}{18}{section.1.5}
-\contentsline {section}{\numberline {1.6}Conclusion}{18}{section.1.6}
-\contentsline {chapter}{\numberline {2}Causal Inference Based Fault Localization for Numerical Software with NUMFL}{20}{chapter.2}
-\contentsline {section}{\numberline {2.1}Introduction}{20}{section.2.1}
-\contentsline {section}{\numberline {2.2}Motivating Example}{24}{section.2.2}
-\contentsline {section}{\numberline {2.3}BACKGROUND}{27}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Causal Inference Methodology}{27}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Ordinary Propensity Scores}{28}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Generalized Propensity Score (GPS)}{30}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Covariate Balancing Propensity Score (CBPS)}{31}{subsection.2.3.4}
-\contentsline {section}{\numberline {2.4}TWO VERSIONS OF NUMFL}{33}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}NUMFL-GPS}{34}{subsection.2.4.1}
-\contentsline {subsubsection}{Control of Confounding.}{34}{section*.18}
-\contentsline {subsubsection}{Failure-causing Effect Estimation.}{36}{section*.19}
-\contentsline {subsection}{\numberline {2.4.2}NUMFL-CBPS}{42}{subsection.2.4.2}
-\contentsline {subsubsection}{Control of Confounding.}{42}{section*.21}
-\contentsline {subsubsection}{Failure-causing Effect Estimation.}{44}{section*.22}
-\contentsline {section}{\numberline {2.5}EMPIRICAL EVALUATION}{46}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Experimental Platform and Data Collection}{48}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Subject Programs, Faults, and Tests}{48}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Baseline SFL Metrics and Cost Measure}{51}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}Comparative Performance of NUMFL vs. Baselines}{52}{subsection.2.5.4}
-\contentsline {subsection}{\numberline {2.5.5}NUMFL-GPS Applied only to Failing Runs}{55}{subsection.2.5.5}
-\contentsline {subsection}{\numberline {2.5.6}Application of NUMFL-GPS to Programs with Multiple Faults}{58}{subsection.2.5.6}
-\contentsline {subsection}{\numberline {2.5.7}Comparison of NUMFL-GPS and NUMFL-CBPS}{59}{subsection.2.5.7}
-\contentsline {subsection}{\numberline {2.5.8}Computation Time}{63}{subsection.2.5.8}
-\contentsline {subsection}{\numberline {2.5.9}Limitations}{64}{subsection.2.5.9}
-\contentsline {section}{\numberline {2.6}RELATED WORK}{65}{section.2.6}
-\contentsline {section}{\numberline {2.7}CONCLUSION}{67}{section.2.7}
-\contentsline {chapter}{\numberline {3}Causal Inference Based Fault Localization for Numerical Software with Bayesian Additive Regression Trees}{68}{chapter.3}
-\contentsline {section}{\numberline {3.1}Introduction}{68}{section.3.1}
-\contentsline {section}{\numberline {3.2}BART Model Algorithm}{70}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}A Single Regression Tree model}{70}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}A sum of regression trees model}{71}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}A regularization prior}{72}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Bayesian Backfitting MCMC Algorithm}{73}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}BART Model with Causal Inference}{74}{section.3.3}
-\contentsline {section}{\numberline {3.4}EMPIRICAL EVALUATION}{77}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Comparative Performance of BART vs. Baselines}{78}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}BART model vs NUMFL}{82}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Sensitivity of BART model on the number of trees and number of tests}{86}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}Computation Time Analysis}{87}{subsection.3.4.4}
-\contentsline {section}{\numberline {3.5}RELATED WORK}{88}{section.3.5}
-\contentsline {section}{\numberline {3.6}CONCLUSION}{89}{section.3.6}
-\contentsline {chapter}{Appendices}{}{section*.52}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Statistical Fault Localization}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Bugs in Numerical Software}{2}{section.1.2}
+\contentsline {section}{\numberline {1.3}Causal Inference with Statistical Fault Localization}{2}{section.1.3}
+\contentsline {section}{\numberline {1.4}Contribution and organization of the dissertation}{5}{section.1.4}
+\contentsline {chapter}{\numberline {2}The Importance of Being Positive in Causal Statistical Fault Localization}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introduction}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}The Problem of Positivity Violations}{7}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Research Questions}{8}{subsection.2.2.1}
+\contentsline {section}{\numberline {2.3}Analysis of the Research Questions}{9}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Analysis of RQ1}{9}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Analysis of RQ2}{11}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Analysis of RQ3}{13}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Empirical Study}{16}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Study Platform and Subject Programs}{16}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Evaluation of RQ2}{17}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Evaluation of RQ3}{19}{subsection.2.4.3}
+\contentsline {section}{\numberline {2.5}Related Work}{20}{section.2.5}
+\contentsline {section}{\numberline {2.6}Conclusion}{21}{section.2.6}
+\contentsline {chapter}{\numberline {3}Causal Inference Based Fault Localization for Numerical Software with NUMFL}{22}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introduction}{22}{section.3.1}
+\contentsline {section}{\numberline {3.2}Motivating Example}{25}{section.3.2}
+\contentsline {section}{\numberline {3.3}BACKGROUND}{28}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Causal Inference Methodology}{28}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Ordinary Propensity Scores}{29}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Generalized Propensity Score (GPS)}{31}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Covariate Balancing Propensity Score (CBPS)}{33}{subsection.3.3.4}
+\contentsline {section}{\numberline {3.4}TWO VERSIONS OF NUMFL}{34}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}NUMFL-GPS}{35}{subsection.3.4.1}
+\contentsline {subsubsection}{Control of Confounding.}{36}{section*.18}
+\contentsline {subsubsection}{Failure-causing Effect Estimation.}{38}{section*.19}
+\contentsline {subsection}{\numberline {3.4.2}NUMFL-CBPS}{42}{subsection.3.4.2}
+\contentsline {subsubsection}{Control of Confounding.}{44}{section*.21}
+\contentsline {subsubsection}{Failure-causing Effect Estimation.}{45}{section*.22}
+\contentsline {section}{\numberline {3.5}EMPIRICAL EVALUATION}{49}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Experimental Platform and Data Collection}{49}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Subject Programs, Faults, and Tests}{50}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Baseline SFL Metrics and Cost Measure}{52}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Comparative Performance of NUMFL vs. Baselines}{54}{subsection.3.5.4}
+\contentsline {subsection}{\numberline {3.5.5}NUMFL-GPS Applied only to Failing Runs}{56}{subsection.3.5.5}
+\contentsline {subsection}{\numberline {3.5.6}Application of NUMFL-GPS to Programs with Multiple Faults}{59}{subsection.3.5.6}
+\contentsline {subsection}{\numberline {3.5.7}Comparison of NUMFL-GPS and NUMFL-CBPS}{60}{subsection.3.5.7}
+\contentsline {subsection}{\numberline {3.5.8}Computation Time}{63}{subsection.3.5.8}
+\contentsline {subsection}{\numberline {3.5.9}Limitations}{65}{subsection.3.5.9}
+\contentsline {section}{\numberline {3.6}RELATED WORK}{66}{section.3.6}
+\contentsline {section}{\numberline {3.7}CONCLUSION}{68}{section.3.7}
+\contentsline {chapter}{\numberline {4}Causal Inference Based Fault Localization for Numerical Software with Bayesian Additive Regression Trees}{70}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{70}{section.4.1}
+\contentsline {section}{\numberline {4.2}BART Model Algorithm}{72}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}A Single Regression Tree model}{72}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}A sum of regression trees model}{73}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}A regularization prior}{74}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Bayesian Backfitting MCMC Algorithm}{75}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}BART Model with Causal Inference}{76}{section.4.3}
+\contentsline {section}{\numberline {4.4}EMPIRICAL EVALUATION}{79}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Comparative Performance of BART vs. Baselines}{80}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}BART model vs NUMFL}{84}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Sensitivity of BART model on the number of trees and number of tests}{88}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Computation Time Analysis}{89}{subsection.4.4.4}
+\contentsline {section}{\numberline {4.5}RELATED WORK}{90}{section.4.5}
+\contentsline {section}{\numberline {4.6}CONCLUSION}{91}{section.4.6}
+\contentsline {chapter}{\numberline {5}Fault Localization in Embedded Control System Software}{92}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{92}{section.5.1}
+\contentsline {section}{\numberline {5.2}Two Medical Surgery Robot Systems }{93}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}SABiR}{93}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}BHR}{94}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Robot Simulation and Control}{95}{section.5.3}
+\contentsline {section}{\numberline {5.4}Software Architecture and Data Collection}{97}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Software Architecture}{97}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Data Collection}{101}{subsection.5.4.2}
+\contentsline {section}{\numberline {5.5}Dynamic Bayesian Networks}{102}{section.5.5}
+\contentsline {section}{\numberline {5.6}Fault Localization Method}{103}{section.5.6}
+\contentsline {subsection}{\numberline {5.6.1}Identifying anomalous variables}{104}{subsection.5.6.1}
+\contentsline {subsection}{\numberline {5.6.2}Identifying faulty statements}{105}{subsection.5.6.2}
+\contentsline {section}{\numberline {5.7}Empirical Evaluation}{108}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}Instrumenting the Controllers}{108}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}Faulty Controllers}{109}{subsection.5.7.2}
+\contentsline {subsection}{\numberline {5.7.3}Methodology and Baselines}{109}{subsection.5.7.3}
+\contentsline {section}{\numberline {5.8}Related Work}{112}{section.5.8}
+\contentsline {section}{\numberline {5.9}Conclusions}{113}{section.5.9}
+\contentsline {chapter}{\numberline {6}Conclusions and future work}{114}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusions}{114}{section.6.1}
+\contentsline {section}{\numberline {6.2}Future work}{114}{section.6.2}
+\contentsline {chapter}{Appendices}{}{section*.59}
+\contentsline {chapter}{\numberline {A}Detail of derivation for the chapter 2}{115}{Appendix.a.A}

@@ -2,9 +2,6 @@
 
 \section{Introduction}\label{introduction}
 \vspace{-2pt}
-Numerical software plays a very important role in science, industry, and defense, and failures of numerical software have been reported as the cause of several well-publicized ``disasters" \cite{VuikWeb,Kanewala2014}.  However, automated techniques intended specifically for localizing numerical faults based on execution data have received relatively little attention from researchers, although there has been substantial research on general {\it statistical fault localization} (SFL) techniques (e.g. \cite{Jones2002,Liblit2004,Liu2005}) and on other general automated debugging techniques (see Section \ref{relatedwork}).
-
-Typical SFL techniques take data characterizing a set of both passing and failing program executions, including PASS/FAIL labels (provided by testers or end users) and recorded profiles of internal program dynamics, and they compute statistical measures of the strength of the association, if any, between the occurrence of software failures and the occurrence of certain runtime events at particular program locations.  These measures are then used to help guide the search for the causes of observed failures, typically by ranking program statements by the strengths of their associations with failures.  When SFL techniques are evaluated they are generally used as the sole source of information about possible fault locations.  However, it seems more realistic to envision them ultimately being used in combination with other sources of information, such as programmer hunches and {\it fault prediction models} \cite{Fenton1999} based on static code properties and project history.  Potentially, SFL techniques provide a relatively inexpensive way to maximize the information obtained by testing.
 
 In the vast majority of research on SFL, execution dynamics have been characterized either purely by {\it code-coverage profiles} (also called ``spectra"), indicating which statements, branches, or paths were covered by each execution (e.g., \cite{Jones2002}), or by indicators of the outcomes of {\it predicates} (e.g., \cite{Liblit2004}) – both existing branch predicates and predicates inserted specifically to enhance SFL (e.g., ones that compare the values of numeric variables to zero).  Although the outcomes of such predicates reflect the {\it values} of program variables, they may do so inadequately for SFL, e.g., because predicates or conditions are omitted mistakenly, because they are hidden in library code or microcode, or because few predicates are actually required in the program.  These facts make typical SFL techniques {\it poorly suited} for localizing faults in numerical programs and subprograms having relatively few conditional branches.  Even predicates inserted in a program to enhance SFL are likely to characterize the values of numeric variables inadequately, unless application-specific information is available that indicates which predicates should be inserted.
 
@@ -26,7 +23,7 @@ The main contributions of this chapter are:
 \item	An empirical comparison of NUMFL-GPS and NUMFL-CBPS to each other
 \end{itemize}
 
-The rest of the chapter is organized as follows: we present a motivating example in Section \ref{motivating}; background for our approach is presented in Section \ref{background}; NUMFL is described in detail in Section \ref{twoversion};  we report on its empirical evaluation in Section \ref{numfl_evaluation}; related work is surveyed in Section \ref{relatedwork}; and Section \ref{conclusion} concludes the chapter.
+The rest of the chapter is organized as follows: we present a motivating example in Section \ref{motivating}; background for our approach is presented in Section \ref{background}; NUMFL is described in detail in Section \ref{twoversion};  we report on its empirical evaluation in Section \ref{numfl_evaluation}; related work is surveyed in Section \ref{NUMFLrelatedwork}; and Section \ref{conclusion} concludes the chapter.
 
 \section{Motivating Example}\label{motivating}
 
@@ -115,9 +112,10 @@ Table \ref{exampledata} lists 10 test cases of faulty code in the motivating exa
 The confounding variables' effect on treatment variable can be controlled if conditioned on GPS. This can be proved with the data in Table\ref{exampledata}. For the confounding variable $x$'s effect on treatment variable $r$, we fit two regression models: the first model uses $r$ as respond and $x$ as predictor; the second model uses $r$ as respond, but uses both $x$ and GPS ${\hat{\theta}}_{s_8}$ as predictors. Given the data in Table\ref{exampledata}, the first model is fitted as $ r =0.487x-1.729$ and the second model is fitted as $r=-2.271E^{-16}x+ 1.0{\hat{\theta}}_{s_8}-1.461$. In the first model, the coefficient of $x$ means the variable $r$ will increase 0.487 if $x$ increased 1 unit. In the second model, the coefficient of $x$ is close to 0, while the coefficient of propensity score ${\hat{\theta}}_{s_8}$ is 1. This means the variable value of $r$ is mostly depend on the value of  ${\hat{\theta}}_{s_8}$. Similarly, we can have another two fitted model for the other confounding variable $k$: $r=0.999k-1.415$  and $r=-2.755E^{-16}k+1.0{\hat{\theta}}_{s_8}$-1.461.  The coefficient of $k$ is also reduced to 0 in the second model.  Thus, given GPS, the effect of confounding variables on treatment variable is significantly reduced, which can also be illustrated by Figure \ref{dag2}
 
 \begin{table*}[htbp!]
+\fontsize{10pt}{10pt}\selectfont
+\centering
 \caption{VARIABLE VALUES AND GPS OF THE MOTIVATING EXAMPLE}
 \label{exampledata}
-\centering
       \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
       \hline
 Test \#	&1	&2&3&4 & 5 &6& 7 & 8 & 9&10\\	\hline
@@ -306,9 +304,10 @@ Here $\hat \pi _{e,i}$ represents the calculated propensity score for each obser
 Failure-causing-effect estimation in NUMFL-CBPS follows the same process followed in NUMFL-GPS, which is shown in lines 15-29 of Figure \ref{NUMFLalg}.  For a given subexpression $e$, QRM or DLRM is used to estimate the ``penalized" AFCE of $T_e$ on $Y$ within each subclass individually. Then the failure-causing effect is calculated as a weighted average the penalized AFCEs over all subclasses. Finally, the results for all subexpressions are sorted.
 
 \begin{table*}[htbp!]
+\fontsize{10pt}{10pt}\selectfont
+\centering
 \caption{STANDARDIZED VARIABLE VALUES OF THE MOTIVATING EXAMPLE}
 \label{exampledata2}
-\centering
       \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
       \hline
 Test \#	&	1	&	2	&	3	&	4	&	5	&	6	&	7	&	8	&	9	&	10	\\	\hline
@@ -413,6 +412,8 @@ The data collection algorithm is implemented in Java and can be downloaded from 
 {\bf Subject Programs.}  For the empirical study, we selected 16 subject programs from four Java numerical libraries: (1) Apache Common Math (versions 2.1 and 3.1.1), which is a popular Java library for scientific computing \cite{Commons}; (2) the Oj! Algorithms library Ojalgo (version 33.0), which is an open source Java library for mathematics, linear algebra and optimization \cite{Oj}; (3) JAMA, which is a basic linear algebra package for Java \cite{JAMA}; and (4) SciMark 2.0, which is a Java benchmark for measuring the performance of numerical codes occurring in scientific applications \cite{SciMark}.  We chose subject programs whose purpose we understood (so that we would be able to write tests for them if necessary) and having as many numerical expressions as possible.  We chose four large ($\ge 1500$ SLOC) and eight small subject programs ($< 1500$ SLOC) from Apache Common Math; for Ojalgo, we wrote a subject program to calculate the Schur decomposition of a matrix that uses two Ojalgo classes (PrimitiveDenseStore and HermitianEVD32); for JAMA, we created one subject program that uses four different matrix decomposition algorithms; we used two of SciMark's five computation kernels as subject programs, FFT and LU factorization.  A summary of our subject programs is shown in Table \ref{subpro}.
 
 \begin{table*}[htbp!]
+\fontsize{10pt}{10pt}\selectfont
+\centering
 \caption{SUMMARY OF SUBJECT PROGRAMS}
 \label{subpro}
       \begin{tabular}{|l|c|c|c|c|}
@@ -663,32 +664,32 @@ We used two machines for this study: (1) a Dell Precision T5600 with two 2.30 GH
       \hline
 \multirow{2}{*}{{\bf Subject Program}}	&	\multicolumn{2}{|c|}{{\bf NUMFL}}	\\	\cline{2-3}
   &  GPS-QRM(Seconds) &CBPS-QRM (Seconds)\\ \hline
-Apache\_EigenDecompose	&	452.32	&	8.8\%	\\	\hline
-Apache\_DScompiler	&	104.66	&	12\%	\\	\hline
-Apache\_BigMatrix	&	122.98	&	9.9\%	\\	\hline
-Apache\_Rotation3D	&	427.53	&	18.9\%	\\	\hline
-Ojaljo\_SchurDecompose	&	463.44	&	14\%	\\	\hline
-Jama\_MatrixDecompose	&	403.72	&	23\%	\\	\hline
-SciMark\_LU	&	24.72	&	27.8\%	\\	\hline
-SciMart\_FFT	&	38.20	&	19.8\%	\\	\hline
-Apache\_SymmLQ	&	64.98	&	4.4\%	\\	\hline
-Apache\_SplineInterpolator	&	31.7	&	35\%	\\	\hline
-Apche\_SimpleRegress	&	54.74	&	17\%	\\	\hline
-Apache\_SchurTransformer	&	73.62	&	14.9\%	\\	\hline
-Apache\_MillerUpdatRegress	&	97.05	&	9.9\%	\\	\hline
-Apache\_HarmonicFitter	&	58.94	&	32\%	\\	\hline
-Apache\_FastSine	&	46.59	&	13\%	\\	\hline
-Apache\_FastCosine	&	72.75	&	1.2\%	\\	\hline
-Average Cost	&	85.79	&	16.4\%	\\	\hline
+Apache\_EigenDecompose	&	452.32	&	689.16	\\	\hline
+Apache\_DScompiler	&	104.66	&	143.92\\	\hline
+Apache\_BigMatrix	&	122.98	&	170.83	\\ \hline
+Apache\_Rotation3D	&	427.53	&	646.92	\\	\hline
+Ojaljo\_SchurDecompose	&	463.44	&	585	\\	\hline
+Jama\_MatrixDecompose	&	403.72	&	507.33	\\	\hline
+SciMark\_LU	&	24.72	&	54.8	\\	\hline
+SciMart\_FFT	&	38.20	&	88.83	\\	\hline
+Apache\_SymmLQ	&	64.98	&	240.31	\\	\hline
+Apache\_SplineInterpolator	&	31.7	&	69.93	\\	\hline
+Apche\_SimpleRegress	&	54.74	&	188.30	\\	\hline
+Apache\_SchurTransformer	&	73.62	&	130.20	\\	\hline
+Apache\_MillerUpdatRegress	&	97.05	&	65.52	\\	\hline
+Apache\_HarmonicFitter	&	58.94	&	69.68 \\	\hline
+Apache\_FastSine	&	46.59	&	140.40	\\ \hline
+Apache\_FastCosine	&	72.75	&	154.26	\\	\hline
+Average Cost	&	85.79	&	246.59	\\	\hline
 \end{tabular}
 \end{table*}
 
-From table \ref{computetime}, The NUMFL is mildly slower than baseline techniques. The NUMFL's computation time is between 7 minutes and 8 minutes for large subject programs and is between  20 seconds to 100 seconds for small subject programs. It is important to mention that we did not attempt to parallelize the computation of AFCE estimates, even though AFCE estimates for different sub-expression can be computed independently.
+From \ref{computetime}, The NUMFL is mildly slower than baseline techniques. The NUMFL-GPS-QRM's computation time is between 2 minutes and 8 minutes for large subject programs and is between  20 seconds to 100 seconds for small subject programs.The NUMFL-CBPS-QRM's computation time is between 2 minutes and 12 minutes for large subject programs and is between  50 seconds to 4 minutes for small subject programs. It is important to mention that we did not attempt to parallelize the computation of AFCE estimates, even though AFCE estimates for different sub-expression can be computed independently.
 
 \subsection{Limitations}
 NUMFL and its evaluation are subject to several limitations.  First, NUMFL employs regression models for two purposes: estimating generalized propensity scores and estimating the causal effect of the treatment on the outcome.  We used Gaussian (Normal) linear models for both purposes in NUMFL-GPS, because they are supported by fast and robust software, and they performed well in our empirical study. In NUMFL-CBPS, we use multinomial logistic regression propensity score models.  However, other model choices may be more appropriate for applying NUMFL to different numerical software.  Determining that would require preliminary analysis of the data.  A related issue is that sufficient data must be available to adequately fit each model.  We have found that the number of failing tests should at least 100 to fit adequate regression models.  This is not a serious problem, since faults in numerical programs are usually not guarded by many branch conditions that are likely to cause ``coincidental correctness."  A limitation of our empirical study is that the seeded faults were of three basic types.  In future work, we intend to evaluate NUMFL on subject programs with more varied faults.  Finally, validity of NUMFL (with QRM) depends on Assumptions 1 and 3 in section \ref{twoversion}.  These assumptions do not always hold in practice.  For example, if the effect of a numerical fault does not propagate to the output (coincidental correctness), then Assumption 3 will be violated.
 
-\section{RELATED WORK}\label{relatedwork}
+\section{RELATED WORK}\label{NUMFLrelatedwork}
 The seminal SFL research of Jones et al. \cite{Jones2002}, which is coverage based, and of Liblit et al. \cite{Liblit2005}, which is predicate based, has inspired much subsequent research.  The use of causal inference methodology in SFL is due to Baah et al. \cite{Baah2010}.  They showed that estimating the AFCE of covering a statement $s$ using a linear regression model that adjusts for coverage of the direct control dependence predecessor of $s$ is effective for reducing confounding bias that often distorts fault localization scores.  Later, Baah et al. \cite{Baah2011} extended this work by using covariate matching to control confounding bias involving both control and data dependence predecessors.  More recently, Gore et al. \cite{Gore2012} extended Baah's initial approach by providing a model that reduces what they called ``failure flow confounding bias," which involves predicate outcomes.  Recently, Shu et al. \cite{Shu2013} proposed a method-level causal inference model to localize faulty methods in large programs. The aforementioned techniques, unlike NUMFL, do not use values of program variables in fault localization.
 
 State-altering techniques, such as {\it cause-transitions} \cite{Cleve2005} and {\it value replacement} \cite{Jeffrey2008} are among the few fault localization techniques based on values of variables.  Cause-transitions employs {\it delta debugging} \cite{Zeller2002} to isolate the cause of a program failure. Value replacement localizes faults by switching program states and re-running the program. Unlike SFL techniques, these techniques actually alter program states, and they require an oracle to determine if alterations cause program failures. On the other hand, they are non-statistical and do not require a sample of both passing and failing executions. The {\it Daikon} system identifies possible invariant conditions in a program based on a sample of executions \cite{Ernst2007}. The {\it DIDUCE} system uses Daikon to report violations of dynamic invariants, which may indicate failures \cite{Hangal2002}. However, these techniques do not address confounding bias.

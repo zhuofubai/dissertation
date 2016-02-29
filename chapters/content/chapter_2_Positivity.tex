@@ -2,32 +2,6 @@
 in Causal Statistical Fault Localization}\label{chap:importance}
 
 \section{Introduction}\label{sec1}
-Coverage-based statistical fault localization (SFL) techniques apply statistical or machine learning techniques to code-coverage profiles (or ``spectra") and PASS/FAIL labels for a set of observed program executions, in order to identify possible locations of the fault(s) that caused some of the executions to fail.  These techniques equate the ``suspiciousness" of a program element with a statistical measure of the association between coverage of that element and the occurrence of program failures.  For example Baah et al showed \cite{baah2010causal} that the Tarantula metric \cite{jones2002visualization}, the Ochiai metric \cite{abreu2007accuracy}, and the F1-measure \cite{baah2010causal} each embed an estimator of the conditional probability of program failure given that a statement  is covered, which we denote by $P(F|s)$.  
-
-It should be noted, first of all, that these and other suspiciousness metrics do {\it not} directly estimate the probability that is {\it faulty}, because doing so would require data about observed faults, not just data about {\it failures}.  One might hope instead that such suspiciousness metrics yield good estimates of the {\it average causal effect} \cite{pearl2000models} of executing a given program element on the occurrence of failures, which we shall call the {\it average failure-causing effect} (AFCE).  Average causal effect estimates are used to study causality in a variety of fields, such as epidemiology, econometrics, and social science.  However, as Baah et al pointed out \cite{baah2010causal}, SFL suspiciousness metrics often produce biased estimates of a program element’s AFCE, due to the effects of other program elements.  For example, Figure \ref{fig2.1} shows a small function that contains a bug in statement $s_3$, which should be $y=x+2$.  Appropriately, $P(F|s_3)=1$.  However, because the faulty statement $s_3$ is always executed before either of the correct statements $s_5$ or $s_8$ is executed, $P(F|s_5)=P(F|s_8)=1$, which suggests misleadingly that $s_5$ and $s_8$ are faulty.
-
-\begin{figure}[htb!]
-\vspace{0em}
-\begin{center}
-\includegraphics[width=0.6\textwidth]{chapter2_fig1.pdf}
-\vspace {0em}\caption{Motivating Example} \label{fig2.1}
-\end{center}
-\vspace {0em}
-\end{figure}
-
-This problem, which is an instance of {\it confounding bias} (or just {\it confounding}) \cite{pearl2000models}, is due to the fact that execution of the control dependence region \cite{ball1993s} containing statements $s_3$ and $s_4$ is a {\it common cause} of program failure and of execution of statement $s_5$ or $s_8$.  More generally, confounding of the effect of a ``treatment" variable $T$ on an outcome variable $Y$ is bias due to the presence of a common cause $C$ of $T$ and $Y$.  Confounding bias cannot be eliminated, in general, without considering the causal relationships between the variables under study.  These relationships are typically represented in a {\it causal} DAG \cite{pearl2000models}, which is a directed acyclic graph in which there is an edge $A \rightarrow B$ just in case variable $A$ is a direct cause of variable $B$.  For example, Figure \ref{fig2.2} is a very simple causal graph showing the causal relationships between a treatment $T$, an outcome $Y$, and a confounder $C$.  For SFL, Baah et al [1, 6] proposed using a causal DAG derived from the {\it program dependence graph} (PDG) \cite{ferrante1987program}, in which the nodes represent binary coverage indicator variables.
-
-Confounding can be reduced or eliminated by adjusting or controlling for a suitable set of variables during statistical analysis.  A well-known result of Pearl, the {\it Back-Door Adjustment Theorem} \cite{pearl2000models}, states that a set of covariates $\mathbf{X}$ in a causal DAG $G$ is sufficient for confounding adjustment if it ``blocks" all ``backdoor paths" between the treatment $T$ and the outcome $Y$.  A {\it backdoor path} between $T$ and $Y$ is a path with an arrow $T \leftarrow$ entering $T$.  A path is {\it blocked} by $mathbf{X}$ if the path (1) contains a configuration of the form $\rightarrow Z \rightarrow$ or $\leftarrow Z \rightarrow$ such that  $Z \in \mathbf{X}$or (2) contains a ``collider" $\rightarrow Z \leftarrow$  such that neither $Z$ nor any of its descendants is in $\mathbf{X}$.  For example, in Figure \ref{fig2.2} the path $T \leftarrow C \rightarrow Y$ is a backdoor path, which is blocked by $C$.
-
-\begin{figure}[htb!]
-\vspace{0em}
-\begin{center}
-\includegraphics[width=0.6\textwidth]{chapter2_CausalDAG1.pdf}
-\vspace {0em}\caption{Causal Diagram of treatment, outcome and confounder} \label{fig2.2}
-\end{center}
-\vspace {0em}
-\end{figure}
-
 To adjust (partially) for confounding bias in {\it causal SFL} (CSFL), Baah et al proposed estimating the AFCE of a particular statement $s$ by using a linear regression model of the form
 \begin{equation}\label{eq1}
 Y=\beta_0+\beta_1T_s+\beta_2C_s+\sigma,
@@ -278,8 +252,6 @@ effect of $T_s$ on $Y$ is unconfounded in that stratum.  Whether or not the
 last condition is true, $\widehat{\beta_1}$ is not an unbiased estimator of the 
 AFCE over the whole population of executions.  This is consistent with our conclusions about structural nonpositivity in Section \ref{sec3.1}.  Note that if a random violation of positivity occurs, one of the two probability terms in equation \eqref{eq22} will be undefined, so $\widehat{\beta_1}$ will be undefined.
 
-
-
 \section{Empirical Study}
 We also conducted an empirical study of research questions RQ2 and RQ3.  We first describe the study platform and subject programs and then present the study results.
 
@@ -377,9 +349,7 @@ Other related work examines positivity violations in causal inference generally.
 Some recent studies have investigated methods for estimating causal effects in the presence of positivity violations. A ``trimming” technique is used in \cite{crump2006moving} is to discard units whose probability of treatment, conditional on covariates, is outside of a specified interval.  Another method proposed by Bembom et al  \cite{bembom2008data} is to exclude the confounders involved in positivity violations from the adjustment sets.  
 
 \section{Conclusion}
-Causal statistical fault localization techniques such as Baah et al’s CSFL regression technique can be biased when the positivity condition is violated.  In this paper, we have analyzed two types of violations of positivity: structural violations and random violations. We established that structural violations do occur with Baah et al’s technique but are not harmful.  We proved that random violations also occur and that they can distort suspiciousness scores.  To address the problem of random nonpositivity, we proposed a modification to the way suspiciousness scores are assigned with Baah et al.’s technique.  Empirical results were presented that indicate it improves the technique’s performance. We also presented a probabilistic characterization of Baah et al’s estimator and showed that it provides a more efficient way to compute the same scores.
-
-Since Baah et al’s CSFL regression technique is based on a causal graph which omits data dependences, and since it characterizes program states only in terms of statement coverage, it does not eliminate all confounding bias in fault localization.  Nevertheless, it seems to perform well, and with our suggested improvements it is computationally efficient.
+Causal statistical fault localization techniques such as Baah et al’s CSFL regression technique can be biased when the positivity condition is violated.  In this paper, we have analyzed two types of violations of positivity: structural violations and random violations. We established that structural violations do occur with Baah et al’s technique but are not harmful.  We proved that random violations also occur and that they can distort suspiciousness scores.  To address the problem of random nonpositivity, we proposed a modification to the way suspiciousness scores are assigned with Baah et al.’s technique.  Empirical results were presented that indicate it improves the technique’s performance. We also presented a probabilistic characterization of Baah et al’s estimator and showed that it provides a more efficient way to compute the same scores. Since Baah et al’s CSFL regression technique is based on a causal graph which omits data dependences, and since it characterizes program states only in terms of statement coverage, it does not eliminate all confounding bias in fault localization.  Nevertheless, it seems to perform well, and with our suggested improvements it is computationally efficient.
 
 
 

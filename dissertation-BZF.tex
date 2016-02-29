@@ -2,7 +2,6 @@
 \usepackage{palatino,url,graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
-% \usepackage[ruled,vlined]{algorithm2e}
 \usepackage{setspace}
 \usepackage{appendix}
 \usepackage[graph, frame]{xy} % For X-MIMI prbac Chapter
@@ -134,38 +133,24 @@ TBD}
 
 \input{chapters/forward/list_of_abbreviations}
 
-% % Glossary (optional)
-% \newpage
-% Glossary (optional)
-
 \input{chapters/forward/abstract}
-
-% Remember: Motivation, Pros and Cons, Lessons Learned
-
-% TODO: Search for they're their there, where were
-% Already checked: it's and its, don't => do not, your, you're
-
 
 %---------------------------Chapters---------------------------------%
 \newpage
 \pagenumbering{arabic}
-%\input{chapters/content/chapter_1_introduction}
-
+\input{chapters/content/chapter_1_introduction}
 \input{chapters/content/chapter_2_Positivity}
 \input{chapters/content/chapter_3_NUMFL}
 \input{chapters/content/chapter_4_BART}
-%\input{chapters/content/chapter_5_cancer}
-%\input{chapters/content/chapter_6_drug}
-%\input{chapters/content/chapter_7_conclusion}
-%\input{chapters/content/chapter_8_zfb}
+\input{chapters/content/chapter_5_Robot}
+\input{chapters/content/chapter_6_conclusion}
 
 %-------------------------Appendix----------------------------------%
 \appendix
 \noappendicestocpagenum
 \addappheadtotoc
 
-% \input{chapters/appendix/appendix_ruby_on_rails}
-% \input{chapters/appendix/appendix_messaging}
+ \input{chapters/appendix/appendix_derivation}
 
 \bibliographystyle{abbrv}
 \bibliography{dissertation-BZF}

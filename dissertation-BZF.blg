@@ -3,52 +3,80 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: dissertation-BZF.aux
 The style file: abbrv.bst
 Database file #1: dissertation-BZF.bib
+Warning--I didn't find a database entry for "Pratola2015"
+Warning--I didn't find a database entry for "hwang2009kinematic"
+Warning--I didn't find a database entry for "Russell2012"
 Warning--to sort, need author or key in ASM
 Warning--to sort, need author or key in Nanoxml
 Warning--to sort, need author or key in SIR
 Warning--to sort, need author or key in Rome
 Warning--to sort, need author or key in Xerces2
+Warning--to sort, need author or key in CBPS
+Warning--to sort, need author or key in Java
+Warning--to sort, need author or key in NUMFL
+Warning--to sort, need author or key in R
+Warning--to sort, need author or key in Commons
+Warning--to sort, need author or key in Oj
+Warning--to sort, need author or key in JAMA
+Warning--to sort, need author or key in SciMark
+Warning--empty author in CBPS
+Warning--empty note in CBPS
+Warning--empty author in Commons
+Warning--empty note in Commons
+Warning--empty author in JAMA
+Warning--empty note in JAMA
+Warning--empty author in Java
+Warning--empty note in Java
+Warning--empty author in NUMFL
+Warning--empty note in NUMFL
+Warning--empty author in Oj
+Warning--empty note in Oj
+Warning--empty author in R
+Warning--empty note in R
+Warning--empty author in SciMark
+Warning--empty note in SciMark
 Warning--empty journal in bembom2008data
 Warning--empty journal in wang2006diagnosing
-You've used 24 entries,
+Warning--empty note in Zhao2013
+You've used 68 entries,
             2118 wiz_defined-function locations,
-            626 strings with 7907 characters,
-and the built_in function-call counts, 8389 in all, are:
-= -- 858
-> -- 345
-< -- 10
-+ -- 141
-- -- 114
-* -- 501
-:= -- 1251
-add.period$ -- 72
-call.type$ -- 24
-change.case$ -- 126
+            877 strings with 13399 characters,
+and the built_in function-call counts, 22558 in all, are:
+= -- 2241
+> -- 928
+< -- 23
++ -- 381
+- -- 304
+* -- 1489
+:= -- 3492
+add.period$ -- 189
+call.type$ -- 68
+change.case$ -- 352
 chr.to.int$ -- 0
-cite$ -- 31
-duplicate$ -- 361
-empty$ -- 691
-format.name$ -- 114
-if$ -- 1876
+cite$ -- 100
+duplicate$ -- 933
+empty$ -- 1837
+format.name$ -- 304
+if$ -- 4939
 int.to.chr$ -- 0
-int.to.str$ -- 24
-missing$ -- 18
-newline$ -- 116
-num.names$ -- 38
-pop$ -- 182
+int.to.str$ -- 68
+missing$ -- 51
+newline$ -- 320
+num.names$ -- 110
+pop$ -- 402
 preamble$ -- 1
-purify$ -- 103
+purify$ -- 286
 quote$ -- 0
-skip$ -- 315
+skip$ -- 762
 stack$ -- 0
-substring$ -- 491
-swap$ -- 135
-text.length$ -- 10
+substring$ -- 1429
+swap$ -- 290
+text.length$ -- 23
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 94
-warning$ -- 7
-while$ -- 71
-width$ -- 26
-write$ -- 243
-(There were 7 warnings)
+type$ -- 270
+warning$ -- 32
+while$ -- 188
+width$ -- 70
+write$ -- 676
+(There were 35 warnings)

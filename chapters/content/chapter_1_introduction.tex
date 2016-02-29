@@ -1,249 +1,55 @@
 \chapter{Introduction}\label{chap:introduction}
-
-\section{Domain knowledge guided strategy for developing computational approaches for biomedical applications}
-Biomedicine and healthcare have become data intensive fields \cite{costa2014big}.
-Currently,  researchers have generated and shared access to vast amounts of
-genetic, genomic, and phenomic data.
-With the increase in amount and heterogeneity of biomedical data,
-developing approaches for data integration, analysis, and interrogation
-has become a key step to fulfill the translational needs of
-understanding human diseases, discovering new treatment options and
-facilitating medically-relevant decision making \cite{shah2012coming,bellazzi2011data}.
+\section{Statistical Fault Localization}
+Typical SFL techniques take data characterizing a set of both passing and failing program executions, including PASS/FAIL labels (provided by testers or end users) and recorded profiles of internal program dynamics, and they compute statistical measures of the strength of the association, if any, between the occurrence of software failures and the occurrence of certain runtime events at particular program locations.  These measures are then used to help guide the search for the causes of observed failures, typically by ranking program statements by the strengths of their associations with failures.  When SFL techniques are evaluated they are generally used as the sole source of information about possible fault locations.  However, it seems more realistic to envision them ultimately being used in combination with other sources of information, such as programmer hunches and {\it fault prediction models} \cite{Fenton1999} based on static code properties and project history.  Potentially, SFL techniques provide a relatively inexpensive way to maximize the information obtained by testing.
 
 
+\section{Bugs in Numerical Software}
+Numerical software plays a very important role in science, industry, and defense, and failures of numerical software have been reported as the cause of several well-publicized ``disasters" \cite{VuikWeb,Kanewala2014}.  However, automated techniques intended specifically for localizing numerical faults based on execution data have received relatively little attention from researchers, although there has been substantial research on general {\it statistical fault localization} (SFL) techniques (e.g. \cite{Jones2002,Liblit2004,Liu2005}) and on other general automated debugging techniques (see Section 3.6).
 
-One of the major challenges in designing computational approaches for biomedical applications
-is to ask the right question, gather relevant data and develop algorithms based on a deep understanding of the problem.
-In this dissertation, I present a domain knowledge guided strategy towards addressing this challenge.
-I use problem-specific motivations based on domain knowledge
-to guide the process of (1) gathering relevant data from massive amounts of existing biomedical data,
-(2) connecting heterogenous data, and (3) designing algorithms to discover knowledge from the data (Fig. \ref{methodology}).
+The numerical bugs in the software are often hard to detect because they may not necessarily result in software crashes. It is very difficult to localize the fault by tracing back the execution, because we lack the oracle of intermediate variable values. Testers usually detect failures in numerical program by checking whether the difference between the program output and expected output exceeds a pre-defined tolerance.
 
-I demonstrate the effectiveness of the strategy using applications in three distinct contexts:
-(1) retrieving medically-related images from massive web images based on their contents,
-(2) detecting genetic basis for human diseases towards
-genetics-based drug discovery,
-and (3) repositioning drug treatments based on disease genetics.
-Among them, the goal of web medical image retrieval is to support patients'
-self-education and decision-making.
-Disease-associated gene prediction and drug repositioning are fundamental components
-of translational biomedical research.
-The rest of this chapter will describe the background, challenges and the application of the
-knowledge guided strategy in each context.
+\section{Causal Inference with Statistical Fault Localization}
+Coverage-based statistical fault localization (SFL) techniques apply statistical or machine learning techniques to code-coverage profiles (or ``spectra") and PASS/FAIL labels for a set of observed program executions, in order to identify possible locations of the fault(s) that caused some of the executions to fail.  These techniques equate the ``suspiciousness" of a program element with a statistical measure of the association between coverage of that element and the occurrence of program failures.  For example Baah et al showed \cite{baah2010causal} that the Tarantula metric \cite{jones2002visualization}, the Ochiai metric \cite{abreu2007accuracy}, and the F1-measure \cite{baah2010causal} each embed an estimator of the conditional probability of program failure given that a statement  is covered, which we denote by $P(F|s)$.  
 
+It should be noted, first of all, that these and other suspiciousness metrics do {\it not} directly estimate the probability that is {\it faulty}, because doing so would require data about observed faults, not just data about {\it failures}.  One might hope instead that such suspiciousness metrics yield good estimates of the {\it average causal effect} \cite{pearl2000models} of executing a given program element on the occurrence of failures, which we shall call the {\it average failure-causing effect} (AFCE).  Average causal effect estimates are used to study causality in a variety of fields, such as epidemiology, econometrics, and social science.  However, as Baah et al pointed out \cite{baah2010causal}, SFL suspiciousness metrics often produce biased estimates of a program element’s AFCE, due to the effects of other program elements.  For example, Figure \ref{fig2.1} shows a small function that contains a bug in statement $s_3$, which should be $y=x+2$.  Appropriately, $P(F|s_3)=1$.  However, because the faulty statement $s_3$ is always executed before either of the correct statements $s_5$ or $s_8$ is executed, $P(F|s_5)=P(F|s_8)=1$, which suggests misleadingly that $s_5$ and $s_8$ are faulty.
 
 \begin{figure}[htb!]
 \vspace{0em}
 \begin{center}
-\includegraphics[width=\textwidth]{Chap1_methodology.eps}
-\vspace {0em}\caption{Domain knowledge guided strategy in designing approaches for biomedical application. The strategy is applied in three contexts: (1) retrieving medically-related web images, (2) detecting genetic basis for human diseases, and (3) repositioning drug treatments.} \label{methodology}
+\includegraphics[width=0.6\textwidth]{chapter2_fig1.pdf}
+\vspace {0em}\caption{Motivating Example} \label{fig2.1}
 \end{center}
 \vspace {0em}
 \end{figure}
 
+This problem, which is an instance of {\it confounding bias} (or just {\it confounding}) \cite{pearl2000models}, is due to the fact that execution of the control dependence region \cite{ball1993s} containing statements $s_3$ and $s_4$ is a {\it common cause} of program failure and of execution of statement $s_5$ or $s_8$.  More generally, confounding of the effect of a ``treatment" variable $T$ on an outcome variable $Y$ is bias due to the presence of a common cause $C$ of $T$ and $Y$.  Confounding bias cannot be eliminated, in general, without considering the causal relationships between the variables under study.  These relationships are typically represented in a {\it causal} DAG \cite{pearl2000models}, which is a directed acyclic graph in which there is an edge $A \rightarrow B$ just in case variable $A$ is a direct cause of variable $B$.  For example, Figure \ref{fig2.2} is a very simple causal graph showing the causal relationships between a treatment $T$, an outcome $Y$, and a confounder $C$.  For SFL, Baah et al [1, 6] proposed using a causal DAG derived from the {\it program dependence graph} (PDG) \cite{ferrante1987program}, in which the nodes represent binary coverage indicator variables.
 
-% the picture
+Confounding can be reduced or eliminated by adjusting or controlling for a suitable set of variables during statistical analysis.  A well-known result of Pearl, the {\it Back-Door Adjustment Theorem} \cite{pearl2000models}, states that a set of covariates $\mathbf{X}$ in a causal DAG $G$ is sufficient for confounding adjustment if it ``blocks" all ``backdoor paths" between the treatment $T$ and the outcome $Y$.  A {\it backdoor path} between $T$ and $Y$ is a path with an arrow $T \leftarrow$ entering $T$.  A path is {\it blocked} by $mathbf{X}$ if the path (1) contains a configuration of the form $\rightarrow Z \rightarrow$ or $\leftarrow Z \rightarrow$ such that  $Z \in \mathbf{X}$or (2) contains a ``collider" $\rightarrow Z \leftarrow$  such that neither $Z$ nor any of its descendants is in $\mathbf{X}$.  For example, in Figure \ref{fig2.2} the path $T \leftarrow C \rightarrow Y$ is a backdoor path, which is blocked by $C$.
 
-\section{Retrieving medically-relevant web images}
-Medical knowledge in both textual and visual format is important for health information retrieval
-and clinical applications. A number of comprehensive textual knowledge
-bases have been constructed and made available in the medical domain,
-such as the Unified Medical Language System (UMLS) {\cite{humphreys1998unified}}.
-In comparison, fewer studies have attempted to systematically organize medical
-knowledge in a visual format. Many medical image bases concentrate on specific domains, such as lung
-CT images \cite{armato2004lung}, cardiovascular MRI images \cite{keator2008national},
-and human anatomy images \cite{adma}. The scale of these databases
-is limited, largely because the image collection processes are manual and laborious.
-Also, they annotate images by natural language sentences,
-which introduce ambiguities in image
-retrieval. Last but not least, most existing image
-bases are not freely available.
-
-Our eventual goal is to build a freely accessible, large scale and patient
-oriented health image base, which contains images of human disease
-manifestations, organs, drugs and other medical entities.
-Unlike existing databases, we plan to build up our image base in line with
-the UMLS structure and annotate images by terms from
-standard medical ontologies, such as the FMA (Foundational Model of
-Anatomy) \cite{rosse2003reference}, ICD9 (International Classification of
-Diseases, 9th revision) \cite{slee1978international} and RxNorm \cite{liu2005rxnorm}.
-For each medical term,
-we seek to provide a set of high quality images with relevant contents,
-creating a rich and reusable information resource for patient education,
-patient selfcare and web-content illustration.
-Since the image base is designed for consumers, we
-collect photographic images, which are a significant
-subset of all biomedical images.
-
-
-The most challenging problem in building the image base is
-how to collect a large number of credible images for tens of thousands of medical terms.
-The web is a readily available source: it is free, it contains billions of images
-and is fast growing, and search engines such as Google can already do reasonable
-image retrieval based on text queries. However, the web is heterogeneous, and most
-of the images are non-medical and need to be filtered.
-Generic image retrieval engines such as Google are not specialized for medical applications.
-For example, the top Google results
-for UMLS concepts ``heart," ``ear deformities,
-acquired," and ``ibuprofen" do not only contain
-images of the heart organs, ear deformities and ibuprofen
-tablets, but also include other items such as
-cartoon symbols, paper snapshots, and molecular
-formulae. In particular, image retrieval for disease terms is
-highly challenging, since disease manifestation
-images contain diverse objects and complex backgrounds.
-To collect medically-relevant images from the
-web, we clearly need a content-based image
-retrieval (CBIR) method, which requires minimal manual effort,
-as the number of disease terms is large.
-
-
-This application focuses on developing an automatic approach to retrieving
-web images on human diseases.
-Traditional supervised methods need a training
-image set for each disease, thus will not scale when the number of diseases is large.
-Our key observation is that although the
-number of diseases is in the tens of thousands, most disease manifestations are
-shown on body parts, and the number of body parts is much smaller.
-I develop an ontology-guided approach to retrieve disease images from the web.
-In this approach, I extract the knowledge of the affected body parts for a given disease term from UMLS.
-Then I use this knowledge to guide the selection of pre-trained organ detectors, and
-combined the organ detection outputs to retrieve disease images.
-
-
-\section{Detecting novel genetic basis for human diseases}
-Identifying genetic basis for human diseases plays
-an important role in elucidating disease mechanisms
-and discovering targets of drug treatments \cite{Plenge,Hurle}.
-For computational strategies to predict disease genes,
-mining relevant data for specific disease types can lead to new discoveries
-\cite{barabasi2011network,Tiffin,Piro}.
-Traditional approaches exploited human genomic data and prioritized genes
-for a disease if the genes are functionally similar to
-the known disease genes \cite{kohler2008walking,Xu,franke2006reconstruction,aerts2006gene}.
-A few recent studies incorporated clinical phenotype data
-to increase the ability of identifying new disease genes
-\cite{lage2007human,li2010genome,wu2008network,wu2009align,vanunu2010associating,hwang2012co}
-and assumed that similar disease phenotypes reflect overlapping genetic
-causes \cite{brunner2004syndrome,oti2008phenome,houle2010phenomics}.
-
-In the first application, I develop an approach to
-predicting genes for parasitic infectious diseases.
-Traditional disease gene discovery methods that exploit human protein
-interactome are insufficient for infectious diseases,
-which naturally involve human-pathogen protein interactions.
-I hypothesize that the study on human-parasite protein interactions can
-provide insights into the molecular signatures
-for disease-specific host immune responses
-\cite{wu2014strain, khor2011revealing,
-janes2011investigating}.
-I construct a cross-species network
-to integrate human-human, parasite-parasite and human-parasite protein
-interactions. Then I use known disease genes as the seeds to find novel candidate disease associated genes.
-I apply the approach on {\it Plasmodium falciparum} malaria, which is the most deadly parasitic
-infectious disease and killed six millions people worldwide in 2012 \cite{who}.
-I demonstrate that the top-ranked candidate genes are not only associated with malaria, but also
-have the potential to guide genetics-based anti-malaria drug discovery.
-
-In the second application, I develop a phenotype-driven approach to predicting disease-associated genes.
-For syndromes and many multifactorial diseases,
-systematically analyzing disease phenotype networks in combination
-with protein functional interaction networks have great potential in illuminating
-disease pathophysiological mechanisms
-\cite{barabasi2011network,oti2008phenome,houle2010phenomics}.
-However, disease phenotype networks remain largely incomplete, and
-most current disease gene discovery studies used only one data source of human disease phenotypes
-\cite{lage2007human,li2010genome,wu2008network,wu2009align,vanunu2010associating}.
-Incorporating more comprehensive phenotype data can enhance the performance
-of disease gene prediction.
-Therefore, I explore a new disease phenotype data source--the disease-manifestation
-semantic relationships in the UMLS, and constructed a
-Disease Manifestation Network (DMN).
-I demonstrate through comparative analysis that the phenotype clustering
-in DMN reflects common disease genetics and contains different knowledge from mimMiner, which is a
-widely-used phenotype database.
-Then I develop an innovative and generic strategy to combine DMN, mimMiner,
-and a genetic network, and predict disease-gene associations from the integrated network.
-I apply the approach on Crohn's disease and demonstrate that the predicted genes have the translational
-potential in drug discovery by integrating with drug-target associations.
-
-In the third application, I develop a comorbidity network analysis approach
-to infer novel genetic basis for the link between two diseases,
-and apply the approach on colorectal cancer (CRC) and obesity.
-Phenotype-driven approaches to predicting novel disease genes
-may not be suitable for cancers, which usually have non-specific
-disease manifestations, such as pain, fever and ascites.
-Disease comorbidity often leads to unexpected disease links \cite{oti2008phenome}
-and offers novel insights into disease genetic mechanisms \cite{blair2013nondegenerate,avery2011phenomics}.
-Specially, studying cancer comorbidity has impacted the understanding of cancer mechanisms \cite{chen2014mining}.
-The common comorbidity between CRC and obesity in the context of comorbidity network
-provides insights into the novel molecular evidence underlying both diseases.
-Traditional comorbidity studies usually focus on pairwise disease links
-\cite{rzhetsky2007probing,park2009impact,hidalgo2009dynamic,roque2011using}, and
-the results are often biased due to noises and intrinsic bias in the patient data.
-I explore new patient data, which are not biased towards patients of certain ages and genders, and
-develop a comorbidity mining approach to reduce the bias towards rare diseases.
-Instead of studying pairwise disease comorbdity,
-I construct a disease comorbidity network and design a network analysis approach to identify common comorbidity between two diseases.
-Gene expression analysis guided by the detected common comorbidity identifies a few genes that have the potential to explain the link between CRC and obesity.
-
-\section{Predicting novel drug treatments based on disease genetics}
-Computational drug repositioning approaches lead to rapid drug discovery.
-Previous studies have predicted new indications for existing drugs
-by analyzing multiple types of data, such as drug side effects \cite{campillos2008drug},
-drug response gene expressions \cite{dudley2011computational},
-and disease similarities \cite{gottlieb2011predict}.
-Recent studies demonstrate that disease genetics in
-genome-wide association studies (GWAS) \cite{sanseau2012use} and
-Online Mendelian Inheritance in Man (OMIM) \cite{wang2013rational} has great
-potential to guide drug discovery.
-On the other hand, International Mouse Phenotyping Consortium (IMPC) \cite{brown2012towards}
-has made available large amounts of phenotypic descriptions for mouse genetic mutations
-based on systematic gene knockouts, which are impossible on human.
-The mouse phenotype data enrich the knowledge on disease genetic basis,
-and has facilitated the detection of new disease genes \cite{hoehndorf2011phenomenet}
-and drug targets \cite{hoehndorf2014mouse}.
-Combining human disease genetics and mouse phenotype data will provide novel
-insights into the genetics of many complex diseases, which can guide the discovery
-of novel drug options.
-
-In this application, I develop a novel drug repositioning approach leveraging
-both disease genetics and mouse model phenotypes.
-I apply the approach on drug repositioning for Parkinson's disease (PD).
-I first identify PD-specific mouse phenotypes using well-studied human disease genes.
-Then I search all FDA-approved drugs for candidates that share
-similar mouse phenotype profiles with PD.
-I also compare the approach with pure genetics-based approaches and a
-state-of-art drug repositioning approach based on mouse phenotypes \cite{hoehndorf2012linking}
-to demonstrate the importance of combining these two kinds of data.
-
+\begin{figure}[htb!]
+\vspace{0em}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{chapter2_CausalDAG1.pdf}
+\vspace {0em}\caption{Causal Diagram of treatment, outcome and confounder} \label{fig2.2}
+\end{center}
+\vspace {0em}
+\end{figure}
 
 \section{Contribution and organization of the dissertation}
-In this dissertation, I use five applications to demonstrate that the knowledge guided
-strategies of combining unique data and novel computational approaches effectively contribute
-in solving specific medical problems.
-This dissertation makes the following contributions: the development of a novel ontology-guided approach to retrieving
-disease manifestation images from the web; the development of three computational approaches to predicting
-genetic basis for parasitic infectious diseases, multifactorial diseases, and cancers, respectively;
-the demonstration of the translational potential of predicted disease genes in drug discovery;
-and development of a novel drug repositioning approach based on disease genetics and mouse model phenotypes.
 
-
+This dissertation makes the following contributions: developed a novel value based approach to to SFL for numerical programs; analyzed two types of violations of positivity: structural violations and random violations in casual fault localization; the first use of BART model to estimate failure-causing effect for numerical expressions.
 
 The remainder of the dissertation is organized as follows:
 
-Chapter \ref{image2} presents an ontology-guided image retrieval method for identifying disease web images.
+Chapter 2 investigates the performance of Baah et al’s causal regression model for fault localization when positivity condition is violated
 
-Chapter \ref{chap:malaria} presents a disease gene prediction approach for malaria based on studying the cross-species genetic networks.
+Chapter 3 presents a value based causal inference model for localizing faults in numerical software called NUMFL, which use propensity score technique to control the confounding bias in fault localization.
 
-Chapter \ref{phenotype} describes the construction of a novel disease phenotype network and development of a generalizable disease gene prediction approach based on multiple disease phenotype data sources.
+Chapter 4 presents a new fault localization method based on Bayesian additive regression trees model.
 
-Chapter \ref{cancer} introduces the construction of a disease comorbidity network and development of a novel network analysis approach to detecting genetic basis for the link between colorectal cancer and obesity.
+Chapter 5 presents an approach to automatically localize faulty statements in the embedded control software.
 
-Chapter \ref{drug} presents a computational drug repositioning approach combining disease genetics and mouse model phenotypes and its application on Parkinson's disease.
-
-Chapter \ref{conclusion} concludes this dissertation and discusses the possible improvements
-for future work.
+Chapter 6 concludes this dissertation and discusses the possible improvements for future work.
 
 
 

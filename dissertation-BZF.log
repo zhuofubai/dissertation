@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  23 FEB 2016 04:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  29 FEB 2016 00:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1160,9 +1160,9 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 
 Package hyperref Warning: Option `bookmarks' has already been used,
-(hyperref)                setting the option has no effect on input line 75.
+(hyperref)                setting the option has no effect on input line 74.
 
-Package hyperref Info: Option `colorlinks' set `true' on input line 75.
+Package hyperref Info: Option `colorlinks' set `true' on input line 74.
 (/usr/local/texlive/2015/texmf-dist/tex/generic/xypic/xy.tex not reloaded)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/xypic/xyall.tex
  Xy-pic option: All features v.3.8
@@ -1218,24 +1218,60 @@ LaTeX Warning: Label `table5' multiply defined.
 
 LaTeX Warning: Label `IIIA' multiply defined.
 
+
+LaTeX Warning: Label `conclusion' multiply defined.
+
+
+LaTeX Warning: Label `eq1' multiply defined.
+
+
+LaTeX Warning: Label `eq2' multiply defined.
+
+
+LaTeX Warning: Label `eq3' multiply defined.
+
+
+LaTeX Warning: Label `eq4' multiply defined.
+
+
+LaTeX Warning: Label `eq5' multiply defined.
+
+
+LaTeX Warning: Label `eq6' multiply defined.
+
+
+LaTeX Warning: Label `eq7' multiply defined.
+
+
+LaTeX Warning: Label `eq8' multiply defined.
+
+
+LaTeX Warning: Label `eq9' multiply defined.
+
+
+LaTeX Warning: Label `eq10' multiply defined.
+
+
+LaTeX Warning: Label `eq11' multiply defined.
+
 )
 \openout1 = `dissertation-BZF.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 92.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 91.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
@@ -1267,7 +1303,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package xypdf Info: Line width: 0.47998pt on input line 92.
+Package xypdf Info: Line width: 0.47998pt on input line 91.
 \AtBeginShipoutBox=\box74
 \c@lstlisting=\count178
 
@@ -1277,7 +1313,7 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 92.
+Package hyperref Info: Link coloring ON on input line 91.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1287,9 +1323,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count179
 )
-LaTeX Info: Redefining \ref on input line 92.
-LaTeX Info: Redefining \pageref on input line 92.
-LaTeX Info: Redefining \nameref on input line 92.
+LaTeX Info: Redefining \ref on input line 91.
+LaTeX Info: Redefining \pageref on input line 91.
+LaTeX Info: Redefining \nameref on input line 91.
 
 (./dissertation-BZF.out) (./dissertation-BZF.out)
 \@outlinefile=\write6
@@ -1299,51 +1335,45 @@ LaTeX Info: Redefining \nameref on input line 92.
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 124.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 123.
  (./dissertation-BZF.toc
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 1.
  [3
 
 ]
-[4])
+[4] [5])
 \tf@toc=\write7
 \openout7 = `dissertation-BZF.toc'.
 
- [5] (./dissertation-BZF.lot
-Overfull \hbox (1.46973pt too wide) in paragraph at lines 15--15
- [][] [][][]\OT1/ppl/m/n/12 AVERAGE FAULT LO-CAL-IZA-TION COSTS OF NUMFL-GPS-QR
-M 
- []
-
-
+ [6] (./dissertation-BZF.lot
 Overfull \hbox (1.46973pt too wide) in paragraph at lines 16--16
  [][] [][][]\OT1/ppl/m/n/12 AVERAGE FAULT LO-CAL-IZA-TION COSTS OF NUMFL-GPS-QR
 M 
  []
 
 
-Overfull \hbox (6.72458pt too wide) in paragraph at lines 16--16
- \OT1/ppl/m/n/12 WITH AND WITH-OUT DATA FROM PASS-ING RUNS, ON SINGLE- 
- []
-
-[6
-
-]
 Overfull \hbox (1.46973pt too wide) in paragraph at lines 17--17
  [][] [][][]\OT1/ppl/m/n/12 AVERAGE FAULT LO-CAL-IZA-TION COSTS OF NUMFL-GPS-QR
 M 
  []
 
 
-Overfull \hbox (9.40114pt too wide) in paragraph at lines 17--17
- \OT1/ppl/m/n/12 AND BASE-LINE MET-RICS ON MULTIPLE-FAULT PRO-GRAM VER- 
+Overfull \hbox (6.72458pt too wide) in paragraph at lines 17--17
+ \OT1/ppl/m/n/12 WITH AND WITH-OUT DATA FROM PASS-ING RUNS, ON SINGLE- 
  []
 
+[7
 
+]
 Overfull \hbox (1.46973pt too wide) in paragraph at lines 18--18
  [][] [][][]\OT1/ppl/m/n/12 AVERAGE FAULT LO-CAL-IZA-TION COSTS OF NUMFL-GPS-QR
 M 
+ []
+
+
+Overfull \hbox (9.40114pt too wide) in paragraph at lines 18--18
+ \OT1/ppl/m/n/12 AND BASE-LINE MET-RICS ON MULTIPLE-FAULT PRO-GRAM VER- 
  []
 
 
@@ -1353,20 +1383,20 @@ M
  []
 
 
-Overfull \hbox (6.07773pt too wide) in paragraph at lines 19--19
+Overfull \hbox (1.46973pt too wide) in paragraph at lines 20--20
+ [][] [][][]\OT1/ppl/m/n/12 AVERAGE FAULT LO-CAL-IZA-TION COSTS OF NUMFL-GPS-QR
+M 
+ []
+
+
+Overfull \hbox (6.07773pt too wide) in paragraph at lines 20--20
  \OT1/ppl/m/n/12 AND NUMFL-CBPS-QRM ON MULTIPLE-FAULT PRO-GRAM VER- 
  []
 
 
-Overfull \hbox (33.29276pt too wide) in paragraph at lines 20--20
+Overfull \hbox (33.29276pt too wide) in paragraph at lines 21--21
  [][] [][][]\OT1/ppl/m/n/12 AVERAGE COM-PU-TA-TION TIME OF NUMFL-GPS-QRM AND NU
 MFL- 
- []
-
-
-Overfull \hbox (6.72424pt too wide) in paragraph at lines 22--22
- [][] [][][]\OT1/ppl/m/n/12 AVERAGE FAULT LO-CAL-IZA-TION COSTS OF BART AND NUM
-FL 
  []
 
 
@@ -1376,13 +1406,19 @@ FL
  []
 
 
-Overfull \hbox (11.58447pt too wide) in paragraph at lines 24--24
+Overfull \hbox (6.72424pt too wide) in paragraph at lines 24--24
+ [][] [][][]\OT1/ppl/m/n/12 AVERAGE FAULT LO-CAL-IZA-TION COSTS OF BART AND NUM
+FL 
+ []
+
+
+Overfull \hbox (11.58447pt too wide) in paragraph at lines 25--25
  [][] [][][]\OT1/ppl/m/n/12 AVERAGE FAULT LO-CAL-IZA-TION COSTS OF BART MODEL W
 ITH 
  []
 
 
-Overfull \hbox (33.29276pt too wide) in paragraph at lines 25--25
+Overfull \hbox (33.29276pt too wide) in paragraph at lines 26--26
  [][] [][][]\OT1/ppl/m/n/12 AVERAGE COM-PU-TA-TION TIME OF NUMFL-GPS-QRM AND NU
 MFL- 
  []
@@ -1391,22 +1427,22 @@ MFL-
 \tf@lot=\write8
 \openout8 = `dissertation-BZF.lot'.
 
- [7] (./dissertation-BZF.lof
-Overfull \hbox (10.67618pt too wide) in paragraph at lines 15--15
+ [8] (./dissertation-BZF.lof
+Overfull \hbox (10.67618pt too wide) in paragraph at lines 16--16
  [][] [][][]\OT1/ppl/m/n/12 Relative per-for-mance of NUMFL-GPS-QRM and NUMFL-C
 BPS-QRM 
  []
 
-[8
+[9
 
 ]
-Overfull \hbox (9.8109pt too wide) in paragraph at lines 19--19
+Overfull \hbox (9.8109pt too wide) in paragraph at lines 20--20
  [][] [][][]\OT1/ppl/m/n/12 Performance of BART rel-a-tive to base-line met-ric
 s on in-di-vid-ual single- 
  []
 
 
-Overfull \hbox (9.8109pt too wide) in paragraph at lines 20--20
+Overfull \hbox (9.8109pt too wide) in paragraph at lines 21--21
  [][] [][][]\OT1/ppl/m/n/12 Performance of BART rel-a-tive to base-line met-ric
 s on in-di-vid-ual single- 
  []
@@ -1415,11 +1451,11 @@ s on in-di-vid-ual single-
 \tf@lof=\write9
 \openout9 = `dissertation-BZF.lof'.
 
- (./chapters/forward/acknowledgements.tex [9]
+ (./chapters/forward/acknowledgements.tex [10]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 4.
 )
-(./chapters/forward/list_of_abbreviations.tex [10]
+(./chapters/forward/list_of_abbreviations.tex [11]
 LaTeX Font Info:    Try loading font information for OMS+ppl on input line 5.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omsppl.fd
@@ -1427,511 +1463,284 @@ File: omsppl.fd
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
-)
-(./chapters/forward/abstract.tex [11] [12]
-Overfull \hbox (6.91916pt too wide) in paragraph at lines 20--21
-\OT1/ppl/m/n/12 sions. It es-ti-mates the av-er-age failure-causing ef-fect of 
-an ex-pres-sion us-ing quadratic
- []
-
-) [13] (./chapters/content/chapter_2_Positivity.tex
+ [12])
+(./chapters/forward/abstract.tex [13] [14]) [15]
+(./chapters/content/chapter_1_introduction.tex
 Chapter 1.
 [1
 
 ]
+Overfull \hbox (1.71231pt too wide) in paragraph at lines 11--11
+[]\OT1/ppl/b/n/17.28 Causal In-fer-ence with Sta-tis-ti-cal Fault Lo-cal-iza-ti
+on 
+ []
+
+[2]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter2_fig1.pdf): PDF in
 clusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter2_fig1.pdf, id=471, 569.12625pt x 573.64313pt>
+<chapter2_fig1.pdf, id=653, 569.12625pt x 573.64313pt>
 File: chapter2_fig1.pdf Graphic file (type pdf)
  <use chapter2_fig1.pdf>
-Package pdftex.def Info: chapter2_fig1.pdf used on input line 12.
+Package pdftex.def Info: chapter2_fig1.pdf used on input line 19.
 (pdftex.def)             Requested size: 260.17464pt x 262.25096pt.
 
-[2 <./chapter2_fig1.pdf>]
-<chapter2_CausalDAG1.pdf, id=488, 289.08pt x 166.6225pt>
+[3 <./chapter2_fig1.pdf>]
+<chapter2_CausalDAG1.pdf, id=670, 289.08pt x 166.6225pt>
 File: chapter2_CausalDAG1.pdf Graphic file (type pdf)
 
 <use chapter2_CausalDAG1.pdf>
-Package pdftex.def Info: chapter2_CausalDAG1.pdf used on input line 25.
+Package pdftex.def Info: chapter2_CausalDAG1.pdf used on input line 32.
 (pdftex.def)             Requested size: 260.17464pt x 149.96902pt.
- [3] [4 <./chapter2_CausalDAG1.pdf>] [5]
+
+Overfull \hbox (2.97075pt too wide) in paragraph at lines 40--41
+\OT1/ppl/m/n/12 This dis-ser-ta-tion makes the fol-low-ing con-tri-bu-tions: de
+-vel-oped a novel value based
+ []
+
+[4]) (./chapters/content/chapter_2_Positivity.tex [5 <./chapter2_CausalDAG1.pdf
+>]
+Chapter 2.
+[6
+
+] [7]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 52.
- [6]
-[7] [8]
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 26.
+ [8] [9] [10] [11]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter2_fig2.pdf): PDF in
 clusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter2_fig2.pdf, id=571, 489.32813pt x 640.64343pt>
+<chapter2_fig2.pdf, id=765, 489.32813pt x 640.64343pt>
 File: chapter2_fig2.pdf Graphic file (type pdf)
  <use chapter2_fig2.pdf>
-Package pdftex.def Info: chapter2_fig2.pdf used on input line 147.
+Package pdftex.def Info: chapter2_fig2.pdf used on input line 121.
 (pdftex.def)             Requested size: 260.17464pt x 340.63425pt.
 
-[9] [10 <./chapter2_fig2.pdf>] [11]
-Overfull \hbox (15.23537pt too wide) in paragraph at lines 245--247
+[12 <./chapter2_fig2.pdf>] [13] [14]
+Overfull \hbox (15.23537pt too wide) in paragraph at lines 219--221
 \OT1/ppl/m/n/12 Let $\OML/cmm/m/it/12 N[]$ \OT1/ppl/m/n/12 be the num-ber of ex
 -e-cu-tions with $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 T[] \OT1/cmr/m/n/12 = 0\OML
 /cmm/m/it/12 ; C[] \OT1/cmr/m/n/12 = 1)$\OT1/ppl/m/n/12 , and let $\OML/cmm/m/i
 t/12 N[]$
  []
 
-[12] [13]
-Overfull \hbox (13.6248pt too wide) in paragraph at lines 290--291
+[15] [16]
+Overfull \hbox (13.6248pt too wide) in paragraph at lines 262--263
 []\OT1/ppl/b/n/12 Subject Pro-grams\OT1/ppl/m/n/12 : We se-lected three sub-jec
 t pro-grams writ-ten in Java: NanoXML,
  []
 
-[14]
-Overfull \hbox (6.65216pt too wide) in paragraph at lines 330--339
+[17]
+Overfull \hbox (6.65216pt too wide) in paragraph at lines 302--311
  [][] 
  []
 
-[15] [16] [17] [18]) (./chapters/content/chapter_3_NUMFL.tex [19]
-Chapter 2.
+[18] [19] [20]) (./chapters/content/chapter_3_NUMFL.tex [21]
+Chapter 3.
+[22
 
-LaTeX Warning: Citation `VuikWeb' on page 20 undefined on input line 5.
-
-
-LaTeX Warning: Citation `Kanewala2014' on page 20 undefined on input line 5.
-
-
-LaTeX Warning: Citation `Jones2002' on page 20 undefined on input line 5.
-
-
-LaTeX Warning: Citation `Liblit2004' on page 20 undefined on input line 5.
-
-
-LaTeX Warning: Citation `Liu2005' on page 20 undefined on input line 5.
-
-
-LaTeX Warning: Citation `Fenton1999' on page 20 undefined on input line 7.
-
-[20
-
-]
-
-LaTeX Warning: Citation `Jones2002' on page 21 undefined on input line 9.
-
-
-LaTeX Warning: Citation `Liblit2004' on page 21 undefined on input line 9.
-
-
-LaTeX Warning: Citation `Baah2010' on page 21 undefined on input line 11.
-
-
-LaTeX Warning: Citation `Baah2011' on page 21 undefined on input line 11.
-
-
-LaTeX Warning: Citation `Gore2012' on page 21 undefined on input line 11.
-
-
-LaTeX Warning: Citation `Shu2013' on page 21 undefined on input line 11.
-
-
-LaTeX Warning: Citation `Pearl2003' on page 21 undefined on input line 11.
-
-
-LaTeX Warning: Citation `Imai2004' on page 21 undefined on input line 11.
-
-
-LaTeX Warning: Citation `Imai2014' on page 21 undefined on input line 11.
-
-[21]
-
-LaTeX Warning: Citation `Hirano2004' on page 22 undefined on input line 13.
-
-[22]
-Overfull \hbox (5.05792pt too wide) in paragraph at lines 21--22
+] [23]
+Overfull \hbox (5.05792pt too wide) in paragraph at lines 18--19
 []\OT1/ppl/m/n/12 A new, value-based ap-proach to SFL for nu-mer-i-cal pro-gram
 s, named NUMFL,
  []
 
 
-Overfull \hbox (3.43863pt too wide) in paragraph at lines 21--22
+Overfull \hbox (3.43863pt too wide) in paragraph at lines 18--19
 \OT1/ppl/m/n/12 NUML, de-noted NUMFL-GPS and NUMFL-CBPS, based on al-ter-na-tiv
 e forms
  []
 
-[23] <chapter3_MotivatingExample.pdf, id=729, 1250.6725pt x 684.5575pt>
+[24] [25] <chapter3_MotivatingExample.pdf, id=939, 1250.6725pt x 684.5575pt>
 File: chapter3_MotivatingExample.pdf Graphic file (type pdf)
 
 <use chapter3_MotivatingExample.pdf>
-Package pdftex.def Info: chapter3_MotivatingExample.pdf used on input line 41.
+Package pdftex.def Info: chapter3_MotivatingExample.pdf used on input line 38.
 (pdftex.def)             Requested size: 346.89731pt x 189.86772pt.
- [24]
-
-LaTeX Warning: Citation `Philip2012' on page 25 undefined on input line 48.
-
-[25 <./chapter3_MotivatingExample.pdf>]
+ [26 <./chapter3_MotivatingExample.pdf>]
+[27]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter3_causal_dag.pdf): 
 PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter3_causal_dag.pdf, id=748, 642.33978pt x 322.32419pt>
+<chapter3_causal_dag.pdf, id=960, 642.33978pt x 322.32419pt>
 File: chapter3_causal_dag.pdf Graphic file (type pdf)
 
 <use chapter3_causal_dag.pdf>
-Package pdftex.def Info: chapter3_causal_dag.pdf used on input line 66.
+Package pdftex.def Info: chapter3_causal_dag.pdf used on input line 63.
 (pdftex.def)             Requested size: 433.62pt x 217.59386pt.
- [26]
-
-LaTeX Warning: Citation `Pearl2003' on page 27 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Pearl2003' on page 27 undefined on input line 75.
-
-
-LaTeX Warning: Citation `Grossman2005' on page 27 undefined on input line 80.
-
-
-LaTeX Warning: Citation `Rosenbaum1983' on page 27 undefined on input line 80.
-
-[27 <./chapter3_causal_dag.pdf>]
+ [28 <./chapter3_causal_dag.pdf>]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter3_causal_dag2.pdf):
  PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter3_causal_dag2.pdf, id=762, 231.12347pt x 167.08423pt>
+<chapter3_causal_dag2.pdf, id=972, 231.12347pt x 167.08423pt>
 File: chapter3_causal_dag2.pdf Graphic file (type pdf)
 
 <use chapter3_causal_dag2.pdf>
-Package pdftex.def Info: chapter3_causal_dag2.pdf used on input line 84.
+Package pdftex.def Info: chapter3_causal_dag2.pdf used on input line 81.
 (pdftex.def)             Requested size: 216.81pt x 156.7456pt.
-
-
-LaTeX Warning: Citation `Rosenbaum1983' on page 28 undefined on input line 90.
-
-
-LaTeX Warning: Citation `Rosenbaum1983' on page 28 undefined on input line 90.
-
-[28 <./chapter3_causal_dag2.pdf>]
-Overfull \hbox (12.71294pt too wide) in paragraph at lines 92--93
+ [29]
+Overfull \hbox (12.71294pt too wide) in paragraph at lines 89--90
 []\OT1/ppl/m/n/12 Suppose that for each unit $\OML/cmm/m/it/12 i$ \OT1/ppl/m/n/
 12 ex-am-ined in an ob-ser-va-tional study, we have recorded
  []
 
 
-LaTeX Warning: Citation `Silvapulle1981' on page 29 undefined on input line 98.
-
-
-
-LaTeX Warning: Citation `Rosenbaum1983' on page 29 undefined on input line 106.
-
-
-
-Overfull \hbox (7.16814pt too wide) in paragraph at lines 106--107
+Overfull \hbox (7.16814pt too wide) in paragraph at lines 103--104
 []\OT1/ppl/m/n/12 After the propen-sity score model is es-ti-mated, co-vari-ate
  bal-ance may be achieved
  []
 
-
-LaTeX Warning: Citation `Imai2004' on page 29 undefined on input line 108.
-
-
-LaTeX Warning: Citation `Imai2014' on page 29 undefined on input line 108.
-
-[29]
-
-LaTeX Warning: Citation `Imai2004' on page 30 undefined on input line 111.
-
-
-LaTeX Warning: Citation `Imai2004' on page 30 undefined on input line 111.
-
-[30]
-Overfull \hbox (51.14323pt too wide) in paragraph at lines 121--136
- [][] 
- []
-
-
-LaTeX Warning: Citation `Imai2014' on page 31 undefined on input line 140.
-
-
-LaTeX Warning: Citation `Imai2014' on page 31 undefined on input line 141.
-
-[31]
-
-LaTeX Warning: Citation `Imai2014' on page 32 undefined on input line 145.
-
-
-LaTeX Warning: Citation `Rosenblueth1981' on page 32 undefined on input line 14
-5.
-
-
-LaTeX Warning: Citation `Hansen1982' on page 32 undefined on input line 149.
-
-[32]
-
-LaTeX Warning: Citation `Jones2002' on page 33 undefined on input line 152.
-
-[33]
-
-LaTeX Warning: Citation `Pearl2003' on page 34 undefined on input line 157.
-
-[34] [35]
-
-LaTeX Warning: Citation `Zhao2013' on page 36 undefined on input line 179.
-
-[36] [37]
+[30 <./chapter3_causal_dag2.pdf>] [31] [32] [33] [34] [35] [36] [37] [38]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 205.
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 203.
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--209
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 202--209
+Underfull \hbox (badness 10000) in paragraph at lines 200--207
 
  []
 
-[38]
-Overfull \hbox (4.43626pt too wide) in paragraph at lines 214--215
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--207
+
+ []
+
+[39]
+Overfull \hbox (4.43626pt too wide) in paragraph at lines 212--213
 []\OT1/ppl/m/n/12 Summarize the failure-causing ef-fect of $\OML/cmm/m/it/12 T[
 ]$ \OT1/ppl/m/n/12 by adding the two es-ti-mated slopes'
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--224
+Underfull \hbox (badness 10000) in paragraph at lines 216--222
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--224
+Underfull \hbox (badness 10000) in paragraph at lines 216--222
 
  []
 
-[39] <chapter3_DRF_curves.pdf, id=846, 433.62pt x 216.81pt>
+[40] <chapter3_DRF_curves.pdf, id=1085, 433.62pt x 216.81pt>
 File: chapter3_DRF_curves.pdf Graphic file (type pdf)
 
 <use chapter3_DRF_curves.pdf>
-Package pdftex.def Info: chapter3_DRF_curves.pdf used on input line 227.
+Package pdftex.def Info: chapter3_DRF_curves.pdf used on input line 225.
 (pdftex.def)             Requested size: 303.53267pt x 151.77257pt.
-
-Overfull \hbox (9.96019pt too wide) in paragraph at lines 280--281
+ [41 <./chapter3_DRF_curves.pdf>]
+Overfull \hbox (9.96019pt too wide) in paragraph at lines 278--279
 \OT1/ppl/m/n/12 stan-dard-ized $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x \OMS/cmsy/m
 /n/12 ! []\OT1/cmr/m/n/12 )$ \OT1/ppl/m/n/12 to ad-just for dif-fer-ences in sc
 ale be-tween vari-ables. NUMFL-
  []
 
-[40 <./chapter3_DRF_curves.pdf>] [41]
-
-LaTeX Warning: Citation `Hansen1982' on page 42 undefined on input line 286.
-
-[42]
-
-LaTeX Warning: Citation `CBPS' on page 43 undefined on input line 294.
-
-[43]
-Overfull \hbox (39.14323pt too wide) in paragraph at lines 312--323
- [][] 
- []
-
-
-LaTeX Warning: Citation `CBPS' on page 44 undefined on input line 327.
-
-[44] [45] [46] [47]
-
-LaTeX Warning: Citation `Java' on page 48 undefined on input line 408.
-
-
-LaTeX Warning: Citation `NUMFL' on page 48 undefined on input line 410.
-
-
-LaTeX Warning: Citation `R' on page 48 undefined on input line 410.
-
-
-LaTeX Warning: Citation `Commons' on page 48 undefined on input line 413.
-
-
-LaTeX Warning: Citation `Oj' on page 48 undefined on input line 413.
-
-
-LaTeX Warning: Citation `JAMA' on page 48 undefined on input line 413.
-
-
-LaTeX Warning: Citation `SciMark' on page 48 undefined on input line 413.
-
-[48]
-Overfull \hbox (59.79138pt too wide) in paragraph at lines 418--438
-[][] 
- []
-
-[49]
-
-LaTeX Warning: Citation `Abreu2007' on page 50 undefined on input line 447.
-
-
-LaTeX Warning: Citation `Wong2014' on page 50 undefined on input line 447.
-
-[50]
-
-LaTeX Warning: Citation `Liu2005' on page 51 undefined on input line 457.
-
-
-LaTeX Warning: Citation `Gore2011' on page 51 undefined on input line 457.
-
-[51]
+[42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 472.
- [52] [53] <chapter3_QRM_VS_Base.pdf, id=941, 433.62pt x 216.81pt>
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 473.
+ [53] [54] [55]
+<chapter3_QRM_VS_Base.pdf, id=1210, 433.62pt x 216.81pt>
 File: chapter3_QRM_VS_Base.pdf Graphic file (type pdf)
 
 <use chapter3_QRM_VS_Base.pdf>
-Package pdftex.def Info: chapter3_QRM_VS_Base.pdf used on input line 511.
+Package pdftex.def Info: chapter3_QRM_VS_Base.pdf used on input line 512.
 (pdftex.def)             Requested size: 650.43pt x 325.2572pt.
- [54]
-
-LaTeX Warning: Citation `Baah2010' on page 55 undefined on input line 518.
-
-<chapter3_QRM_allFail.pdf, id=950, 1170.3725pt x 799.98875pt>
+ [56] [57 <./chapter3_QRM_VS_Base.pdf>]
+<chapter3_QRM_allFail.pdf, id=1226, 1170.3725pt x 799.98875pt>
 File: chapter3_QRM_allFail.pdf Graphic file (type pdf)
 
 <use chapter3_QRM_allFail.pdf>
-Package pdftex.def Info: chapter3_QRM_allFail.pdf used on input line 554.
+Package pdftex.def Info: chapter3_QRM_allFail.pdf used on input line 555.
 (pdftex.def)             Requested size: 346.89731pt x 237.11766pt.
- [55] [56 <./chapter3_QRM_VS_Base.pdf>] [57 <./chapter3_QRM_allFail.pdf>]
-Overfull \hbox (13.46718pt too wide) in paragraph at lines 561--561
+
+Overfull \hbox (13.46718pt too wide) in paragraph at lines 562--562
 []\OT1/ppl/b/n/14.4 Application of NUMFL-GPS to Pro-grams with Mul-ti-ple Fault
 s 
  []
 
-[58] <chapter3_QRM_VS_Base_MultipleFault.pdf, id=981, 433.62pt x 216.81pt>
+[58] [59 <./chapter3_QRM_allFail.pdf>]
+<chapter3_QRM_VS_Base_MultipleFault.pdf, id=1246, 433.62pt x 216.81pt>
 File: chapter3_QRM_VS_Base_MultipleFault.pdf Graphic file (type pdf)
 
 <use chapter3_QRM_VS_Base_MultipleFault.pdf>
 Package pdftex.def Info: chapter3_QRM_VS_Base_MultipleFault.pdf used on input l
-ine 585.
+ine 586.
 (pdftex.def)             Requested size: 650.43pt x 325.2572pt.
-
-Underfull \hbox (badness 1033) in paragraph at lines 594--594
-[]\OT1/ppl/m/it/10.95 Table 2.11: |AV-ER-AGE FAULT LO-CAL-IZA-TION COSTS OF NUM
+ [60] [61 <./chapter3_QRM_VS_Base_MultipleFault.pdf>]
+Underfull \hbox (badness 1033) in paragraph at lines 595--595
+[]\OT1/ppl/m/it/10.95 Table 3.11: |AV-ER-AGE FAULT LO-CAL-IZA-TION COSTS OF NUM
 FL-GPS-QRM AND
  []
 
-[59] [60 <./chapter3_QRM_VS_Base_MultipleFault.pdf>]
-Underfull \hbox (badness 1033) in paragraph at lines 625--625
-[]\OT1/ppl/m/it/10.95 Table 2.12: |AV-ER-AGE FAULT LO-CAL-IZA-TION COSTS OF NUM
+[62]
+Underfull \hbox (badness 1033) in paragraph at lines 626--626
+[]\OT1/ppl/m/it/10.95 Table 3.12: |AV-ER-AGE FAULT LO-CAL-IZA-TION COSTS OF NUM
 FL-GPS-QRM AND
  []
 
-[61] <chapter3_CBPS_VS_GPS.pdf, id=1002, 1170.3725pt x 799.98875pt>
+<chapter3_CBPS_VS_GPS.pdf, id=1267, 1170.3725pt x 799.98875pt>
 File: chapter3_CBPS_VS_GPS.pdf Graphic file (type pdf)
 
 <use chapter3_CBPS_VS_GPS.pdf>
-Package pdftex.def Info: chapter3_CBPS_VS_GPS.pdf used on input line 643.
+Package pdftex.def Info: chapter3_CBPS_VS_GPS.pdf used on input line 644.
 (pdftex.def)             Requested size: 346.89731pt x 237.11766pt.
 
-<chapter3_CBPS_VS_GPS_MultipleFault.pdf, id=1003, 1170.3725pt x 799.98875pt>
+<chapter3_CBPS_VS_GPS_MultipleFault.pdf, id=1268, 1170.3725pt x 799.98875pt>
 File: chapter3_CBPS_VS_GPS_MultipleFault.pdf Graphic file (type pdf)
 
 <use chapter3_CBPS_VS_GPS_MultipleFault.pdf>
 Package pdftex.def Info: chapter3_CBPS_VS_GPS_MultipleFault.pdf used on input l
-ine 650.
+ine 651.
 (pdftex.def)             Requested size: 346.89731pt x 237.11766pt.
- [62 <./chapter3_CBPS_VS_GPS.pdf>]
-Overfull \hbox (5.43123pt too wide) in paragraph at lines 689--690
+
+Overfull \hbox (2.86008pt too wide) in paragraph at lines 687--688
+[]\OT1/ppl/m/n/12 From [][]3.13[][], The NUMFL is mildly slower than base-line 
+tech-niques. The NUMFL-
+ []
+
+[63] [64 <./chapter3_CBPS_VS_GPS.pdf> <./chapter3_CBPS_VS_GPS_MultipleFault.pdf
+>]
+Overfull \hbox (5.43123pt too wide) in paragraph at lines 690--691
 \OT1/ppl/m/n/12 ploys re-gres-sion mod-els for two pur-poses: es-ti-mat-ing gen
 -er-al-ized propen-sity scores
  []
 
-[63 <./chapter3_CBPS_VS_GPS_MultipleFault.pdf>] [64]
-
-LaTeX Warning: Citation `Jones2002' on page 65 undefined on input line 692.
-
-
-LaTeX Warning: Citation `Liblit2005' on page 65 undefined on input line 692.
-
-
-LaTeX Warning: Citation `Baah2010' on page 65 undefined on input line 692.
-
-
-LaTeX Warning: Citation `Baah2011' on page 65 undefined on input line 692.
-
-
-LaTeX Warning: Citation `Gore2012' on page 65 undefined on input line 692.
-
-
-LaTeX Warning: Citation `Shu2013' on page 65 undefined on input line 692.
-
-
-LaTeX Warning: Citation `Cleve2005' on page 65 undefined on input line 694.
-
-
-LaTeX Warning: Citation `Jeffrey2008' on page 65 undefined on input line 694.
-
-
-LaTeX Warning: Citation `Zeller2002' on page 65 undefined on input line 694.
-
-
-LaTeX Warning: Citation `Ernst2007' on page 65 undefined on input line 694.
-
-
-LaTeX Warning: Citation `Hangal2002' on page 65 undefined on input line 694.
-
-
-Overfull \hbox (4.36343pt too wide) in paragraph at lines 694--695
-\OT1/ppl/m/n/12 are among the few fault lo-cal-iza-tion tech-niques based on va
-l-ues of vari-ables. Cause-
- []
-
-[65]
-
-LaTeX Warning: Citation `Scott2007' on page 66 undefined on input line 697.
-
-
-LaTeX Warning: Citation `Tang2010' on page 66 undefined on input line 697.
-
-
-LaTeX Warning: Citation `Lam2013' on page 66 undefined on input line 697.
-
-
-LaTeX Warning: Citation `Bao2013' on page 66 undefined on input line 697.
-
-
-Overfull \hbox (4.74377pt too wide) in paragraph at lines 697--698
+[65] [66]
+Overfull \hbox (4.74377pt too wide) in paragraph at lines 698--699
 []\OT1/ppl/m/n/12 Some re-cent stud-ies have de-vel-oped tech-niques to an-a-ly
 ze in-sta-bil-ity in floating-
  []
 
+[67]) (./chapters/content/chapter_4_BART.tex [68] [69]
+Chapter 4.
+[70
 
-LaTeX Warning: Citation `Hirano2004' on page 66 undefined on input line 700.
-
-
-LaTeX Warning: Citation `Zhao2013' on page 66 undefined on input line 700.
-
-[66]) (./chapters/content/chapter_4_BART.tex [67]
-Chapter 3.
-[68
-
-] [69]
+] [71]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_SingleRGT.pdf): P
 DF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_SingleRGT.pdf, id=1055, 242.3956pt x 243.1183pt>
+<chapter4_SingleRGT.pdf, id=1351, 242.3956pt x 243.1183pt>
 File: chapter4_SingleRGT.pdf Graphic file (type pdf)
 
 <use chapter4_SingleRGT.pdf>
 Package pdftex.def Info: chapter4_SingleRGT.pdf used on input line 26.
 (pdftex.def)             Requested size: 216.81pt x 217.45782pt.
- [70 <./chapter4_SingleRGT.pdf>] [71]
+ [72 <./chapter4_SingleRGT.pdf>] [73]
 
-LaTeX Warning: Citation `Pratola2015' on page 72 undefined on input line 54.
+LaTeX Warning: Citation `Pratola2015' on page 74 undefined on input line 54.
 
-[72] [73] [74]
+[74] [75] [76]
 
-LaTeX Warning: Reference `' on page 75 undefined on input line 107.
+LaTeX Warning: Reference `' on page 77 undefined on input line 107.
 
-[75] [76]
+[77] [78]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BART_ACE.pdf): PD
 F inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BART_ACE.pdf, id=1102, 3010.16588pt x 783.78821pt>
+<chapter4_BART_ACE.pdf, id=1399, 3010.16588pt x 783.78821pt>
 File: chapter4_BART_ACE.pdf Graphic file (type pdf)
 
 <use chapter4_BART_ACE.pdf>
 Package pdftex.def Info: chapter4_BART_ACE.pdf used on input line 123.
 (pdftex.def)             Requested size: 433.62pt x 112.8989pt.
- [77 <./chapter4_BART_ACE.pdf>] [78]
+ [79 <./chapter4_BART_ACE.pdf>] [80]
 Overfull \hbox (4.49068pt too wide) in paragraph at lines 142--143
 [] \OT1/ppl/b/it/12 BART vs. ESP-SIV. \OT1/ppl/m/n/12 BART per-formed bet-ter t
 han ESP-SIV on 78 subject-program
@@ -1941,7 +1750,7 @@ han ESP-SIV on 78 subject-program
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BART_VS_Base.pdf)
 : PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BART_VS_Base.pdf, id=1117, 1147.28625pt x 462.25699pt>
+<chapter4_BART_VS_Base.pdf, id=1414, 1147.28625pt x 462.25699pt>
 File: chapter4_BART_VS_Base.pdf Graphic file (type pdf)
 
 <use chapter4_BART_VS_Base.pdf>
@@ -1951,14 +1760,14 @@ Package pdftex.def Info: chapter4_BART_VS_Base.pdf used on input line 150.
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BARTvsBase_M.pdf)
 : PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BARTvsBase_M.pdf, id=1119, 885.3075pt x 356.83313pt>
+<chapter4_BARTvsBase_M.pdf, id=1416, 885.3075pt x 356.83313pt>
 File: chapter4_BARTvsBase_M.pdf Graphic file (type pdf)
 
 <use chapter4_BARTvsBase_M.pdf>
 Package pdftex.def Info: chapter4_BARTvsBase_M.pdf used on input line 159.
 (pdftex.def)             Requested size: 650.43pt x 262.17935pt.
- [79] [80 <./chapter4_BART_VS_Base.pdf>]
-[81 <./chapter4_BARTvsBase_M.pdf>]
+ [81] [82 <./chapter4_BART_VS_Base.pdf>]
+[83 <./chapter4_BARTvsBase_M.pdf>]
 Overfull \hbox (8.34354pt too wide) in paragraph at lines 170--171
 []\OT1/ppl/m/n/12 In sum-mary, BART per-formed bet-ter than both NUMFL-GPS-QRM 
 and NUMFL-
@@ -1968,7 +1777,7 @@ and NUMFL-
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BARTvsGPS_QRM.pdf
 ): PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BARTvsGPS_QRM.pdf, id=1140, 1049.9225pt x 638.385pt>
+<chapter4_BARTvsGPS_QRM.pdf, id=1437, 1049.9225pt x 638.385pt>
 File: chapter4_BARTvsGPS_QRM.pdf Graphic file (type pdf)
 
 <use chapter4_BARTvsGPS_QRM.pdf>
@@ -1978,13 +1787,13 @@ Package pdftex.def Info: chapter4_BARTvsGPS_QRM.pdf used on input line 202.
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BARTvsCBPS.pdf): 
 PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BARTvsCBPS.pdf, id=1141, 1049.9225pt x 638.385pt>
+<chapter4_BARTvsCBPS.pdf, id=1438, 1049.9225pt x 638.385pt>
 File: chapter4_BARTvsCBPS.pdf Graphic file (type pdf)
 
 <use chapter4_BARTvsCBPS.pdf>
 Package pdftex.def Info: chapter4_BARTvsCBPS.pdf used on input line 209.
 (pdftex.def)             Requested size: 346.89731pt x 210.92096pt.
- [82] [83 <./chapter4_BARTvsGPS_QRM.pdf>]
+ [84] [85 <./chapter4_BARTvsGPS_QRM.pdf>]
 Overfull \hbox (19.75752pt too wide) in paragraph at lines 216--217
 \OT1/ppl/m/n/12 GPS-QRM on the in-di-vid-ual two-fault ver-sions. BART per-form
 ed bet-ter than NUMFL-
@@ -1992,7 +1801,7 @@ ed bet-ter than NUMFL-
 
 
 Underfull \hbox (badness 1199) in paragraph at lines 219--219
-[]\OT1/ppl/m/it/10.95 Table 3.2: |AV-ER-AGE FAULT LO-CAL-IZA-TION COSTS OF BART
+[]\OT1/ppl/m/it/10.95 Table 4.2: |AV-ER-AGE FAULT LO-CAL-IZA-TION COSTS OF BART
  AND NUMFL ON
  []
 
@@ -2000,7 +1809,7 @@ Underfull \hbox (badness 1199) in paragraph at lines 219--219
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BARTvsGPS_QRM_M.p
 df): PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BARTvsGPS_QRM_M.pdf, id=1158, 1049.9225pt x 638.385pt>
+<chapter4_BARTvsGPS_QRM_M.pdf, id=1455, 1049.9225pt x 638.385pt>
 File: chapter4_BARTvsGPS_QRM_M.pdf Graphic file (type pdf)
 
 <use chapter4_BARTvsGPS_QRM_M.pdf>
@@ -2010,35 +1819,128 @@ Package pdftex.def Info: chapter4_BARTvsGPS_QRM_M.pdf used on input line 237.
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BARTvsCBPS_M.pdf)
 : PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BARTvsCBPS_M.pdf, id=1159, 1049.9225pt x 638.385pt>
+<chapter4_BARTvsCBPS_M.pdf, id=1456, 1049.9225pt x 638.385pt>
 File: chapter4_BARTvsCBPS_M.pdf Graphic file (type pdf)
 
 <use chapter4_BARTvsCBPS_M.pdf>
 Package pdftex.def Info: chapter4_BARTvsCBPS_M.pdf used on input line 244.
 (pdftex.def)             Requested size: 346.89731pt x 210.92096pt.
- [84 <./chapter4_BARTvsCBPS.pdf>] [85 <./chapter4_BARTvsGPS_QRM_M.pdf>] [86 <./
-chapter4_BARTvsCBPS_M.pdf>] [87] [88])
-(./dissertation-BZF.bbl [89]
+ [86 <./chapter4_BARTvsCBPS.pdf>] [87 <./chapter4_BARTvsGPS_QRM_M.pdf>] [88 <./
+chapter4_BARTvsCBPS_M.pdf>] [89] [90])
+(./chapters/content/chapter_5_Robot.tex [91]
+Chapter 5.
+[92
+
+] [93]
+
+pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter5_SABiR.pdf): PDF i
+nclusion: found PDF version <1.6>, but at most version <1.5> allowed
+<chapter5_SABiR.pdf, id=1509, 257.50203pt x 283.09766pt>
+File: chapter5_SABiR.pdf Graphic file (type pdf)
+
+<use chapter5_SABiR.pdf>
+Package pdftex.def Info: chapter5_SABiR.pdf used on input line 26.
+(pdftex.def)             Requested size: 260.17464pt x 286.03435pt.
+ [94 <./chapter5_SABiR.pdf>]
+<chapter5_BHR.pdf, id=1517, 614.295pt x 794.97pt>
+File: chapter5_BHR.pdf Graphic file (type pdf)
+ <use chapter5_BHR.pdf>
+Package pdftex.def Info: chapter5_BHR.pdf used on input line 36.
+(pdftex.def)             Requested size: 260.17464pt x 336.69934pt.
+
+
+LaTeX Warning: Citation `hwang2009kinematic' on page 95 undefined on input line
+ 44.
+
+[95 <./chapter5_BHR.pdf>]
+
+LaTeX Warning: Citation `Russell2012' on page 96 undefined on input line 46.
+
+[96]
+
+pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter5_BHR_control.pdf):
+ PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
+<chapter5_BHR_control.pdf, id=1545, 987.69pt x 351.56343pt>
+File: chapter5_BHR_control.pdf Graphic file (type pdf)
+
+<use chapter5_BHR_control.pdf>
+Package pdftex.def Info: chapter5_BHR_control.pdf used on input line 54.
+(pdftex.def)             Requested size: 433.62pt x 154.33969pt.
+ [97 <./chapter5_BHR_control.pdf>]
+<chapter5_SABiRsw.pdf, id=1558, 323.4203pt x 184.55951pt>
+File: chapter5_SABiRsw.pdf Graphic file (type pdf)
+
+<use chapter5_SABiRsw.pdf>
+Package pdftex.def Info: chapter5_SABiRsw.pdf used on input line 68.
+(pdftex.def)             Requested size: 433.62pt x 247.45486pt.
+ [98 <./chapter5_SABiRsw.pdf>] [99] [100]
+
+LaTeX Warning: Citation `feng' on page 101 undefined on input line 94.
+
+
+LaTeX Warning: Citation `fengthesisi' on page 101 undefined on input line 94.
+
+[101] <chapter5_DBN.pdf, id=1584, 331.2375pt x 323.2075pt>
+File: chapter5_DBN.pdf Graphic file (type pdf)
+
+<use chapter5_DBN.pdf>
+Package pdftex.def Info: chapter5_DBN.pdf used on input line 101.
+(pdftex.def)             Requested size: 260.17464pt x 253.87627pt.
+ [102]
+
+LaTeX Warning: Citation `sescps' on page 103 undefined on input line 109.
+
+[103 <./chapter5_DBN.pdf>] [104] [105] [106] [107] [108]
+
+LaTeX Warning: Reference `' on page 109 undefined on input line 180.
+
+
+LaTeX Warning: Reference `' on page 109 undefined on input line 182.
+
+[109] [110] [111] [112]) (./chapters/content/chapter_6_conclusion.tex [113]
+Chapter 6.
+) (./chapters/appendix/appendix_derivation.tex [114
+
+]
+Appendix A.
+
+Overfull \hbox (11.3924pt too wide) detected at line 27
+[][] \OT1/cmr/m/n/12 = []
+ []
+
+[115
+
+]
+Overfull \hbox (12.75624pt too wide) detected at line 78
+[][] []
+ []
+
+
+Overfull \hbox (27.28552pt too wide) detected at line 88
+[][]
+ []
+
+[116]) (./dissertation-BZF.bbl [117]
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 5.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 5260) in paragraph at lines 20--23
+Underfull \hbox (badness 5260) in paragraph at lines 44--47
 []\OT1/ppl/m/n/12 Xerces2.  [][]$\OT1/pcr/m/n/12 http : / / projects . apache .
  org / projects / xerces _ for _
  []
 
-[90
+[118
 
-] [91]) [92]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 173.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 173.
+] [119] [120] [121] [122] [123] [124]) [125]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 158.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 158.
  (./dissertation-BZF.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 173.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 173.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 158.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 158.
 Package rerunfilecheck Info: File `dissertation-BZF.out' has not changed.
-(rerunfilecheck)             Checksum: F7B1B09996E3BB212B69B683B21E498D;4072.
+(rerunfilecheck)             Checksum: 7124DE1160ED79408261B246A0D78684;6104.
 
 
 LaTeX Warning: There were undefined references.
@@ -2046,16 +1948,16 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 173.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 158.
  ) 
 Here is how much of TeX's memory you used:
- 26481 strings out of 493089
- 505105 string characters out of 6134842
- 643880 words of memory out of 5000000
- 29061 multiletter control sequences out of 15000+600000
+ 26705 strings out of 493089
+ 508380 string characters out of 6134842
+ 647590 words of memory out of 5000000
+ 29138 multiletter control sequences out of 15000+600000
  34081 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,15n,80p,3217b,445s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,15n,80p,3217b,443s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texl
@@ -2063,22 +1965,25 @@ ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texli
 ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive
 /2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dis
-t/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
-type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/u
-rw/palatino/uplbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/pal
-atino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/u
-plri8a.pfb>
-Output written on dissertation-BZF.pdf (104 pages, 4490227 bytes).
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/u
+rw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/pala
+tino/uplbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/u
+plr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplri8a.
+pfb>
+Output written on dissertation-BZF.pdf (139 pages, 5862300 bytes).
 PDF statistics:
- 1350 PDF objects out of 1440 (max. 8388607)
- 1168 compressed objects within 12 object streams
- 289 named destinations out of 1000 (max. 500000)
- 529 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1877 PDF objects out of 2073 (max. 8388607)
+ 1639 compressed objects within 17 object streams
+ 417 named destinations out of 1000 (max. 500000)
+ 778 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -4,13 +4,37 @@
 Asm framework available.
 \newblock \url{http://asm.ow2.org/}.
 
+\bibitem{CBPS}
+Cbps r. package available:.
+
+\bibitem{Commons}
+Commons math:.
+
+\bibitem{JAMA}
+Jama package available:.
+
+\bibitem{Java}
+Java 1.5 parser available:.
+
 \bibitem{Nanoxml}
 Nanoxml.
 \newblock \url{http://nanoxml.sourceforge.net/orig/index.html}.
 
+\bibitem{NUMFL}
+Numfl profiler:.
+
+\bibitem{Oj}
+Oj! algorithms available:.
+
+\bibitem{R}
+R. project available:.
+
 \bibitem{Rome}
 Rome.
 \newblock \url{https://java.net/projects/rome/sources}.
+
+\bibitem{SciMark}
+Scimark 2.0 available:.
 
 \bibitem{SIR}
 Sir.
@@ -20,6 +44,12 @@ Sir.
 Xerces2.
 \newblock
   \url{http://projects.apache.org/projects/xerces_for_java_xml_parser.html}.
+
+\bibitem{Abreu2007}
+R.~Abreu, P.~Zoeteweij, and V.~G. Aj.
+\newblock On the accuracy of spectrum-based fault localization.
+\newblock {\em In Testing: Academic and Industrial Conference Practice and
+  Research Techniques.}, pages 89--98, 2007.
 
 \bibitem{abreu2007accuracy}
 R.~Abreu, P.~Zoeteweij, and A.~J. Van~Gemund.
@@ -42,6 +72,20 @@ G.~K. Baah, A.~Podgurski, and M.~J. Harrold.
   European conference on Foundations of software engineering}, pages 146--156.
   ACM, 2011.
 
+\bibitem{Baah2010}
+G.~K. Baah, A.~Podgurski, and H.~Mj.
+\newblock Causal inference for statistical fault localization.
+\newblock In {\em Proceedings of the 19th international symposium on Software
+  testing and analysis}, pages 73--84, 2010.
+
+\bibitem{Baah2011}
+G.~K. Baah, A.~Podgurski, and H.~Mj.
+\newblock Mitigating the confounding effects of program dependences for
+  effective fault localization.
+\newblock In {\em Proceedings of the 19th ACM SIGSOFT symposium and the 13th
+  European conference on Foundations of software engineering}, pages 146--156,
+  2011.
+
 \bibitem{ball1993s}
 T.~Ball.
 \newblock What's in a region?: or computing control dependence regions in
@@ -49,16 +93,52 @@ T.~Ball.
 \newblock {\em ACM Letters on Programming Languages and Systems (LOPLAS)},
   2(1-4):1--16, 1993.
 
+\bibitem{Bao2013}
+T.~Bao and X.~Zhang.
+\newblock On-the-fly detection of instability problems in floating-point
+  program execution.
+\newblock {\em In ACM SIGPLAN Notices.}, 48(10):817--832, 2013.
+
+\bibitem{Bebek2007}
+O.~Bebek and M.~C. Cavusoglu.
+\newblock Intelligent control algorithms for robotic-assisted beating heart
+  surgery.
+\newblock {\em Robotics, Transactions on Institute of Electrical and
+  Electronics Engineers}, 23(3):468--480, 2007.
+
 \bibitem{bembom2008data}
 O.~Bembom, J.~W. Fessel, R.~W. Shafer, and M.~J. van~der Laan.
 \newblock Data-adaptive selection of the adjustment set in variable importance
   estimation.
 \newblock 2008.
 
+\bibitem{Liblit2004}
+L.~Br.
+\newblock {\em Cooperative Bug Isolation}.
+\newblock PhD thesis, UNIVERSITY OF CALIFORNIA, BERKELEY, 2004.
+
+\bibitem{Cleve2005}
+H.~Cleve and A.~Zeller.
+\newblock Locating causes of program failures.
+\newblock In {\em Proceedings of the 27th international conference on Software
+  engineering}, pages 342--351, 2005.
+
 \bibitem{crump2006moving}
 R.~Crump, V.~J. Hotz, G.~Imbens, and O.~Mitnik.
 \newblock Moving the goalposts: Addressing limited overlap in the estimation of
   average treatment effects by changing the estimand, 2006.
+
+\bibitem{Ernst2007}
+M.~D. Ernst, J.~H. Perkins, P.~J. Guo, S.~McCamant, C.~Pacheco, M.~S. Tschantz,
+  and C.~Xiao.
+\newblock The daikon system for dynamic detection of likely invariants.
+\newblock {\em Science of Computer Programming.}, 69(1):35--45, 2007.
+
+\bibitem{Fenton1999}
+N.~E. Fenton and M.~Neil.
+\newblock A critique of software defect prediction models.
+\newblock {\em Software Engineering, IEEE Transactions on.}, 25(5):675--689,
+  1999.
 
 \bibitem{ferrante1987program}
 J.~Ferrante, K.~J. Ottenstein, and J.~D. Warren.
@@ -66,12 +146,42 @@ J.~Ferrante, K.~J. Ottenstein, and J.~D. Warren.
 \newblock {\em ACM Transactions on Programming Languages and Systems (TOPLAS)},
   9(3):319--349, 1987.
 
+\bibitem{Gore2012}
+R.~Gore and R.~J. Pf.
+\newblock Reducing confounding bias in predicate-level statistical debugging
+  metrics.
+\newblock In {\em Proceedings of the 34th International Conference on Software
+  Engineering}, pages 463--473, 2012.
+
 \bibitem{gore2012reducing}
 R.~Gore and P.~F. Reynolds~Jr.
 \newblock Reducing confounding bias in predicate-level statistical debugging
   metrics.
 \newblock In {\em Proceedings of the 34th International Conference on Software
   Engineering}, pages 463--473. IEEE Press, 2012.
+
+\bibitem{Gore2011}
+R.~Gore, P.~F. Reynolds~Jr, and D.~Kamensky.
+\newblock Statistical debugging with elastic predicates.
+\newblock In {\em 26th IEEE/ACM International Conference on Automated Software
+  Engineering}, pages 492--495. IEEE, 2011.
+
+\bibitem{Grossman2005}
+J.~Grossman and M.~Fj.
+\newblock The randomized controlled trial: gold standard, or merely standard?
+\newblock {\em Perspectives in biology and medicine.}, 48(4):516--534, 2005.
+
+\bibitem{Hangal2002}
+S.~Hangal and L.~Ms.
+\newblock Tracking down software bugs using automatic anomaly detection.
+\newblock In {\em Proceedings of the 24th international conference on Software
+  engineering}, pages 291--301, 2002.
+
+\bibitem{Hansen1982}
+L.~P. Hansen.
+\newblock Large sample properties of generalized method of moments estimators.
+\newblock {\em Econometrica: Journal of the Econometric Society}, pages
+  1029--1054, 1982.
 
 \bibitem{hernan2004definition}
 M.~Hernan.
@@ -85,16 +195,70 @@ M.~A. Hern{\'a}n and J.~M. Robins.
 \newblock {\em Journal of epidemiology and community health}, 60(7):578--586,
   2006.
 
+\bibitem{Hirano2004}
+K.~Hirano and I.~Gw.
+\newblock The propensity score with continuous treatments.
+\newblock {\em Applied Bayesian modeling and causal inference from
+  incomplete-data perspectives.}, 226164:73--84, 2004.
+
+\bibitem{Imai2004}
+K.~Imai and V.~D. Da.
+\newblock Causal inference with general treatment regimes.
+\newblock {\em Journal of the American Statistical Association.}, 99:467, 2004.
+
+\bibitem{Imai2014}
+K.~Imai and M.~Ratkovic.
+\newblock Covariate balancing propensity score.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)}, 76(1):243--263, 2014.
+
+\bibitem{Jeffrey2008}
+D.~Jeffrey, N.~Gupta, and R.~Gupta.
+\newblock Fault localization using value replacement.
+\newblock In {\em Proceedings of the 2008 international symposium on Software
+  testing and analysis}, pages 167--178, 2008.
+
 \bibitem{johnson1992applied}
 R.~A. Johnson, D.~W. Wichern, et~al.
 \newblock {\em Applied multivariate statistical analysis}, volume~4.
 \newblock Prentice hall Englewood Cliffs, NJ, 1992.
+
+\bibitem{Jones2002}
+J.~A. Jones, M.~J. Harrold, and J.~Stasko.
+\newblock Visualization of test information to assist fault localization.
+\newblock In {\em Proceedings of the 24th international conference on Software
+  engineering}, pages 467--477, 2002.
 
 \bibitem{jones2002visualization}
 J.~A. Jones, M.~J. Harrold, and J.~Stasko.
 \newblock Visualization of test information to assist fault localization.
 \newblock In {\em Proceedings of the 24th international conference on Software
   engineering}, pages 467--477. ACM, 2002.
+
+\bibitem{Kanewala2014}
+U.~Kanewala and B.~Jm.
+\newblock Testing scientific software: A systematic literature review.
+\newblock {\em Information and software technology}, 56(10):1219--1232, 2014.
+
+\bibitem{Lam2013}
+M.~O. Lam, J.~K. Hollingsworth, and S.~Gw.
+\newblock Dynamic floating-point cancellation detection.
+\newblock {\em Parallel Computing.}, 39(3):146--155, 2013.
+
+\bibitem{Liblit2005}
+B.~Liblit, M.~Naik, A.~X. Zheng, A.~Aiken, and J.~Mi.
+\newblock Scalable statistical bug isolation.
+\newblock {\em In ACM SIGPLAN Notices.}, 40(6):15--26, 2005.
+
+\bibitem{Liu2005}
+C.~Liu, X.~Yan, L.~Fei, J.~Han, and M.~Sp.
+\newblock Sober: statistical model-based bug localization.
+\newblock {\em ACM SIGSOFT Software Engineering Notes.}, 30(5):286--295, 2005.
+
+\bibitem{Pearl2003}
+J.~Pearl.
+\newblock Causality: models, reasoning, and inference.
+\newblock {\em Econometric Theory.}, 19:675--685, 2003.
 
 \bibitem{pearl2000models}
 J.~Pearl et~al.
@@ -105,6 +269,27 @@ M.~L. Petersen, K.~E. Porter, S.~Gruber, Y.~Wang, and M.~J. van~der Laan.
 \newblock Diagnosing and responding to violations in the positivity assumption.
 \newblock {\em Statistical Methods in Medical Research}, page 0962280210386207,
   2010.
+
+\bibitem{Philip2012}
+S.~Philip.
+\newblock Pearson's correlation coefficient.
+\newblock {\em BMJ British Medical Journal}, 345, 2012.
+
+\bibitem{Rosenbaum1983}
+P.~R. Rosenbaum and R.~Db.
+\newblock The central role of the propensity score in observational studies for
+  causal effects.
+\newblock {\em Biometrika.}, 70(1):41--55, 1983.
+
+\bibitem{Rosenblueth1981}
+E.~Rosenblueth.
+\newblock Two-point estimates in probabilities.
+\newblock {\em Applied Mathematical Modelling}, 5(5):329--335, 1981.
+
+\bibitem{Scott2007}
+N.~S. Scott, F.~J{\'e}z{\'e}quel, C.~Denis, and C.~Jm.
+\newblock Numerical health check for scientific codes: the cadna approach.
+\newblock {\em Computer Physics Communications.}, 176(8):507--521, 2007.
 
 \bibitem{shu2013javapdg}
 G.~Shu, B.~Sun, T.~A. Henderson, and A.~Podgurski.
@@ -117,6 +302,38 @@ G.~Shu, B.~Sun, A.~Podgurski, and F.~Cao.
 \newblock Mfl: Method-level fault localization with causal inference.
 \newblock In {\em Software Testing, Verification and Validation (ICST), 2013
   IEEE Sixth International Conference on}, pages 124--133. IEEE, 2013.
+
+\bibitem{Shu2013}
+G.~Shu, B.~Sun, A.~Podgurski, and F.~Cao.
+\newblock Mfl: Method-level fault localization with causal inference.
+\newblock {\em In Software Testing, Verification and Validation (ICST)},
+  2013:124--133, 2013.
+
+\bibitem{Silvapulle1981}
+M.~J. Silvapulle.
+\newblock On the existence of maximum likelihood estimators for the binomial
+  response models.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological) :}, pages 310--313, 1981.
+
+\bibitem{Tang2010}
+E.~Tang, E.~Barr, X.~Li, and Z.~Su.
+\newblock Perturbing numerical calculations for statistical analysis of
+  floating-point program (in) stability.
+\newblock In {\em Proceedings of the 19th international symposium on Software
+  testing and analysis}, pages 131--142, 2010.
+
+\bibitem{Tuna2013}
+E.~Tuna, T.~Franke, O.~Bebek, A.~Shiose, K.~Fukamachi, and M.~Cavusoglu.
+\newblock Heart motion prediction based on adaptive estimation algorithms for
+  robotic-assisted beating heart surgery.
+\newblock {\em Robotics, Transactions on Institute of Electrical and
+  Electronics Engineers}, 29(1):261?276, 2013.
+
+\bibitem{VuikWeb}
+K.~Vuik.
+\newblock Some disasters caused by numerical errors.
+\newblock Website at:.
 
 \bibitem{wang2006diagnosing}
 Y.~Wang, M.~L. Petersen, D.~Bangsberg, and M.~J. van~der Laan.
@@ -135,5 +352,22 @@ S.~Wold, A.~Ruhe, H.~Wold, and W.~Dunn, III.
   squares (pls) approach to generalized inverses.
 \newblock {\em SIAM Journal on Scientific and Statistical Computing},
   5(3):735--743, 1984.
+
+\bibitem{Wong2014}
+W.~E. Wong, V.~Debroy, R.~Gao, and Y.~Li.
+\newblock The dstar method for effective software fault localization.
+\newblock {\em Reliability, IEEE Transactions on.}, 63(1):290--308, 2014.
+
+\bibitem{Zeller2002}
+A.~Zeller.
+\newblock Isolating cause-effect chains from computer programs.
+\newblock In {\em Proceedings of the 10th ACM SIGSOFT symposium on Foundations
+  of software engineering}, pages 1--10, 2002.
+
+\bibitem{Zhao2013}
+S.~Zhao, D.~A. van Dyk, and K.~Imai.
+\newblock Propensity-score based methods for causal inference in observational
+  studies with fixed non-binary treatments.
+\newblock 2013.
 
 \end{thebibliography}
