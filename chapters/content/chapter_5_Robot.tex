@@ -195,7 +195,19 @@ Table \ref{flbhr} shows the result of experiments on BHR. FLECS 2.0 performs bet
 \label{flbhr}
       \begin{tabular}{|l|c|c|c|}
       \hline
-Bug Index	&	ESP-SCP	&	FLECS	&	FLECS2.0	\\ \hline1	&	85	&	73	&	15	\\ \hline2	&	84	&	24	&	44	\\ \hline3	&	60	&	97	&	18	\\ \hline4	&	12	&	24	&	32	\\ \hline5	&	13	&	14	&	9	\\ \hline6	&	33	&	83	&	25	\\ \hline7	&	81	&	61	&	12	\\ \hline8	&	31	&	61	&	14	\\ \hline9	&	11	&	14	&	56	\\ \hline10	&	33	&	140	&	140  \\ \hline11	&	81	&	90	&	22	\\ \hline12	&	59	&	65	&	21	\\ \hline
+Bug Index	&	ESP-SCP	&	FLECS	&	FLECS2.0	\\ \hline
+1	&	85	&	73	&	15	\\ \hline
+2	&	84	&	24	&	44	\\ \hline
+3	&	60	&	97	&	18	\\ \hline
+4	&	12	&	24	&	32	\\ \hline
+5	&	13	&	14	&	9	\\ \hline
+6	&	33	&	83	&	25	\\ \hline
+7	&	81	&	61	&	12	\\ \hline
+8	&	31	&	61	&	14	\\ \hline
+9	&	11	&	14	&	56	\\ \hline
+10	&	33	&	140	&	140  \\ \hline
+11	&	81	&	90	&	22	\\ \hline
+12	&	59	&	65	&	21	\\ \hline
 \end{tabular}
 \end{table*}
 
@@ -206,7 +218,17 @@ Bug Index	&	ESP-SCP	&	FLECS	&	FLECS2.0	\\ \hline1	&	85	&	73	&	15	\\ \hline2	&	
 \label{flsabir}
       \begin{tabular}{|l|c|c|c|}
       \hline
-Bug Index	&	ESP-SCP	&	FLECS	&	FLECS2.0	\\ \hline1	&	249	&	39	&	7	\\ \hline2	&	1	&	3	&	26	\\ \hline3	&	251	&	3	&	35	\\ \hline4	&	42	&	2	&	36	\\ \hline5	&	218	&	28	&	23	\\ \hline6	&	10	&	27	&	21	\\ \hline7	&	49	&	65	&	17	\\ \hline8	&	6	&	23	&	5	\\ \hline9	&	263	&	10	&	10	\\ \hline10	&	39	&	3	&	13	\\ \hline
+Bug Index	&	ESP-SCP	&	FLECS	&	FLECS2.0	\\ \hline
+1	&	249	&	39	&	7	\\ \hline
+2	&	1	&	3	&	26	\\ \hline
+3	&	251	&	3	&	35	\\ \hline
+4	&	42	&	2	&	36	\\ \hline
+5	&	218	&	28	&	23	\\ \hline
+6	&	10	&	27	&	21	\\ \hline
+7	&	49	&	65	&	17	\\ \hline
+8	&	6	&	23	&	5	\\ \hline
+9	&	263	&	10	&	10	\\ \hline
+10	&	39	&	3	&	13	\\ \hline
 \end{tabular}
 \end{table*}
 
@@ -220,4 +242,6 @@ Most related research on the safety of medical robotic systems in the literature
 Online fault detection and diagnosis is a very well studied problem in general robotics and other hybrid systems (e.g. [46], [47], [48]). A common approach is to use probabilistic sequence models to represent the system and to perform online inference to detect when the system is in a faulty state. These models also typically focus on modeling the hardware and devote attention to efficient inference algorithms to account for the online setting. Recent work on diagnosis has started to look at software as well [49], though at a coarse level.
 
 \section{Conclusions}
-Control software is widely used in many embedded systems including robots and vehicles. Given the often safety critical nature of such systems, it is valuable to design automated aids to developing them. The characteristics of such systems often make coverage-based fault localization techniques unsuitable. We have presented an alternative value-based approach that also attempts to exploit the availability of simulators for control systems. Experiments using two medical robot prototypes developed in our labs indicate the approach is promising. In future work, we plan to collect more empirical data on the performance of our technique, as well as explore causal inference techniques to improve the effectiveness of the technique.
+In this chapter, we have presented and evaluated an algorithm to locate faulty statements in control software, which is widely used in many embedded systems including robots
+and vehicles. The characteristics of such low-level control systems make coverage-based fault localization techniques unsuitable. However, given the safety critical nature of many
+such systems, it seems valuable to design automated aids to developing them. Our approach assists in debugging such software by modeling the values of variables in the system. Given an anomalous event, it uses the model to find anomalous variables, which are then traced through the PDG to determine possible causes (statements). Experiments using two medical robot prototypes developed in our labs indicate the approach is promising.
