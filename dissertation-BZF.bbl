@@ -1,20 +1,36 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{100}
 
 \bibitem{ASM}
 Asm framework available.
 \newblock \url{http://asm.ow2.org/}.
 
+\bibitem{BARTMachine}
+Bartmachine r package available:.
+\newblock \url{https://cran.r-project.org/web/packages/bartMachine/index.html}.
+
+\bibitem{MeRCIS}
+Case medical robotics and computer integrated surgery lab:.
+\newblock \url{http://engineering.case.edu/groups/robotics/}.
+
 \bibitem{CBPS}
-Cbps r. package available:.
+Cbps r package available:.
+\newblock \url{http://imai.princeton.edu/software/CBPS.html}.
 
 \bibitem{Commons}
 Commons math:.
+\newblock \url{http://commons.apache.org/proper/commons-math/}.
+
+\bibitem{VuikWeb}
+Disasters caused by numerical errors:.
+\newblock \url{http://ta.twi.tudelft.nl/users/vuik/wi211/disasters.html}.
 
 \bibitem{JAMA}
 Jama package available:.
+\newblock \url{http://math.nist.gov/javanumerics/jama/}.
 
 \bibitem{Java}
 Java 1.5 parser available:.
+\newblock \url{https://code.google.com/p/javaparser/}.
 
 \bibitem{Nanoxml}
 Nanoxml.
@@ -22,12 +38,15 @@ Nanoxml.
 
 \bibitem{NUMFL}
 Numfl profiler:.
+\newblock \url{https://github.com/zhuofubai/Subexpression\_Profiler}.
 
 \bibitem{Oj}
 Oj! algorithms available:.
+\newblock \url{http://ojalgo.org/getting.html}.
 
 \bibitem{R}
-R. project available:.
+R project available:.
+\newblock \url{http://www.r-project.org/}.
 
 \bibitem{Rome}
 Rome.
@@ -35,6 +54,7 @@ Rome.
 
 \bibitem{SciMark}
 Scimark 2.0 available:.
+\newblock \url{http://math.nist.gov/scimark2/}.
 
 \bibitem{SIR}
 Sir.
@@ -44,12 +64,6 @@ Sir.
 Xerces2.
 \newblock
   \url{http://projects.apache.org/projects/xerces_for_java_xml_parser.html}.
-
-\bibitem{Abreu2007}
-R.~Abreu, P.~Zoeteweij, and V.~G. Aj.
-\newblock On the accuracy of spectrum-based fault localization.
-\newblock {\em In Testing: Academic and Industrial Conference Practice and
-  Research Techniques.}, pages 89--98, 2007.
 
 \bibitem{abreu2007accuracy}
 R.~Abreu, P.~Zoeteweij, and A.~J. Van~Gemund.
@@ -72,19 +86,20 @@ G.~K. Baah, A.~Podgurski, and M.~J. Harrold.
   European conference on Foundations of software engineering}, pages 146--156.
   ACM, 2011.
 
-\bibitem{Baah2010}
-G.~K. Baah, A.~Podgurski, and H.~Mj.
-\newblock Causal inference for statistical fault localization.
-\newblock In {\em Proceedings of the 19th international symposium on Software
-  testing and analysis}, pages 73--84, 2010.
+\bibitem{bai2015numfl}
+Z.~Bai, G.~Shu, and A.~Podgurski.
+\newblock Numfl: Localizing faults in numerical software using a value-based
+  causal model.
+\newblock In {\em Software Testing, Verification and Validation (ICST), 2015
+  IEEE 8th International Conference on}, pages 1--10. IEEE, 2015.
 
-\bibitem{Baah2011}
-G.~K. Baah, A.~Podgurski, and H.~Mj.
-\newblock Mitigating the confounding effects of program dependences for
-  effective fault localization.
-\newblock In {\em Proceedings of the 19th ACM SIGSOFT symposium and the 13th
-  European conference on Foundations of software engineering}, pages 146--156,
-  2011.
+\bibitem{bai2015importance}
+Z.~Bai, S.-F. Sun, and A.~Podgurski.
+\newblock The importance of being positive in causal statistical fault
+  localization: important properties of baah et al.'s csfl regression model.
+\newblock In {\em Proceedings of the First International Workshop on Complex
+  faUlts and Failures in LargE Software Systems}, pages 7--13. IEEE Press,
+  2015.
 
 \bibitem{ball1993s}
 T.~Ball.
@@ -97,14 +112,34 @@ T.~Ball.
 T.~Bao and X.~Zhang.
 \newblock On-the-fly detection of instability problems in floating-point
   program execution.
-\newblock {\em In ACM SIGPLAN Notices.}, 48(10):817--832, 2013.
+\newblock In {\em ACM SIGPLAN Notices}, volume~48, pages 817--832. ACM, 2013.
 
-\bibitem{Bebek2007}
+\bibitem{bebek2008robotic}
+O.~Bebek.
+\newblock {\em Robotic-assisted beating heart surgery}.
+\newblock PhD thesis, Case Western Reserve University, 2008.
+
+\bibitem{bebek2006model}
 O.~Bebek and M.~C. Cavusoglu.
-\newblock Intelligent control algorithms for robotic-assisted beating heart
+\newblock Model based control algorithms for robotic assisted beating heart
   surgery.
-\newblock {\em Robotics, Transactions on Institute of Electrical and
-  Electronics Engineers}, 23(3):468--480, 2007.
+\newblock In {\em Engineering in Medicine and Biology Society, 2006. EMBS'06.
+  28th Annual International Conference of the IEEE}, pages 823--828. IEEE,
+  2006.
+
+\bibitem{bebek2007whisker}
+O.~Bebek and M.~C. Cavusoglu.
+\newblock Whisker sensor design for three dimensional position measurement in
+  robotic assisted beating heart surgery.
+\newblock In {\em Robotics and Automation, 2007 IEEE International Conference
+  on}, pages 225--231. IEEE, 2007.
+
+\bibitem{bebek2008design}
+O.~Bebek, M.~J. Hwang, B.~Fei, and M.~C. Cavusoglu.
+\newblock Design of a small animal biopsy robot.
+\newblock In {\em Engineering in Medicine and Biology Society, 2008. EMBS 2008.
+  30th Annual International Conference of the IEEE}, pages 5601--5604. IEEE,
+  2008.
 
 \bibitem{bembom2008data}
 O.~Bembom, J.~W. Fessel, R.~W. Shafer, and M.~J. van~der Laan.
@@ -112,32 +147,74 @@ O.~Bembom, J.~W. Fessel, R.~W. Shafer, and M.~J. van~der Laan.
   estimation.
 \newblock 2008.
 
-\bibitem{Liblit2004}
-L.~Br.
-\newblock {\em Cooperative Bug Isolation}.
-\newblock PhD thesis, UNIVERSITY OF CALIFORNIA, BERKELEY, 2004.
+\bibitem{cao2012classification}
+F.~Cao.
+\newblock {\em Classification, detection and prediction of adverse and
+  anomalous events in medical robots}.
+\newblock PhD thesis, Case Western Reserve University, 2012.
+
+\bibitem{casella1992explaining}
+G.~Casella and E.~I. George.
+\newblock Explaining the gibbs sampler.
+\newblock {\em The American Statistician}, 46(3):167--174, 1992.
+
+\bibitem{cavusoglu2001kinematics}
+M.~C. Cavusoglu and D.~Feygin.
+\newblock Kinematics and dynamics of phantom (tm) model 1.5 haptic interface.
+\newblock {\em University of California at Berkeley, Electronics Research
+  Laboratory memo M}, 1, 2001.
+
+\bibitem{chen2004failure}
+M.~Chen, A.~X. Zheng, J.~Lloyd, M.~I. Jordan, and E.~Brewer.
+\newblock Failure diagnosis using decision trees.
+\newblock In {\em Autonomic Computing, 2004. Proceedings. International
+  Conference on}, pages 36--43. IEEE, 2004.
+
+\bibitem{chipman2010bart}
+H.~A. Chipman, E.~I. George, and R.~E. McCulloch.
+\newblock Bart: Bayesian additive regression trees.
+\newblock {\em The Annals of Applied Statistics}, pages 266--298, 2010.
 
 \bibitem{Cleve2005}
 H.~Cleve and A.~Zeller.
 \newblock Locating causes of program failures.
 \newblock In {\em Proceedings of the 27th international conference on Software
-  engineering}, pages 342--351, 2005.
+  engineering}, pages 342--351. ACM, 2005.
 
 \bibitem{crump2006moving}
 R.~Crump, V.~J. Hotz, G.~Imbens, and O.~Mitnik.
 \newblock Moving the goalposts: Addressing limited overlap in the estimation of
   average treatment effects by changing the estimand, 2006.
 
+\bibitem{dombre2001intrinsically}
+E.~Dombre, P.~Poignet, F.~Pierrot, G.~Duchemin, and L.~Urbain.
+\newblock Intrinsically safe active robotic systems for medical applications.
+\newblock In {\em Proceedings 1st IARP/IEEE-RAS Joint Workshop on Technical
+  Challenge for Dependable Robots in Human Environment, Seoul, Paper},
+  volume~3, 2001.
+
+\bibitem{donze2009parameter}
+A.~Donz{\'e}, B.~Krogh, and A.~Rajhans.
+\newblock Parameter synthesis for hybrid systems with an application to
+  simulink models.
+\newblock In {\em Hybrid Systems: Computation and Control}, pages 165--179.
+  Springer, 2009.
+
+\bibitem{duchemin2004medically}
+G.~Duchemin, P.~Poignet, E.~Dombre, and F.~Pierrot.
+\newblock Medically safe and sound.
+\newblock {\em IEEE robotics \& automation magazine}, 11(2):46--55, 2004.
+
 \bibitem{Ernst2007}
 M.~D. Ernst, J.~H. Perkins, P.~J. Guo, S.~McCamant, C.~Pacheco, M.~S. Tschantz,
   and C.~Xiao.
 \newblock The daikon system for dynamic detection of likely invariants.
-\newblock {\em Science of Computer Programming.}, 69(1):35--45, 2007.
+\newblock {\em Science of Computer Programming}, 69(1):35--45, 2007.
 
 \bibitem{Fenton1999}
 N.~E. Fenton and M.~Neil.
 \newblock A critique of software defect prediction models.
-\newblock {\em Software Engineering, IEEE Transactions on.}, 25(5):675--689,
+\newblock {\em Software Engineering, IEEE Transactions on}, 25(5):675--689,
   1999.
 
 \bibitem{ferrante1987program}
@@ -146,12 +223,16 @@ J.~Ferrante, K.~J. Ottenstein, and J.~D. Warren.
 \newblock {\em ACM Transactions on Programming Languages and Systems (TOPLAS)},
   9(3):319--349, 1987.
 
-\bibitem{Gore2012}
-R.~Gore and R.~J. Pf.
-\newblock Reducing confounding bias in predicate-level statistical debugging
-  metrics.
-\newblock In {\em Proceedings of the 34th International Conference on Software
-  Engineering}, pages 463--473, 2012.
+\bibitem{francis2004tree}
+P.~Francis, D.~Leon, M.~Minch, and A.~Podgurski.
+\newblock Tree-based methods for classifying software failures.
+\newblock In {\em Software Reliability Engineering, 2004. ISSRE 2004. 15th
+  International Symposium on}, pages 451--462. IEEE, 2004.
+
+\bibitem{gilks2005markov}
+W.~R. Gilks.
+\newblock {\em Markov chain monte carlo}.
+\newblock Wiley Online Library, 2005.
 
 \bibitem{gore2012reducing}
 R.~Gore and P.~F. Reynolds~Jr.
@@ -163,25 +244,39 @@ R.~Gore and P.~F. Reynolds~Jr.
 \bibitem{Gore2011}
 R.~Gore, P.~F. Reynolds~Jr, and D.~Kamensky.
 \newblock Statistical debugging with elastic predicates.
-\newblock In {\em 26th IEEE/ACM International Conference on Automated Software
-  Engineering}, pages 492--495. IEEE, 2011.
+\newblock In {\em Automated Software Engineering (ASE), 2011 26th IEEE/ACM
+  International Conference on}, pages 492--495. IEEE, 2011.
 
-\bibitem{Grossman2005}
-J.~Grossman and M.~Fj.
-\newblock The randomized controlled trial: gold standard, or merely standard?
-\newblock {\em Perspectives in biology and medicine.}, 48(4):516--534, 2005.
+\bibitem{green2012modeling}
+D.~P. Green and H.~L. Kern.
+\newblock Modeling heterogeneous treatment effects in survey experiments with
+  bayesian additive regression trees.
+\newblock {\em Public Opinion Quarterly}, page nfs036, 2012.
+
+\bibitem{halder2007robust}
+B.~Halder and N.~Sarkar.
+\newblock Robust fault detection of a robotic manipulator.
+\newblock {\em The International Journal of Robotics Research}, 26(3):273--285,
+  2007.
 
 \bibitem{Hangal2002}
-S.~Hangal and L.~Ms.
+S.~Hangal and M.~S. Lam.
 \newblock Tracking down software bugs using automatic anomaly detection.
 \newblock In {\em Proceedings of the 24th international conference on Software
-  engineering}, pages 291--301, 2002.
+  engineering}, pages 291--301. ACM, 2002.
 
 \bibitem{Hansen1982}
 L.~P. Hansen.
 \newblock Large sample properties of generalized method of moments estimators.
 \newblock {\em Econometrica: Journal of the Econometric Society}, pages
   1029--1054, 1982.
+
+\bibitem{he2011test}
+N.~He, P.~R{\"u}mmer, and D.~Kroening.
+\newblock Test-case generation for embedded simulink via formal concept
+  analysis.
+\newblock In {\em Proceedings of the 48th Design Automation Conference}, pages
+  224--229. ACM, 2011.
 
 \bibitem{hernan2004definition}
 M.~Hernan.
@@ -195,16 +290,29 @@ M.~A. Hern{\'a}n and J.~M. Robins.
 \newblock {\em Journal of epidemiology and community health}, 60(7):578--586,
   2006.
 
+\bibitem{hill2013assessing}
+J.~Hill, Y.-S. Su, et~al.
+\newblock Assessing lack of common support in causal inference using bayesian
+  nonparametrics: Implications for evaluating the effect of breastfeeding on
+  children’s cognitive outcomes.
+\newblock {\em The Annals of Applied Statistics}, 7(3):1386--1420, 2013.
+
+\bibitem{hill2012bayesian}
+J.~L. Hill.
+\newblock Bayesian nonparametric modeling for causal inference.
+\newblock {\em Journal of Computational and Graphical Statistics}, 2012.
+
 \bibitem{Hirano2004}
-K.~Hirano and I.~Gw.
+K.~Hirano and G.~W. Imbens.
 \newblock The propensity score with continuous treatments.
 \newblock {\em Applied Bayesian modeling and causal inference from
-  incomplete-data perspectives.}, 226164:73--84, 2004.
+  incomplete-data perspectives}, 226164:73--84, 2004.
 
-\bibitem{Imai2004}
-K.~Imai and V.~D. Da.
-\newblock Causal inference with general treatment regimes.
-\newblock {\em Journal of the American Statistical Association.}, 99:467, 2004.
+\bibitem{hwang2009kinematic}
+M.~J. Hwang, O.~Bebek, F.~Liang, B.~Fei, and M.~C. \c{C}avu\c{s}o\u{g}lu.
+\newblock Kinematic calibration of a parallel robot for small animal biopsies.
+\newblock In {\em Intelligent Robots and Systems, 2009. IROS 2009. IEEE/RSJ
+  International Conference on}, pages 4104--4109. IEEE, 2009.
 
 \bibitem{Imai2014}
 K.~Imai and M.~Ratkovic.
@@ -212,11 +320,24 @@ K.~Imai and M.~Ratkovic.
 \newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
   Methodology)}, 76(1):243--263, 2014.
 
+\bibitem{Imai2004}
+K.~Imai and D.~A. Van~Dyk.
+\newblock Causal inference with general treatment regimes.
+\newblock {\em Journal of the American Statistical Association}, 2012.
+
+\bibitem{Russell2012}
+R.~C. Jackson and M.~C. \c{C}avu\c{s}o\u{g}lu.
+\newblock Modeling of needle-tissue interaction forces during surgical
+  suturing.
+\newblock In {\em Proceedings of the IEEE International Conference on Robotics
+  and Automation (ICRA), St. Paul, MN, USA}, May 14-18 2012.
+\newblock To appear.
+
 \bibitem{Jeffrey2008}
 D.~Jeffrey, N.~Gupta, and R.~Gupta.
 \newblock Fault localization using value replacement.
 \newblock In {\em Proceedings of the 2008 international symposium on Software
-  testing and analysis}, pages 167--178, 2008.
+  testing and analysis}, pages 167--178. ACM, 2008.
 
 \bibitem{johnson1992applied}
 R.~A. Johnson, D.~W. Wichern, et~al.
@@ -227,7 +348,7 @@ R.~A. Johnson, D.~W. Wichern, et~al.
 J.~A. Jones, M.~J. Harrold, and J.~Stasko.
 \newblock Visualization of test information to assist fault localization.
 \newblock In {\em Proceedings of the 24th international conference on Software
-  engineering}, pages 467--477, 2002.
+  engineering}, pages 467--477. ACM, 2002.
 
 \bibitem{jones2002visualization}
 J.~A. Jones, M.~J. Harrold, and J.~Stasko.
@@ -236,29 +357,92 @@ J.~A. Jones, M.~J. Harrold, and J.~Stasko.
   engineering}, pages 467--477. ACM, 2002.
 
 \bibitem{Kanewala2014}
-U.~Kanewala and B.~Jm.
+U.~Kanewala and J.~M. Bieman.
 \newblock Testing scientific software: A systematic literature review.
 \newblock {\em Information and software technology}, 56(10):1219--1232, 2014.
 
+\bibitem{kiciman2005root}
+E.~K{\i}c{\i}man and L.~Subramanian.
+\newblock A root cause localization model for large scale systems.
+\newblock {\em Proc. Proceedings of USENIX Hot Topics On Dependability,
+  HotDep}, 2005.
+
+\bibitem{kubavcek1996quadratic}
+L.~Kub{\'a}{\v{c}}ek.
+\newblock Quadratic regression models.
+\newblock {\em Mathematica Slovaca}, 46(1):111--126, 1996.
+
 \bibitem{Lam2013}
-M.~O. Lam, J.~K. Hollingsworth, and S.~Gw.
+M.~O. Lam, J.~K. Hollingsworth, and G.~Stewart.
 \newblock Dynamic floating-point cancellation detection.
-\newblock {\em Parallel Computing.}, 39(3):146--155, 2013.
+\newblock {\em Parallel Computing}, 39(3):146--155, 2013.
+
+\bibitem{liang2015fault}
+K.~Liang, Z.~Bai, M.~C. {\c{C}}avu{\c{s}}o{\u{g}}lu, A.~Podgurski, and S.~Ray.
+\newblock Fault localization in embedded control system software.
+\newblock In {\em Proceedings of the First International Workshop on Software
+  Engineering for Smart Cyber-Physical Systems}, pages 8--14. IEEE Press, 2015.
+
+\bibitem{liang2013detection}
+K.~Liang, F.~Cao, Z.~Bai, M.~Renfrew, M.~C. Cavusoglu, A.~Podgurski, and
+  S.~Ray.
+\newblock Detection and prediction of adverse and anomalous events in medical
+  robots.
+\newblock In {\em IAAI}, 2013.
+
+\bibitem{liangframework}
+K.~Liang, F.~Cao, Z.~Bai, M.~Renfrew, S.~Ray, A.~Podgurski, and M.~C.~{\c{C}}.
+  PI.
+\newblock A framework for validation and monitoring of robotic surgery systems.
+
+\bibitem{Liblit2004}
+B.~Liblit.
+\newblock {\em Cooperative bug isolation: winning thesis of the 2005 ACM
+  doctoral dissertation competition}, volume 4440.
+\newblock Springer, 2007.
 
 \bibitem{Liblit2005}
-B.~Liblit, M.~Naik, A.~X. Zheng, A.~Aiken, and J.~Mi.
+B.~Liblit, M.~Naik, A.~X. Zheng, A.~Aiken, and M.~I. Jordan.
 \newblock Scalable statistical bug isolation.
-\newblock {\em In ACM SIGPLAN Notices.}, 40(6):15--26, 2005.
+\newblock In {\em ACM SIGPLAN Notices}, volume~40, pages 15--26. ACM, 2005.
+
+\bibitem{liu2006statistical}
+C.~Liu, L.~Fei, X.~Yan, J.~Han, and S.~P. Midkiff.
+\newblock Statistical debugging: A hypothesis testing-based approach.
+\newblock {\em Software Engineering, IEEE Transactions on}, 32(10):831--848,
+  2006.
 
 \bibitem{Liu2005}
-C.~Liu, X.~Yan, L.~Fei, J.~Han, and M.~Sp.
+C.~Liu, X.~Yan, L.~Fei, J.~Han, and S.~P. Midkiff.
 \newblock Sober: statistical model-based bug localization.
-\newblock {\em ACM SIGSOFT Software Engineering Notes.}, 30(5):286--295, 2005.
+\newblock In {\em ACM SIGSOFT Software Engineering Notes}, volume~30, pages
+  286--295. ACM, 2005.
+
+\bibitem{Grossman2005}
+F.~J. Mackenzie and J.~Grossman.
+\newblock The randomized controlled trial: gold standard, or merely standard?
+\newblock {\em Perspectives in biology and medicine}, 48(4):516--534, 2005.
+
+\bibitem{mcintyre2005fault}
+M.~L. McIntyre, W.~E. Dixon, D.~M. Dawson, and I.~D. Walker.
+\newblock Fault identification for robot manipulators.
+\newblock {\em Robotics, IEEE Transactions on}, 21(5):1028--1034, 2005.
+
+\bibitem{mikaelian2005model}
+T.~Mikaelian, B.~C. Williams, and M.~Sachenbacher.
+\newblock Model-based monitoring and diagnosis of systems with
+  software-extended behavior.
+\newblock In {\em AAAI}, volume~5, pages 327--333, 2005.
+
+\bibitem{Nachtsheim2004}
+C.~J. Nachtsheim, J.~Neter, M.~H. Kutner, and W.~Wasserman.
+\newblock Applied linear regression models.
+\newblock {\em McGraw-Hill Irwin}, 2004.
 
 \bibitem{Pearl2003}
 J.~Pearl.
-\newblock Causality: models, reasoning, and inference.
-\newblock {\em Econometric Theory.}, 19:675--685, 2003.
+\newblock Causality: models, reasoning and inference.
+\newblock {\em Economet. Theor}, 19:675--685, 2003.
 
 \bibitem{pearl2000models}
 J.~Pearl et~al.
@@ -270,16 +454,24 @@ M.~L. Petersen, K.~E. Porter, S.~Gruber, Y.~Wang, and M.~J. van~der Laan.
 \newblock {\em Statistical Methods in Medical Research}, page 0962280210386207,
   2010.
 
-\bibitem{Philip2012}
-S.~Philip.
-\newblock Pearson's correlation coefficient.
-\newblock {\em BMJ British Medical Journal}, 345, 2012.
+\bibitem{pratola2015bayesian}
+M.~Pratola and D.~Higdon.
+\newblock Bayesian additive regression tree calibration of complex
+  high-dimensional computer models.
+\newblock {\em Technometrics}, (just-accepted):00--00, 2015.
+
+\bibitem{pratola2014parallel}
+M.~T. Pratola, H.~A. Chipman, J.~R. Gattiker, D.~M. Higdon, R.~McCulloch, and
+  W.~N. Rust.
+\newblock Parallel bayesian additive regression trees.
+\newblock {\em Journal of Computational and Graphical Statistics},
+  23(3):830--852, 2014.
 
 \bibitem{Rosenbaum1983}
-P.~R. Rosenbaum and R.~Db.
+P.~R. Rosenbaum and D.~B. Rubin.
 \newblock The central role of the propensity score in observational studies for
   causal effects.
-\newblock {\em Biometrika.}, 70(1):41--55, 1983.
+\newblock {\em Biometrika}, 70(1):41--55, 1983.
 
 \bibitem{Rosenblueth1981}
 E.~Rosenblueth.
@@ -287,9 +479,14 @@ E.~Rosenblueth.
 \newblock {\em Applied Mathematical Modelling}, 5(5):329--335, 1981.
 
 \bibitem{Scott2007}
-N.~S. Scott, F.~J{\'e}z{\'e}quel, C.~Denis, and C.~Jm.
-\newblock Numerical health check for scientific codes: the cadna approach.
-\newblock {\em Computer Physics Communications.}, 176(8):507--521, 2007.
+N.~S. Scott, F.~J{\'e}z{\'e}quel, C.~Denis, and J.-M. Chesneaux.
+\newblock Numerical 'health check' for scientific codes: the cadna approach.
+\newblock {\em Computer Physics Communications}, 176(8):507--521, 2007.
+
+\bibitem{Philip2012}
+P.~Sedgwick et~al.
+\newblock Pearson?s correlation coefficient.
+\newblock {\em BMJ}, 345:e4483, 2012.
 
 \bibitem{shu2013javapdg}
 G.~Shu, B.~Sun, T.~A. Henderson, and A.~Podgurski.
@@ -303,37 +500,49 @@ G.~Shu, B.~Sun, A.~Podgurski, and F.~Cao.
 \newblock In {\em Software Testing, Verification and Validation (ICST), 2013
   IEEE Sixth International Conference on}, pages 124--133. IEEE, 2013.
 
-\bibitem{Shu2013}
-G.~Shu, B.~Sun, A.~Podgurski, and F.~Cao.
-\newblock Mfl: Method-level fault localization with causal inference.
-\newblock {\em In Software Testing, Verification and Validation (ICST)},
-  2013:124--133, 2013.
-
 \bibitem{Silvapulle1981}
 M.~J. Silvapulle.
 \newblock On the existence of maximum likelihood estimators for the binomial
   response models.
 \newblock {\em Journal of the Royal Statistical Society. Series B
-  (Methodological) :}, pages 310--313, 1981.
+  (Methodological)}, pages 310--313, 1981.
+
+\bibitem{sparapani2016nonparametric}
+R.~A. Sparapani, B.~R. Logan, R.~E. McCulloch, and P.~W. Laud.
+\newblock Nonparametric survival analysis using bayesian additive regression
+  trees (bart).
+\newblock {\em Statistics in medicine}, 2016.
 
 \bibitem{Tang2010}
 E.~Tang, E.~Barr, X.~Li, and Z.~Su.
 \newblock Perturbing numerical calculations for statistical analysis of
   floating-point program (in) stability.
 \newblock In {\em Proceedings of the 19th international symposium on Software
-  testing and analysis}, pages 131--142, 2010.
+  testing and analysis}, pages 131--142. ACM, 2010.
 
-\bibitem{Tuna2013}
-E.~Tuna, T.~Franke, O.~Bebek, A.~Shiose, K.~Fukamachi, and M.~Cavusoglu.
+\bibitem{taylor1996computer}
+R.~H. Taylor.
+\newblock {\em Computer-integrated surgery: technology and clinical
+  applications}.
+\newblock Mit Press, 1996.
+
+\bibitem{taylor2008medical}
+R.~H. Taylor, A.~Menciassi, G.~Fichtinger, and P.~Dario.
+\newblock Medical robotics and computer-integrated surgery.
+\newblock In {\em Springer handbook of robotics}, pages 1199--1222. Springer,
+  2008.
+
+\bibitem{tuna2013heart}
+E.~E. Tuna, T.~J. Franke, O.~Bebek, A.~Shiose, K.~Fukamachi, and M.~C.
+  Cavusoglu.
 \newblock Heart motion prediction based on adaptive estimation algorithms for
   robotic-assisted beating heart surgery.
-\newblock {\em Robotics, Transactions on Institute of Electrical and
-  Electronics Engineers}, 29(1):261?276, 2013.
+\newblock {\em Robotics, IEEE Transactions on}, 29(1):261--276, 2013.
 
-\bibitem{VuikWeb}
-K.~Vuik.
-\newblock Some disasters caused by numerical errors.
-\newblock Website at:.
+\bibitem{verma2004real}
+V.~Verma, G.~Gordon, R.~Simmons, and S.~Thrun.
+\newblock Real-time fault diagnosis [robot fault diagnosis].
+\newblock {\em Robotics \& Automation Magazine, IEEE}, 11(2):56--66, 2004.
 
 \bibitem{wang2006diagnosing}
 Y.~Wang, M.~L. Petersen, D.~Bangsberg, and M.~J. van~der Laan.
@@ -356,13 +565,19 @@ S.~Wold, A.~Ruhe, H.~Wold, and W.~Dunn, III.
 \bibitem{Wong2014}
 W.~E. Wong, V.~Debroy, R.~Gao, and Y.~Li.
 \newblock The dstar method for effective software fault localization.
-\newblock {\em Reliability, IEEE Transactions on.}, 63(1):290--308, 2014.
+\newblock {\em Reliability, IEEE Transactions on}, 63(1):290--308, 2014.
 
 \bibitem{Zeller2002}
 A.~Zeller.
 \newblock Isolating cause-effect chains from computer programs.
 \newblock In {\em Proceedings of the 10th ACM SIGSOFT symposium on Foundations
-  of software engineering}, pages 1--10, 2002.
+  of software engineering}, pages 1--10. ACM, 2002.
+
+\bibitem{zhan2008search}
+Y.~Zhan and J.~A. Clark.
+\newblock A search-based framework for automatic testing of matlab/simulink
+  models.
+\newblock {\em Journal of Systems and Software}, 81(2):262--285, 2008.
 
 \bibitem{Zhao2013}
 S.~Zhao, D.~A. van Dyk, and K.~Imai.

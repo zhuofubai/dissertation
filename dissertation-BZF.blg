@@ -3,9 +3,8 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: dissertation-BZF.aux
 The style file: abbrv.bst
 Database file #1: dissertation-BZF.bib
-Warning--I didn't find a database entry for "Pratola2015"
-Warning--I didn't find a database entry for "hwang2009kinematic"
-Warning--I didn't find a database entry for "Russell2012"
+Warning--I didn't find a database entry for "Baah2010"
+Warning--to sort, need author or key in VuikWeb
 Warning--to sort, need author or key in ASM
 Warning--to sort, need author or key in Nanoxml
 Warning--to sort, need author or key in SIR
@@ -19,64 +18,57 @@ Warning--to sort, need author or key in Commons
 Warning--to sort, need author or key in Oj
 Warning--to sort, need author or key in JAMA
 Warning--to sort, need author or key in SciMark
-Warning--empty author in CBPS
-Warning--empty note in CBPS
-Warning--empty author in Commons
-Warning--empty note in Commons
-Warning--empty author in JAMA
-Warning--empty note in JAMA
-Warning--empty author in Java
-Warning--empty note in Java
-Warning--empty author in NUMFL
-Warning--empty note in NUMFL
-Warning--empty author in Oj
-Warning--empty note in Oj
-Warning--empty author in R
-Warning--empty note in R
-Warning--empty author in SciMark
-Warning--empty note in SciMark
+Warning--to sort, need author or key in BARTMachine
+Warning--to sort, need author or key in MeRCIS
+Warning--can't use both volume and number fields in Bao2013
 Warning--empty journal in bembom2008data
+Warning--can't use both volume and number fields in dombre2001intrinsically
+Warning--empty journal in liangframework
+Warning--empty year in liangframework
+Warning--can't use both volume and number fields in Liblit2005
+Warning--can't use both volume and number fields in Liu2005
+Warning--there's a number but no volume in pratola2015bayesian
 Warning--empty journal in wang2006diagnosing
-Warning--empty note in Zhao2013
-You've used 68 entries,
+Warning--empty journal in Zhao2013
+You've used 103 entries,
             2118 wiz_defined-function locations,
-            877 strings with 13399 characters,
-and the built_in function-call counts, 22558 in all, are:
-= -- 2241
-> -- 928
-< -- 23
-+ -- 381
-- -- 304
-* -- 1489
-:= -- 3492
-add.period$ -- 189
-call.type$ -- 68
-change.case$ -- 352
+            1063 strings with 21335 characters,
+and the built_in function-call counts, 36565 in all, are:
+= -- 3726
+> -- 1558
+< -- 43
++ -- 634
+- -- 518
+* -- 2369
+:= -- 5620
+add.period$ -- 320
+call.type$ -- 103
+change.case$ -- 558
 chr.to.int$ -- 0
-cite$ -- 100
-duplicate$ -- 933
-empty$ -- 1837
-format.name$ -- 304
-if$ -- 4939
+cite$ -- 129
+duplicate$ -- 1492
+empty$ -- 2973
+format.name$ -- 518
+if$ -- 8001
 int.to.chr$ -- 0
-int.to.str$ -- 68
-missing$ -- 51
-newline$ -- 320
-num.names$ -- 110
-pop$ -- 402
+int.to.str$ -- 103
+missing$ -- 87
+newline$ -- 500
+num.names$ -- 174
+pop$ -- 710
 preamble$ -- 1
-purify$ -- 286
+purify$ -- 461
 quote$ -- 0
-skip$ -- 762
+skip$ -- 1190
 stack$ -- 0
-substring$ -- 1429
-swap$ -- 290
-text.length$ -- 23
+substring$ -- 2301
+swap$ -- 481
+text.length$ -- 43
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 270
-warning$ -- 32
-while$ -- 188
-width$ -- 70
-write$ -- 676
-(There were 35 warnings)
+type$ -- 404
+warning$ -- 26
+while$ -- 335
+width$ -- 106
+write$ -- 1081
+(There were 27 warnings)
