@@ -47,7 +47,7 @@
 \BOOKMARK [2][-]{subsection.4.2.2}{A sum of regression trees model}{section.4.2}% 47
 \BOOKMARK [2][-]{subsection.4.2.3}{A regularization prior}{section.4.2}% 48
 \BOOKMARK [2][-]{subsection.4.2.4}{Bayesian Backfitting MCMC Algorithm}{section.4.2}% 49
-\BOOKMARK [1][-]{section.4.3}{BART Model with Causal Inference}{chapter.4}% 50
+\BOOKMARK [1][-]{section.4.3}{AFCE Estimation With BART}{chapter.4}% 50
 \BOOKMARK [1][-]{section.4.4}{EMPIRICAL EVALUATION}{chapter.4}% 51
 \BOOKMARK [2][-]{subsection.4.4.1}{Comparative Performance of BART vs. Baselines}{section.4.4}% 52
 \BOOKMARK [2][-]{subsection.4.4.2}{BART model vs NUMFL}{section.4.4}% 53
@@ -77,4 +77,4 @@
 \BOOKMARK [0][-]{chapter.6}{Conclusions and future work}{}% 77
 \BOOKMARK [1][-]{section.6.1}{Conclusions}{chapter.6}% 78
 \BOOKMARK [1][-]{section.6.2}{Future work}{chapter.6}% 79
-\BOOKMARK [0][-]{Appendix.a.A}{Detail of derivation for the chapter 2}{}% 80
+\BOOKMARK [0][-]{Appendix.a.A}{Detail of the Derivation for Chapter 2}{}% 80

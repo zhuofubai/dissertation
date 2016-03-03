@@ -418,6 +418,12 @@ C.~Liu, X.~Yan, L.~Fei, J.~Han, and S.~P. Midkiff.
 \newblock In {\em ACM SIGSOFT Software Engineering Notes}, volume~30, pages
   286--295. ACM, 2005.
 
+\bibitem{loh2011classification}
+W.-Y. Loh.
+\newblock Classification and regression trees.
+\newblock {\em Wiley Interdisciplinary Reviews: Data Mining and Knowledge
+  Discovery}, 1(1):14--23, 2011.
+
 \bibitem{Grossman2005}
 F.~J. Mackenzie and J.~Grossman.
 \newblock The randomized controlled trial: gold standard, or merely standard?
@@ -485,7 +491,7 @@ N.~S. Scott, F.~J{\'e}z{\'e}quel, C.~Denis, and J.-M. Chesneaux.
 
 \bibitem{Philip2012}
 P.~Sedgwick et~al.
-\newblock Pearson?s correlation coefficient.
+\newblock Pearsons's correlation coefficient.
 \newblock {\em BMJ}, 345:e4483, 2012.
 
 \bibitem{shu2013javapdg}

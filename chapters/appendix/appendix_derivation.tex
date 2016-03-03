@@ -13,20 +13,20 @@
 
 
 \begin{appendices}
-\chapter{Detail of derivation for the chapter 2}
+\chapter{Detail of the Derivation for Chapter 2}
 
-\begin{equation}\label{eq1}
+\begin{equation}\label{ap:eq1}
 \hat{\beta }_{1}=\frac{cov\left( \mathbf{c}_{s},\mathbf{c}_{s} \right)\bullet cov\left( \mathbf{t}_{s},\mathbf{y} \right)-cov\left( \mathbf{t}_{s},\mathbf{c}_{s} \right)\bullet cov\left( \mathbf{c}_{s},\mathbf{y} \right)}{cov\left( \mathbf{t}_{s},\mathbf{t}_{s} \right)\bullet cov\left( \mathbf{c}_{s},\mathbf{c}_{s} \right)-cov\left( \mathbf{t}_{s},\mathbf{c}_{s} \right)\bullet cov\left( \mathbf{t}_{s},\mathbf{c}_{s} \right)}
 \end{equation}
 
 We know that $cov\left( \mathbf{a},\mathbf{b}\right)=\frac{1}{n-1}\sum\nolimits_i {\left( a_{i}-\bar{a} \right)\left(
 b_{i}-\bar{b} \right)} $. From equation above, $\hat{\beta }_{1}$ can be rewritten as:
 
-\begin{equation}\label{eq2}
+\begin{equation}\label{ap:eq2}
 \hat{\beta }_{1}=\frac{\sum\nolimits_i {\left( t_{s,i}-\bar{t_{s}}\right)\left( y_{i}-\bar{y} \right)\sum\nolimits_i \left(c_{s,i}-\bar{c_{s}} \right)^{2} -} \sum\nolimits_i {\left(c_{s,i}-\bar{c_{s}} \right)\left( y_{i}-\bar{y} \right)\sum\nolimits_i{\left( t_{s,i}-\bar{t_{s}} \right)\left( c_{s,i}-\bar{c_{s}} \right)} }}{\sum\nolimits_i {\left( t_{s,i}-\bar{t_{s}} \right)^{2}\sum\nolimits_i\left( c_{s,i}-\bar{c_{s}} \right)^{2} -} \left( \sum\nolimits_i {\left(t_{s,i}-\bar{t_{s}} \right)\left( c_{s,i}-\bar{c_{s}} \right)} \right)^{2}}
 \end{equation}
 Also, $\sum\nolimits_i {y_{i}=} n\bar{y}$ and $\sum\nolimits_i {t_{s,i}=}n\bar{t_{s}}$ , so we have:
-\begin{equation}\label{eq3}
+\begin{equation}\label{ap:eq3}
 \begin{aligned}
 \sum\nolimits_i {\left( t_{s,i}-\bar{t_{s}} \right)\left( y_{i}-\bar{y} \right)} &=\sum\nolimits_i {t_{s,i}y_{i}-\bar{t_{s}}y_{i}-t_{s,i}\bar{y}+\bar{t_{s}}\bar{y}}\\
  &=\sum\nolimits_i {t_{s,i}y_{i}} -\sum\nolimits_i {\bar{t_{s}}y_{i}} -\sum\nolimits_i {t_{s,i}\bar{y}} +\sum\nolimits_i {\bar{t_{s}}\bar{y}}\\
@@ -35,24 +35,24 @@ Also, $\sum\nolimits_i {y_{i}=} n\bar{y}$ and $\sum\nolimits_i {t_{s,i}=}n\bar{t
   \end{aligned}
 \end{equation}
 Similarly, we can derive the following equations:
-\begin{equation}\label{eq4}
+\begin{equation}\label{ap:eq4}
 \sum\nolimits_i {\left( c_{s,i}-\bar{c_{s}} \right)\left( y_{i}-\bar{y} \right)} =\sum\nolimits_i {c_{s,i}y_{i}} -n\bar{c_{s}}\bar{y}
 \end{equation}
 
-\begin{equation}\label{eq5}
+\begin{equation}\label{ap:eq5}
 \sum\nolimits_i \left( c_{s,i}-\bar{c_{s}} \right)^{2} =\sum\nolimits_i c_{s,i}^{2} -n\bar{c_{s}}^{2}
 \end{equation}
 
-\begin{equation}\label{eq6}
+\begin{equation}\label{ap:eq6}
 \sum\nolimits_i {\left( t_{s,i}-\bar{t_{s}} \right)\left( c_{s,i}-\bar{c_{s}} \right)} =\sum\nolimits_i {c_{s,i}t_{s,i}} -n\bar{c_{s}}\bar{t_{s}}
 \end{equation}
 
-\begin{equation}\label{eq7}
+\begin{equation}\label{ap:eq7}
 \sum\nolimits_i \left( t_{s,i}-\bar{t_{s}} \right)^{2} =\sum\nolimits_i t_{s,i}^{2} -n\bar{t_{s}}^{2}
 \end{equation}
 With equation (3) - (6), we can rewrite the numerator of the quotient in
 equation (2) as:
-\begin{equation}\label{eq8}
+\begin{equation}\label{ap:eq8}
 \begin{aligned}
 numerator&=\left( \sum\nolimits_i {t_{s,i}y_{i}} -n\bar{t_{s}}\bar{y} \right)\left( \sum\nolimits_i c_{s,i}^{2} -n\bar{c_{s}}^{2} \right)\\
 &-\left( \sum\nolimits_i {c_{s,i}y_{i}} -n\bar{c_{s}}\bar{y} \right)\left( \sum\nolimits_i {c_{s,i}t_{s,i}} -n\bar{c_{s}}\bar{t_{s}} \right)\\
@@ -63,21 +63,21 @@ numerator&=\left( \sum\nolimits_i {t_{s,i}y_{i}} -n\bar{t_{s}}\bar{y} \right)\le
 \end{equation}
 We know that $\sum\nolimits_\mathrm{i}\mathrm{c}_{\mathrm{s,i}}^{\mathrm{2}} \mathrm{=n}\bar{c_{s}}\mathrm{\, ,\,}\sum\nolimits_\mathrm{i}{\mathrm{c}_{\mathrm{s,i}}\mathrm{t}_{\mathrm{s,i}}}\mathrm{=n}\bar{t_{s}}$, so we have
 
-\begin{equation}\label{eq9}
+\begin{equation}\label{ap:eq9}
 \begin{aligned}
 n\bar{t_{s}}\bar{y}\sum\nolimits_i c_{s,i}^{2} &=n^{2}\bar{t_{s}}\bar{y}\bar{c_{s}}\\
 &=n\bar{c_{s}}\bar{y}\sum\nolimits_i {c_{s,i}t_{s,i}}
 \end{aligned}
 \end{equation}
 Then equation(8) is equal to:
-\begin{equation}\label{eq10}
+\begin{equation}\label{ap:eq10}
 \begin{aligned}
 numerator&=\sum\nolimits_i {t_{s,i}y_{i}} \sum\nolimits_i c_{s,i}^{2} -\sum\nolimits_i {c_{s,i}y_{i}} \sum\nolimits_i {c_{s,i}t_{s,i}} -n\bar{c_{s}}^{2}\sum\nolimits_i {t_{s,i}y_{i}} +n\bar{c_{s}}\bar{t_{s}}\sum\nolimits_i {c_{s,i}y_{i}}\\
  & ={(\mathbf{c}}_{s}\mathbf{\bullet }\mathbf{c}_{s}\mathbf{)(}\mathbf{t}_{s}\mathbf{\bullet y)}-(\mathbf{c}_{s}\mathbf{\bullet }\mathbf{t}_{s}\mathbf{)(}\mathbf{c}_{s}\mathbf{\bullet y)}-n\bar{c_{s}}^{2}\mathbf{(}\mathbf{t}_{s}\mathbf{\bullet y)+}n\bar{c_{s}}\bar{t_{s}}(\mathbf{c}_{s}\mathbf{\bullet y)}
  \end{aligned}
 \end{equation}
 Applying equation (5)-(7) to the denominator of the quotient in equation (2), we can rewrite it as:
-\begin{equation}\label{eq11}
+\begin{equation}\label{ap:eq11}
 \begin{array}{l}
 denominator=\left( \sum\nolimits_i t_{s,i}^{2} -n\bar{t_{s}}^{2} \right)\left( \sum\nolimits_i c_{s,i}^{2} -n\bar{c_{s}}^{2} \right)-\left( \sum\nolimits_i {c_{s,i}t_{s,i}} -n\bar{c_{s}}\bar{t_{s}} \right)\left( \sum\nolimits_i {c_{s,i}t_{s,i}} -n\bar{c_{s}}\bar{t_{s}} \right)\\
 =\left( \sum\nolimits_i t_{s,i}^{2} \sum\nolimits_i c_{s,i}^{2} -n\bar{t_{s}}^{2}\sum\nolimits_i c_{s,i}^{2} -n\bar{c_{s}}^{2}\sum\nolimits_i t_{s,i}^{2} +n^{2}\bar{t_{s}}^{2}\bar{c_{s}}^{2} \right)\\

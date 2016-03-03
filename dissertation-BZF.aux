@@ -173,7 +173,7 @@
 \citation{Rosenbaum1983}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Matching units based on their propensity scores breaks the link between cofounding variables and treatment.\relax }}{30}{figure.caption.16}}
 \newlabel{dag2}{{3.3}{30}{Matching units based on their propensity scores breaks the link between cofounding variables and treatment.\relax }{figure.caption.16}{}}
-\newlabel{eq1}{{3.1}{30}{Ordinary Propensity Scores}{equation.3.3.1}{}}
+\newlabel{cp3:eq1}{{3.1}{30}{Ordinary Propensity Scores}{equation.3.3.1}{}}
 \citation{Imai2004}
 \citation{Imai2014}
 \citation{Imai2004}
@@ -188,10 +188,10 @@
 \newlabel{exampledata}{{3.1}{33}{VARIABLE VALUES AND GPS OF THE MOTIVATING EXAMPLE\relax }{table.caption.17}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Covariate Balancing Propensity Score (CBPS)}{33}{subsection.3.3.4}}
 \newlabel{IIID}{{3.3.4}{33}{Covariate Balancing Propensity Score (CBPS)}{subsection.3.3.4}{}}
-\newlabel{eq2}{{3.2}{33}{Covariate Balancing Propensity Score (CBPS)}{equation.3.3.2}{}}
+\newlabel{cp3:eq2}{{3.2}{33}{Covariate Balancing Propensity Score (CBPS)}{equation.3.3.2}{}}
 \citation{Hansen1982}
 \citation{Jones2002}
-\newlabel{eq3}{{3.3}{34}{Covariate Balancing Propensity Score (CBPS)}{equation.3.3.3}{}}
+\newlabel{cp3:eq3}{{3.3}{34}{Covariate Balancing Propensity Score (CBPS)}{equation.3.3.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}TWO VERSIONS OF NUMFL}{34}{section.3.4}}
 \newlabel{twoversion}{{3.4}{34}{TWO VERSIONS OF NUMFL}{section.3.4}{}}
 \citation{Pearl2003}
@@ -300,6 +300,9 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3.7}CONCLUSION}{68}{section.3.7}}
 \newlabel{conclusion}{{3.7}{68}{CONCLUSION}{section.3.7}{}}
 \citation{bai2015numfl}
+\citation{baah2010causal}
+\citation{baah2011mitigating}
+\citation{shu2013mfl}
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}Causal Inference Based Fault Localization for Numerical Software with Bayesian Additive Regression Trees}{69}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -307,15 +310,17 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{69}{section.4.1}}
 \newlabel{BARTintro}{{4.1}{69}{Introduction}{section.4.1}{}}
 \citation{hill2012bayesian}
+\citation{hill2012bayesian}
 \citation{hill2013assessing}
 \citation{BARTMachine}
+\citation{loh2011classification}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}BART Model Algorithm}{71}{section.4.2}}
 \newlabel{BARTbg}{{4.2}{71}{BART Model Algorithm}{section.4.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}A Single Regression Tree model}{71}{subsection.4.2.1}}
-\newlabel{IIIA}{{4.2.1}{71}{A Single Regression Tree model}{subsection.4.2.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Single Regression Tree Structure\relax }}{71}{figure.caption.40}}
 \newlabel{singlergt}{{4.1}{71}{Single Regression Tree Structure\relax }{figure.caption.40}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}A sum of regression trees model}{72}{subsection.4.2.2}}
+\citation{conference1997advances}
 \citation{pratola2014parallel}
 \citation{pratola2015bayesian}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}A regularization prior}{73}{subsection.4.2.3}}
@@ -323,50 +328,50 @@
 \citation{chipman2010bart}
 \citation{gilks2005markov}
 \citation{casella1992explaining}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Bayesian Backfitting MCMC Algorithm}{74}{subsection.4.2.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}BART Model with Causal Inference}{75}{section.4.3}}
-\newlabel{BARTafce}{{4.3}{75}{BART Model with Causal Inference}{section.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Bayesian Backfitting MCMC Algorithm}{75}{subsection.4.2.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}AFCE Estimation With BART}{75}{section.4.3}}
+\newlabel{BARTafce}{{4.3}{75}{AFCE Estimation With BART}{section.4.3}{}}
+\citation{BARTMachine}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces EXAMPLE OF TREATMENT VARIABLE INCREAMENT\relax }}{78}{figure.caption.41}}
 \newlabel{bartace}{{4.2}{78}{EXAMPLE OF TREATMENT VARIABLE INCREAMENT\relax }{figure.caption.41}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}EMPIRICAL EVALUATION}{78}{section.4.4}}
 \newlabel{BARTevaluation}{{4.4}{78}{EMPIRICAL EVALUATION}{section.4.4}{}}
-\citation{BARTMachine}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Comparative Performance of BART vs. Baselines}{79}{subsection.4.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}BART model vs NUMFL}{80}{subsection.4.4.2}}
 \newlabel{RF3}{81}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Performance of BART relative to baseline metrics on individual single-fault program versions.\relax }}{81}{figure.caption.42}}
 \newlabel{BART_VS_Base}{{4.3}{81}{Performance of BART relative to baseline metrics on individual single-fault program versions.\relax }{figure.caption.42}{}}
 \newlabel{RF4}{82}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Performance of BART relative to baseline metrics on individual single-fault program versions.\relax }}{82}{figure.caption.43}}
 \newlabel{BART_VS_Base_M}{{4.4}{82}{Performance of BART relative to baseline metrics on individual single-fault program versions.\relax }{figure.caption.43}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}BART model vs NUMFL}{83}{subsection.4.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{83}{figure.caption.45}}
+\newlabel{BARTvsQRM}{{4.5}{83}{Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }{figure.caption.45}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL METRICS ON SINGLE-FAULT PROGRAM VERSIONS\relax }}{84}{table.caption.44}}
 \newlabel{tableBARTvsNUMFL}{{4.1}{84}{AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL METRICS ON SINGLE-FAULT PROGRAM VERSIONS\relax }{table.caption.44}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{84}{figure.caption.45}}
-\newlabel{BARTvsQRM}{{4.5}{84}{Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }{figure.caption.45}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{85}{figure.caption.46}}
-\newlabel{BARTvsCBPS}{{4.6}{85}{Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }{figure.caption.46}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL ON MULTIPLE-FAULT PROGRAM VERSIONS\relax }}{86}{table.caption.47}}
-\newlabel{tableBARTvsNUMFL_M}{{4.2}{86}{AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL ON MULTIPLE-FAULT PROGRAM VERSIONS\relax }{table.caption.47}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{84}{figure.caption.46}}
+\newlabel{BARTvsCBPS}{{4.6}{84}{Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }{figure.caption.46}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL ON MULTIPLE-FAULT PROGRAM VERSIONS\relax }}{85}{table.caption.47}}
+\newlabel{tableBARTvsNUMFL_M}{{4.2}{85}{AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL ON MULTIPLE-FAULT PROGRAM VERSIONS\relax }{table.caption.47}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{86}{figure.caption.48}}
 \newlabel{BARTvsGPS_M}{{4.7}{86}{Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }{figure.caption.48}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{87}{figure.caption.49}}
-\newlabel{BARTvsCBPS_M}{{4.8}{87}{Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }{figure.caption.49}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{86}{figure.caption.49}}
+\newlabel{BARTvsCBPS_M}{{4.8}{86}{Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }{figure.caption.49}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Sensitivity of BART model on the number of trees and number of tests}{87}{subsection.4.4.3}}
 \newlabel{BARTsensitivity}{{4.4.3}{87}{Sensitivity of BART model on the number of trees and number of tests}{subsection.4.4.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART MODEL WITH DIFFERENT NUMBER OF TREES AND TESTS ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }}{88}{table.caption.50}}
-\newlabel{sensitivity}{{4.3}{88}{AVERAGE FAULT LOCALIZATION COSTS OF BART MODEL WITH DIFFERENT NUMBER OF TREES AND TESTS ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }{table.caption.50}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Computation Time Analysis}{88}{subsection.4.4.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Computation Time Analysis}{87}{subsection.4.4.4}}
 \citation{hill2012bayesian}
 \citation{hill2013assessing}
 \citation{green2012modeling}
 \citation{sparapani2016nonparametric}
-\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces AVERAGE COMPUTATION TIME OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }}{89}{table.caption.51}}
-\newlabel{BARTcomputetime}{{4.4}{89}{AVERAGE COMPUTATION TIME OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }{table.caption.51}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}RELATED WORK}{89}{section.4.5}}
-\newlabel{BARTrelatedwork}{{4.5}{89}{RELATED WORK}{section.4.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART MODEL WITH DIFFERENT NUMBER OF TREES AND TESTS ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }}{88}{table.caption.50}}
+\newlabel{sensitivity}{{4.3}{88}{AVERAGE FAULT LOCALIZATION COSTS OF BART MODEL WITH DIFFERENT NUMBER OF TREES AND TESTS ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }{table.caption.50}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}RELATED WORK}{88}{section.4.5}}
+\newlabel{BARTrelatedwork}{{4.5}{88}{RELATED WORK}{section.4.5}{}}
 \citation{chen2004failure}
 \citation{francis2004tree}
 \citation{kiciman2005root}
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces AVERAGE COMPUTATION TIME OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }}{89}{table.caption.51}}
+\newlabel{BARTcomputetime}{{4.4}{89}{AVERAGE COMPUTATION TIME OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }{table.caption.51}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.6}CONCLUSION}{90}{section.4.6}}
 \newlabel{BARTconclusion}{{4.6}{90}{CONCLUSION}{section.4.6}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}Fault Localization in Embedded Control System Software}{91}{chapter.5}}
@@ -419,7 +424,9 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces  {\it  NUMFL} Algorithm\relax }}{106}{figure.5.6}}
 \newlabel{flecs2.0}{{5.6}{106}{{\it NUMFL} Algorithm\relax }{figure.5.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.7}Empirical Evaluation}{107}{section.5.7}}
+\citation{liang2013detection}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}Instrumenting the Controllers}{108}{subsection.5.7.1}}
+\citation{liang2015fault}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}Faulty Controllers}{109}{subsection.5.7.2}}
 \newlabel{T}{{5.7.2}{109}{Faulty Controllers}{subsection.5.7.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7.3}Methodology and Baselines}{109}{subsection.5.7.3}}
@@ -448,22 +455,22 @@
 \@writefile{toc}{\contentsline {section}{\numberline {6.1}Conclusions}{114}{section.6.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {6.2}Future work}{115}{section.6.2}}
 \@writefile{toc}{\contentsline {chapter}{Appendices}{}{section*.59}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Detail of derivation for the chapter 2}{117}{Appendix.a.A}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Detail of the Derivation for Chapter 2}{117}{Appendix.a.A}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{eq1}{{A.1}{117}{Detail of derivation for the chapter 2}{equation.a.A.0.1}{}}
-\newlabel{eq2}{{A.2}{117}{Detail of derivation for the chapter 2}{equation.a.A.0.2}{}}
-\newlabel{eq3}{{A.3}{117}{Detail of derivation for the chapter 2}{equation.a.A.0.3}{}}
-\newlabel{eq4}{{A.4}{117}{Detail of derivation for the chapter 2}{equation.a.A.0.4}{}}
-\newlabel{eq5}{{A.5}{118}{Detail of derivation for the chapter 2}{equation.a.A.0.5}{}}
-\newlabel{eq6}{{A.6}{118}{Detail of derivation for the chapter 2}{equation.a.A.0.6}{}}
-\newlabel{eq7}{{A.7}{118}{Detail of derivation for the chapter 2}{equation.a.A.0.7}{}}
-\newlabel{eq8}{{A.8}{118}{Detail of derivation for the chapter 2}{equation.a.A.0.8}{}}
-\newlabel{eq9}{{A.9}{118}{Detail of derivation for the chapter 2}{equation.a.A.0.9}{}}
-\newlabel{eq10}{{A.10}{118}{Detail of derivation for the chapter 2}{equation.a.A.0.10}{}}
+\newlabel{ap:eq1}{{A.1}{117}{Detail of the Derivation for Chapter 2}{equation.a.A.0.1}{}}
+\newlabel{ap:eq2}{{A.2}{117}{Detail of the Derivation for Chapter 2}{equation.a.A.0.2}{}}
+\newlabel{ap:eq3}{{A.3}{117}{Detail of the Derivation for Chapter 2}{equation.a.A.0.3}{}}
+\newlabel{ap:eq4}{{A.4}{117}{Detail of the Derivation for Chapter 2}{equation.a.A.0.4}{}}
+\newlabel{ap:eq5}{{A.5}{118}{Detail of the Derivation for Chapter 2}{equation.a.A.0.5}{}}
+\newlabel{ap:eq6}{{A.6}{118}{Detail of the Derivation for Chapter 2}{equation.a.A.0.6}{}}
+\newlabel{ap:eq7}{{A.7}{118}{Detail of the Derivation for Chapter 2}{equation.a.A.0.7}{}}
+\newlabel{ap:eq8}{{A.8}{118}{Detail of the Derivation for Chapter 2}{equation.a.A.0.8}{}}
+\newlabel{ap:eq9}{{A.9}{118}{Detail of the Derivation for Chapter 2}{equation.a.A.0.9}{}}
+\newlabel{ap:eq10}{{A.10}{118}{Detail of the Derivation for Chapter 2}{equation.a.A.0.10}{}}
 \bibstyle{abbrv}
 \bibdata{dissertation-BZF}
-\newlabel{eq11}{{A.11}{119}{Detail of derivation for the chapter 2}{equation.a.A.0.11}{}}
+\newlabel{ap:eq11}{{A.11}{119}{Detail of the Derivation for Chapter 2}{equation.a.A.0.11}{}}
 \bibcite{ASM}{1}
 \bibcite{BARTMachine}{2}
 \bibcite{MeRCIS}{3}
@@ -538,32 +545,33 @@
 \bibcite{Liblit2005}{72}
 \bibcite{liu2006statistical}{73}
 \bibcite{Liu2005}{74}
-\bibcite{Grossman2005}{75}
-\bibcite{mcintyre2005fault}{76}
-\bibcite{mikaelian2005model}{77}
-\bibcite{Nachtsheim2004}{78}
-\bibcite{Pearl2003}{79}
-\bibcite{pearl2000models}{80}
-\bibcite{petersen2010diagnosing}{81}
-\bibcite{pratola2015bayesian}{82}
-\bibcite{pratola2014parallel}{83}
-\bibcite{Rosenbaum1983}{84}
-\bibcite{Rosenblueth1981}{85}
-\bibcite{Scott2007}{86}
-\bibcite{Philip2012}{87}
-\bibcite{shu2013javapdg}{88}
-\bibcite{shu2013mfl}{89}
-\bibcite{Silvapulle1981}{90}
-\bibcite{sparapani2016nonparametric}{91}
-\bibcite{Tang2010}{92}
-\bibcite{taylor1996computer}{93}
-\bibcite{taylor2008medical}{94}
-\bibcite{tuna2013heart}{95}
-\bibcite{verma2004real}{96}
-\bibcite{wang2006diagnosing}{97}
-\bibcite{westreich2010invited}{98}
-\bibcite{wold1984collinearity}{99}
-\bibcite{Wong2014}{100}
-\bibcite{Zeller2002}{101}
-\bibcite{zhan2008search}{102}
-\bibcite{Zhao2013}{103}
+\bibcite{loh2011classification}{75}
+\bibcite{Grossman2005}{76}
+\bibcite{mcintyre2005fault}{77}
+\bibcite{mikaelian2005model}{78}
+\bibcite{Nachtsheim2004}{79}
+\bibcite{Pearl2003}{80}
+\bibcite{pearl2000models}{81}
+\bibcite{petersen2010diagnosing}{82}
+\bibcite{pratola2015bayesian}{83}
+\bibcite{pratola2014parallel}{84}
+\bibcite{Rosenbaum1983}{85}
+\bibcite{Rosenblueth1981}{86}
+\bibcite{Scott2007}{87}
+\bibcite{Philip2012}{88}
+\bibcite{shu2013javapdg}{89}
+\bibcite{shu2013mfl}{90}
+\bibcite{Silvapulle1981}{91}
+\bibcite{sparapani2016nonparametric}{92}
+\bibcite{Tang2010}{93}
+\bibcite{taylor1996computer}{94}
+\bibcite{taylor2008medical}{95}
+\bibcite{tuna2013heart}{96}
+\bibcite{verma2004real}{97}
+\bibcite{wang2006diagnosing}{98}
+\bibcite{westreich2010invited}{99}
+\bibcite{wold1984collinearity}{100}
+\bibcite{Wong2014}{101}
+\bibcite{Zeller2002}{102}
+\bibcite{zhan2008search}{103}
+\bibcite{Zhao2013}{104}

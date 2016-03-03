@@ -94,7 +94,7 @@ Suppose that for each unit $i$ examined in an observational study, we have recor
 
 We can estimate the parameter $\pmb\beta$ using maximum likelihood estimation \cite{Silvapulle1981}, which involves maximizing the log-likelihood function:
 
-\begin{equation}\label{eq1}
+\begin{equation}\label{cp3:eq1}
 {\pmb{\hat \beta} _{MLE}} = \arg \;\max \sum\limits_{i = 1}^N {{T_i}\log \left\{ {{\pi _{\pmb\beta} }({\pmb{X}_i})} \right\} + (1 - {T_i})} \log \left\{ {1 - {\pi _{\pmb\beta} }({\pmb{X}_i})} \right\}
 \end{equation}
 
@@ -136,12 +136,12 @@ ${\hat{\theta}}_{s_8}$ & -4.749	&	9.731	&	5.502	&	-2.426	&	-2.132	&	-2.825	&	-0.
 
 \subsection{Covariate Balancing Propensity Score (CBPS)}\label{IIID}
 Section \ref{IIIB} explained that the ordinary propensity score is a balancing score and that it can be estimated from data using a parametric statistical model.  However, if the propensity score model ${\pi _{\pmb \beta} }({\pmb{X}_i})$  is {\it misspecified}, matching on the estimated propensity scores (and related techniques) may fail to balance the covariates, yielding biased estimates of causal effects. To address this problem, Imai and Ratkovic proposed the {\it Covariate Balancing Propensity Score} (CBPS), which is robust to mild misspecification of the propensity score model \cite{Imai2014}.
-The CBPS optimizes covariate balance by modifying the estimation procedure for parameter $\pmb{\beta}$ .  Differentiating equation \eqref{eq1}, equating the result to zero, and taking expectations, we have \cite{Imai2014}
-\begin{equation}\label{eq2}
+The CBPS optimizes covariate balance by modifying the estimation procedure for parameter $\pmb{\beta}$ .  Differentiating equation \eqref{cp3:eq1}, equating the result to zero, and taking expectations, we have \cite{Imai2014}
+\begin{equation}\label{cp3:eq2}
 E\left\{ {\frac{{{T_i}{{\pi '}_{\pmb \beta} }({\pmb{X}_i})}}{{{\pi _{\pmb \beta} }({\pmb{X}_i})}} - \frac{{(1 - {T_i}){{\pi '}_{\pmb \beta} }({\pmb{X}_i})}}{{1 - {\pi _{\pmb \beta} }({\pmb{X}_i})}}} \right\} = 0,
 \end{equation}
-where ${\pi '_{\pmb \beta} }({\pmb{X}_i}) = \partial {\pi _{\pmb \beta} }({\pmb{X}_i})/\partial \pmb{\beta}$.  Equation \eqref{eq2} is called a {\it balancing condition} or a {\it moment condition} \cite{Imai2014}.  (The mean of a random variable is its ``first moment" \cite{Rosenblueth1981}.)  In CBPS, the balancing condition is generalized as
-\begin{equation}\label{eq3}
+where ${\pi '_{\pmb \beta} }({\pmb{X}_i}) = \partial {\pi _{\pmb \beta} }({\pmb{X}_i})/\partial \pmb{\beta}$.  Equation \eqref{cp3:eq2} is called a {\it balancing condition} or a {\it moment condition} \cite{Imai2014}.  (The mean of a random variable is its ``first moment" \cite{Rosenblueth1981}.)  In CBPS, the balancing condition is generalized as
+\begin{equation}\label{cp3:eq3}
 E\left\{ {\frac{{{T_i}{{\tilde {\pmb X}}_i}}}{{{\pi _{\pmb \beta} }({\pmb{X}_i})}} - \frac{{(1 - {T_i}){{\tilde {\pmb X}}_i}}}{{1 - {\pi _{\pmb \beta} }({\pmb{X}_i})}}} \right\} = 0,
 \end{equation}
 where ${\tilde {\pmb X}_i} = f({\pmb{X}_i})$ represents a vector-valued function of the covariates $\pmb{X}_i$. To ensure that the first moment of each covariate is balanced, even when the model is misspecified, we can set ${\tilde {\pmb X}_i} = {\pmb{X}_i}$. CBPS employs a parameter estimation framework called the {\it generalized method of moments} (GMM) \cite{Hansen1982}, which is based on solving moment-condition equations for the parameters of interest and substituting sample moments for unknown population moments. Imai {\it et al}. extended CBPS to treatments with $K>2$ integer values, using a $multinomial\;model$ for the conditional probability of treatment given the covariates. We adapted this approach slightly to make it applicable to value-based fault localization (see Section \ref{IVB}), and we evaluate CBPS in NUMFL as an alternative to GPS .

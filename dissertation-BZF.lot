@@ -21,7 +21,7 @@
 \contentsline {table}{\numberline {3.13}{\ignorespaces AVERAGE COMPUTATION TIME OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }}{65}{table.caption.39}
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {4.1}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL METRICS ON SINGLE-FAULT PROGRAM VERSIONS\relax }}{84}{table.caption.44}
-\contentsline {table}{\numberline {4.2}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL ON MULTIPLE-FAULT PROGRAM VERSIONS\relax }}{86}{table.caption.47}
+\contentsline {table}{\numberline {4.2}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL ON MULTIPLE-FAULT PROGRAM VERSIONS\relax }}{85}{table.caption.47}
 \contentsline {table}{\numberline {4.3}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART MODEL WITH DIFFERENT NUMBER OF TREES AND TESTS ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }}{88}{table.caption.50}
 \contentsline {table}{\numberline {4.4}{\ignorespaces AVERAGE COMPUTATION TIME OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }}{89}{table.caption.51}
 \addvspace {10\p@ }

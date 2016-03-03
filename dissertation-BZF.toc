@@ -50,14 +50,14 @@
 \contentsline {subsection}{\numberline {4.2.1}A Single Regression Tree model}{71}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}A sum of regression trees model}{72}{subsection.4.2.2}
 \contentsline {subsection}{\numberline {4.2.3}A regularization prior}{73}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Bayesian Backfitting MCMC Algorithm}{74}{subsection.4.2.4}
-\contentsline {section}{\numberline {4.3}BART Model with Causal Inference}{75}{section.4.3}
+\contentsline {subsection}{\numberline {4.2.4}Bayesian Backfitting MCMC Algorithm}{75}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}AFCE Estimation With BART}{75}{section.4.3}
 \contentsline {section}{\numberline {4.4}EMPIRICAL EVALUATION}{78}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Comparative Performance of BART vs. Baselines}{79}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}BART model vs NUMFL}{83}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.2}BART model vs NUMFL}{80}{subsection.4.4.2}
 \contentsline {subsection}{\numberline {4.4.3}Sensitivity of BART model on the number of trees and number of tests}{87}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Computation Time Analysis}{88}{subsection.4.4.4}
-\contentsline {section}{\numberline {4.5}RELATED WORK}{89}{section.4.5}
+\contentsline {subsection}{\numberline {4.4.4}Computation Time Analysis}{87}{subsection.4.4.4}
+\contentsline {section}{\numberline {4.5}RELATED WORK}{88}{section.4.5}
 \contentsline {section}{\numberline {4.6}CONCLUSION}{90}{section.4.6}
 \contentsline {chapter}{\numberline {5}Fault Localization in Embedded Control System Software}{91}{chapter.5}
 \contentsline {section}{\numberline {5.1}Introduction}{91}{section.5.1}
@@ -82,4 +82,4 @@
 \contentsline {section}{\numberline {6.1}Conclusions}{114}{section.6.1}
 \contentsline {section}{\numberline {6.2}Future work}{115}{section.6.2}
 \contentsline {chapter}{Appendices}{}{section*.59}
-\contentsline {chapter}{\numberline {A}Detail of derivation for the chapter 2}{117}{Appendix.a.A}
+\contentsline {chapter}{\numberline {A}Detail of the Derivation for Chapter 2}{117}{Appendix.a.A}
