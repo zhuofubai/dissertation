@@ -60,6 +60,11 @@ Scimark 2.0 available:.
 Sir.
 \newblock \url{http://sir.unl.edu/portal/index.php}.
 
+\bibitem{commontest}
+Test suite of apache common math library.
+\newblock
+  \url{https://github.com/apache/commons-math/tree/master/src/test/java/org/apache/commons/math4}.
+
 \bibitem{Xerces2}
 Xerces2.
 \newblock
@@ -445,6 +450,12 @@ C.~J. Nachtsheim, J.~Neter, M.~H. Kutner, and W.~Wasserman.
 \newblock Applied linear regression models.
 \newblock {\em McGraw-Hill Irwin}, 2004.
 
+\bibitem{conference1997advances}
+C.~on~Neural Information Processing Systems (19: 2005: British~Columbia) and
+  Y.~Weiss.
+\newblock {\em Advances in neural information processing systems.}
+\newblock MIT Press, 1997.
+
 \bibitem{Pearl2003}
 J.~Pearl.
 \newblock Causality: models, reasoning and inference.
@@ -537,6 +548,11 @@ R.~H. Taylor, A.~Menciassi, G.~Fichtinger, and P.~Dario.
 \newblock Medical robotics and computer-integrated surgery.
 \newblock In {\em Springer handbook of robotics}, pages 1199--1222. Springer,
   2008.
+
+\bibitem{timofeev2004classification}
+R.~Timofeev.
+\newblock Classification and regression trees (cart) theory and applications.
+\newblock 2004.
 
 \bibitem{tuna2013heart}
 E.~E. Tuna, T.~J. Franke, O.~Bebek, A.~Shiose, K.~Fukamachi, and M.~C.

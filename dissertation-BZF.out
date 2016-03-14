@@ -2,8 +2,8 @@
 \BOOKMARK [1][-]{section.1.1}{Statistical Fault Localization}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Bugs in Numerical Software}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.3}{Causal Inference with Statistical Fault Localization}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.4}{Contribution and organization of the dissertation}{chapter.1}% 5
-\BOOKMARK [0][-]{chapter.2}{The Importance of Being Positive in Causal Statistical Fault Localization}{}% 6
+\BOOKMARK [1][-]{section.1.4}{Contribution and Organization of The Dissertation}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{The Importance of the Positiity Property for CSFL}{}% 6
 \BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 7
 \BOOKMARK [1][-]{section.2.2}{The Problem of Positivity Violations}{chapter.2}% 8
 \BOOKMARK [2][-]{subsection.2.2.1}{Research Questions}{section.2.2}% 9
@@ -43,15 +43,15 @@
 \BOOKMARK [0][-]{chapter.4}{Causal Inference Based Fault Localization for Numerical Software with Bayesian Additive Regression Trees}{}% 43
 \BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 44
 \BOOKMARK [1][-]{section.4.2}{BART Model Algorithm}{chapter.4}% 45
-\BOOKMARK [2][-]{subsection.4.2.1}{A Single Regression Tree model}{section.4.2}% 46
-\BOOKMARK [2][-]{subsection.4.2.2}{A sum of regression trees model}{section.4.2}% 47
+\BOOKMARK [2][-]{subsection.4.2.1}{Single Regression Tree Model}{section.4.2}% 46
+\BOOKMARK [2][-]{subsection.4.2.2}{A sum-of-trees model}{section.4.2}% 47
 \BOOKMARK [2][-]{subsection.4.2.3}{A regularization prior}{section.4.2}% 48
 \BOOKMARK [2][-]{subsection.4.2.4}{Bayesian Backfitting MCMC Algorithm}{section.4.2}% 49
 \BOOKMARK [1][-]{section.4.3}{AFCE Estimation With BART}{chapter.4}% 50
 \BOOKMARK [1][-]{section.4.4}{EMPIRICAL EVALUATION}{chapter.4}% 51
 \BOOKMARK [2][-]{subsection.4.4.1}{Comparative Performance of BART vs. Baselines}{section.4.4}% 52
-\BOOKMARK [2][-]{subsection.4.4.2}{BART model vs NUMFL}{section.4.4}% 53
-\BOOKMARK [2][-]{subsection.4.4.3}{Sensitivity of BART model on the number of trees and number of tests}{section.4.4}% 54
+\BOOKMARK [2][-]{subsection.4.4.2}{BART Model vs NUMFL}{section.4.4}% 53
+\BOOKMARK [2][-]{subsection.4.4.3}{Sensitivity of BART model on the number of trees and the number of tests}{section.4.4}% 54
 \BOOKMARK [2][-]{subsection.4.4.4}{Computation Time Analysis}{section.4.4}% 55
 \BOOKMARK [1][-]{section.4.5}{RELATED WORK}{chapter.4}% 56
 \BOOKMARK [1][-]{section.4.6}{CONCLUSION}{chapter.4}% 57
