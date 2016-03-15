@@ -20,10 +20,6 @@ Cbps r package available:.
 Commons math:.
 \newblock \url{http://commons.apache.org/proper/commons-math/}.
 
-\bibitem{VuikWeb}
-Disasters caused by numerical errors:.
-\newblock \url{http://ta.twi.tudelft.nl/users/vuik/wi211/disasters.html}.
-
 \bibitem{JAMA}
 Jama package available:.
 \newblock \url{http://math.nist.gov/javanumerics/jama/}.
@@ -361,11 +357,6 @@ J.~A. Jones, M.~J. Harrold, and J.~Stasko.
 \newblock In {\em Proceedings of the 24th international conference on Software
   engineering}, pages 467--477. ACM, 2002.
 
-\bibitem{Kanewala2014}
-U.~Kanewala and J.~M. Bieman.
-\newblock Testing scientific software: A systematic literature review.
-\newblock {\em Information and software technology}, 56(10):1219--1232, 2014.
-
 \bibitem{kiciman2005root}
 E.~K{\i}c{\i}man and L.~Subramanian.
 \newblock A root cause localization model for large scale systems.
@@ -576,6 +567,12 @@ Y.~Wang, M.~L. Petersen, D.~Bangsberg, and M.~J. van~der Laan.
 D.~Westreich and S.~R. Cole.
 \newblock Invited commentary: positivity in practice.
 \newblock {\em American journal of epidemiology}, page kwp436, 2010.
+
+\bibitem{whalen1999approach}
+M.~W. Whalen and M.~P. Heimdahl.
+\newblock An approach to automatic code generation for safety-critical systems.
+\newblock In {\em Automated Software Engineering, 1999. 14th IEEE International
+  Conference on.}, pages 315--318. IEEE, 1999.
 
 \bibitem{wold1984collinearity}
 S.~Wold, A.~Ruhe, H.~Wold, and W.~Dunn, III.

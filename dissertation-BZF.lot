@@ -1,31 +1,31 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Subject programs, tests, and faults\relax }}{17}{table.caption.9}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Proportion of RVP statements among Covered statements with forward control dependence predecessor\relax }}{18}{table.caption.10}
-\contentsline {table}{\numberline {2.3}{\ignorespaces Comparison between Baah et al\IeC {\textquoteright }s Original estimator and the ``Adjusted\IeC {\textquotedblright } estimator\relax }}{19}{table.caption.11}
-\contentsline {table}{\numberline {2.4}{\ignorespaces Comparison between Baah et al\IeC {\textquoteright }s Original estimator and the ``Adjusted\IeC {\textquotedblright } estimator\relax }}{20}{table.caption.12}
-\contentsline {table}{\numberline {2.5}{\ignorespaces Average execution times of regression-based causal effect estimator and probability-based causal effect estimator\relax }}{20}{table.caption.13}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Subject programs, tests, and faults\relax }}{19}{table.caption.9}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Proportion of RVP statements among Covered statements with forward control dependence predecessor\relax }}{20}{table.caption.10}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Comparison between Baah et al\IeC {\textquoteright }s Original estimator and the ``Adjusted\IeC {\textquotedblright } estimator\relax }}{21}{table.caption.11}
+\contentsline {table}{\numberline {2.4}{\ignorespaces Comparison between Baah et al\IeC {\textquoteright }s Original estimator and the ``Adjusted\IeC {\textquotedblright } estimator\relax }}{22}{table.caption.12}
+\contentsline {table}{\numberline {2.5}{\ignorespaces Average execution times of regression-based causal effect estimator and probability-based causal effect estimator\relax }}{22}{table.caption.13}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces VARIABLE VALUES AND GPS OF THE MOTIVATING EXAMPLE\relax }}{33}{table.caption.17}
-\contentsline {table}{\numberline {3.2}{\ignorespaces STANDARDIZED VARIABLE VALUES OF THE MOTIVATING EXAMPLE\relax }}{45}{table.caption.23}
-\contentsline {table}{\numberline {3.3}{\ignorespaces ESTIMATED GPS AND CBPS OF EXPRESSION $s_3$\relax }}{47}{table.caption.24}
-\contentsline {table}{\numberline {3.4}{\ignorespaces ESTIMATED GPS AND CBPS OF EXPRESSION $s_8$\relax }}{48}{table.caption.25}
-\contentsline {table}{\numberline {3.5}{\ignorespaces ESTIMATED AFCE WITH NUMFL-GPS\relax }}{48}{table.caption.26}
-\contentsline {table}{\numberline {3.6}{\ignorespaces ESTIMATED AFCE WITH NUMFL-CBPS\relax }}{48}{table.caption.27}
-\contentsline {table}{\numberline {3.7}{\ignorespaces SUMMARY OF SUBJECT PROGRAMS\relax }}{51}{table.caption.28}
-\contentsline {table}{\numberline {3.8}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM AND BASELINE METRICS ON SINGLE-FAULT PROGRAM VERSIONS\relax }}{54}{table.caption.29}
-\contentsline {table}{\numberline {3.9}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM WITH AND WITHOUT DATA FROM PASSING RUNS, ON SINGLE-FAULT PROGRAM VERSIONS\relax }}{58}{table.caption.31}
-\contentsline {table}{\numberline {3.10}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM AND BASELINE METRICS ON MULTIPLE-FAULT PROGRAM VERSIONS\relax }}{60}{table.caption.33}
-\contentsline {table}{\numberline {3.11}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON SINGLE-FAULT PROGRAM VERSIONS \relax }}{62}{table.caption.35}
-\contentsline {table}{\numberline {3.12}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON MULTIPLE-FAULT PROGRAM VERSIONS\relax }}{63}{table.caption.36}
-\contentsline {table}{\numberline {3.13}{\ignorespaces AVERAGE COMPUTATION TIME OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }}{65}{table.caption.39}
+\contentsline {table}{\numberline {3.1}{\ignorespaces VARIABLE VALUES AND GPS OF THE MOTIVATING EXAMPLE\relax }}{35}{table.caption.17}
+\contentsline {table}{\numberline {3.2}{\ignorespaces STANDARDIZED VARIABLE VALUES OF THE MOTIVATING EXAMPLE\relax }}{47}{table.caption.23}
+\contentsline {table}{\numberline {3.3}{\ignorespaces ESTIMATED GPS AND CBPS OF EXPRESSION $s_3$\relax }}{49}{table.caption.24}
+\contentsline {table}{\numberline {3.4}{\ignorespaces ESTIMATED GPS AND CBPS OF EXPRESSION $s_8$\relax }}{50}{table.caption.25}
+\contentsline {table}{\numberline {3.5}{\ignorespaces ESTIMATED AFCE WITH NUMFL-GPS\relax }}{50}{table.caption.26}
+\contentsline {table}{\numberline {3.6}{\ignorespaces ESTIMATED AFCE WITH NUMFL-CBPS\relax }}{50}{table.caption.27}
+\contentsline {table}{\numberline {3.7}{\ignorespaces SUMMARY OF SUBJECT PROGRAMS\relax }}{53}{table.caption.28}
+\contentsline {table}{\numberline {3.8}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM AND BASELINE METRICS ON SINGLE-FAULT PROGRAM VERSIONS\relax }}{56}{table.caption.29}
+\contentsline {table}{\numberline {3.9}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM WITH AND WITHOUT DATA FROM PASSING RUNS, ON SINGLE-FAULT PROGRAM VERSIONS\relax }}{60}{table.caption.31}
+\contentsline {table}{\numberline {3.10}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM AND BASELINE METRICS ON MULTIPLE-FAULT PROGRAM VERSIONS\relax }}{62}{table.caption.33}
+\contentsline {table}{\numberline {3.11}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON SINGLE-FAULT PROGRAM VERSIONS \relax }}{64}{table.caption.35}
+\contentsline {table}{\numberline {3.12}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON MULTIPLE-FAULT PROGRAM VERSIONS\relax }}{65}{table.caption.36}
+\contentsline {table}{\numberline {3.13}{\ignorespaces AVERAGE COMPUTATION TIME OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }}{67}{table.caption.39}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL METRICS ON SINGLE-FAULT PROGRAM VERSIONS\relax }}{84}{table.caption.44}
-\contentsline {table}{\numberline {4.2}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL ON TWO-FAULT PROGRAM VERSIONS\relax }}{86}{table.caption.47}
-\contentsline {table}{\numberline {4.3}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART MODEL WITH DIFFERENT NUMBER OF TREES AND DIFFERENT NUMBER OF TESTS ON SINGLE-FAULT PROGRAM VERSIONS \relax }}{89}{table.caption.50}
-\contentsline {table}{\numberline {4.4}{\ignorespaces AVERAGE COMPUTATION TIME OF BART ON SINGLE-FAULT PROGRAM VERSIONS \relax }}{90}{table.caption.51}
+\contentsline {table}{\numberline {4.1}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL METRICS ON SINGLE-FAULT PROGRAM VERSIONS\relax }}{86}{table.caption.44}
+\contentsline {table}{\numberline {4.2}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL ON TWO-FAULT PROGRAM VERSIONS\relax }}{88}{table.caption.47}
+\contentsline {table}{\numberline {4.3}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART MODEL WITH DIFFERENT NUMBER OF TREES AND DIFFERENT NUMBER OF TESTS ON SINGLE-FAULT PROGRAM VERSIONS \relax }}{91}{table.caption.50}
+\contentsline {table}{\numberline {4.4}{\ignorespaces AVERAGE COMPUTATION TIME OF BART ON SINGLE-FAULT PROGRAM VERSIONS \relax }}{92}{table.caption.51}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces RANK OF THE FIRST FAULTY STATEMENT FOR BHR\relax }}{110}{table.caption.57}
-\contentsline {table}{\numberline {5.2}{\ignorespaces RANK OF THE FIRST FAULTY STATEMENT FOR SABiR\relax }}{111}{table.caption.58}
+\contentsline {table}{\numberline {5.1}{\ignorespaces RANK OF THE FIRST FAULTY STATEMENT FOR BHR\relax }}{112}{table.caption.57}
+\contentsline {table}{\numberline {5.2}{\ignorespaces RANK OF THE FIRST FAULTY STATEMENT FOR SABiR\relax }}{113}{table.caption.58}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
