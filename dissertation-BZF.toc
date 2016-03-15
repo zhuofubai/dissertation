@@ -27,11 +27,11 @@
 \contentsline {subsection}{\numberline {3.3.4}Covariate Balancing Propensity Score (CBPS)}{33}{subsection.3.3.4}
 \contentsline {section}{\numberline {3.4}TWO VERSIONS OF NUMFL}{34}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}NUMFL-GPS}{35}{subsection.3.4.1}
-\contentsline {subsubsection}{Control of Confounding.}{36}{section*.18}
+\contentsline {subsubsection}{Control of Confounding}{36}{section*.18}
 \contentsline {subsubsection}{Failure-causing Effect Estimation.}{38}{section*.19}
 \contentsline {subsection}{\numberline {3.4.2}NUMFL-CBPS}{42}{subsection.3.4.2}
-\contentsline {subsubsection}{Control of Confounding.}{44}{section*.21}
-\contentsline {subsubsection}{Failure-causing Effect Estimation.}{45}{section*.22}
+\contentsline {subsubsection}{Control of Confounding}{44}{section*.21}
+\contentsline {subsubsection}{Failure-causing Effect Estimation}{45}{section*.22}
 \contentsline {section}{\numberline {3.5}EMPIRICAL EVALUATION}{49}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Experimental Platform and Data Collection}{49}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}Subject Programs, Faults, and Tests}{50}{subsection.3.5.2}
@@ -76,10 +76,10 @@
 \contentsline {subsection}{\numberline {5.7.1}Instrumenting the Controllers}{107}{subsection.5.7.1}
 \contentsline {subsection}{\numberline {5.7.2}Faulty Controllers}{108}{subsection.5.7.2}
 \contentsline {subsection}{\numberline {5.7.3}Methodology and Baselines}{109}{subsection.5.7.3}
-\contentsline {section}{\numberline {5.8}Related Work}{111}{section.5.8}
+\contentsline {section}{\numberline {5.8}Related Work}{110}{section.5.8}
 \contentsline {section}{\numberline {5.9}Conclusions}{112}{section.5.9}
-\contentsline {chapter}{\numberline {6}Conclusions and future work}{113}{chapter.6}
-\contentsline {section}{\numberline {6.1}Conclusions}{113}{section.6.1}
+\contentsline {chapter}{\numberline {6}Conclusion and future work}{113}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusion}{113}{section.6.1}
 \contentsline {section}{\numberline {6.2}Future work}{115}{section.6.2}
 \contentsline {chapter}{Appendices}{}{section*.59}
 \contentsline {chapter}{\numberline {A}Detail of the Derivation for Chapter 2}{116}{Appendix.a.A}

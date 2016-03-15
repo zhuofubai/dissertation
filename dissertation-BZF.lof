@@ -5,8 +5,8 @@
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Erroneous Program\relax }}{12}{figure.caption.8}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Motivating Example\relax }}{26}{figure.caption.14}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Causal diagram of treatment, outcome, and confounder.\relax }}{28}{figure.caption.15}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Matching units based on their propensity scores breaks the link between cofounding variables and treatment.\relax }}{30}{figure.caption.16}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Causal diagram of treatment, outcome, and confounder for the expression $s_8$ of the motivating example.\relax }}{28}{figure.caption.15}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Matching units based on their propensity scores breaks the link between confounding variables and treatment.\relax }}{30}{figure.caption.16}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Matching units based on their propensity scores breaks the link between cofounding variables and treatment.\relax }}{41}{figure.caption.20}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces {\it NUMFL} Algorithm\relax }}{43}{figure.3.5}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Performance of NUMFL-GPS-QRM relative to baseline metrics on individual single-fault program versions.\relax }}{57}{figure.caption.30}
@@ -16,7 +16,7 @@
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Relative performance of NUMFL-GPS-QRM and NUMFL-CBPS-QRM on individual two-fault program versions .\relax }}{64}{figure.caption.38}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Single Regression Tree Structure\relax }}{71}{figure.caption.40}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces EXAMPLE OF TREATMENT VARIABLE INCREAMENT\relax }}{79}{figure.caption.41}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces EXAMPLE OF TREATMENT VARIABLE INCREASE\relax }}{79}{figure.caption.41}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Performance of BART relative to baseline metrics on individual single-fault program versions.\relax }}{82}{figure.caption.42}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Performance of BART relative to baseline metrics on individual two-faults program versions.\relax }}{83}{figure.caption.43}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Relative performance of BART and NUMFL-GPS-QRM on individual single-fault program versions.\relax }}{85}{figure.caption.45}
