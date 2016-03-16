@@ -1601,31 +1601,32 @@ Overfull \hbox (2.30815pt too wide) in paragraph at lines 327--328
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <8> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 472.
  [55]
-Overfull \hbox (3.73865pt too wide) in paragraph at lines 495--496
-\T1/ppl/m/n/12 have slightly bet-ter per-for-mance than NUMFL-GPS-QRM on two su
-b-ject pro-grams:
- []
+./chapters/content/chapter_3_NUMFL.tex:495: Missing $ inserted.
+<inserted text> 
+                $
+l.495 ...MFL on two subject programs, {\it Apache_
+                                                  EigenDecompose} and {\it J...
 
-[56] [57] <chapter3_QRM_VS_Base.pdf, id=1224, 433.62pt x 216.81pt>
-File: chapter3_QRM_VS_Base.pdf Graphic file (type pdf)
+? 
+./chapters/content/chapter_3_NUMFL.tex:495: Emergency stop.
+<inserted text> 
+                $
+l.495 ...MFL on two subject programs, {\it Apache_
+                                                  EigenDecompose} and {\it J...
+End of file on the terminal!
 
-<use chapter3_QRM_VS_Base.pdf>
-Package pdftex.def Info: chapter3_QRM_VS_Base.pdf used on input line 513.
-(pdftex.def)             Requested size: 650.43pt x 325.2572pt.
- [58] [59 <./chapter3_QRM_VS_Base.pdf>]
-<chapter3_QRM_allFail.pdf, id=1241, 1170.3725pt x 799.98875pt>
-File: chapter3_QRM_allFail.pdf Graphic file (type pdf)
-
-<use chapter3_QRM_allFail.pdf>
-Package pdftex.def Info: chapter3_QRM_allFail.pdf used on input line 556.
-(pdftex.def)             Requested size: 346.89731pt x 237.11766pt.
-
-Overfull \hbox (13.46718pt too wide) in paragraph at lines 563--563
-[]\T1/ppl/b/n/14.4 Application of NUMFL-GPS to Pro-grams with Mul-ti-ple Faults
  
- []
-
-[60] [61 <./chapter3_QRM_allFail.pdf>] [62]
+Here is how much of TeX's memory you used:
+ 26679 strings out of 493089
+ 506075 string characters out of 6134842
+ 649824 words of memory out of 5000000
+ 29259 multiletter control sequences out of 15000+600000
+ 41778 words of font info for 98 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 48i,15n,80p,3217b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
+./chapters/content/chapter_3_NUMFL.tex:495:  ==> Fatal error occurred, no outpu
+t PDF file produced!
+] [62]
 <chapter3_QRM_VS_Base_MultipleFault.pdf, id=1265, 433.62pt x 216.81pt>
 File: chapter3_QRM_VS_Base_MultipleFault.pdf Graphic file (type pdf)
 
