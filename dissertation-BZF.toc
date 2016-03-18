@@ -69,19 +69,19 @@
 \contentsline {section}{\numberline {5.3}Robot Simulation and Control}{98}{section.5.3}
 \contentsline {section}{\numberline {5.4}Software Architecture and Data Collection}{101}{section.5.4}
 \contentsline {subsection}{\numberline {5.4.1}Software Architecture}{101}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Data Collection}{103}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.2}Instrumenting the Controllers}{103}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Data Collection}{104}{subsection.5.4.3}
 \contentsline {section}{\numberline {5.5}Dynamic Bayesian Networks}{104}{section.5.5}
-\contentsline {section}{\numberline {5.6}Fault Localization Method}{105}{section.5.6}
+\contentsline {section}{\numberline {5.6}Fault Localization Method}{106}{section.5.6}
 \contentsline {subsection}{\numberline {5.6.1}Identifying anomalous variables}{106}{subsection.5.6.1}
-\contentsline {subsection}{\numberline {5.6.2}Identifying faulty statements}{107}{subsection.5.6.2}
-\contentsline {section}{\numberline {5.7}Empirical Evaluation}{110}{section.5.7}
-\contentsline {subsection}{\numberline {5.7.1}Instrumenting the Controllers}{110}{subsection.5.7.1}
-\contentsline {subsection}{\numberline {5.7.2}Faulty Controllers}{111}{subsection.5.7.2}
-\contentsline {subsection}{\numberline {5.7.3}Methodology and Baselines}{112}{subsection.5.7.3}
+\contentsline {subsection}{\numberline {5.6.2}Identifying faulty statements}{108}{subsection.5.6.2}
+\contentsline {section}{\numberline {5.7}Empirical Evaluation}{111}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}Faulty Controllers}{111}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}Methodology and Baselines}{112}{subsection.5.7.2}
 \contentsline {section}{\numberline {5.8}Related Work}{113}{section.5.8}
-\contentsline {section}{\numberline {5.9}Conclusions}{115}{section.5.9}
-\contentsline {chapter}{\numberline {6}Conclusion and future work}{116}{chapter.6}
-\contentsline {section}{\numberline {6.1}Conclusion}{116}{section.6.1}
-\contentsline {section}{\numberline {6.2}Future work}{118}{section.6.2}
+\contentsline {section}{\numberline {5.9}Conclusions}{116}{section.5.9}
+\contentsline {chapter}{\numberline {6}Conclusion and future work}{117}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusion}{117}{section.6.1}
+\contentsline {section}{\numberline {6.2}Future work}{119}{section.6.2}
 \contentsline {chapter}{Appendices}{}{section*.59}
-\contentsline {chapter}{\numberline {A}Detail of the Derivation for Chapter 2}{119}{Appendix.a.A}
+\contentsline {chapter}{\numberline {A}Detail of the Derivation for Chapter 2}{120}{Appendix.a.A}

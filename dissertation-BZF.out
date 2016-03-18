@@ -65,15 +65,15 @@
 \BOOKMARK [1][-]{section.5.3}{Robot Simulation and Control}{chapter.5}% 65
 \BOOKMARK [1][-]{section.5.4}{Software Architecture and Data Collection}{chapter.5}% 66
 \BOOKMARK [2][-]{subsection.5.4.1}{Software Architecture}{section.5.4}% 67
-\BOOKMARK [2][-]{subsection.5.4.2}{Data Collection}{section.5.4}% 68
-\BOOKMARK [1][-]{section.5.5}{Dynamic Bayesian Networks}{chapter.5}% 69
-\BOOKMARK [1][-]{section.5.6}{Fault Localization Method}{chapter.5}% 70
-\BOOKMARK [2][-]{subsection.5.6.1}{Identifying anomalous variables}{section.5.6}% 71
-\BOOKMARK [2][-]{subsection.5.6.2}{Identifying faulty statements}{section.5.6}% 72
-\BOOKMARK [1][-]{section.5.7}{Empirical Evaluation}{chapter.5}% 73
-\BOOKMARK [2][-]{subsection.5.7.1}{Instrumenting the Controllers}{section.5.7}% 74
-\BOOKMARK [2][-]{subsection.5.7.2}{Faulty Controllers}{section.5.7}% 75
-\BOOKMARK [2][-]{subsection.5.7.3}{Methodology and Baselines}{section.5.7}% 76
+\BOOKMARK [2][-]{subsection.5.4.2}{Instrumenting the Controllers}{section.5.4}% 68
+\BOOKMARK [2][-]{subsection.5.4.3}{Data Collection}{section.5.4}% 69
+\BOOKMARK [1][-]{section.5.5}{Dynamic Bayesian Networks}{chapter.5}% 70
+\BOOKMARK [1][-]{section.5.6}{Fault Localization Method}{chapter.5}% 71
+\BOOKMARK [2][-]{subsection.5.6.1}{Identifying anomalous variables}{section.5.6}% 72
+\BOOKMARK [2][-]{subsection.5.6.2}{Identifying faulty statements}{section.5.6}% 73
+\BOOKMARK [1][-]{section.5.7}{Empirical Evaluation}{chapter.5}% 74
+\BOOKMARK [2][-]{subsection.5.7.1}{Faulty Controllers}{section.5.7}% 75
+\BOOKMARK [2][-]{subsection.5.7.2}{Methodology and Baselines}{section.5.7}% 76
 \BOOKMARK [1][-]{section.5.8}{Related Work}{chapter.5}% 77
 \BOOKMARK [1][-]{section.5.9}{Conclusions}{chapter.5}% 78
 \BOOKMARK [0][-]{chapter.6}{Conclusion and future work}{}% 79
