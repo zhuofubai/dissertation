@@ -20,6 +20,10 @@ Cbps r package available:.
 Commons math:.
 \newblock \url{http://commons.apache.org/proper/commons-math/}.
 
+\bibitem{VuikWeb}
+Disasters caused by numerical errors:.
+\newblock \url{http://ta.twi.tudelft.nl/users/vuik/wi211/disasters.html}.
+
 \bibitem{JAMA}
 Jama package available:.
 \newblock \url{http://math.nist.gov/javanumerics/jama/}.
@@ -356,6 +360,11 @@ J.~A. Jones, M.~J. Harrold, and J.~Stasko.
 \newblock Visualization of test information to assist fault localization.
 \newblock In {\em Proceedings of the 24th international conference on Software
   engineering}, pages 467--477. ACM, 2002.
+
+\bibitem{Kanewala2014}
+U.~Kanewala and J.~M. Bieman.
+\newblock Testing scientific software: A systematic literature review.
+\newblock {\em Information and software technology}, 56(10):1219--1232, 2014.
 
 \bibitem{kiciman2005root}
 E.~K{\i}c{\i}man and L.~Subramanian.

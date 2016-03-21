@@ -1,6 +1,9 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: dissertation-BZF.aux
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: dissertation-BZF.aux
 The style file: abbrv.bst
 Database file #1: dissertation-BZF.bib
+Warning--to sort, need author or key in VuikWeb
 Warning--to sort, need author or key in commontest
 Warning--to sort, need author or key in ASM
 Warning--to sort, need author or key in Nanoxml
@@ -28,4 +31,45 @@ Warning--there's a number but no volume in pratola2015bayesian
 Warning--empty journal in timofeev2004classification
 Warning--empty journal in wang2006diagnosing
 Warning--empty journal in Zhao2013
-(There were 27 warnings)
+You've used 108 entries,
+            2118 wiz_defined-function locations,
+            1083 strings with 22181 characters,
+and the built_in function-call counts, 37924 in all, are:
+= -- 3864
+> -- 1599
+< -- 44
++ -- 652
+- -- 530
+* -- 2439
+:= -- 5830
+add.period$ -- 335
+call.type$ -- 108
+change.case$ -- 578
+chr.to.int$ -- 0
+cite$ -- 136
+duplicate$ -- 1555
+empty$ -- 3101
+format.name$ -- 530
+if$ -- 8302
+int.to.chr$ -- 0
+int.to.str$ -- 108
+missing$ -- 92
+newline$ -- 524
+num.names$ -- 182
+pop$ -- 743
+preamble$ -- 1
+purify$ -- 477
+quote$ -- 0
+skip$ -- 1238
+stack$ -- 0
+substring$ -- 2378
+swap$ -- 495
+text.length$ -- 44
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 422
+warning$ -- 28
+while$ -- 348
+width$ -- 111
+write$ -- 1130
+(There were 28 warnings)
