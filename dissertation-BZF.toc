@@ -72,16 +72,16 @@
 \contentsline {subsection}{\numberline {5.4.2}Instrumenting the Controllers}{104}{subsection.5.4.2}
 \contentsline {subsection}{\numberline {5.4.3}Data Collection}{105}{subsection.5.4.3}
 \contentsline {section}{\numberline {5.5}Dynamic Bayesian Networks}{106}{section.5.5}
-\contentsline {section}{\numberline {5.6}Fault Localization Method}{107}{section.5.6}
+\contentsline {section}{\numberline {5.6}Fault Localization Method}{108}{section.5.6}
 \contentsline {subsection}{\numberline {5.6.1}Identifying anomalous variables}{108}{subsection.5.6.1}
-\contentsline {subsection}{\numberline {5.6.2}Identifying faulty statements}{109}{subsection.5.6.2}
-\contentsline {section}{\numberline {5.7}Empirical Evaluation}{112}{section.5.7}
-\contentsline {subsection}{\numberline {5.7.1}Faulty Controllers}{112}{subsection.5.7.1}
-\contentsline {subsection}{\numberline {5.7.2}Methodology and Baselines}{113}{subsection.5.7.2}
+\contentsline {subsection}{\numberline {5.6.2}Identifying faulty statements}{110}{subsection.5.6.2}
+\contentsline {section}{\numberline {5.7}Empirical Evaluation}{113}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}Faulty Controllers}{113}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}Methodology and Baselines}{114}{subsection.5.7.2}
 \contentsline {section}{\numberline {5.8}Related Work}{115}{section.5.8}
-\contentsline {section}{\numberline {5.9}Conclusions}{116}{section.5.9}
-\contentsline {chapter}{\numberline {6}Conclusion and Future work}{117}{chapter.6}
-\contentsline {section}{\numberline {6.1}Conclusion}{117}{section.6.1}
-\contentsline {section}{\numberline {6.2}Future work}{119}{section.6.2}
+\contentsline {section}{\numberline {5.9}Conclusions}{117}{section.5.9}
+\contentsline {chapter}{\numberline {6}Conclusion and Future work}{118}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusion}{118}{section.6.1}
+\contentsline {section}{\numberline {6.2}Future work}{120}{section.6.2}
 \contentsline {chapter}{Appendices}{}{section*.59}
-\contentsline {chapter}{\numberline {A}Detail of the Derivation for Chapter 2}{120}{Appendix.a.A}
+\contentsline {chapter}{\numberline {A}Detail of the Derivation for Chapter 2}{121}{Appendix.a.A}
