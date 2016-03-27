@@ -2,33 +2,33 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Motivating Example\relax }}{4}{figure.caption.6}
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Causal Diagram of treatment, outcome and confounder\relax }}{5}{figure.caption.7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Erroneous Program\relax }}{14}{figure.caption.8}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Erroneous Program\relax }}{15}{figure.caption.8}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Motivating Example\relax }}{28}{figure.caption.14}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Causal diagram of treatment, outcome, and confounder for the expression $s_8$ of the motivating example.\relax }}{30}{figure.caption.15}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Matching units based on their propensity scores breaks the link between confounding variables and treatment.\relax }}{32}{figure.caption.16}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Matching units based on their propensity scores breaks the link between cofounding variables and treatment.\relax }}{43}{figure.caption.20}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces {\it NUMFL} Algorithm\relax }}{45}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Performance of NUMFL-GPS-QRM relative to baseline metrics on individual single-fault program versions.\relax }}{59}{figure.caption.30}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{61}{figure.caption.32}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Performance of GPS-QRM relative to baseline metrics on individual two-fault program versions .\relax }}{64}{figure.caption.34}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces . Relative performance of NUMFL-GPS-QRM and NUMFL-CBPS-QRM on individual single-fault program versions .\relax }}{66}{figure.caption.37}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Relative performance of NUMFL-GPS-QRM and NUMFL-CBPS-QRM on individual two-fault program versions .\relax }}{67}{figure.caption.38}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Motivating Example\relax }}{29}{figure.caption.14}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Causal diagram of treatment, outcome, and confounder for the expression $s_8$ of the motivating example.\relax }}{31}{figure.caption.15}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Matching units based on their propensity scores breaks the link between confounding variables and treatment.\relax }}{33}{figure.caption.16}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Matching units based on their propensity scores breaks the link between cofounding variables and treatment.\relax }}{44}{figure.caption.20}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces {\it NUMFL} Algorithm\relax }}{46}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Performance of NUMFL-GPS-QRM relative to baseline metrics on individual single-fault program versions.\relax }}{60}{figure.caption.30}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Relative performance of NUMFL-GPS-QRM with and without data from passing runs, on individual single-fault program versions.\relax }}{62}{figure.caption.32}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Performance of GPS-QRM relative to baseline metrics on individual two-fault program versions .\relax }}{65}{figure.caption.34}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces . Relative performance of NUMFL-GPS-QRM and NUMFL-CBPS-QRM on individual single-fault program versions .\relax }}{67}{figure.caption.37}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Relative performance of NUMFL-GPS-QRM and NUMFL-CBPS-QRM on individual two-fault program versions .\relax }}{68}{figure.caption.38}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Single Regression Tree Structure\relax }}{74}{figure.caption.40}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces EXAMPLE OF TREATMENT VARIABLE INCREASE\relax }}{82}{figure.caption.41}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Performance of BART relative to baseline metrics on individual single-fault program versions.\relax }}{85}{figure.caption.42}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Performance of BART relative to baseline metrics on individual two-faults program versions.\relax }}{86}{figure.caption.43}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Relative performance of BART and NUMFL-GPS-QRM on individual single-fault program versions.\relax }}{88}{figure.caption.45}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Relative performance of NUMFL-CBPS-QRM on individual single-fault program versions.\relax }}{88}{figure.caption.46}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Relative performance of BART and NUMFL-GPS-QRM on two-fault program versions.\relax }}{90}{figure.caption.48}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Relative performance of BART and NUMFL-CBPS-QRM on two-fault program versions..\relax }}{90}{figure.caption.49}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Single Regression Tree Structure\relax }}{75}{figure.caption.40}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces EXAMPLE OF TREATMENT VARIABLE INCREASE\relax }}{83}{figure.caption.41}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Performance of BART relative to baseline metrics on individual single-fault program versions.\relax }}{86}{figure.caption.42}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Performance of BART relative to baseline metrics on individual two-faults program versions.\relax }}{87}{figure.caption.43}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Relative performance of BART and NUMFL-GPS-QRM on individual single-fault program versions.\relax }}{89}{figure.caption.45}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Relative performance of NUMFL-CBPS-QRM on individual single-fault program versions.\relax }}{89}{figure.caption.46}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Relative performance of BART and NUMFL-GPS-QRM on two-fault program versions.\relax }}{91}{figure.caption.48}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Relative performance of BART and NUMFL-CBPS-QRM on two-fault program versions..\relax }}{91}{figure.caption.49}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces SABiR: The robotic system for image-guided needle-based interventions on small animals.\relax }}{98}{figure.caption.52}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces BHR:Beating Heart Robot\relax }}{99}{figure.caption.53}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Control architecture for BHR\relax }}{101}{figure.caption.54}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Software Architecture of SABiR\relax }}{102}{figure.caption.55}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Example Dynamic Bayesian Network\relax }}{105}{figure.caption.56}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces {\it FLEC2.0} Algorithm\relax }}{109}{figure.5.6}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces SABiR: The robotic system for image-guided needle-based interventions on small animals.\relax }}{99}{figure.caption.52}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces BHR:Beating Heart Robot\relax }}{100}{figure.caption.53}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Control architecture for BHR\relax }}{102}{figure.caption.54}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Software Architecture of SABiR\relax }}{103}{figure.caption.55}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Example Dynamic Bayesian Network\relax }}{107}{figure.caption.56}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces {\it FLECS 2.0} Algorithm\relax }}{110}{figure.5.6}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

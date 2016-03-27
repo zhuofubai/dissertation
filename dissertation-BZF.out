@@ -5,7 +5,7 @@
 \BOOKMARK [2][-]{subsection.1.3.1}{Limitations of coverage-based CSFL}{section.1.3}% 5
 \BOOKMARK [1][-]{section.1.4}{Contributions}{chapter.1}% 6
 \BOOKMARK [1][-]{section.1.5}{Organization of The Dissertation}{chapter.1}% 7
-\BOOKMARK [0][-]{chapter.2}{The Importance of the Positiity Property for CSFL}{}% 8
+\BOOKMARK [0][-]{chapter.2}{The Importance of the Positivity Property for CSFL}{}% 8
 \BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 9
 \BOOKMARK [1][-]{section.2.2}{The Problem of Positivity Violations}{chapter.2}% 10
 \BOOKMARK [2][-]{subsection.2.2.1}{Research Questions}{section.2.2}% 11
@@ -76,7 +76,7 @@
 \BOOKMARK [2][-]{subsection.5.7.2}{Methodology and Baselines}{section.5.7}% 76
 \BOOKMARK [1][-]{section.5.8}{Related Work}{chapter.5}% 77
 \BOOKMARK [1][-]{section.5.9}{Conclusions}{chapter.5}% 78
-\BOOKMARK [0][-]{chapter.6}{Conclusion and future work}{}% 79
+\BOOKMARK [0][-]{chapter.6}{Conclusion and Future work}{}% 79
 \BOOKMARK [1][-]{section.6.1}{Conclusion}{chapter.6}% 80
 \BOOKMARK [1][-]{section.6.2}{Future work}{chapter.6}% 81
 \BOOKMARK [0][-]{Appendix.a.A}{Detail of the Derivation for Chapter 2}{}% 82

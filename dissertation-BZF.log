@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  21 MAR 2016 03:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  26 MAR 2016 20:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1453,17 +1453,26 @@ tent/chapter_2_Positivity.tex [7]
 Chapter 2.
 [8
 
-] [9] [10] [11] [12] [13]
+]
+
+LaTeX Warning: Citation `angrist1996identification' on page 9 undefined on inpu
+t line 13.
+
+
+LaTeX Warning: Citation `hausman1999independence' on page 9 undefined on input 
+line 13.
+
+[9] [10] [11] [12] [13]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter2_fig2.pdf): PDF in
 clusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter2_fig2.pdf, id=790, 489.32813pt x 640.64343pt>
+<chapter2_fig2.pdf, id=792, 489.32813pt x 640.64343pt>
 File: chapter2_fig2.pdf Graphic file (type pdf)
  <use chapter2_fig2.pdf>
 Package pdftex.def Info: chapter2_fig2.pdf used on input line 121.
 (pdftex.def)             Requested size: 260.17464pt x 340.63425pt.
 
-[14 <./chapter2_fig2.pdf>] [15] [16]
+[14] [15 <./chapter2_fig2.pdf>] [16]
 Overfull \hbox (15.23537pt too wide) in paragraph at lines 219--221
 \T1/ppl/m/n/12 Let $\OML/cmm/m/it/12 N[]$ \T1/ppl/m/n/12 be the num-ber of ex-e
 -cu-tions with $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 T[] \OT1/cmr/m/n/12 = 0\OML/c
@@ -1482,11 +1491,11 @@ Overfull \hbox (6.65216pt too wide) in paragraph at lines 302--311
  [][] 
  []
 
-[20] [21] [22]) (./chapters/content/chapter_3_NUMFL.tex [23]
+[20] [21] [22] [23]) (./chapters/content/chapter_3_NUMFL.tex [24]
 Chapter 3.
-[24
+[25
 
-] [25]
+] [26]
 Overfull \hbox (5.05792pt too wide) in paragraph at lines 18--19
 []\T1/ppl/m/n/12 A new, value-based ap-proach to SFL for nu-mer-i-cal pro-grams
 , named NUMFL,
@@ -1498,34 +1507,34 @@ Overfull \hbox (3.43863pt too wide) in paragraph at lines 18--19
  forms
  []
 
-[26] [27] <chapter3_MotivatingExample.pdf, id=959, 1250.6725pt x 684.5575pt>
+[27] [28] <chapter3_MotivatingExample.pdf, id=964, 1250.6725pt x 684.5575pt>
 File: chapter3_MotivatingExample.pdf Graphic file (type pdf)
 
 <use chapter3_MotivatingExample.pdf>
 Package pdftex.def Info: chapter3_MotivatingExample.pdf used on input line 38.
 (pdftex.def)             Requested size: 346.89731pt x 189.86772pt.
- [28 <./chapter3_MotivatingExample.pdf>]
-[29]
+ [29 <./chapter3_MotivatingExample.pdf>]
+[30]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter3_causal_dag.pdf): 
 PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter3_causal_dag.pdf, id=982, 642.33978pt x 322.32419pt>
+<chapter3_causal_dag.pdf, id=987, 642.33978pt x 322.32419pt>
 File: chapter3_causal_dag.pdf Graphic file (type pdf)
 
 <use chapter3_causal_dag.pdf>
 Package pdftex.def Info: chapter3_causal_dag.pdf used on input line 63.
 (pdftex.def)             Requested size: 433.62pt x 217.59386pt.
- [30 <./chapter3_causal_dag.pdf>]
+ [31 <./chapter3_causal_dag.pdf>]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter3_causal_dag2.pdf):
  PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter3_causal_dag2.pdf, id=995, 231.12347pt x 167.08423pt>
+<chapter3_causal_dag2.pdf, id=1000, 231.12347pt x 167.08423pt>
 File: chapter3_causal_dag2.pdf Graphic file (type pdf)
 
 <use chapter3_causal_dag2.pdf>
 Package pdftex.def Info: chapter3_causal_dag2.pdf used on input line 81.
 (pdftex.def)             Requested size: 216.81pt x 156.7456pt.
- [31]
+ [32]
 Overfull \hbox (12.71294pt too wide) in paragraph at lines 89--90
 []\T1/ppl/m/n/12 Suppose that for each unit $\OML/cmm/m/it/12 i$ \T1/ppl/m/n/12
  ex-am-ined in an ob-ser-va-tional study, we have recorded
@@ -1537,7 +1546,7 @@ Overfull \hbox (7.16814pt too wide) in paragraph at lines 103--104
 bal-ance may be achieved
  []
 
-[32 <./chapter3_causal_dag2.pdf>] [33] [34] [35] [36] [37] [38] [39] [40]
+[33 <./chapter3_causal_dag2.pdf>] [34] [35] [36] [37] [38] [39] [40] [41]
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <12> not available
 (Font)              Font shape `T1/ppl/b/it' tried instead on input line 203.
 
@@ -1550,7 +1559,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 200--207
 
  []
 
-[41]
+[42]
 Overfull \hbox (4.43626pt too wide) in paragraph at lines 212--213
 []\T1/ppl/m/n/12 Summarize the failure-causing ef-fect of $\OML/cmm/m/it/12 T[]
 $ \T1/ppl/m/n/12 by adding the two es-ti-mated slopes'
@@ -1566,48 +1575,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 216--222
 
  []
 
-[42] <chapter3_DRF_curves.pdf, id=1108, 433.62pt x 216.81pt>
+[43] <chapter3_DRF_curves.pdf, id=1113, 433.62pt x 216.81pt>
 File: chapter3_DRF_curves.pdf Graphic file (type pdf)
 
 <use chapter3_DRF_curves.pdf>
 Package pdftex.def Info: chapter3_DRF_curves.pdf used on input line 225.
 (pdftex.def)             Requested size: 303.53267pt x 151.77257pt.
- [43 <./chapter3_DRF_curves.pdf>]
+ [44 <./chapter3_DRF_curves.pdf>]
 Overfull \hbox (9.96019pt too wide) in paragraph at lines 277--278
 \T1/ppl/m/n/12 stan-dard-ized $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x \OMS/cmsy/m/
 n/12 ! []\OT1/cmr/m/n/12 )$ \T1/ppl/m/n/12 to ad-just for dif-fer-ences in scal
 e be-tween vari-ables. NUMFL-
  []
 
-[44] [45] [46] [47]
+[45] [46] [47] [48]
 Overfull \hbox (2.30815pt too wide) in paragraph at lines 327--328
 []\T1/ppl/m/n/12 The sus-pi-cious-ness score of the ex-pres-sion is es-ti-mated
  by the av-er-age of failure-
  []
 
-[48] [49] [50]
+[49] [50] [51]
 Overfull \hbox (1.7948pt too wide) in paragraph at lines 408--409
 \T1/ppl/m/n/12 from [[]]. The NUMFL al-go-rithm and other base-line tech-niques
  were im-ple-mented
  []
 
-[51] [52] [53] [54]
+[52] [53] [54] [55]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <8> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 472.
- [55]
+ [56]
 Overfull \hbox (3.73865pt too wide) in paragraph at lines 495--496
 \T1/ppl/m/n/12 have slightly bet-ter per-for-mance than NUMFL-GPS-QRM on two su
 b-ject pro-grams:
  []
 
-[56] [57] <chapter3_QRM_VS_Base.pdf, id=1235, 433.62pt x 216.81pt>
+[57] [58] <chapter3_QRM_VS_Base.pdf, id=1240, 433.62pt x 216.81pt>
 File: chapter3_QRM_VS_Base.pdf Graphic file (type pdf)
 
 <use chapter3_QRM_VS_Base.pdf>
 Package pdftex.def Info: chapter3_QRM_VS_Base.pdf used on input line 513.
 (pdftex.def)             Requested size: 650.43pt x 325.2572pt.
- [58] [59 <./chapter3_QRM_VS_Base.pdf>]
-<chapter3_QRM_allFail.pdf, id=1253, 1170.3725pt x 799.98875pt>
+ [59] [60 <./chapter3_QRM_VS_Base.pdf>]
+<chapter3_QRM_allFail.pdf, id=1258, 1170.3725pt x 799.98875pt>
 File: chapter3_QRM_allFail.pdf Graphic file (type pdf)
 
 <use chapter3_QRM_allFail.pdf>
@@ -1619,8 +1628,8 @@ Overfull \hbox (13.46718pt too wide) in paragraph at lines 563--563
  
  []
 
-[60] [61 <./chapter3_QRM_allFail.pdf>] [62]
-<chapter3_QRM_VS_Base_MultipleFault.pdf, id=1276, 433.62pt x 216.81pt>
+[61] [62 <./chapter3_QRM_allFail.pdf>] [63]
+<chapter3_QRM_VS_Base_MultipleFault.pdf, id=1281, 433.62pt x 216.81pt>
 File: chapter3_QRM_VS_Base_MultipleFault.pdf Graphic file (type pdf)
 
 <use chapter3_QRM_VS_Base_MultipleFault.pdf>
@@ -1633,85 +1642,85 @@ Underfull \hbox (badness 1033) in paragraph at lines 596--596
 L-GPS-QRM AND
  []
 
-[63] [64 <./chapter3_QRM_VS_Base_MultipleFault.pdf>]
+[64] [65 <./chapter3_QRM_VS_Base_MultipleFault.pdf>]
 Underfull \hbox (badness 1033) in paragraph at lines 627--627
 []\T1/ppl/m/it/10.95 Table 3.12: |AV-ER-AGE FAULT LO-CAL-IZA-TION COSTS OF NUMF
 L-GPS-QRM AND
  []
 
-<chapter3_CBPS_VS_GPS.pdf, id=1292, 1170.3725pt x 799.98875pt>
+<chapter3_CBPS_VS_GPS.pdf, id=1298, 1170.3725pt x 799.98875pt>
 File: chapter3_CBPS_VS_GPS.pdf Graphic file (type pdf)
 
 <use chapter3_CBPS_VS_GPS.pdf>
 Package pdftex.def Info: chapter3_CBPS_VS_GPS.pdf used on input line 645.
 (pdftex.def)             Requested size: 346.89731pt x 237.11766pt.
 
-<chapter3_CBPS_VS_GPS_MultipleFault.pdf, id=1293, 1170.3725pt x 799.98875pt>
+<chapter3_CBPS_VS_GPS_MultipleFault.pdf, id=1299, 1170.3725pt x 799.98875pt>
 File: chapter3_CBPS_VS_GPS_MultipleFault.pdf Graphic file (type pdf)
 
 <use chapter3_CBPS_VS_GPS_MultipleFault.pdf>
 Package pdftex.def Info: chapter3_CBPS_VS_GPS_MultipleFault.pdf used on input l
 ine 652.
 (pdftex.def)             Requested size: 346.89731pt x 237.11766pt.
- [65] [66 <./chapter3_CBPS_VS_GPS.pdf>]
+ [66] [67 <./chapter3_CBPS_VS_GPS.pdf>]
 Overfull \hbox (2.86008pt too wide) in paragraph at lines 688--689
 []\T1/ppl/m/n/12 From [][]3.13[][], The NUMFL is mildly slower than base-line t
 ech-niques. The NUMFL-
  []
 
-[67 <./chapter3_CBPS_VS_GPS_MultipleFault.pdf>]
+[68 <./chapter3_CBPS_VS_GPS_MultipleFault.pdf>]
 Overfull \hbox (5.43123pt too wide) in paragraph at lines 691--692
 \T1/ppl/m/n/12 ploys re-gres-sion mod-els for two pur-poses: es-ti-mat-ing gen-
 er-al-ized propen-sity scores
  []
 
-[68] [69]
+[69] [70]
 Overfull \hbox (4.74377pt too wide) in paragraph at lines 699--700
 []\T1/ppl/m/n/12 Some re-cent stud-ies have de-vel-oped tech-niques to an-a-lyz
 e in-sta-bil-ity in floating-
  []
 
-) (./chapters/content/chapter_4_BART.tex [70] [71]
+) (./chapters/content/chapter_4_BART.tex [71] [72]
 Chapter 4.
-[72
+[73
 
-] [73]
+] [74]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_SingleRGT.pdf): P
 DF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_SingleRGT.pdf, id=1387, 242.3956pt x 243.1183pt>
+<chapter4_SingleRGT.pdf, id=1392, 242.3956pt x 243.1183pt>
 File: chapter4_SingleRGT.pdf Graphic file (type pdf)
 
 <use chapter4_SingleRGT.pdf>
 Package pdftex.def Info: chapter4_SingleRGT.pdf used on input line 29.
 (pdftex.def)             Requested size: 216.81pt x 217.45782pt.
- [74 <./chapter4_SingleRGT.pdf>] [75] [76]
+ [75 <./chapter4_SingleRGT.pdf>] [76] [77]
 Overfull \hbox (9.54985pt too wide) in paragraph at lines 77--79
 \T1/ppl/m/n/12 where $\OML/cmm/m/it/12 d$ \T1/ppl/m/n/12 is the num-ber of edge
 s from the node to the tree's root node. $\OML/cmm/m/it/12 []$
  []
 
-[77] [78] [79] [80]
+[78] [79] [80] [81]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BART_ACE.pdf): PD
 F inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BART_ACE.pdf, id=1451, 3010.16588pt x 783.78821pt>
+<chapter4_BART_ACE.pdf, id=1456, 3010.16588pt x 783.78821pt>
 File: chapter4_BART_ACE.pdf Graphic file (type pdf)
 
 <use chapter4_BART_ACE.pdf>
 Package pdftex.def Info: chapter4_BART_ACE.pdf used on input line 130.
 (pdftex.def)             Requested size: 433.62pt x 112.8989pt.
- [81] [82 <./chapter4_BART_ACE.pdf>]
+ [82] [83 <./chapter4_BART_ACE.pdf>]
 Overfull \hbox (4.49068pt too wide) in paragraph at lines 149--150
 [] \T1/ppl/b/it/12 BART vs. ESP-SIV. \T1/ppl/m/n/12 BART per-formed bet-ter tha
 n ESP-SIV on 78 subject-program
  []
 
-[83]
+[84]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BART_VS_Base.pdf)
 : PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BART_VS_Base.pdf, id=1475, 1147.28625pt x 462.25699pt>
+<chapter4_BART_VS_Base.pdf, id=1480, 1147.28625pt x 462.25699pt>
 File: chapter4_BART_VS_Base.pdf Graphic file (type pdf)
 
 <use chapter4_BART_VS_Base.pdf>
@@ -1721,14 +1730,14 @@ Package pdftex.def Info: chapter4_BART_VS_Base.pdf used on input line 157.
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BARTvsBase_M.pdf)
 : PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BARTvsBase_M.pdf, id=1477, 885.3075pt x 356.83313pt>
+<chapter4_BARTvsBase_M.pdf, id=1482, 885.3075pt x 356.83313pt>
 File: chapter4_BARTvsBase_M.pdf Graphic file (type pdf)
 
 <use chapter4_BARTvsBase_M.pdf>
 Package pdftex.def Info: chapter4_BARTvsBase_M.pdf used on input line 166.
 (pdftex.def)             Requested size: 650.43pt x 262.17935pt.
- [84] [85 <./chapter4_BART_VS_Base.pdf>]
-[86 <./chapter4_BARTvsBase_M.pdf>]
+ [85] [86 <./chapter4_BART_VS_Base.pdf>]
+[87 <./chapter4_BARTvsBase_M.pdf>]
 Overfull \hbox (8.34354pt too wide) in paragraph at lines 177--178
 []\T1/ppl/m/n/12 In sum-mary, BART per-formed bet-ter than both NUMFL-GPS-QRM a
 nd NUMFL-
@@ -1738,7 +1747,7 @@ nd NUMFL-
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BARTvsGPS_QRM.pdf
 ): PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BARTvsGPS_QRM.pdf, id=1499, 1049.9225pt x 638.385pt>
+<chapter4_BARTvsGPS_QRM.pdf, id=1504, 1049.9225pt x 638.385pt>
 File: chapter4_BARTvsGPS_QRM.pdf Graphic file (type pdf)
 
 <use chapter4_BARTvsGPS_QRM.pdf>
@@ -1748,13 +1757,13 @@ Package pdftex.def Info: chapter4_BARTvsGPS_QRM.pdf used on input line 209.
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BARTvsCBPS.pdf): 
 PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BARTvsCBPS.pdf, id=1500, 1049.9225pt x 638.385pt>
+<chapter4_BARTvsCBPS.pdf, id=1505, 1049.9225pt x 638.385pt>
 File: chapter4_BARTvsCBPS.pdf Graphic file (type pdf)
 
 <use chapter4_BARTvsCBPS.pdf>
 Package pdftex.def Info: chapter4_BARTvsCBPS.pdf used on input line 216.
 (pdftex.def)             Requested size: 346.89731pt x 210.92096pt.
- [87] [88 <./chapter4_BARTvsGPS_QRM.pdf> <./chapter4_BARTvsCBPS.pdf>]
+ [88] [89 <./chapter4_BARTvsGPS_QRM.pdf> <./chapter4_BARTvsCBPS.pdf>]
 Overfull \hbox (19.75752pt too wide) in paragraph at lines 223--224
 \T1/ppl/m/n/12 GPS-QRM on the in-di-vid-ual two-fault ver-sions. BART per-forme
 d bet-ter than NUMFL-
@@ -1764,7 +1773,7 @@ d bet-ter than NUMFL-
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BARTvsGPS_QRM_M.p
 df): PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BARTvsGPS_QRM_M.pdf, id=1521, 1049.9225pt x 638.385pt>
+<chapter4_BARTvsGPS_QRM_M.pdf, id=1527, 1049.9225pt x 638.385pt>
 File: chapter4_BARTvsGPS_QRM_M.pdf Graphic file (type pdf)
 
 <use chapter4_BARTvsGPS_QRM_M.pdf>
@@ -1774,17 +1783,17 @@ Package pdftex.def Info: chapter4_BARTvsGPS_QRM_M.pdf used on input line 244.
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter4_BARTvsCBPS_M.pdf)
 : PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter4_BARTvsCBPS_M.pdf, id=1522, 1049.9225pt x 638.385pt>
+<chapter4_BARTvsCBPS_M.pdf, id=1528, 1049.9225pt x 638.385pt>
 File: chapter4_BARTvsCBPS_M.pdf Graphic file (type pdf)
 
 <use chapter4_BARTvsCBPS_M.pdf>
 Package pdftex.def Info: chapter4_BARTvsCBPS_M.pdf used on input line 251.
 (pdftex.def)             Requested size: 346.89731pt x 210.92096pt.
- [89] [90 <./chapter4_BARTvsGPS_QRM_M.pdf> <./chapter4_BARTvsCBPS_M.pdf>] [91] 
-[92] [93])
-(./chapters/content/chapter_5_Robot.tex [94]
+ [90] [91 <./chapter4_BARTvsGPS_QRM_M.pdf> <./chapter4_BARTvsCBPS_M.pdf>] [92] 
+[93] [94])
+(./chapters/content/chapter_5_Robot.tex [95]
 Chapter 5.
-[95
+[96
 
 ]
 Overfull \hbox (15.23466pt too wide) in paragraph at lines 44--45
@@ -1792,54 +1801,59 @@ Overfull \hbox (15.23466pt too wide) in paragraph at lines 44--45
 In-te-grated Surgery
  []
 
-[96]
+[97]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter5_SABiR.pdf): PDF i
 nclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter5_SABiR.pdf, id=1589, 257.50203pt x 283.09766pt>
+<chapter5_SABiR.pdf, id=1595, 257.50203pt x 283.09766pt>
 File: chapter5_SABiR.pdf Graphic file (type pdf)
 
 <use chapter5_SABiR.pdf>
 Package pdftex.def Info: chapter5_SABiR.pdf used on input line 53.
 (pdftex.def)             Requested size: 260.17464pt x 286.03435pt.
- [97]
-<chapter5_BHR.pdf, id=1603, 614.295pt x 794.97pt>
+ [98]
+<chapter5_BHR.pdf, id=1609, 614.295pt x 794.97pt>
 File: chapter5_BHR.pdf Graphic file (type pdf)
  <use chapter5_BHR.pdf>
 Package pdftex.def Info: chapter5_BHR.pdf used on input line 63.
 (pdftex.def)             Requested size: 260.17464pt x 336.69934pt.
 
-[98 <./chapter5_SABiR.pdf>] [99 <./chapter5_BHR.pdf>] [100]
+[99 <./chapter5_SABiR.pdf>] [100 <./chapter5_BHR.pdf>] [101]
 
 pdfTeX warning: /Library/Tex/texbin/pdflatex (file ./chapter5_BHR_control.pdf):
  PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<chapter5_BHR_control.pdf, id=1640, 987.69pt x 351.56343pt>
+<chapter5_BHR_control.pdf, id=1647, 987.69pt x 351.56343pt>
 File: chapter5_BHR_control.pdf Graphic file (type pdf)
 
 <use chapter5_BHR_control.pdf>
 Package pdftex.def Info: chapter5_BHR_control.pdf used on input line 81.
 (pdftex.def)             Requested size: 433.62pt x 154.33969pt.
-
-<chapter5_SABiRsw.pdf, id=1646, 323.4203pt x 184.55951pt>
+ [102 <./chapter5_BHR_control.pdf>]
+<chapter5_SABiRsw.pdf, id=1661, 323.4203pt x 184.55951pt>
 File: chapter5_SABiRsw.pdf Graphic file (type pdf)
 
 <use chapter5_SABiRsw.pdf>
 Package pdftex.def Info: chapter5_SABiRsw.pdf used on input line 95.
 (pdftex.def)             Requested size: 433.62pt x 247.45486pt.
- [101 <./chapter5_BHR_control.pdf>] [102 <./chapter5_SABiRsw.pdf>] [103] [104] 
-<chapter5_DBN.pdf, id=1678, 331.2375pt x 323.2075pt>
+ [103 <./chapter5_SABiRsw.pdf>] [104] [105]
+<chapter5_DBN.pdf, id=1684, 331.2375pt x 323.2075pt>
 File: chapter5_DBN.pdf Graphic file (type pdf)
-
-<use chapter5_DBN.pdf>
+ <use chapter5_DBN.pdf>
 Package pdftex.def Info: chapter5_DBN.pdf used on input line 131.
 (pdftex.def)             Requested size: 260.17464pt x 253.87627pt.
- [105 <./chapter5_DBN.pdf>] [106] [107] [108] [109]
-[110] [111] [112] [113] [114]) (./chapters/content/chapter_6_conclusion.tex
-[115] [116]
+
+[106] [107 <./chapter5_DBN.pdf>] [108] [109] [110] [111] [112] [113] [114]
+[115]) (./chapters/content/chapter_6_conclusion.tex [116]
 Chapter 6.
 [117
 
-] [118]) (./chapters/appendix/appendix_derivation.tex [119]
+]
+Overfull \hbox (0.98868pt too wide) in paragraph at lines 9--10
+[]\T1/ppl/m/n/12 We ap-plied Bayesian ad-di-tive re-gres-sion trees to ap-prox-
+i-mate the dose re-sponse
+ []
+
+[118]) (./chapters/appendix/appendix_derivation.tex [119]
 Appendix A.
 
 Overfull \hbox (11.3924pt too wide) detected at line 27
@@ -1915,7 +1929,10 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 160.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 160.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 160.
 Package rerunfilecheck Info: File `dissertation-BZF.out' has not changed.
-(rerunfilecheck)             Checksum: 461728774E5A112D725FCE1EE2B95775;6193.
+(rerunfilecheck)             Checksum: A87E14D11D767B0A6250581E89D981E5;6194.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1923,10 +1940,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 160.
  ) 
 Here is how much of TeX's memory you used:
- 26995 strings out of 493089
- 511686 string characters out of 6134842
- 649890 words of memory out of 5000000
- 29363 multiletter control sequences out of 15000+600000
+ 26997 strings out of 493089
+ 511738 string characters out of 6134842
+ 649895 words of memory out of 5000000
+ 29365 multiletter control sequences out of 15000+600000
  43683 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,15n,80p,3217b,443s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1952,10 +1969,10 @@ rw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/pala
 tino/uplbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/u
 plr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplri8a.
 pfb>
-Output written on dissertation-BZF.pdf (149 pages, 5885451 bytes).
+Output written on dissertation-BZF.pdf (149 pages, 5886609 bytes).
 PDF statistics:
- 2076 PDF objects out of 2487 (max. 8388607)
- 1826 compressed objects within 19 object streams
+ 2079 PDF objects out of 2487 (max. 8388607)
+ 1829 compressed objects within 19 object streams
  476 named destinations out of 1000 (max. 500000)
  794 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-\chapter{The Importance of the Positiity Property for CSFL}\label{chap:importance}
+\chapter{The Importance of the Positivity Property for CSFL}\label{chap:importance}
 
 \section{Introduction}\label{sec1}
 To adjust (partially) for confounding bias in {\it causal SFL} (CSFL), Baah et al proposed estimating the AFCE of a particular statement $s$ by using a linear regression model of the form
@@ -10,7 +10,7 @@ where $\sigma$ is the treatment (coverage) indicator for $s$ (1: covered, 0: not
 Interestingly, model (2.1) performed well when evaluated \cite{baah2010causal} even though the coverage data it requires often violates an important precondition for valid causal inference, called the "positivity" condition.  In the remainder of this chapter, we shall examine why this is so and suggest improvements to Baah et al’s technique based on our conclusions.
 
 \section{The Problem of Positivity Violations}\label{sec2}
-Positivity \cite{hernan2006estimating} is an important condition for valid causal inference but is often overlooked in SFL research.
+Positivity, like unconditional or conditional exchangeability (ignorabillity or unconfoundedness) \cite{hernan2006estimating}, well-defined interventions \cite{Pearl2003}, the single-unit treatment value assumption (SUTVA) \cite{angrist1996identification}, and the causal Markov condition \cite{hausman1999independence}, is an important condition for valid causal inference but is often overlooked in SFL research. Without holding positivity condition, an observational study cannot be viewed as a conditionally randomized experiment in which causal effect estimation is unbiased.
 
 {\bf Definition.}  The {\it \bf positivity} condition  holds with respect to a treatment variable $T$ and a set $X$ of covariates for confounding adjustment if the conditional probability $P(T=t|\mathbf{X=x})$ of receiving treatment value $t$, given the covariate values $\mathbf{X=x}$, is greater than zero for all $t$ and for all $\mathbf{x}$ such that $P(\mathbf{X=x})>0$.
 
