@@ -1,82 +1,84 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Statistical Fault Localization}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Bugs in Numerical Software}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{Causal Inference with Statistical Fault Localization}{chapter.1}% 4
-\BOOKMARK [2][-]{subsection.1.3.1}{Limitations of coverage-based CSFL}{section.1.3}% 5
-\BOOKMARK [1][-]{section.1.4}{Contributions}{chapter.1}% 6
-\BOOKMARK [1][-]{section.1.5}{Organization of The Dissertation}{chapter.1}% 7
-\BOOKMARK [0][-]{chapter.2}{The Importance of the Positivity Property for CSFL}{}% 8
-\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.2}{The Problem of Positivity Violations}{chapter.2}% 10
-\BOOKMARK [2][-]{subsection.2.2.1}{Research Questions}{section.2.2}% 11
-\BOOKMARK [1][-]{section.2.3}{Analysis of the Research Questions}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.3.1}{Analysis of RQ1}{section.2.3}% 13
-\BOOKMARK [2][-]{subsection.2.3.2}{Analysis of RQ2}{section.2.3}% 14
-\BOOKMARK [2][-]{subsection.2.3.3}{Analysis of RQ3}{section.2.3}% 15
-\BOOKMARK [1][-]{section.2.4}{Empirical Study}{chapter.2}% 16
-\BOOKMARK [2][-]{subsection.2.4.1}{Study Platform and Subject Programs}{section.2.4}% 17
-\BOOKMARK [2][-]{subsection.2.4.2}{Evaluation of RQ2}{section.2.4}% 18
-\BOOKMARK [2][-]{subsection.2.4.3}{Evaluation of RQ3}{section.2.4}% 19
-\BOOKMARK [1][-]{section.2.5}{Related Work}{chapter.2}% 20
-\BOOKMARK [1][-]{section.2.6}{Conclusion}{chapter.2}% 21
-\BOOKMARK [0][-]{chapter.3}{Causal Inference Based Fault Localization for Numerical Software with NUMFL}{}% 22
-\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.2}{Motivating Example}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.3}{BACKGROUND}{chapter.3}% 25
-\BOOKMARK [2][-]{subsection.3.3.1}{Causal Inference Methodology}{section.3.3}% 26
-\BOOKMARK [2][-]{subsection.3.3.2}{Ordinary Propensity Scores}{section.3.3}% 27
-\BOOKMARK [2][-]{subsection.3.3.3}{Generalized Propensity Score \(GPS\)}{section.3.3}% 28
-\BOOKMARK [2][-]{subsection.3.3.4}{Covariate Balancing Propensity Score \(CBPS\)}{section.3.3}% 29
-\BOOKMARK [1][-]{section.3.4}{TWO VERSIONS OF NUMFL}{chapter.3}% 30
-\BOOKMARK [2][-]{subsection.3.4.1}{NUMFL-GPS}{section.3.4}% 31
-\BOOKMARK [2][-]{subsection.3.4.2}{NUMFL-CBPS}{section.3.4}% 32
-\BOOKMARK [1][-]{section.3.5}{EMPIRICAL EVALUATION}{chapter.3}% 33
-\BOOKMARK [2][-]{subsection.3.5.1}{Experimental Platform and Data Collection}{section.3.5}% 34
-\BOOKMARK [2][-]{subsection.3.5.2}{Subject Programs, Faults, and Tests}{section.3.5}% 35
-\BOOKMARK [2][-]{subsection.3.5.3}{Baseline SFL Metrics and Cost Measure}{section.3.5}% 36
-\BOOKMARK [2][-]{subsection.3.5.4}{Comparative Performance of NUMFL vs. Baselines}{section.3.5}% 37
-\BOOKMARK [2][-]{subsection.3.5.5}{NUMFL-GPS Applied only to Failing Runs}{section.3.5}% 38
-\BOOKMARK [2][-]{subsection.3.5.6}{Application of NUMFL-GPS to Programs with Multiple Faults}{section.3.5}% 39
-\BOOKMARK [2][-]{subsection.3.5.7}{Comparison of NUMFL-GPS and NUMFL-CBPS}{section.3.5}% 40
-\BOOKMARK [2][-]{subsection.3.5.8}{Computation Time}{section.3.5}% 41
-\BOOKMARK [2][-]{subsection.3.5.9}{Limitations}{section.3.5}% 42
-\BOOKMARK [1][-]{section.3.6}{RELATED WORK}{chapter.3}% 43
-\BOOKMARK [1][-]{section.3.7}{CONCLUSION}{chapter.3}% 44
-\BOOKMARK [0][-]{chapter.4}{Causal Inference Based Fault Localization for Numerical Software with Bayesian Additive Regression Trees}{}% 45
-\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 46
-\BOOKMARK [1][-]{section.4.2}{BART Model Algorithm}{chapter.4}% 47
-\BOOKMARK [2][-]{subsection.4.2.1}{Single Regression Tree Model}{section.4.2}% 48
-\BOOKMARK [2][-]{subsection.4.2.2}{A sum-of-trees model}{section.4.2}% 49
-\BOOKMARK [2][-]{subsection.4.2.3}{A regularization prior}{section.4.2}% 50
-\BOOKMARK [2][-]{subsection.4.2.4}{Bayesian Backfitting MCMC Algorithm}{section.4.2}% 51
-\BOOKMARK [1][-]{section.4.3}{AFCE Estimation With BART}{chapter.4}% 52
-\BOOKMARK [1][-]{section.4.4}{EMPIRICAL EVALUATION}{chapter.4}% 53
-\BOOKMARK [2][-]{subsection.4.4.1}{Comparative Performance of BART vs. Baselines}{section.4.4}% 54
-\BOOKMARK [2][-]{subsection.4.4.2}{BART Model vs NUMFL}{section.4.4}% 55
-\BOOKMARK [2][-]{subsection.4.4.3}{Sensitivity of BART model on the number of trees and the number of tests}{section.4.4}% 56
-\BOOKMARK [2][-]{subsection.4.4.4}{Computation Time Analysis}{section.4.4}% 57
-\BOOKMARK [1][-]{section.4.5}{RELATED WORK}{chapter.4}% 58
-\BOOKMARK [1][-]{section.4.6}{CONCLUSION}{chapter.4}% 59
-\BOOKMARK [0][-]{chapter.5}{Fault Localization in Embedded Control System Software}{}% 60
-\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 61
-\BOOKMARK [1][-]{section.5.2}{Two Medical Surgery Robot Systems }{chapter.5}% 62
-\BOOKMARK [2][-]{subsection.5.2.1}{SABiR}{section.5.2}% 63
-\BOOKMARK [2][-]{subsection.5.2.2}{BHR}{section.5.2}% 64
-\BOOKMARK [1][-]{section.5.3}{Robot Simulation and Control}{chapter.5}% 65
-\BOOKMARK [1][-]{section.5.4}{Software Architecture and Data Collection}{chapter.5}% 66
-\BOOKMARK [2][-]{subsection.5.4.1}{Software Architecture}{section.5.4}% 67
-\BOOKMARK [2][-]{subsection.5.4.2}{Instrumenting the Controllers}{section.5.4}% 68
-\BOOKMARK [2][-]{subsection.5.4.3}{Data Collection}{section.5.4}% 69
-\BOOKMARK [1][-]{section.5.5}{Dynamic Bayesian Networks}{chapter.5}% 70
-\BOOKMARK [1][-]{section.5.6}{Fault Localization Method}{chapter.5}% 71
-\BOOKMARK [2][-]{subsection.5.6.1}{Identifying anomalous variables}{section.5.6}% 72
-\BOOKMARK [2][-]{subsection.5.6.2}{Identifying faulty statements}{section.5.6}% 73
-\BOOKMARK [1][-]{section.5.7}{Empirical Evaluation}{chapter.5}% 74
-\BOOKMARK [2][-]{subsection.5.7.1}{Faulty Controllers}{section.5.7}% 75
-\BOOKMARK [2][-]{subsection.5.7.2}{Methodology and Baselines}{section.5.7}% 76
-\BOOKMARK [1][-]{section.5.8}{Related Work}{chapter.5}% 77
-\BOOKMARK [1][-]{section.5.9}{Conclusions}{chapter.5}% 78
-\BOOKMARK [0][-]{chapter.6}{Conclusion and Future work}{}% 79
-\BOOKMARK [1][-]{section.6.1}{Conclusion}{chapter.6}% 80
-\BOOKMARK [1][-]{section.6.2}{Future work}{chapter.6}% 81
-\BOOKMARK [0][-]{Appendix.a.A}{Detail of the Derivation for Chapter 2}{}% 82
+\BOOKMARK [1][-]{section.1.1}{Bugs in Numerical Software}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Statistical Fault Localization}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Causal Statistical Fault Localization}{chapter.1}% 4
+\BOOKMARK [2][-]{subsection.1.3.1}{Confounding Bias}{section.1.3}% 5
+\BOOKMARK [2][-]{subsection.1.3.2}{Baah et al's Coverage-based CSFL}{section.1.3}% 6
+\BOOKMARK [1][-]{section.1.4}{Limitations of coverage-based CSFL}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.5}{Contributions}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.6}{Organization of The Dissertation}{chapter.1}% 9
+\BOOKMARK [0][-]{chapter.2}{The Importance of the Positivity Property for CSFL}{}% 10
+\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.1.1}{The Problem of Positivity Violations}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.2}{Research Questions}{section.2.1}% 13
+\BOOKMARK [1][-]{section.2.2}{Analysis of the Research Questions}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.1}{Analysis of RQ1}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.2}{Analysis of RQ2}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.3}{Analysis of RQ3}{section.2.2}% 17
+\BOOKMARK [1][-]{section.2.3}{Empirical Study}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.3.1}{Study Platform and Subject Programs}{section.2.3}% 19
+\BOOKMARK [2][-]{subsection.2.3.2}{Evaluation of RQ2}{section.2.3}% 20
+\BOOKMARK [2][-]{subsection.2.3.3}{Evaluation of RQ3}{section.2.3}% 21
+\BOOKMARK [1][-]{section.2.4}{Related Work}{chapter.2}% 22
+\BOOKMARK [1][-]{section.2.5}{Conclusion}{chapter.2}% 23
+\BOOKMARK [0][-]{chapter.3}{Causal Inference Based Fault Localization for Numerical Software with NUMFL}{}% 24
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.2}{Motivating Example}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.3}{BACKGROUND}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.1}{Causal Inference Methodology}{section.3.3}% 28
+\BOOKMARK [2][-]{subsection.3.3.2}{Ordinary Propensity Scores}{section.3.3}% 29
+\BOOKMARK [2][-]{subsection.3.3.3}{Generalized Propensity Score \(GPS\)}{section.3.3}% 30
+\BOOKMARK [2][-]{subsection.3.3.4}{Covariate Balancing Propensity Score \(CBPS\)}{section.3.3}% 31
+\BOOKMARK [1][-]{section.3.4}{TWO VERSIONS OF NUMFL}{chapter.3}% 32
+\BOOKMARK [2][-]{subsection.3.4.1}{NUMFL-GPS}{section.3.4}% 33
+\BOOKMARK [2][-]{subsection.3.4.2}{NUMFL-CBPS}{section.3.4}% 34
+\BOOKMARK [1][-]{section.3.5}{EMPIRICAL EVALUATION}{chapter.3}% 35
+\BOOKMARK [2][-]{subsection.3.5.1}{Experimental Platform and Data Collection}{section.3.5}% 36
+\BOOKMARK [2][-]{subsection.3.5.2}{Subject Programs, Faults, and Tests}{section.3.5}% 37
+\BOOKMARK [2][-]{subsection.3.5.3}{Baseline SFL Metrics and Cost Measure}{section.3.5}% 38
+\BOOKMARK [2][-]{subsection.3.5.4}{Comparative Performance of NUMFL vs. Baselines}{section.3.5}% 39
+\BOOKMARK [2][-]{subsection.3.5.5}{NUMFL-GPS Applied only to Failing Runs}{section.3.5}% 40
+\BOOKMARK [2][-]{subsection.3.5.6}{Application of NUMFL-GPS to Programs with Multiple Faults}{section.3.5}% 41
+\BOOKMARK [2][-]{subsection.3.5.7}{Comparison of NUMFL-GPS and NUMFL-CBPS}{section.3.5}% 42
+\BOOKMARK [2][-]{subsection.3.5.8}{Computation Time}{section.3.5}% 43
+\BOOKMARK [2][-]{subsection.3.5.9}{Limitations}{section.3.5}% 44
+\BOOKMARK [1][-]{section.3.6}{RELATED WORK}{chapter.3}% 45
+\BOOKMARK [1][-]{section.3.7}{CONCLUSION}{chapter.3}% 46
+\BOOKMARK [0][-]{chapter.4}{Causal Inference Based Fault Localization for Numerical Software with Bayesian Additive Regression Trees}{}% 47
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 48
+\BOOKMARK [1][-]{section.4.2}{BART Model Algorithm}{chapter.4}% 49
+\BOOKMARK [2][-]{subsection.4.2.1}{Single Regression Tree Model}{section.4.2}% 50
+\BOOKMARK [2][-]{subsection.4.2.2}{A sum-of-trees model}{section.4.2}% 51
+\BOOKMARK [2][-]{subsection.4.2.3}{A regularization prior}{section.4.2}% 52
+\BOOKMARK [2][-]{subsection.4.2.4}{Bayesian Backfitting MCMC Algorithm}{section.4.2}% 53
+\BOOKMARK [1][-]{section.4.3}{AFCE Estimation With BART}{chapter.4}% 54
+\BOOKMARK [1][-]{section.4.4}{EMPIRICAL EVALUATION}{chapter.4}% 55
+\BOOKMARK [2][-]{subsection.4.4.1}{Comparative Performance of BART vs. Baselines}{section.4.4}% 56
+\BOOKMARK [2][-]{subsection.4.4.2}{BART Model vs NUMFL}{section.4.4}% 57
+\BOOKMARK [2][-]{subsection.4.4.3}{Sensitivity of BART model on the number of trees and the number of tests}{section.4.4}% 58
+\BOOKMARK [2][-]{subsection.4.4.4}{Computation Time Analysis}{section.4.4}% 59
+\BOOKMARK [1][-]{section.4.5}{RELATED WORK}{chapter.4}% 60
+\BOOKMARK [1][-]{section.4.6}{CONCLUSION}{chapter.4}% 61
+\BOOKMARK [0][-]{chapter.5}{Fault Localization in Embedded Control System Software}{}% 62
+\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 63
+\BOOKMARK [1][-]{section.5.2}{Two Medical Surgery Robot Systems }{chapter.5}% 64
+\BOOKMARK [2][-]{subsection.5.2.1}{SABiR}{section.5.2}% 65
+\BOOKMARK [2][-]{subsection.5.2.2}{BHR}{section.5.2}% 66
+\BOOKMARK [1][-]{section.5.3}{Robot Simulation and Control}{chapter.5}% 67
+\BOOKMARK [1][-]{section.5.4}{Software Architecture and Data Collection}{chapter.5}% 68
+\BOOKMARK [2][-]{subsection.5.4.1}{Software Architecture}{section.5.4}% 69
+\BOOKMARK [2][-]{subsection.5.4.2}{Instrumenting the Controllers}{section.5.4}% 70
+\BOOKMARK [2][-]{subsection.5.4.3}{Data Collection}{section.5.4}% 71
+\BOOKMARK [1][-]{section.5.5}{Dynamic Bayesian Networks}{chapter.5}% 72
+\BOOKMARK [1][-]{section.5.6}{Fault Localization Method}{chapter.5}% 73
+\BOOKMARK [2][-]{subsection.5.6.1}{Identifying anomalous variables}{section.5.6}% 74
+\BOOKMARK [2][-]{subsection.5.6.2}{Identifying faulty statements}{section.5.6}% 75
+\BOOKMARK [1][-]{section.5.7}{Empirical Evaluation}{chapter.5}% 76
+\BOOKMARK [2][-]{subsection.5.7.1}{Faulty Controllers}{section.5.7}% 77
+\BOOKMARK [2][-]{subsection.5.7.2}{Methodology and Baselines}{section.5.7}% 78
+\BOOKMARK [1][-]{section.5.8}{Related Work}{chapter.5}% 79
+\BOOKMARK [1][-]{section.5.9}{Conclusions}{chapter.5}% 80
+\BOOKMARK [0][-]{chapter.6}{Conclusion and Future work}{}% 81
+\BOOKMARK [1][-]{section.6.1}{Conclusion}{chapter.6}% 82
+\BOOKMARK [1][-]{section.6.2}{Future work}{chapter.6}% 83
+\BOOKMARK [0][-]{Appendix.a.A}{Detail of the Derivation for Chapter 2}{}% 84

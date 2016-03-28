@@ -17,7 +17,7 @@ In this chapter, we proposal a new statistical fault localization method based o
 \item Software is freely available and easy to use \cite{BARTMachine}.
 \end{itemize}
 
-The rest of the chapter is organized as follows: we present background on regression trees and the BART model in Section \ref{BARTbg}; using BART to estimate the failure-causing effect of a program expression is described in detail in Section \ref{BARTafce};  we report on ourempirical evaluation of this approach in Section \ref{BARTevaluation}; related work is surveyed in Section \ref{BARTrelatedwork}; and Section \ref{BARTconclusion} concludes the chapter.
+The rest of the chapter is organized as follows: we present background on regression trees and the BART model in Section \ref{BARTbg}; using BART to estimate the failure-causing effect of a program expression is described in detail in Section \ref{BARTafce};  we report on our empirical evaluation of this approach in Section \ref{BARTevaluation}; related work is surveyed in Section \ref{BARTrelatedwork}; and Section \ref{BARTconclusion} concludes the chapter.
 
 \section{BART Model Algorithm}\label{BARTbg}%what is BART and why BART
 The BART model algorithm consists of three parts: a sum of trees model, a regularization prior and a fitting algorithm, Markov Chain Monte Carlo (MCMC)
@@ -123,14 +123,43 @@ To solve this problem, we proposed a novel BART-based average causal effect esti
 
 In the above algorithm, the BART model fitted in step 1 is used to approximate the DRF $Y=f(T,\pmb{X})$. Step 2 and step 3 estimate the treatment causal effect for a given sample unit. Step 4 and step 5 estimate the average failure-causing effect of the treatment on the outcome.
 
-One problem in step 3 is how to choose the value of the small number $\varepsilon $. Because treatment variables in different numerical expressions have different scales of values, it is hard to find a constant $\varepsilon$ which can make $t+\varepsilon$ be a reasonable value for all the treatments. To address this problem, we use the method illustrated by Figure \ref{bartace}.  The original sample data set is shown in Figure \ref{bartace} (a).  We sort the original sample data set in increasing order according to the value of the treatment variables. The sorted data set is shown in Figure \ref{bartace} (b). The increased treatment variable value $t'$ in step 3 is equal to the treatment variable value $t$ of the next unit in the sorted data set, and the last unit in the list will be discarded. Thus,  for a data set with $n$ observational units, we will have a new data set of $n-1$ units after increasing the treatment variable. The new data set is shown in Figure \ref{bartace} (c). In this method, the value of $t'=t+\varepsilon$ and the value of $t$ are likely to be in the same scale, because they are neighbor in the sorted data set. 
-
 \begin{figure*}[!thpb]
 \centering
 \includegraphics[width=1\textwidth]{chapter4_BART_ACE.pdf}
 \caption{EXAMPLE OF TREATMENT VARIABLE INCREASE}
 \label{bartace}
 \end{figure*}
+
+One problem in step 3 is how to choose the value of the small number $\varepsilon $. Because treatment variables in different numerical expressions have different scales of values, it is hard to find a constant $\varepsilon$ which can make $t+\varepsilon$ be a reasonable value for all the treatments. To address this problem, we use the method illustrated by Figure \ref{bartace}.  The original sample data set is shown in Figure \ref{bartace} (a).  We sort the original sample data set in increasing order according to the value of the treatment variables. The sorted data set is shown in Figure \ref{bartace} (b). The increased treatment variable value $t'$ in step 3 is equal to the treatment variable value $t$ of the next unit in the sorted data set, and the last unit in the list will be discarded. Thus,  for a data set with $n$ observational units, we will have a new data set of $n-1$ units after increasing the treatment variable. The new data set is shown in Figure \ref{bartace} (c). In this method, the value of $t'=t+\varepsilon$ and the value of $t$ are likely to be in the same scale, because they are neighbor in the sorted data set. 
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\begin{algorithm}
+  \captionof{figure}{ {\it BART} Fault Localization Algorithm}\label{BARTalg}
+  \begin{algorithmic}[1]
+    \Require Subexpression value table $\pmb {Z}=[T_e, \pmb{X}_e]$ 
+    \Statex   Number of trees $m$ and number of tests $n$
+    \Ensure Suspiciousness scores $\tau \left( e \right)$ of subexpressions, sorted in descending order
+    \For  {each subexpression $e$ }
+        \State        $T_e \gets$ treatment variable of {\it i}th subexpression
+        \State        $\pmb{X}_e\gets$ confounding variables of {\it i}th subexpression
+        \State        Sort  $\pmb{Z}=[T_e, \pmb{X}_e]$ by values in $T_e$ in ascending order
+        \State        Fit the BART model $Y =f(T_e,\pmb{X_e})= \left( {\sum\limits_{j = 1}^m {g(T_e,\pmb{X_e};{R_j},{M_j})} } \right) + \varepsilon$
+	 \State	    $sum\gets 0$
+        \For  {$k = 1 \ldots n-1$ }
+            \State Estimate the outcome value $y=f(t_{e,k},{\pmb{x}_{e,k}})$
+            \State Estimate the posterior value $y'=f(t_{e,k+1},{\pmb{x}_{e,k}})$
+            \State ${\tau ^k} = |y' - y|$
+            \State $sum=sum+{\tau ^k} $
+        \EndFor
+        \State $\tau(e) = \frac{{sum}}{{n - 1}}$;
+    \EndFor
+    \State Sort  $\tau(e)$ values in descending order.
+  \end{algorithmic}
+\end{algorithm}
+
+Figure \ref{BARTalg} shows the BART fault localization algorithm.  To estimate AFCE for a numeric expression or subexpression $e$, the algorithm requires three inputs: the number of trees in the BART model, the number of tests and a subexpression value table. The algorithm treats each row of the subexpression value table as an observational unit. If the test suits contains $n$ tests, the subexpression value table has n rows, with each row recording the values of the treatment variable and the confounders in the execution of a single test. The input subexpression value table $\pmb{Z}$ is sorted in ascending order by the values of the treatment variable (lines 4).  The algorithm processes each numeric expression or subexpression $e$ in three stages.  In the first stage (lines 5), it fits a BART model with the full sample of treatment variable $T_e$ and the confounding variables $\pmb {X_e}$.  In the second stage (lines 6 - 12), the algorithm estimates the causal effect of $T_e$ on $Y$ separately for each observational unit except the last one.  Given a unit $k$, the algorithm estimates its the outcome value by inputting the treatment value $t_{e,k}$ and confounding variables values ${\pmb{x}_{e,k}}$ into the fitted BART model (line 8). Then the algorithm estimates the posterior value for the inputs $t_{e,k+1},{\pmb{x}_{e,k}}$. The causal effect of treatment for unit $k$ is estimated by the absolute value of the difference between $y$ and $y'$.  In the third stage, the overall AFCE or suspiciousness score $\tau(e)$ for subexpression $e$ is computed as the average of $\tau^k$ over all $n-1$ units (line 13).  Finally, the suspiciousness scores for all subexpressions are sorted in descending order (line 15).  The developer uses the sorted list to guide fault localization.
+
 
 \section{EMPIRICAL EVALUATION}\label{BARTevaluation}% result
 

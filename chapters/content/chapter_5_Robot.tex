@@ -162,8 +162,7 @@ After we get a set of anomalous variables which are identified by the algorithm 
 \begin{algorithm}
   \captionof{figure}{ {\it FLECS 2.0} Algorithm}\label{flecs2.0}
   \begin{algorithmic}[1]
-    \Require The software code of control system, simulator, trajectories with both normal and abnormal behavior.
-    \Statex $m, n, k$ pre-defined constant number
+    \Require The software code of control system, simulator, trajectories with both normal and abnormal behavior, and pre-defined constant number $m, n, k$ 
     \Ensure Ranked list of statements
     \State $D\leftarrow$ learned DBN from normal trajectories
     \State $T\leftarrow$ time index of start of anomalous event
@@ -213,7 +212,9 @@ We use 400 normal trajectories obtained through our simulator to train our DBN f
 
 Each technique we use returns a ranked list of statements in the controller code. We report the rank of the first faulty statement in this list. In the case of ties, we place the faulty statement in the middle of the set of statements with the same score, which simulates a developer having to consider half of this list before finding the fault. The results of our experiments are shown in Table \ref{flbhr} and Table \ref{flsabir}.
 
-Table \ref{flbhr} shows the result of experiments on BHR. FLECS 2.0 performs better than ESP-SCP on 9 faulty controller versions, but performs worse than ESP-SCP on 3 faulty controller versions.  FLECS 2.0 performs better than FLECS on 8 faulty controller versions, but performs worse than FLECS on 2 faulty controller versions. There are also two faulty version that FLECS and FLECS 2.0 have the same performance. Bug 6 is particularly interesting, because we found that the automatic starting point labeling criterion did not work well, and the labeled starting point was around 10000 steps before the true starting point of the anomalous event. We re-labeled starting point with manual inspection and re-run the experiment.  Without re-labelling the start point, the faulty statement is ranked 134 by FLECS 2.0. The rank improves to 25 after the correction, indicating that this procedure can help correct for errors in the automatic labeling process. Table \ref{flsabir} shows the result of experiments on SABiR. FLECS 2.0 performs better than ESP-SCP on 8 faulty controller versions, but performs worse than ESP-SCP on 2 faulty controller versions.  FLECS 2.0 performs better than FLECS on 5 faulty controller versions, but performs worse than FLECS on 4 faulty controller versions. There is one faulty version that FLECS and FLECS 2.0 have the same performance. The first bug for SABiR in Table \ref{flsabir} is a real bug.  An interesting aspect of this bug is that the variables that were being computed by the faulty statements were not selected for monitoring in our list of 87 (for SABiR) variables that constitute the software state in our DBNs. However, some data dependencies of that statement were selected, and since this statement was the only fault in this experiment, it "explained" many of these dependencies and so was ranked relatively highly. Overall, the experiment result shows that FLECS 2.0 outperforms ESP-SCP and original FLECS on two control system softwares. 
+Table \ref{flbhr} shows the result of experiments on BHR. FLECS 2.0 performs better than ESP-SCP on 9 faulty controller versions, but performs worse than ESP-SCP on 3 faulty controller versions.  FLECS 2.0 performs better than FLECS on 8 faulty controller versions, but performs worse than FLECS on 2 faulty controller versions. There are also two faulty version that FLECS and FLECS 2.0 have the same performance. Bug 6 is particularly interesting, because we found that the automatic starting point labeling criterion did not work well, and the labeled starting point was around 10000 steps before the true starting point of the anomalous event. We re-labeled starting point with manual inspection and re-run the experiment.  Without re-labelling the start point, the faulty statement is ranked 134 by FLECS 2.0. The rank improves to 25 after the correction, indicating that this procedure can help correct for errors in the automatic labeling process. Both FLECS and FLECS 2.0 perform bad on bug 10. The reason is that the trajectory of bug 10 is very close to a normal trajectory and its maximum "end effector error" is only slightly larger than the predetermined normal threshold. As a result, DBN fails to detect the anomalous variable, because the fault variable's NLL is within the range of normal likelihoods.
+
+Table \ref{flsabir} shows the result of experiments on SABiR. FLECS 2.0 performs better than ESP-SCP on 8 faulty controller versions, but performs worse than ESP-SCP on 2 faulty controller versions.  FLECS 2.0 performs better than FLECS on 5 faulty controller versions, but performs worse than FLECS on 4 faulty controller versions. There is one faulty version that FLECS and FLECS 2.0 have the same performance. The first bug for SABiR in Table \ref{flsabir} is a real bug.  An interesting aspect of this bug is that the variables that were being computed by the faulty statements were not selected for monitoring in our list of 87 (for SABiR) variables that constitute the software state in our DBNs. However, some data dependencies of that statement were selected, and since this statement was the only fault in this experiment, it "explained" many of these dependencies and so was ranked relatively highly. Overall, the experiment result shows that FLECS 2.0 outperforms ESP-SCP and original FLECS on two control system softwares. 
 
 \begin{table*}[htbp!]
 %\fontsize{10pt}{10pt}\selectfont
@@ -222,7 +223,7 @@ Table \ref{flbhr} shows the result of experiments on BHR. FLECS 2.0 performs bet
 \label{flbhr}
       \begin{tabular}{|l|c|c|c|}
       \hline
-Bug Index	&	ESP-SCP	&	FLECS	&	FLECS2.0	\\ \hline
+Bug Index	&	ESP-SCP	&	FLECS	&	FLECS 2.0	\\ \hline
 1	&	85	&	73	&	15	\\ \hline
 2	&	84	&	24	&	44	\\ \hline
 3	&	60	&	97	&	18	\\ \hline
@@ -245,7 +246,7 @@ Bug Index	&	ESP-SCP	&	FLECS	&	FLECS2.0	\\ \hline
 \label{flsabir}
       \begin{tabular}{|l|c|c|c|}
       \hline
-Bug Index	&	ESP-SCP	&	FLECS	&	FLECS2.0	\\ \hline
+Bug Index	&	ESP-SCP	&	FLECS	&	FLECS 2.0	\\ \hline
 1	&	249	&	39	&	7	\\ \hline
 2	&	1	&	3	&	26	\\ \hline
 3	&	251	&	3	&	35	\\ \hline

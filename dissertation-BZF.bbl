@@ -60,11 +60,6 @@ Scimark 2.0 available:.
 Sir.
 \newblock \url{http://sir.unl.edu/portal/index.php}.
 
-\bibitem{commontest}
-Test suite of apache common math library.
-\newblock
-  \url{https://github.com/apache/commons-math/tree/master/src/test/java/org/apache/commons/math4}.
-
 \bibitem{Xerces2}
 Xerces2.
 \newblock
@@ -76,6 +71,12 @@ R.~Abreu, P.~Zoeteweij, and A.~J. Van~Gemund.
 \newblock In {\em Testing: Academic and Industrial Conference Practice and
   Research Techniques-MUTATION, 2007. TAICPART-MUTATION 2007}, pages 89--98.
   IEEE, 2007.
+
+\bibitem{angrist1996identification}
+J.~D. Angrist, G.~W. Imbens, and D.~B. Rubin.
+\newblock Identification of causal effects using instrumental variables.
+\newblock {\em Journal of the American statistical Association},
+  91(434):444--455, 1996.
 
 \bibitem{baah2010causal}
 G.~K. Baah, A.~Podgurski, and M.~J. Harrold.
@@ -276,6 +277,12 @@ L.~P. Hansen.
 \newblock {\em Econometrica: Journal of the Econometric Society}, pages
   1029--1054, 1982.
 
+\bibitem{hausman1999independence}
+D.~M. Hausman and J.~Woodward.
+\newblock Independence, invariance and the causal markov condition.
+\newblock {\em The British journal for the philosophy of science},
+  50(4):521--583, 1999.
+
 \bibitem{he2011test}
 N.~He, P.~R{\"u}mmer, and D.~Kroening.
 \newblock Test-case generation for embedded simulink via formal concept
@@ -433,6 +440,11 @@ W.-Y. Loh.
 F.~J. Mackenzie and J.~Grossman.
 \newblock The randomized controlled trial: gold standard, or merely standard?
 \newblock {\em Perspectives in biology and medicine}, 48(4):516--534, 2005.
+
+\bibitem{manning2008introduction}
+C.~D. Manning, P.~Raghavan, H.~Sch{\"u}tze, et~al.
+\newblock {\em Introduction to information retrieval}, volume~1.
+\newblock Cambridge university press Cambridge, 2008.
 
 \bibitem{mcintyre2005fault}
 M.~L. McIntyre, W.~E. Dixon, D.~M. Dawson, and I.~D. Walker.

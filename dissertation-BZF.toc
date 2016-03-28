@@ -1,24 +1,26 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Statistical Fault Localization}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}Bugs in Numerical Software}{2}{section.1.2}
-\contentsline {section}{\numberline {1.3}Causal Inference with Statistical Fault Localization}{2}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}Limitations of coverage-based CSFL}{4}{subsection.1.3.1}
-\contentsline {section}{\numberline {1.4}Contributions}{5}{section.1.4}
-\contentsline {section}{\numberline {1.5}Organization of The Dissertation}{7}{section.1.5}
-\contentsline {chapter}{\numberline {2}The Importance of the Positivity Property for CSFL}{8}{chapter.2}
-\contentsline {section}{\numberline {2.1}Introduction}{8}{section.2.1}
-\contentsline {section}{\numberline {2.2}The Problem of Positivity Violations}{9}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Research Questions}{10}{subsection.2.2.1}
-\contentsline {section}{\numberline {2.3}Analysis of the Research Questions}{11}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Analysis of RQ1}{11}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Analysis of RQ2}{13}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Analysis of RQ3}{15}{subsection.2.3.3}
-\contentsline {section}{\numberline {2.4}Empirical Study}{19}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Study Platform and Subject Programs}{19}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Evaluation of RQ2}{20}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Evaluation of RQ3}{21}{subsection.2.4.3}
-\contentsline {section}{\numberline {2.5}Related Work}{22}{section.2.5}
-\contentsline {section}{\numberline {2.6}Conclusion}{23}{section.2.6}
+\contentsline {section}{\numberline {1.1}Bugs in Numerical Software}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Statistical Fault Localization}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Causal Statistical Fault Localization}{2}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Confounding Bias}{3}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Baah et al's Coverage-based CSFL}{5}{subsection.1.3.2}
+\contentsline {section}{\numberline {1.4}Limitations of coverage-based CSFL}{5}{section.1.4}
+\contentsline {section}{\numberline {1.5}Contributions}{6}{section.1.5}
+\contentsline {section}{\numberline {1.6}Organization of The Dissertation}{8}{section.1.6}
+\contentsline {chapter}{\numberline {2}The Importance of the Positivity Property for CSFL}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introduction}{9}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}The Problem of Positivity Violations}{9}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Research Questions}{11}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Analysis of the Research Questions}{12}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Analysis of RQ1}{12}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Analysis of RQ2}{14}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Analysis of RQ3}{16}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Empirical Study}{19}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Study Platform and Subject Programs}{19}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Evaluation of RQ2}{20}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Evaluation of RQ3}{22}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Related Work}{23}{section.2.4}
+\contentsline {section}{\numberline {2.5}Conclusion}{23}{section.2.5}
 \contentsline {chapter}{\numberline {3}Causal Inference Based Fault Localization for Numerical Software with NUMFL}{25}{chapter.3}
 \contentsline {section}{\numberline {3.1}Introduction}{25}{section.3.1}
 \contentsline {section}{\numberline {3.2}Motivating Example}{28}{section.3.2}
@@ -54,34 +56,34 @@
 \contentsline {subsection}{\numberline {4.2.3}A regularization prior}{77}{subsection.4.2.3}
 \contentsline {subsection}{\numberline {4.2.4}Bayesian Backfitting MCMC Algorithm}{79}{subsection.4.2.4}
 \contentsline {section}{\numberline {4.3}AFCE Estimation With BART}{79}{section.4.3}
-\contentsline {section}{\numberline {4.4}EMPIRICAL EVALUATION}{83}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Comparative Performance of BART vs. Baselines}{84}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}BART Model vs NUMFL}{85}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Sensitivity of BART model on the number of trees and the number of tests}{90}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Computation Time Analysis}{92}{subsection.4.4.4}
-\contentsline {section}{\numberline {4.5}RELATED WORK}{94}{section.4.5}
-\contentsline {section}{\numberline {4.6}CONCLUSION}{95}{section.4.6}
-\contentsline {chapter}{\numberline {5}Fault Localization in Embedded Control System Software}{96}{chapter.5}
-\contentsline {section}{\numberline {5.1}Introduction}{96}{section.5.1}
-\contentsline {section}{\numberline {5.2}Two Medical Surgery Robot Systems }{98}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}SABiR}{98}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}BHR}{98}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Robot Simulation and Control}{99}{section.5.3}
-\contentsline {section}{\numberline {5.4}Software Architecture and Data Collection}{103}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Software Architecture}{103}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Instrumenting the Controllers}{104}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Data Collection}{105}{subsection.5.4.3}
-\contentsline {section}{\numberline {5.5}Dynamic Bayesian Networks}{106}{section.5.5}
-\contentsline {section}{\numberline {5.6}Fault Localization Method}{108}{section.5.6}
-\contentsline {subsection}{\numberline {5.6.1}Identifying anomalous variables}{108}{subsection.5.6.1}
-\contentsline {subsection}{\numberline {5.6.2}Identifying faulty statements}{110}{subsection.5.6.2}
-\contentsline {section}{\numberline {5.7}Empirical Evaluation}{113}{section.5.7}
-\contentsline {subsection}{\numberline {5.7.1}Faulty Controllers}{113}{subsection.5.7.1}
-\contentsline {subsection}{\numberline {5.7.2}Methodology and Baselines}{114}{subsection.5.7.2}
-\contentsline {section}{\numberline {5.8}Related Work}{115}{section.5.8}
-\contentsline {section}{\numberline {5.9}Conclusions}{117}{section.5.9}
-\contentsline {chapter}{\numberline {6}Conclusion and Future work}{118}{chapter.6}
-\contentsline {section}{\numberline {6.1}Conclusion}{118}{section.6.1}
-\contentsline {section}{\numberline {6.2}Future work}{120}{section.6.2}
+\contentsline {section}{\numberline {4.4}EMPIRICAL EVALUATION}{84}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Comparative Performance of BART vs. Baselines}{85}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}BART Model vs NUMFL}{86}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Sensitivity of BART model on the number of trees and the number of tests}{93}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Computation Time Analysis}{93}{subsection.4.4.4}
+\contentsline {section}{\numberline {4.5}RELATED WORK}{95}{section.4.5}
+\contentsline {section}{\numberline {4.6}CONCLUSION}{96}{section.4.6}
+\contentsline {chapter}{\numberline {5}Fault Localization in Embedded Control System Software}{97}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{97}{section.5.1}
+\contentsline {section}{\numberline {5.2}Two Medical Surgery Robot Systems }{99}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}SABiR}{99}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}BHR}{99}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Robot Simulation and Control}{100}{section.5.3}
+\contentsline {section}{\numberline {5.4}Software Architecture and Data Collection}{104}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Software Architecture}{104}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Instrumenting the Controllers}{105}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Data Collection}{106}{subsection.5.4.3}
+\contentsline {section}{\numberline {5.5}Dynamic Bayesian Networks}{107}{section.5.5}
+\contentsline {section}{\numberline {5.6}Fault Localization Method}{109}{section.5.6}
+\contentsline {subsection}{\numberline {5.6.1}Identifying anomalous variables}{109}{subsection.5.6.1}
+\contentsline {subsection}{\numberline {5.6.2}Identifying faulty statements}{111}{subsection.5.6.2}
+\contentsline {section}{\numberline {5.7}Empirical Evaluation}{114}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}Faulty Controllers}{114}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}Methodology and Baselines}{115}{subsection.5.7.2}
+\contentsline {section}{\numberline {5.8}Related Work}{117}{section.5.8}
+\contentsline {section}{\numberline {5.9}Conclusions}{118}{section.5.9}
+\contentsline {chapter}{\numberline {6}Conclusion and Future work}{119}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusion}{119}{section.6.1}
+\contentsline {section}{\numberline {6.2}Future work}{121}{section.6.2}
 \contentsline {chapter}{Appendices}{}{section*.59}
-\contentsline {chapter}{\numberline {A}Detail of the Derivation for Chapter 2}{121}{Appendix.a.A}
+\contentsline {chapter}{\numberline {A}Detail of the Derivation for Chapter 2}{122}{Appendix.a.A}

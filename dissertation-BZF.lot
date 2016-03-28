@@ -1,7 +1,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {2.1}{\ignorespaces Subject programs, tests, and faults\relax }}{20}{table.caption.9}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Proportion of RVP statements among Covered statements with forward control dependence predecessor\relax }}{20}{table.caption.10}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Proportion of RVP statements among Covered statements with forward control dependence predecessor\relax }}{21}{table.caption.10}
 \contentsline {table}{\numberline {2.3}{\ignorespaces Comparison between Baah et al\IeC {\textquoteright }s Original estimator and the "Adjusted\IeC {\textquotedblright } estimator\relax }}{21}{table.caption.11}
 \contentsline {table}{\numberline {2.4}{\ignorespaces Comparison between Baah et al\IeC {\textquoteright }s Original estimator and the "Adjusted\IeC {\textquotedblright } estimator\relax }}{22}{table.caption.12}
 \contentsline {table}{\numberline {2.5}{\ignorespaces Average execution times of regression-based causal effect estimator and probability-based causal effect estimator\relax }}{22}{table.caption.13}
@@ -20,12 +20,12 @@
 \contentsline {table}{\numberline {3.12}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON MULTIPLE-FAULT PROGRAM VERSIONS\relax }}{67}{table.caption.36}
 \contentsline {table}{\numberline {3.13}{\ignorespaces AVERAGE COMPUTATION TIME OF NUMFL-GPS-QRM AND NUMFL-CBPS-QRM ON ONE SINGLE-FAULT PROGRAM VERSIONS \relax }}{69}{table.caption.39}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL METRICS ON SINGLE-FAULT PROGRAM VERSIONS\relax }}{88}{table.caption.44}
-\contentsline {table}{\numberline {4.2}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL ON TWO-FAULT PROGRAM VERSIONS\relax }}{90}{table.caption.47}
-\contentsline {table}{\numberline {4.3}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART MODEL WITH DIFFERENT NUMBER OF TREES AND DIFFERENT NUMBER OF TESTS ON SINGLE-FAULT PROGRAM VERSIONS \relax }}{93}{table.caption.50}
-\contentsline {table}{\numberline {4.4}{\ignorespaces AVERAGE COMPUTATION TIME OF BART ON SINGLE-FAULT PROGRAM VERSIONS \relax }}{94}{table.caption.51}
+\contentsline {table}{\numberline {4.1}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL METRICS ON SINGLE-FAULT PROGRAM VERSIONS\relax }}{90}{table.caption.44}
+\contentsline {table}{\numberline {4.2}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART AND NUMFL ON TWO-FAULT PROGRAM VERSIONS\relax }}{91}{table.caption.47}
+\contentsline {table}{\numberline {4.3}{\ignorespaces AVERAGE FAULT LOCALIZATION COSTS OF BART MODEL WITH DIFFERENT NUMBER OF TREES AND DIFFERENT NUMBER OF TESTS ON SINGLE-FAULT PROGRAM VERSIONS \relax }}{94}{table.caption.50}
+\contentsline {table}{\numberline {4.4}{\ignorespaces AVERAGE COMPUTATION TIME OF BART ON SINGLE-FAULT PROGRAM VERSIONS \relax }}{95}{table.caption.51}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces RANK OF THE FIRST FAULTY STATEMENT FOR BHR\relax }}{115}{table.caption.57}
-\contentsline {table}{\numberline {5.2}{\ignorespaces RANK OF THE FIRST FAULTY STATEMENT FOR SABiR\relax }}{116}{table.caption.58}
+\contentsline {table}{\numberline {5.1}{\ignorespaces RANK OF THE FIRST FAULTY STATEMENT FOR BHR\relax }}{116}{table.caption.57}
+\contentsline {table}{\numberline {5.2}{\ignorespaces RANK OF THE FIRST FAULTY STATEMENT FOR SABiR\relax }}{117}{table.caption.58}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -4,7 +4,6 @@ The top-level auxiliary file: dissertation-BZF.aux
 The style file: abbrv.bst
 Database file #1: dissertation-BZF.bib
 Warning--to sort, need author or key in VuikWeb
-Warning--to sort, need author or key in commontest
 Warning--to sort, need author or key in ASM
 Warning--to sort, need author or key in Nanoxml
 Warning--to sort, need author or key in SIR
@@ -27,49 +26,50 @@ Warning--empty journal in liangframework
 Warning--empty year in liangframework
 Warning--can't use both volume and number fields in Liblit2005
 Warning--can't use both volume and number fields in Liu2005
+Warning--can't use both volume and number fields in manning2008introduction
 Warning--there's a number but no volume in pratola2015bayesian
 Warning--empty journal in timofeev2004classification
 Warning--empty journal in wang2006diagnosing
 Warning--empty journal in Zhao2013
-You've used 108 entries,
+You've used 110 entries,
             2118 wiz_defined-function locations,
-            1083 strings with 22181 characters,
-and the built_in function-call counts, 37924 in all, are:
-= -- 3864
-> -- 1599
-< -- 44
-+ -- 652
-- -- 530
-* -- 2439
-:= -- 5830
-add.period$ -- 335
-call.type$ -- 108
-change.case$ -- 578
+            1098 strings with 22613 characters,
+and the built_in function-call counts, 38788 in all, are:
+= -- 3948
+> -- 1652
+< -- 45
++ -- 672
+- -- 548
+* -- 2517
+:= -- 5986
+add.period$ -- 342
+call.type$ -- 110
+change.case$ -- 591
 chr.to.int$ -- 0
-cite$ -- 136
-duplicate$ -- 1555
-empty$ -- 3101
-format.name$ -- 530
-if$ -- 8302
+cite$ -- 138
+duplicate$ -- 1582
+empty$ -- 3154
+format.name$ -- 548
+if$ -- 8468
 int.to.chr$ -- 0
-int.to.str$ -- 108
-missing$ -- 92
-newline$ -- 524
-num.names$ -- 182
-pop$ -- 743
+int.to.str$ -- 110
+missing$ -- 96
+newline$ -- 535
+num.names$ -- 188
+pop$ -- 750
 preamble$ -- 1
-purify$ -- 477
+purify$ -- 489
 quote$ -- 0
-skip$ -- 1238
+skip$ -- 1253
 stack$ -- 0
-substring$ -- 2378
-swap$ -- 495
-text.length$ -- 44
+substring$ -- 2438
+swap$ -- 499
+text.length$ -- 45
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 422
+type$ -- 428
 warning$ -- 28
-while$ -- 348
-width$ -- 111
-write$ -- 1130
+while$ -- 358
+width$ -- 113
+write$ -- 1156
 (There were 28 warnings)
